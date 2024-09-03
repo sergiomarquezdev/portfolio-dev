@@ -50,7 +50,7 @@
                 },
                 {
                     "role": "Desarrollador Full-Stack en Dublín",
-                    "startDate": "2022-07",
+                    "startDate": "2022-06",
                     "endDate": "2022-09",
                     "achievements": [
                         "Desarrollo de aplicaciones full-stack en un entorno remoto utilizando Java, Spring Framework y Angular.",
@@ -109,176 +109,41 @@
             "url": "https://ude.my/UC-873b8fa3-dd9a-40a3-8185-073a5e6df250/"
         }
     ],
-    "skills": [
-        {
-            "name": "HTML",
-            "level": "Master",
-            "keywords": ["Desarrollo Web", "Frontend"]
-        },
-        {
-            "name": "CSS",
-            "level": "Master",
-            "keywords": ["Desarrollo Web", "Frontend", "Diseño Responsive"]
-        },
-        {
-            "name": "JavaScript",
-            "level": "Master",
-            "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack"]
-        },
-        {
-            "name": "Tailwind",
-            "level": "Avanzado",
-            "keywords": [
-                "Desarrollo Web",
-                "Frontend",
-                "CSS Framework",
-                "Diseño Responsive"
-            ]
-        },
-        {
-            "name": "TypeScript",
-            "level": "Avanzado",
-            "keywords": [
-                "Desarrollo Web",
-                "Frontend",
-                "Backend",
-                "JavaScript Superset"
-            ]
-        },
-        {
-            "name": "Node",
-            "level": "Avanzado",
-            "keywords": ["Desarrollo Web", "Backend", "JavaScript", "Servidor"]
-        },
-        {
-            "name": "MySQL",
-            "level": "Avanzado",
-            "keywords": [
-                "Bases de Datos",
-                "SQL",
-                "Almacenamiento de Datos",
-                "Backend"
-            ]
-        },
-        {
-            "name": "Git",
-            "level": "Avanzado",
-            "keywords": [
-                "Control de Versiones",
-                "Colaboración",
-                "Código Fuente"
-            ]
-        },
-        {
-            "name": "GitHub",
-            "level": "Avanzado",
-            "keywords": [
-                "Control de Versiones",
-                "Colaboración",
-                "Código Fuente",
-                "Git"
-            ]
-        },
-        {
-            "name": "Next.js",
-            "level": "Avanzado",
-            "keywords": [
-                "Desarrollo Web",
-                "Frontend",
-                "React Framework",
-                "SSR",
-                "Static Generation"
-            ]
-        },
-        {
-            "name": "React",
-            "level": "Avanzado",
-            "keywords": [
-                "Desarrollo Web",
-                "Frontend",
-                "JavaScript Library",
-                "UI"
-            ]
-        }
+
+    "highlightedSkills": [
+        { "name": "Java", "icon": "Java" },
+        { "name": "Spring Framework", "icon": "Spring" },
+        { "name": "Angular", "icon": "Angular" },
+        { "name": "Docker", "icon": "Docker" },
+        { "name": "Kubernetes", "icon": "Kubernetes" },
+        { "name": "CI/CD", "icon": "CICD" }
     ],
-    "languages": [
-        {
-            "language": "Spanish",
-            "fluency": "Native speaker"
-        },
-        {
-            "language": "English",
-            "fluency": "Advanced"
-        }
+    "otherSkills": [
+        { "name": "Javascript", "icon": "Javascript" },
+        { "name": "Typescript", "icon": "Typescript" },
+        { "name": "Node.js", "icon": "Node" },
+        { "name": "Python", "icon": "Python" },
+        { "name": "Go", "icon": "Go" },
+        { "name": "React", "icon": "React" },
+        { "name": "Vue.js", "icon": "Vue" }
     ],
-    "interests": [
-        {
-            "name": "Wildlife",
-            "keywords": ["Ferrets", "Unicorns"]
-        }
+    "databasesSkills": [
+        { "name": "PostgreSQL", "icon": "PostgreSQL" },
+        { "name": "Oracle SQL", "icon": "OracleSQL" },
+        { "name": "MySQL", "icon": "MySQL" },
+        { "name": "MongoDB", "icon": "MongoDB" },
+        { "name": "Firebase", "icon": "Firebase" }
     ],
-    "references": [
-        {
-            "name": "Jane Doe",
-            "reference": "Reference…"
-        }
-    ],
+
+
     "projects": [
         {
-            "name": "mars.codes",
+            "name": "MartaMontalban.es",
             "isActive": true,
-            "description": "Historia interactiva con retos de programación para viajar a Marte",
-            "highlights": ["Elige tu propia aventura", "En desarrollo"],
-            "url": "https://mars.codes"
-        },
-        {
-            "name": "AdventJS",
-            "isActive": true,
-            "description": "Retos de programación en JavaScript para cada día de diciembre hasta Navidad",
-            "highlights": [
-                "+1 millón de visitas",
-                "Multidioma",
-                "JavaScript & TypeScript"
-            ],
-            "url": "https://adventjs.dev"
-        },
-        {
-            "name": "Codember",
-            "isActive": true,
-            "description": "Juego interactivo de programación con retos y secretos",
-            "highlights": [
-                "+2000 usuarios activos",
-                "Retos para cualquier lenguaje"
-            ],
-            "url": "https://codember.dev"
-        },
-        {
-            "name": "codi.link",
-            "isActive": true,
-            "description": "Playground de código HTML, CSS y JavaScript para compartir",
-            "highlights": [
-                "100k visitas al mes",
-                "Desarrollado por la comunidad"
-            ],
-            "url": "https://codi.link",
-            "github": "https://github.com/midudev/codi.link"
-        },
-        {
-            "name": "Pruebas Técnicas",
-            "isActive": true,
-            "description": "Lista de pruebas técnicas de empresas para practicar programación",
-            "highlights": ["100% gratuito", "+500 soluciones de la comunidad"],
-            "url": "https://pruebastecnicas.com",
-            "github": "https://github.com/midudev/pruebas-tecnicas"
-        },
-        {
-            "name": "miduConf",
-            "description": "Conferencia de programación en streaming para la comunidad hispanohablante con charlas top",
-            "highlights": [
-                "+15k tickets repartidos",
-                "+50k espectadores en directo"
-            ],
-            "url": "https://miduconf.com"
+            "description": "Portfolio web de Marta Montalbán, auxiliar de cámara en cine",
+            "highlights": ["Wordpress", "Elementor Pro"],
+            "url": "https://martamontalban.es",
+            "github": null
         }
     ]
 }

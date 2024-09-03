@@ -1,68 +1,95 @@
 ---
 import Section from "../Section.astro"
-import HTML from "@/icons/html.astro"
-import CSS from "@/icons/css.astro"
-import JavaScript from "@/icons/javascript.astro"
-import TypeScript from "@/icons/type.astro"
-import React from "@/icons/react.astro"
-import Node from "@/icons/node.astro"
-import MySQL from "@/icons/sql.astro"
-import Git from "@/icons/git.astro"
-import GitHub from "@/icons/GitHub.astro"
-import Tailwind from "@/icons/tailwind.astro"
-import Next from "@/icons/next.astro"
-import { skills } from "@cv"
-import Swift from "@/icons/swift.astro"
-import SwiftUI from "@/icons/swiftui.astro"
-import Kotlin from "@/icons/kotlin.astro"
-import Flutter from "@/icons/flutter.astro"
+import { highlightedSkills, experiencedSkills, databasesSkills, otherSkills } from "@cv"
 
-const SKILLS_ICONS: Record<string, any> = {
-  HTML,
-  CSS,
-  JavaScript,
-  TypeScript,
-  React,
+import Java from "@/icons/java.astro"
+import Spring from "@/icons/spring.astro"
+import Angular from "@/icons/angular.astro"
+import Docker from "@/icons/docker.astro"
+import Kubernetes from "@/icons/kubernetes.astro"
+import CICD from "@/icons/cicd.astro"
+import Javascript from "@/icons/javascript.astro"
+import Typescript from "@/icons/typescript.astro"
+import Node from "@/icons/node.astro"
+import Python from "@/icons/python.astro"
+import Go from "@/icons/go.astro"
+import PostgreSQL from "@/icons/postgresql.astro"
+import OracleSQL from "@/icons/oraclesql.astro"
+import MySQL from "@/icons/mysql.astro"
+import MongoDB from "@/icons/mongodb.astro"
+import Firebase from "@/icons/firebase.astro"
+import React from "@/icons/react.astro"
+import Vue from "@/icons/vue.astro"
+
+const SKILLS_ICONS = {
+  Java,
+  Spring,
+  Angular,
+  Docker,
+  Kubernetes,
+  CICD,
+  Javascript,
+  Typescript,
   Node,
+  Python,
+  Go,
+  PostgreSQL,
+  OracleSQL,
   MySQL,
-  Git,
-  GitHub,
-  Next,
-  Tailwind,
-  Swift,
-  SwiftUI,
-  Kotlin,
-  Flutter,
-}
+  MongoDB,
+  Firebase,
+  React,
+  Vue,
+} as const;
 ---
 
 <Section title="Habilidades">
-  <ul>
-    {
-      skills.map(({ name }) => {
-        const iconName = name === "Next.js" ? "Next" : name
-        const Icon = SKILLS_ICONS[iconName]
-
-        return (
-          <li>
-            {Icon && <Icon />} <span>{name}</span>
-          </li>
-        )
-      })
-    }
+  <ul class="skills-list highlighted-skills">
+    {highlightedSkills.map(({ name, icon }) => {
+      const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
+      return (
+        <li>
+          {IconComponent && <IconComponent />} <span>{name}</span>
+        </li>
+      )
+    })}
   </ul>
+
+  <ul class="skills-list">
+    {otherSkills.map(({ name, icon }) => {
+      const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
+      return (
+        <li>
+          {IconComponent && <IconComponent />} <span>{name}</span>
+        </li>
+      )
+    })}
+  </ul>
+
+  <ul class="skills-list">
+    {databasesSkills.map(({ name, icon }) => {
+      const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
+      return (
+        <li>
+          {IconComponent && <IconComponent />} <span>{name}</span>
+        </li>
+      )
+    })}
+  </ul>
+
 </Section>
 
 <style>
-  ul {
+  .skills-list {
     display: inline-flex;
     gap: 8px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
   li {
     align-items: center;
-    background: #eee;
+    background: #f7f7f7;
     border-radius: 6px;
     color: black;
     display: flex;
@@ -70,5 +97,15 @@ const SKILLS_ICONS: Record<string, any> = {
     font-weight: 500;
     gap: 4px;
     padding: 0.2rem 0.6rem;
+  }
+
+  .highlighted-skills li {
+    background: #e0e0e0;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #34495e;
   }
 </style>

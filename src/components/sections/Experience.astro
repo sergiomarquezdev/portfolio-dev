@@ -6,8 +6,8 @@ import { work } from "@cv"
 <Section title="Experiencia laboral">
   <ul class="experience-list">
     {work.map(({ company, startDate, endDate, position, summary, highlights, website }) => {
-      const startYear = new Date(startDate).getFullYear()
-      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
+      const startYearMonth = new Date(startDate).toLocaleString("es-ES", { year: "numeric", month: "short" })
+      const endYearMonth = endDate != null ? new Date(endDate).toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual"
 
       return (
         <li class="experience-item">
@@ -24,11 +24,11 @@ import { work } from "@cv"
 
               <div class="experience-dates">
                 <time datetime={startDate} data-title={startDate}>
-                  {startYear}
+                  {startYearMonth}
                 </time>
                 {" - "}
                 <time datetime={endDate} data-title={endDate}>
-                  {endYear}
+                  {endYearMonth}
                 </time>
               </div>
             </header>
@@ -37,12 +37,12 @@ import { work } from "@cv"
               <p>{summary}</p>
               <ul class="highlights-list">
                 {highlights.map(({ role, startDate, endDate, achievements }) => {
-                  const roleStartYear = new Date(startDate).getFullYear()
-                  const roleEndYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
+                  const roleStartYearMonth = new Date(startDate).toLocaleString("es-ES", { year: "numeric", month: "short" })
+                  const roleEndYearMonth = endDate != null ? new Date(endDate).toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual"
 
                   return (
                     <li class="highlight-item">
-                      <strong>{role} ({roleStartYear} - {roleEndYear})</strong>
+                      <strong>{role} ({roleStartYearMonth} - {roleEndYearMonth})</strong>
                       <ul class="achievements-list">
                         {achievements.map(achievement => (
                           <li>{achievement}</li>
