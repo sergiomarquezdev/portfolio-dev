@@ -1,172 +1,162 @@
 ---
 import Section from "../Section.astro"
-
 import { work } from "@cv"
 ---
 
 <Section title="Experiencia laboral">
-    <ul>
-      {
-        work.map(
-          ({ company, startDate, endDate, position, summary, highlights, website }) => {
-            const startYear = new Date(startDate).getFullYear()
-            const endYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
+  <ul class="experience-list">
+    {work.map(({ company, startDate, endDate, position, summary, highlights, website }) => {
+      const startYear = new Date(startDate).getFullYear()
+      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
 
-            return (
-              <li>
-                <article>
-                  <header>
-                    <div>
-                      <h3>
-                        <a href={website} title={`Ver ${company}`} target="_blank">
-                          {company}
-                        </a>
-                      </h3>
-                      <h4>{position}</h4>
-                    </div>
+      return (
+        <li class="experience-item">
+          <article>
+            <header>
+              <div>
+                <h3>
+                  <a href={website} title={`Ver ${company}`} target="_blank">
+                    {company}
+                  </a>
+                </h3>
+                <h4>{position}</h4>
+              </div>
 
-                    <div>
-                      <time datetime={startDate} data-title={startDate}>
-                        {startYear}
-                      </time>
-                      {" - "}
-                      <time datetime={endDate} data-title={endDate}>
-                        {endYear}
-                      </time>
-                    </div>
-                  </header>
+              <div class="experience-dates">
+                <time datetime={startDate} data-title={startDate}>
+                  {startYear}
+                </time>
+                {" - "}
+                <time datetime={endDate} data-title={endDate}>
+                  {endYear}
+                </time>
+              </div>
+            </header>
 
-                  <footer>
-                    <p>{summary}</p>
-                    <ul>
-                      {highlights.map(({ role, startDate, endDate, achievements }) => {
-                        const roleStartYear = new Date(startDate).getFullYear()
-                        const roleEndYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
+            <footer>
+              <p>{summary}</p>
+              <ul class="highlights-list">
+                {highlights.map(({ role, startDate, endDate, achievements }) => {
+                  const roleStartYear = new Date(startDate).getFullYear()
+                  const roleEndYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
 
-                        return (
-                          <li>
-                            <strong>{role} ({roleStartYear} - {roleEndYear})</strong>
-                            <ul>
-                              {achievements.map(achievement => (
-                                <li>{achievement}</li>
-                              ))}
-                            </ul>
-                          </li>
-                        )
-                      })}
-                    </ul>
-                  </footer>
-                </article>
-              </li>
-            )
-          }
-        )
-      }
-    </ul>
-  </Section>
+                  return (
+                    <li class="highlight-item">
+                      <strong>{role} ({roleStartYear} - {roleEndYear})</strong>
+                      <ul class="achievements-list">
+                        {achievements.map(achievement => (
+                          <li>{achievement}</li>
+                        ))}
+                      </ul>
+                    </li>
+                  )
+                })}
+              </ul>
+            </footer>
+          </article>
+        </li>
+      )
+    })}
+  </ul>
+</Section>
 
+<style>
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0;
+    list-style: none;
+  }
 
-  <style>
-    ul {
-      display: flex;
+  .experience-item {
+    border-left: 4px solid #2980b9;
+    padding-left: 16px;
+  }
+
+  .experience-item article {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .experience-item h3 {
+    font-weight: 700;
+    color: #2c3e50;
+  }
+
+  .experience-item h4 {
+    color: #5d6d7e;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  .experience-item a {
+    color: #2c3e50;
+    text-decoration: none;
+  }
+
+  .experience-item a:hover {
+    text-decoration: underline;
+  }
+
+  .experience-dates {
+    color: #95a5a6;
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+
+  .experience-dates time {
+    display: inline-block;
+  }
+
+  .experience-item p {
+    margin-bottom: 12px;
+    color: #34495e;
+  }
+
+  .highlights-list {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+
+  .highlight-item {
+    margin-bottom: 12px;
+  }
+
+  .highlight-item strong {
+    font-weight: 600;
+    color: #4a4a4a;
+  }
+
+  .achievements-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 5px;
+  }
+
+  .achievements-list li {
+    margin-bottom: 6px;
+    color: #7f8c8d;
+  }
+
+  @media (max-width: 700px) {
+    .experience-dates {
+      text-align: right;
+    }
+
+    .experience-item {
+      border-left: 4px solid #2980b9;
+      padding-left: 8px;
+    }
+
+    .experience-item header {
       flex-direction: column;
-      gap: 32px;
     }
 
-    ul ul {
-      padding-left: 20px; 
-      margin-top: 10px;
-      margin-bottom: 10px;
-      list-style-type: disc; 
+    .experience-dates {
+      margin-top: 8px;
     }
-
-    article h3 {
-      font-weight: 600; 
-      color: #111;
-    }
-
-    article a {
-      color: #111;
-      text-decoration: none; 
-    }
-
-    article a:hover {
-      text-decoration: underline; 
-    }
-
-    article h4 {
-      color: #444;
-      font-weight: 500; 
-      margin-top: 8px; 
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 8px; 
-    }
-
-    time {
-      color: #555;
-      font-size: 0.85rem;
-      min-width: 102px;
-      cursor: default;
-      font-weight: 400;
-    }
-
-    footer p {
-      margin-bottom: 12px; 
-    }
-
-    footer strong {
-      font-weight: 600; 
-      display: block; 
-      margin-top: 8px; 
-      margin-bottom: 4px; 
-      color: #333; 
-    }
-
-    [data-title]:hover:after {
-      opacity: 1;
-      transition: all 0.1s ease-in-out 0.5s;
-      visibility: visible;
-    }
-
-    [data-title]:after {
-      content: attr(data-title);
-      background-color: #333;
-      color: #fff;
-      font-size: .75rem;
-      position: absolute;
-      padding: .2rem .5rem;
-      bottom: -1.4rem;
-      left: 50%;
-      white-space: nowrap;
-      box-shadow: 1px 1px 1px #222222;
-      opacity: 0;
-      border: 1px solid #111111;
-      z-index: 99999;
-      visibility: hidden;
-      border-radius: 6px;
-    }
-
-    [data-title] {
-      position: relative;
-    }
-
-    @media (width <= 700px) {
-      header {
-        flex-direction: column; 
-      }
-
-      time {
-        text-align: left; 
-        margin-top: 4px; 
-      }
-
-      ul ul {
-        padding-left: 16px; 
-      }
-    }
-  </style>
+  }
+</style>

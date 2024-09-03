@@ -1,68 +1,78 @@
 ---
 import Section from "../Section.astro"
-
 import { education } from "@cv"
 ---
 
 <Section title="Educación">
-  <ul>
-    {
-      education.map(({ institution, startDate, endDate, area }) => {
-        const startYear = new Date(startDate).getFullYear()
-        const endYear =
-          endDate != null ? new Date(endDate).getFullYear() : "Actual"
-        const years = `${startYear} - ${endYear}`
+  <ul class="education-list">
+    {education.map(({ institution, startDate, endDate, area }) => {
+      const startYear = new Date(startDate).getFullYear()
+      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
+      const years = `${startYear} - ${endYear}`
 
-        return (
-          <li>
-            <article>
-              <header>
-                <div>
-                  <h3>{institution}</h3>
-                </div>
-
-                <time>{years}</time>
-              </header>
-
-              <footer>
-                <p>{area}</p>
-              </footer>
-            </article>
-          </li>
-        )
-      })
-    }
+      return (
+        <li class="education-item">
+          <article>
+            <header>
+              <div class="institution">
+                <h3>{institution}</h3>
+              </div>
+              <time class="education-dates">{years}</time>
+            </header>
+            <footer>
+              <p class="education-area">{area}</p>
+            </footer>
+          </article>
+        </li>
+      )
+    })}
   </ul>
 </Section>
 
 <style>
-  ul {
+  .education-list {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
+    padding: 0;
+    list-style: none;
   }
 
-  article h3 {
-    font-weight: 500;
-    color: #111;
+  .education-item {
+    border-left: 4px solid #2980b9;
+    padding-left: 16px;
   }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
+  .education-item article {
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  time {
-    color: #555;
-    font-size: 0.85rem;
-    min-width: 102px;
+  .institution h3 {
+    font-weight: 600;
+    color: #2c3e50;
   }
 
-  @media (width <= 700px) {
-    time {
+  .education-dates {
+    color: #95a5a6;
+    font-size: 0.9rem;
+  }
+
+  .education-area {
+    margin-top: 8px;
+    color: #7f8c8d;
+  }
+
+  @media (max-width: 700px) {
+    .education-dates {
       text-align: right;
+    }
+
+    .education-item {
+      border-left: 4px solid #2980b9;
+      padding-left: 8px;
     }
   }
 </style>

@@ -39,19 +39,9 @@
             "summary": "Como Desarrollador Full-Stack en VITALY, he tenido una trayectoria creciente, comenzando como programador en prácticas, avanzando a desarrollador full-stack y enfrentando desafíos tanto técnicos como culturales durante mi estancia en Dublín.",
             "highlights": [
                 {
-                    "role": "Programador en prácticas",
-                    "startDate": "2021-04",
-                    "endDate": "2021-06",
-                    "achievements": [
-                        "Formación intensiva y práctica en tecnologías como Java Spring, Angular, Docker y Kubernetes.",
-                        "Contribución en proyectos clave aplicando conocimientos en entornos reales.",
-                        "Desarrollo de habilidades de trabajo en equipo y comunicación en un entorno ágil."
-                    ]
-                },
-                {
                     "role": "Desarrollador Full-Stack",
                     "startDate": "2021-06",
-                    "endDate": "2022-06",
+                    "endDate": null,
                     "achievements": [
                         "Diseño y desarrollo de APIs middleware con Spring Framework, mejorando la comunicación entre aplicaciones.",
                         "Liderazgo en la migración a Google Kubernetes Engine, optimizando despliegues y automatización.",
@@ -66,6 +56,16 @@
                         "Desarrollo de aplicaciones full-stack en un entorno remoto utilizando Java, Spring Framework y Angular.",
                         "Mejora significativa en la fluidez en inglés, alcanzando un nivel avanzado.",
                         "Adaptación y flexibilidad en un entorno internacional, enfrentando desafíos culturales y profesionales."
+                    ]
+                },
+                {
+                    "role": "Programador en prácticas",
+                    "startDate": "2021-04",
+                    "endDate": "2021-06",
+                    "achievements": [
+                        "Formación intensiva y práctica en tecnologías como Java Spring, Angular, Docker y Kubernetes.",
+                        "Contribución en proyectos clave aplicando conocimientos en entornos reales.",
+                        "Desarrollo de habilidades de trabajo en equipo y comunicación en un entorno ágil."
                     ]
                 }
             ]
