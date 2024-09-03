@@ -1,0 +1,284 @@
+{
+    "basics": {
+        "name": "Sergio Márquez",
+        "label": "Full Stack Developer. Experimentado en Java, Spring, Angular, Docker, Kubernetes, CI/CD",
+        "image": "/me.webp",
+        "email": "sergiomarquezdev@gmail.com",
+        "url": "https://sergiomarquez.dev",
+        "summary": "Soy Sergio Márquez, Desarrollador Full Stack con más de 3 años de experiencia en Java, Spring, Angular, Docker, Kubernetes y CI/CD. Vivo en Leganés, España, y me especializo en crear aplicaciones escalables y robustas, con un enfoque en la automatización y eficiencia desde el frontend hasta el backend.",
+        "location": {
+            "city": "Leganés",
+            "region": "Comunidad de Madrid"
+        },
+        "profiles": [
+            {
+                "network": "LinkedIn",
+                "username": "sergio-marquez-perez",
+                "url": "https://linkedin.com/in/sergio-marquez-perez/"
+            },
+            {
+                "network": "X",
+                "username": "smarquezp05",
+                "url": "https://x.com/smarquezp05/"
+            },
+            {
+                "network": "GitHub",
+                "username": "sergiomarquezdev",
+                "url": "https://github.com/sergiomarquezdev/"
+            }
+        ]
+    },
+
+    "work": [
+        {
+            "company": "VITALY",
+            "position": "Desarrollador Full-Stack",
+            "website": "https://vitaly.es/",
+            "startDate": "2021-04",
+            "endDate": null,
+            "summary": "Como Desarrollador Full-Stack en VITALY, he tenido una trayectoria creciente, comenzando como programador en prácticas, avanzando a desarrollador full-stack y enfrentando desafíos tanto técnicos como culturales durante mi estancia en Dublín.",
+            "highlights": [
+                {
+                    "role": "Programador en prácticas",
+                    "startDate": "2021-04",
+                    "endDate": "2021-06",
+                    "achievements": [
+                        "Formación intensiva y práctica en tecnologías como Java Spring, Angular, Docker y Kubernetes.",
+                        "Contribución en proyectos clave aplicando conocimientos en entornos reales.",
+                        "Desarrollo de habilidades de trabajo en equipo y comunicación en un entorno ágil."
+                    ]
+                },
+                {
+                    "role": "Desarrollador Full-Stack",
+                    "startDate": "2021-06",
+                    "endDate": "2022-06",
+                    "achievements": [
+                        "Diseño y desarrollo de APIs middleware con Spring Framework, mejorando la comunicación entre aplicaciones.",
+                        "Liderazgo en la migración a Google Kubernetes Engine, optimizando despliegues y automatización.",
+                        "Integración de datos tras la fusión de Preving y Cualtis, asegurando compatibilidad y eficiencia."
+                    ]
+                },
+                {
+                    "role": "Desarrollador Full-Stack en Dublín",
+                    "startDate": "2022-07",
+                    "endDate": "2022-09",
+                    "achievements": [
+                        "Desarrollo de aplicaciones full-stack en un entorno remoto utilizando Java, Spring Framework y Angular.",
+                        "Mejora significativa en la fluidez en inglés, alcanzando un nivel avanzado.",
+                        "Adaptación y flexibilidad en un entorno internacional, enfrentando desafíos culturales y profesionales."
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "education": [
+        {
+            "institution": "I.E.S. Castelar",
+            "url": "https://iescastelar.educarex.es/",
+            "area": "Desarrollo de Aplicaciones Multiplataforma",
+            "studyType": "Técnico Superior",
+            "startDate": "2020-09",
+            "endDate": "2021-06",
+            "score": "9.83",
+            "courses": []
+        },
+        {
+            "institution": "I.E.S. Suárez de Figueroa",
+            "url": "https://www.suarezdefigueroa.es/",
+            "area": "Desarrollo de Aplicaciones Web",
+            "studyType": "Técnico Superior",
+            "startDate": "2018-09",
+            "endDate": "2020-06",
+            "score": "9.30",
+            "courses": []
+        }
+    ],
+
+    "certificates": [
+        {
+            "name": "EF SET English Certificate 76/100 (C2 Proficient)",
+            "date": "2021-09-15",
+            "issuer": "EF Standard English Test (EF SET)",
+            "url": "https://www.efset.org/cert/Sp9SYB"
+        },
+        {
+            "name": "Master en Frameworks Javascript: Aprende Angular, React, Vue",
+            "date": "2021-11-07",
+            "issuer": "Udemy",
+            "url": "https://ude.my/UC-873b8fa3-dd9a-40a3-8185-073a5e6df250/"
+        }
+    ],
+    "skills": [
+        {
+            "name": "HTML",
+            "level": "Master",
+            "keywords": ["Desarrollo Web", "Frontend"]
+        },
+        {
+            "name": "CSS",
+            "level": "Master",
+            "keywords": ["Desarrollo Web", "Frontend", "Diseño Responsive"]
+        },
+        {
+            "name": "JavaScript",
+            "level": "Master",
+            "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack"]
+        },
+        {
+            "name": "Tailwind",
+            "level": "Avanzado",
+            "keywords": [
+                "Desarrollo Web",
+                "Frontend",
+                "CSS Framework",
+                "Diseño Responsive"
+            ]
+        },
+        {
+            "name": "TypeScript",
+            "level": "Avanzado",
+            "keywords": [
+                "Desarrollo Web",
+                "Frontend",
+                "Backend",
+                "JavaScript Superset"
+            ]
+        },
+        {
+            "name": "Node",
+            "level": "Avanzado",
+            "keywords": ["Desarrollo Web", "Backend", "JavaScript", "Servidor"]
+        },
+        {
+            "name": "MySQL",
+            "level": "Avanzado",
+            "keywords": [
+                "Bases de Datos",
+                "SQL",
+                "Almacenamiento de Datos",
+                "Backend"
+            ]
+        },
+        {
+            "name": "Git",
+            "level": "Avanzado",
+            "keywords": [
+                "Control de Versiones",
+                "Colaboración",
+                "Código Fuente"
+            ]
+        },
+        {
+            "name": "GitHub",
+            "level": "Avanzado",
+            "keywords": [
+                "Control de Versiones",
+                "Colaboración",
+                "Código Fuente",
+                "Git"
+            ]
+        },
+        {
+            "name": "Next.js",
+            "level": "Avanzado",
+            "keywords": [
+                "Desarrollo Web",
+                "Frontend",
+                "React Framework",
+                "SSR",
+                "Static Generation"
+            ]
+        },
+        {
+            "name": "React",
+            "level": "Avanzado",
+            "keywords": [
+                "Desarrollo Web",
+                "Frontend",
+                "JavaScript Library",
+                "UI"
+            ]
+        }
+    ],
+    "languages": [
+        {
+            "language": "Spanish",
+            "fluency": "Native speaker"
+        },
+        {
+            "language": "English",
+            "fluency": "Advanced"
+        }
+    ],
+    "interests": [
+        {
+            "name": "Wildlife",
+            "keywords": ["Ferrets", "Unicorns"]
+        }
+    ],
+    "references": [
+        {
+            "name": "Jane Doe",
+            "reference": "Reference…"
+        }
+    ],
+    "projects": [
+        {
+            "name": "mars.codes",
+            "isActive": true,
+            "description": "Historia interactiva con retos de programación para viajar a Marte",
+            "highlights": ["Elige tu propia aventura", "En desarrollo"],
+            "url": "https://mars.codes"
+        },
+        {
+            "name": "AdventJS",
+            "isActive": true,
+            "description": "Retos de programación en JavaScript para cada día de diciembre hasta Navidad",
+            "highlights": [
+                "+1 millón de visitas",
+                "Multidioma",
+                "JavaScript & TypeScript"
+            ],
+            "url": "https://adventjs.dev"
+        },
+        {
+            "name": "Codember",
+            "isActive": true,
+            "description": "Juego interactivo de programación con retos y secretos",
+            "highlights": [
+                "+2000 usuarios activos",
+                "Retos para cualquier lenguaje"
+            ],
+            "url": "https://codember.dev"
+        },
+        {
+            "name": "codi.link",
+            "isActive": true,
+            "description": "Playground de código HTML, CSS y JavaScript para compartir",
+            "highlights": [
+                "100k visitas al mes",
+                "Desarrollado por la comunidad"
+            ],
+            "url": "https://codi.link",
+            "github": "https://github.com/midudev/codi.link"
+        },
+        {
+            "name": "Pruebas Técnicas",
+            "isActive": true,
+            "description": "Lista de pruebas técnicas de empresas para practicar programación",
+            "highlights": ["100% gratuito", "+500 soluciones de la comunidad"],
+            "url": "https://pruebastecnicas.com",
+            "github": "https://github.com/midudev/pruebas-tecnicas"
+        },
+        {
+            "name": "miduConf",
+            "description": "Conferencia de programación en streaming para la comunidad hispanohablante con charlas top",
+            "highlights": [
+                "+15k tickets repartidos",
+                "+50k espectadores en directo"
+            ],
+            "url": "https://miduconf.com"
+        }
+    ]
+}
