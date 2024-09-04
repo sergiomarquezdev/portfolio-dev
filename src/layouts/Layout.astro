@@ -33,6 +33,15 @@ const { image, summary, url } = basics
     <meta name="twitter:description" content={summary} />
     <meta name="twitter:image" content="" />
   </head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S7RNVV6FFQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S7RNVV6FFQ');
+</script>
   <body>
     <slot />
   </body>
