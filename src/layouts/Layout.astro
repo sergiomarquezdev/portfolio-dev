@@ -6,51 +6,50 @@ interface Props {
 }
 
 const { title } = Astro.props
-
 const { image, summary, url } = basics
 ---
 
 <!doctype html>
 <html lang="es">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-S7RNVV6FFQ"></script>
-    <script is:inline type="text/partytown">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-S7RNVV6FFQ"></script>
+  <script is:inline type="text/partytown">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-S7RNVV6FFQ');
-    </script>
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta charset="UTF-8" />
-    <title>{title}</title>
-    <meta name="description" content={summary} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/icon" href="favicon.ico" />
-    <link rel="preload" as="image" href={image} />
+  </script>
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta charset="UTF-8" />
+  <title>{title}</title>
+  <meta name="description" content={summary} />
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Añadido el initial-scale -->
+  <link rel="icon" type="image/icon" href="favicon.ico" />
+  <link rel="preload" as="image" href={image} />
 
-    <meta property="og:url" content={url} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={summary} />
-    <meta property="og:image" content="" />
+  <meta property="og:url" content={url} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={summary} />
+  <meta property="og:image" content="" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content={url.split("//")[1] ?? ''} />
-    <meta property="twitter:url" content={url} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={summary} />
-    <meta name="twitter:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:domain" content={url.split("//")[1] ?? ''} />
+  <meta property="twitter:url" content={url} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={summary} />
+  <meta name="twitter:image" content="" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <slot />
-  </body>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<slot />
+</body>
 </html>
 
 <style is:global>
@@ -58,6 +57,7 @@ const { image, summary, url } = basics
     font-family: "Inter", -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     background: #fff;
     letter-spacing: -0.025rem;
+    scroll-behavior: smooth;
   }
 
   body,
@@ -68,6 +68,12 @@ const { image, summary, url } = basics
 
   a {
     text-decoration: none;
+    color: #2980b9;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #1e3a8a;
   }
 
   ul {
@@ -91,11 +97,10 @@ const { image, summary, url } = basics
   }
 
   p {
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin: 0;
-    text-wrap: pretty;
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
 
   .print {

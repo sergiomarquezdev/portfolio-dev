@@ -11,19 +11,19 @@ import { education } from "@cv"
       const years = `${startYear} - ${endYear}`
 
       return (
-        <li class="education-item">
-          <article>
-            <header>
-              <div class="institution">
-                <h3>{institution}</h3>
-              </div>
-              <time class="education-dates">{years}</time>
-            </header>
-            <footer>
-              <p class="education-area">{area}</p>
-            </footer>
-          </article>
-        </li>
+          <li class="education-item">
+            <article>
+              <header>
+                <div class="institution">
+                  <h3>{institution}</h3>
+                </div>
+                <time class="education-dates">{years}</time>
+              </header>
+              <footer>
+                <p class="education-area">{area}</p>
+              </footer>
+            </article>
+          </li>
       )
     })}
   </ul>
@@ -33,36 +33,38 @@ import { education } from "@cv"
   .education-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
     padding: 0;
     list-style: none;
   }
 
   .education-item {
-    border-left: 4px solid #2980b9;
-    padding-left: 16px;
+    border-left: 5px solid #2980b9;
+    padding-left: 20px;
   }
 
   .education-item article {
-    background: #f9f9f9;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #f4f4f4;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
 
   .institution h3 {
-    font-weight: 600;
+    font-weight: 700;
     color: #2c3e50;
+    font-size: 1.4rem;
   }
 
   .education-dates {
     color: #95a5a6;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .education-area {
-    margin-top: 8px;
+    margin-top: 12px;
     color: #7f8c8d;
+    font-size: 1rem;
   }
 
   @media (max-width: 700px) {
@@ -71,8 +73,15 @@ import { education } from "@cv"
     }
 
     .education-item {
-      border-left: 4px solid #2980b9;
-      padding-left: 8px;
+      padding-left: 12px;
+    }
+
+    .education-dates {
+      font-size: 0.9rem;
+    }
+
+    .education-area {
+      font-size: 0.95rem;
     }
   }
 </style>

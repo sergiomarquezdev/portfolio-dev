@@ -37,30 +37,30 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
       </footer>
       <footer class="no-print">
         {
-          email && (
-            <a
-              href={`mailto:${email}`}
-              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Mail />
-            </a>
-          )
+            email && (
+                <a
+                    href={`mailto:${email}`}
+                    title={`Enviar un correo electrónico a ${name} al correo ${email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                  <Mail/>
+                </a>
+            )
         }
         {
           profiles.map(({ network, url }) => {
             const Icon = SOCIAL_ICONS[network]
 
             return (
-              <a
-                href={url}
-                title={`Visitar el perfil de ${name} en ${network}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon />
-              </a>
+                <a
+                    href={url}
+                    title={`Visitar el perfil de ${name} en ${network}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                  <Icon/>
+                </a>
             )
           })
         }
@@ -73,99 +73,105 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
 </Section>
 
 <style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-right: 32px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    font-weight: 700;
+  }
+
+  h2 {
+    color: #34495e;
+    font-weight: 500;
+    font-size: 1.5rem;
+    max-width: 80%;
+  }
+
+  img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 160px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  span {
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    letter-spacing: -0.02rem;
+  }
+
+  footer {
+    color: #555;
+    font-size: 0.875rem;
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  footer a {
+    color: #555;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    padding: 6px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  footer a:hover {
+    background-color: #2980b9;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 700px) {
     .container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      flex-direction: column-reverse;
+      padding: 20px;
     }
 
     .info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding-right: 32px;
+      justify-content: center;
+      align-items: center;
+      padding-right: 0;
+      text-align: center;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #2c3e50;
-      font-weight: 700;
+    figure {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     h2 {
-      color: #34495e;
-      font-weight: 500;
+      max-width: 100%;
       font-size: 1.2rem;
-      max-width: 80%;
     }
 
     img {
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      width: 128px;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 140px;
     }
-
-    span {
-      color: #666;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      font-size: 0.9rem;
-      letter-spacing: -0.05rem;
-    }
-
-    footer {
-      color: #555;
-      font-size: 0.75rem;
-      display: flex;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    footer a {
-      color: #555;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #ddd;
-      padding: 4px;
-      height: 36px;
-      width: 36px;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-    }
-
-    footer a:hover {
-      background-color: #2980b9;
-      color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    @media (width <= 700px) {
-      .container {
-        flex-direction: column-reverse;
-        padding: 10px;
-      }
-
-      .info {
-        justify-content: center;
-        align-items: center;
-        padding-right: 0;
-        text-align: center;
-      }
-
-      figure {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      h2 {
-        max-width: 100%;
-      }
-    }
-  </style>
+  }
+</style>

@@ -48,9 +48,10 @@ const SKILLS_ICONS = {
     {highlightedSkills.map(({ name, icon }) => {
       const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
       return (
-        <li>
-          {IconComponent && <IconComponent />} <span>{name}</span>
-        </li>
+          <li>
+            {IconComponent &&
+                <IconComponent/>} <span>{name}</span>
+          </li>
       )
     })}
   </ul>
@@ -59,9 +60,10 @@ const SKILLS_ICONS = {
     {otherSkills.map(({ name, icon }) => {
       const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
       return (
-        <li>
-          {IconComponent && <IconComponent />} <span>{name}</span>
-        </li>
+          <li>
+            {IconComponent &&
+                <IconComponent/>} <span>{name}</span>
+          </li>
       )
     })}
   </ul>
@@ -70,9 +72,10 @@ const SKILLS_ICONS = {
     {databasesSkills.map(({ name, icon }) => {
       const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
       return (
-        <li>
-          {IconComponent && <IconComponent />} <span>{name}</span>
-        </li>
+          <li>
+            {IconComponent &&
+                <IconComponent/>} <span>{name}</span>
+          </li>
       )
     })}
   </ul>
@@ -81,31 +84,38 @@ const SKILLS_ICONS = {
 
 <style>
   .skills-list {
-    display: inline-flex;
-    gap: 8px;
+    display: flex;
+    gap: 10px; 
     flex-wrap: wrap;
     margin-bottom: 20px;
   }
 
   li {
     align-items: center;
-    background: #f7f7f7;
-    border-radius: 6px;
-    color: black;
+    background: #f4f4f4;
+    border-radius: 8px;
+    color: #2c3e50;
     display: flex;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    gap: 4px;
-    padding: 0.2rem 0.6rem;
+    gap: 6px;
+    padding: 0.4rem 0.8rem;
   }
 
   .highlighted-skills li {
     background: #e0e0e0;
+    font-weight: 600;
   }
 
   h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
     color: #34495e;
+  }
+
+  @media (max-width: 700px) {
+    li {
+      font-size: 0.8rem;
+    }
   }
 </style>
