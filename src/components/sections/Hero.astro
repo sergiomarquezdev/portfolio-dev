@@ -66,7 +66,13 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
           })
         }
         <!-- Enlace al blog -->
-        <a href="https://blog.sergiomarquez.dev" target="_blank" rel="noopener noreferrer" title="Visitar mi blog">
+        <a
+            href="https://blog.sergiomarquez.dev"
+            class="blog"
+            title="Visitar mi blog"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
           <Blog/>
         </a>
       </footer>
@@ -149,6 +155,14 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
     background-color: #2980b9;
     color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  footer .blog {
+    background-color: #ddd;
+  }
+
+  footer .blog:hover {
+    background-color: #5fe26e;
   }
 
   @media (max-width: 700px) {
