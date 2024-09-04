@@ -42,6 +42,11 @@ const { image, summary, url } = basics
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={summary} />
     <meta name="twitter:image" content="" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <slot />
@@ -50,7 +55,7 @@ const { image, summary, url } = basics
 
 <style is:global>
   html {
-    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     background: #fff;
     letter-spacing: -0.025rem;
   }
@@ -82,7 +87,7 @@ const { image, summary, url } = basics
   h3,
   h4 {
     margin: 0;
-    font-family: "Mohave", sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 
   p {

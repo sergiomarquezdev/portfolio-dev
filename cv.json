@@ -1,11 +1,11 @@
 {
     "basics": {
         "name": "Sergio Márquez",
-        "label": "Full Stack Developer. Experimentado en Java, Spring, Angular, Docker, Kubernetes, CI/CD",
+        "label": "Full Stack Developer. Experimentado en Java, Spring, Angular, con una base sólida en Docker, Kubernetes, CI/CD",
         "image": "/me.webp",
         "email": "sergiomarquezdev@gmail.com",
         "url": "https://sergiomarquez.dev",
-        "summary": "Soy Sergio Márquez, Desarrollador Full Stack con más de 3 años de experiencia en Java, Spring, Angular, Docker, Kubernetes y CI/CD. Vivo en Leganés, España, y me especializo en crear aplicaciones escalables y robustas, con un enfoque en la automatización y eficiencia desde el frontend hasta el backend.",
+        "summary": "Soy Sergio Márquez, Desarrollador Full Stack con más de 3 años de experiencia en tecnologías clave como Java, Spring Framework, Angular, Docker, Kubernetes y CI/CD. Vivo en Leganés, Comunidad de Madrid, y me especializo en crear aplicaciones web escalables, robustas y eficientes, automatizando procesos desde el frontend hasta el backend. También tengo un enfoque en la implementación de arquitecturas modernas y cloud, facilitando despliegues ágiles y seguros.",
         "location": {
             "city": "Leganés",
             "region": "Comunidad de Madrid"
@@ -36,7 +36,7 @@
             "website": "https://vitaly.es/",
             "startDate": "2021-04",
             "endDate": null,
-            "summary": "Como Desarrollador Full-Stack en VITALY, he tenido una trayectoria creciente, comenzando como programador en prácticas, avanzando a desarrollador full-stack y enfrentando desafíos tanto técnicos como culturales durante mi estancia en Dublín.",
+            "summary": "Como Desarrollador Full-Stack en VITALY, he tenido una trayectoria creciente, comenzando como programador en prácticas, avanzando a desarrollador full-stack y enfrentando desafíos tanto técnicos durante estos años como culturales durante mi estancia en Dublín.",
             "highlights": [
                 {
                     "role": "Desarrollador Full-Stack",
@@ -100,13 +100,15 @@
             "name": "EF SET English Certificate 76/100 (C2 Proficient)",
             "date": "2021-09-15",
             "issuer": "EF Standard English Test (EF SET)",
-            "url": "https://www.efset.org/cert/Sp9SYB"
+            "url": "https://www.efset.org/cert/Sp9SYB",
+            "description": "Certificado de nivel C2 en inglés, validado por la prueba estándar EF SET, lo que avala mi competencia en inglés para entornos laborales y técnicos."
         },
         {
             "name": "Master en Frameworks Javascript: Aprende Angular, React, Vue",
             "date": "2021-11-07",
             "issuer": "Udemy",
-            "url": "https://ude.my/UC-873b8fa3-dd9a-40a3-8185-073a5e6df250/"
+            "url": "https://ude.my/UC-873b8fa3-dd9a-40a3-8185-073a5e6df250/",
+            "description": "Curso especializado en el aprendizaje de los frameworks más populares de JavaScript: Angular, React y Vue.js, con un enfoque en desarrollo frontend avanzado."
         }
     ],
 
@@ -135,12 +137,11 @@
         { "name": "Firebase", "icon": "Firebase" }
     ],
 
-
     "projects": [
         {
             "name": "MartaMontalban.es",
             "isActive": true,
-            "description": "Portfolio web de Marta Montalbán, auxiliar de cámara en cine",
+            "description": "Desarrollo y diseño del portfolio web de Marta Montalbán, auxiliar de cámara en cine, utilizando WordPress y Elementor Pro, optimizando para SEO y un rendimiento web adecuado con tiempos de carga reducidos. Implementación de buenas prácticas en accesibilidad web y experiencia de usuario.",
             "highlights": ["Wordpress", "Elementor Pro"],
             "url": "https://martamontalban.es",
             "github": null

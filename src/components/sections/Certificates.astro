@@ -1,0 +1,90 @@
+---
+import Section from "../Section.astro"
+import { certificates } from "@cv"
+import Certificate from "@/icons/Certificate.astro"
+---
+
+<Section title="Certificados">
+  <ul class="certificates-list">
+    {certificates.map(({ name, date, issuer, url }) => {
+      const formattedDate = new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long' });
+
+      return (
+        <li class="certificates-item">
+          <article>
+            <header>
+              <div class="certificate">
+                <h3>{name}</h3>
+                <p class="certificate-issuer">Emitido por {issuer}</p>
+              </div>
+              <time class="certificate-date">{formattedDate}</time>
+            </header>
+            <footer>
+              <a href={url} target="_blank" class="certificate-link">{Certificate && <Certificate />} Ver Certificado</a>
+            </footer>
+          </article>
+        </li>
+      )
+    })}
+  </ul>
+</Section>
+
+<style>
+  .certificates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .certificates-item {
+    border-left: 4px solid #2980b9;
+    padding-left: 16px;
+  }
+
+  .certificates-item article {
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .certificate h3 {
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .certificate-issuer {
+    margin-top: 4px;
+    color: #7f8c8d;
+  }
+
+  .certificate-date {
+    color: #95a5a6;
+    font-size: 0.9rem;
+  }
+
+  .certificate-link {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top:5px;
+    display: inline-block;
+  }
+
+  .certificate-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 700px) {
+    .certificates-item {
+      border-left: 4px solid #2980b9;
+      padding-left: 8px;
+    }
+
+    .certificate-date {
+      text-align: right;
+    }
+  }
+</style>

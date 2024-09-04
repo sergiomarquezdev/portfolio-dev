@@ -7,12 +7,13 @@ import Experience from "@/components/sections/Experience.astro"
 import Hero from "@/components/sections/Hero.astro"
 import Projects from "@/components/sections/Projects.astro"
 import Skills from "@/components/sections/Skills.astro"
+import Certificates from "@/components/sections/Certificates.astro"
 
 import { basics } from "@cv"
 const { name, label } = basics
 ---
 
-<Layout title={`Portafolio de ${name} - ${label}`}>
+<Layout title={`${name} - ${label}`}>
   <main>
     <Hero />
     <About />
@@ -20,6 +21,7 @@ const { name, label } = basics
     <Education />
     <Projects />
     <Skills />
+    <Certificates />
   </main>
 </Layout>
 

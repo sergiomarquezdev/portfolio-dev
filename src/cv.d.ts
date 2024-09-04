@@ -51,6 +51,7 @@ interface Certificates {
     date: DateStr;
     issuer: string;
     url: string;
+    description: string;
 }
 
 interface Education {
