@@ -1,11 +1,11 @@
 {
     "basics": {
         "name": "Sergio Márquez",
-        "label": "Full Stack Developer. Experimentado en Java, Spring, Angular, con una base sólida en Docker, Kubernetes, CI/CD",
+        "label": "Full Stack Developer | Especializado en Java con Spring Framework, Angular, Docker, Kubernetes y CI/CD",
         "image": "/me.webp",
         "email": "sergiomarquezdev@gmail.com",
         "url": "https://sergiomarquez.dev",
-        "summary": "Soy Sergio Márquez, Desarrollador Full Stack con más de 3 años de experiencia en tecnologías clave como Java, Spring Framework, Angular, Docker, Kubernetes y CI/CD. Vivo en Leganés, Comunidad de Madrid, y me especializo en crear aplicaciones web escalables, robustas y eficientes, automatizando procesos desde el frontend hasta el backend. También tengo un enfoque en la implementación de arquitecturas modernas y cloud, facilitando despliegues ágiles y seguros.",
+        "summary": "Soy Sergio Márquez, Desarrollador Full Stack con experiencia avanzada en Java con Spring Framework y Angular. Domino la creación de aplicaciones web robustas y escalables, y tengo una base sólida en Docker, Kubernetes y CI/CD, lo que me permite automatizar y optimizar los despliegues. He trabajado en proyectos con arquitecturas en la nube, aplicando buenas prácticas de desarrollo (SOLID) para garantizar un código limpio y eficiente.",
         "location": {
             "city": "Leganés",
             "region": "Comunidad de Madrid"
@@ -140,10 +140,29 @@
 
     "projects": [
         {
+            "name": "One dAIly Blog",
+            "isActive": true,
+            "description": "Blog que genera contenido de forma automática a diario utilizando la API de OpenAI. El frontend está desarrollado en Angular y TailwindCSS, mientras que el backend está hecho con Node.js, Express.js y PostgreSQL.",
+            "highlights": ["Angular", "Node.js", "OpenAI", "PostgreSQL", "TailwindCSS"],
+            "url": "https://blog.sergiomarquez.dev/",
+            "github": [
+                "https://github.com/sergiomarquezdev/one-daily-blog",
+                "https://github.com/sergiomarquezdev/one-daily-blog-backend"
+            ]
+        },
+        {
+            "name": "Acestream Dockerizado",
+            "isActive": true,
+            "description": "Proyecto que dockeriza Acestream en un contenedor usando Ubuntu 22.04 y Python 3.10. Este contenedor permite ejecutar Acestream en un entorno aislado y con configuración automática para simplificar su uso. Incluye un script .bat para la instalación automática en Windows.",
+            "highlights": ["Docker", "Ubuntu 22.04", "Python 3.10"],
+            "url": null,
+            "github": ["https://github.com/sergiomarquezdev/acestream-docker-home"]
+        },
+        {
             "name": "MartaMontalban.es",
             "isActive": true,
             "description": "Desarrollo y diseño del portfolio web de Marta Montalbán, auxiliar de cámara en cine, utilizando WordPress y Elementor Pro, optimizando para SEO y un rendimiento web adecuado con tiempos de carga reducidos. Implementación de buenas prácticas en accesibilidad web y experiencia de usuario.",
-            "highlights": ["Wordpress", "Elementor Pro"],
+            "highlights": ["WordPress", "Elementor Pro"],
             "url": "https://martamontalban.es",
             "github": null
         }

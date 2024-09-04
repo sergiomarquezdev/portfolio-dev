@@ -70,8 +70,8 @@ interface Projects {
     isActive: boolean;
     description: string;
     highlights: Highlight;
-    url: string;
-    github?: string;
+    url: string | null;
+    github?: string[];
 }
 
 type Highlight = Array<String>;
