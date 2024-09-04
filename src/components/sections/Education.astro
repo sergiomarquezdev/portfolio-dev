@@ -5,7 +5,7 @@ import { education } from "@cv"
 
 <Section title="Educación">
   <ul class="education-list">
-    {education.map(({ institution, startDate, endDate, area }) => {
+    {education.map(({ institution, startDate, endDate, area, score }) => {
       const startYear = new Date(startDate).getFullYear()
       const endYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
       const years = `${startYear} - ${endYear}`
@@ -21,6 +21,7 @@ import { education } from "@cv"
               </header>
               <footer>
                 <p class="education-area">{area}</p>
+                {score && <p class="education-score">Nota: {score}</p>}
               </footer>
             </article>
           </li>
@@ -30,6 +31,10 @@ import { education } from "@cv"
 </Section>
 
 <style>
+  p {
+    margin: 0;
+  }
+
   .education-list {
     display: flex;
     flex-direction: column;
@@ -45,7 +50,7 @@ import { education } from "@cv"
 
   .education-item article {
     background: #f4f4f4;
-    padding: 24px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   }
@@ -67,6 +72,13 @@ import { education } from "@cv"
     font-size: 1rem;
   }
 
+  .education-score {
+    margin-top: 8px;
+    color: #34495e;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
   @media (max-width: 700px) {
     .education-dates {
       text-align: right;
@@ -82,6 +94,10 @@ import { education } from "@cv"
 
     .education-area {
       font-size: 0.95rem;
+    }
+
+    .education-score {
+      font-size: 0.9rem;
     }
   }
 </style>

@@ -6,6 +6,7 @@ import X from "@/icons/X.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
 import GitHub from "@/icons/GitHub.astro"
 import WorldMap from "@/icons/WorldMap.astro"
+import Blog from "@/icons/Blog.astro"
 import type { SocialIcon } from "@/types"
 
 const { name, label, image, location, profiles, email } = basics
@@ -64,6 +65,10 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
             )
           })
         }
+        <!-- Enlace al blog -->
+        <a href="https://blog.sergiomarquez.dev" target="_blank" rel="noopener noreferrer" title="Visitar mi blog">
+          <Blog/>
+        </a>
       </footer>
     </div>
     <figure>

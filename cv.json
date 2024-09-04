@@ -127,7 +127,8 @@
         { "name": "Python", "icon": "Python" },
         { "name": "Go", "icon": "Go" },
         { "name": "React", "icon": "React" },
-        { "name": "Vue.js", "icon": "Vue" }
+        { "name": "Vue.js", "icon": "Vue" },
+        { "name": "Astro", "icon": "Astrosvg" }
     ],
     "databasesSkills": [
         { "name": "PostgreSQL", "icon": "PostgreSQL" },
