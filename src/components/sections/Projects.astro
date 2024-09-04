@@ -21,7 +21,7 @@ import { projects } from "@cv"
                                 )}
                                 {isActive && <span>•</span>}
                                 {github && github.map(link => (
-                                        <a href={link} target="_blank" class="github-link" title={`Ver el código fuente de ${name}`} key={link}>
+                                        <a href={link} target="_blank" class="github-link" title={`Ver el código fuente de ${name}`}>
                                             <GitHub />
                                         </a>
                                 ))}
