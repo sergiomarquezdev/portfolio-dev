@@ -11,6 +11,7 @@ interface Basics {
     name: string;
     label: string;
     image: string;
+    imageAlt: string;
     email: string;
     url: string;
     summary: string;

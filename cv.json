@@ -2,7 +2,8 @@
     "basics": {
         "name": "Sergio Márquez",
         "label": "Full Stack Developer | Especializado en Java con Spring Framework, Angular, Docker, Kubernetes y CI/CD",
-        "image": "/img/me.webp",
+        "image": "/img/sergio-marquez-perez-profile-picture.webp",
+        "imageAlt": "Foto de perfil de Sergio Márquez, Desarrollador Full Stack",
         "email": "sergiomarquezdev@gmail.com",
         "url": "https://sergiomarquez.dev",
         "summary": "Soy Sergio Márquez, Desarrollador Full Stack con experiencia avanzada en Java con Spring Framework y Angular. Domino la creación de aplicaciones web robustas y escalables, y tengo una base sólida en Docker, Kubernetes y CI/CD, lo que me permite automatizar y optimizar los despliegues. He trabajado en proyectos con arquitecturas en la nube, aplicando buenas prácticas de desarrollo (SOLID) para garantizar un código limpio y eficiente.",
