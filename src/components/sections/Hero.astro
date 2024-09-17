@@ -41,7 +41,8 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
             email && (
                 <a
                     href={`mailto:${email}`}
-                    title={`Enviar un correo electrónico a ${name} al correo ${email}`}
+                    title={`Enviar un correo a ${email}`}
+                    aria-label={`Enviar un correo a ${name} (${email})`}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -57,6 +58,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
                 <a
                     href={url}
                     title={`Visitar el perfil de ${name} en ${network}`}
+                    aria-label={`Visitar el perfil de ${name} en ${network}`}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -78,7 +80,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
       </footer>
     </div>
     <figure>
-      <img src={image} alt={imageAlt} width="160" height="160" loading="lazy"/>
+      <img src={image} alt={imageAlt} width="160" height="160"/>
     </figure>
   </div>
 </Section>
@@ -122,7 +124,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
   }
 
   span {
-    color: #555;
+    color: #333;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -131,7 +133,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
   }
 
   footer {
-    color: #555;
+    color: #333;
     font-size: 0.875rem;
     display: flex;
     gap: 12px;
@@ -139,7 +141,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
   }
 
   footer a {
-    color: #555;
+    color: #333;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -152,9 +154,14 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
   }
 
   footer a:hover {
-    background-color: #2980b9;
+    background-color: #1d4e89;
     color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  footer a:focus {
+    outline: 2px solid #1d4e89;
+    outline-offset: 2px;
   }
 
   footer .blog {
@@ -182,6 +189,10 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ")
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
     }
 
     h2 {

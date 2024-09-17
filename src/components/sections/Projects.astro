@@ -15,7 +15,7 @@ import { projects } from "@cv"
                                 {url ? (
                                         <a href={url} target="_blank"
                                            title={`Ver el proyecto ${name}`}
-                                           aria-label={`Ver el proyecto ${name} en una nueva pestaña`}>
+                                           aria-label={`Abrir el proyecto ${name} en una nueva pestaña`}>
                                             {name}
                                         </a>
                                 ) : (
@@ -23,9 +23,9 @@ import { projects } from "@cv"
                                 )}
                                 {isActive && <span>•</span>}
                                 {github && github.map(link => (
-                                        <a href={link} target="_blank" class="github-link"
-                                           title={`Ver el código fuente de ${name}`}
-                                           aria-label={`Ver el código fuente de ${name} en una nueva pestaña`}>
+                                        <a href={link} target="_blank" class="github-link" loading="lazy"
+                                           title={`Ver el código fuente de ${name} en GitHub`}
+                                           aria-label={`Ver el código fuente de ${name} en GitHub en una nueva pestaña`}>
                                             <GitHub/>
                                         </a>
                                 ))}
@@ -80,7 +80,12 @@ import { projects } from "@cv"
 
     article a:hover {
         text-decoration: underline;
-        color: #2980b9;
+        color: #1d4e89;
+    }
+
+    article a:focus {
+        outline: 2px solid #1d4e89;
+        outline-offset: 2px;
     }
 
     article p {
@@ -116,6 +121,7 @@ import { projects } from "@cv"
         font-size: 0.75rem;
         font-weight: 500;
         padding: 0.3rem 0.6rem;
+        margin-bottom: 4px;
     }
 
     .github-code-link {
@@ -127,7 +133,7 @@ import { projects } from "@cv"
             opacity: 1;
         }
         50% {
-            opacity: 0.25;
+            opacity: 0.5;
         }
         100% {
             opacity: 1;
@@ -136,7 +142,7 @@ import { projects } from "@cv"
 
     @media (max-width: 700px) {
         ul {
-            margin-inline: 0px;
+            margin-inline: 0;
         }
 
         article {
@@ -145,14 +151,20 @@ import { projects } from "@cv"
             padding: 16px;
         }
 
+        article h3 {
+            font-size: 1.1rem;
+        }
+
+        article p {
+            font-size: 0.8rem;
+        }
+
         footer {
             font-size: 0.7rem;
         }
-    }
 
-    @media print {
-        article h3 span {
-            animation-name: none;
+        footer span {
+            padding: 0.2rem 0.5rem;
         }
     }
 </style>

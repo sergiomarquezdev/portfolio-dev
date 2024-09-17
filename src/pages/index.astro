@@ -14,13 +14,27 @@ const { name, label } = basics
 
 <Layout title={`${name} - ${label}`}>
   <main>
-    <Hero />
-    <About />
-    <Experience />
-    <Education />
-    <Certificates />
-    <Projects />
-    <Skills />
+    <section aria-label="Hero">
+      <Hero />
+    </section>
+    <section aria-label="Sobre mí">
+      <About />
+    </section>
+    <section aria-label="Experiencia laboral">
+      <Experience />
+    </section>
+    <section aria-label="Educación">
+      <Education />
+    </section>
+    <section aria-label="Certificados">
+      <Certificates />
+    </section>
+    <section aria-label="Proyectos">
+      <Projects />
+    </section>
+    <section aria-label="Habilidades">
+      <Skills />
+    </section>
   </main>
 </Layout>
 
@@ -35,7 +49,7 @@ const { name, label } = basics
 
   @media (max-width: 700px) {
     main {
-      padding: 2rem;
+      padding: 1.5rem;
       width: 95%;
     }
   }

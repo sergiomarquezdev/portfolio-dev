@@ -17,17 +17,19 @@ import Certificate from "@/icons/Certificate.astro"
                   <h3>{name}</h3>
                   <p class="certificate-issuer">Emitido por {issuer}</p>
                 </div>
-                <time class="certificate-date">{formattedDate}</time>
+                <time class="certificate-date" datetime={new Date(date).toISOString().split('T')[0]}>
+                  {formattedDate}
+                </time>
               </header>
               <footer>
                 <a href={url} target="_blank" class="certificate-link"
-                   title="Ver Certificado" aria-label="Ver Certificado">
-                  {Certificate && <Certificate/>} Ver Certificado
+                   title={`Ver el certificado ${name}`} aria-label={`Ver el certificado ${name} emitido por ${issuer}`}>
+                  {Certificate && <Certificate />} Ver Certificado
                 </a>
               </footer>
             </article>
           </li>
-      )
+      );
     })}
   </ul>
 </Section>
@@ -46,7 +48,7 @@ import Certificate from "@/icons/Certificate.astro"
   }
 
   .certificates-item {
-    border-left: 5px solid #2980b9;
+    border-left: 5px solid #1d4e89;
     padding-left: 20px;
   }
 
@@ -70,34 +72,40 @@ import Certificate from "@/icons/Certificate.astro"
   }
 
   .certificate-date {
-    color: #555;
+    color: #333;
     font-size: 1rem;
     font-weight: 400;
+    margin-bottom: 12px;
   }
 
   .certificate-link {
-    color: #2980b9;
+    color: #1d4e89;
     text-decoration: none;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 12px;
     display: inline-block;
     font-size: 1rem;
   }
 
   .certificate-link:hover {
     text-decoration: underline;
-    color: #1e3a8a;
+    color: #123456;
   }
 
   @media (max-width: 700px) {
     .certificates-item {
-      border-left: 4px solid #2980b9;
+      border-left: 4px solid #1d4e89;
       padding-left: 12px;
     }
 
     .certificate-date {
       text-align: right;
-      font-size: 0.9rem;
+      font-size: 1rem;
+    }
+
+    .certificate-link {
+      font-size: 1rem;
     }
   }
 </style>
+

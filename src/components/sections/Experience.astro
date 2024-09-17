@@ -6,8 +6,10 @@ import { work } from "@cv"
 <Section title="Experiencia laboral">
   <ul class="experience-list">
     {work.map(({ company, startDate, endDate, position, summary, highlights, website }) => {
-      const startYearMonth = new Date(startDate).toLocaleString("es-ES", { year: "numeric", month: "short" })
-      const endYearMonth = endDate != null ? new Date(endDate).toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual"
+      const startDateObj = new Date(startDate);
+      const endDateObj = endDate ? new Date(endDate) : null;
+      const startYearMonth = startDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" });
+      const endYearMonth = endDateObj ? endDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
 
       return (
           <li class="experience-item">
@@ -15,8 +17,7 @@ import { work } from "@cv"
               <header>
                 <div>
                   <h3>
-                    <a href={website} target="_blank"
-                       title={`Ver ${company}`} aria-label={`Ver ${company}`}>
+                    <a href={website} target="_blank" title={`Ver ${company}`} aria-label={`Ver la página web de ${company}, donde trabajé como ${position}`}>
                       {company}
                     </a>
                   </h3>
@@ -24,11 +25,11 @@ import { work } from "@cv"
                 </div>
 
                 <div class="experience-dates">
-                  <time datetime={startDate} data-title={startDate}>
+                  <time datetime={startDateObj.toISOString().split('T')[0]} data-title={startDate}>
                     {startYearMonth}
                   </time>
                   {" - "}
-                  <time datetime={endDate} data-title={endDate}>
+                  <time datetime={endDateObj ? endDateObj.toISOString().split('T')[0] : ''} data-title={endDate}>
                     {endYearMonth}
                   </time>
                 </div>
@@ -37,15 +38,11 @@ import { work } from "@cv"
               <footer>
                 <p>{summary}</p>
                 <ul class="highlights-list">
-                  {highlights.map(({role, startDate, endDate, achievements}) => {
-                    const roleStartYearMonth = new Date(startDate).toLocaleString("es-ES", {
-                      year: "numeric",
-                      month: "short"
-                    })
-                    const roleEndYearMonth = endDate != null ? new Date(endDate).toLocaleString("es-ES", {
-                      year: "numeric",
-                      month: "short"
-                    }) : "Actual"
+                  {highlights.map(({ role, startDate, endDate, achievements }) => {
+                    const roleStartDateObj = new Date(startDate);
+                    const roleEndDateObj = endDate ? new Date(endDate) : null;
+                    const roleStartYearMonth = roleStartDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" });
+                    const roleEndYearMonth = roleEndDateObj ? roleEndDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
 
                     return (
                         <li class="highlight-item">
@@ -56,13 +53,13 @@ import { work } from "@cv"
                             ))}
                           </ul>
                         </li>
-                    )
+                    );
                   })}
                 </ul>
               </footer>
             </article>
           </li>
-      )
+      );
     })}
   </ul>
 </Section>
@@ -77,7 +74,7 @@ import { work } from "@cv"
   }
 
   .experience-item {
-    border-left: 5px solid #2980b9;
+    border-left: 5px solid #1d4e89;
     padding-left: 16px;
   }
 
@@ -101,18 +98,23 @@ import { work } from "@cv"
   }
 
   .experience-item a {
-    color: #2980b9;
+    color: #1d4e89;
     text-decoration: none;
     transition: color 0.3s ease;
   }
 
   .experience-item a:hover {
-    color: #1e3a8a;
+    color: #123456;
     text-decoration: underline;
   }
 
+  .experience-item a:focus {
+    outline: 2px solid #1d4e89;
+    outline-offset: 2px;
+  }
+
   .experience-dates {
-    color: #555;
+    color: #333;
     font-size: 1rem;
     font-weight: 400;
   }
@@ -156,11 +158,16 @@ import { work } from "@cv"
   @media (max-width: 700px) {
     .experience-dates {
       text-align: right;
+      font-size: 0.9rem;
     }
 
     .experience-item {
-      border-left: 4px solid #2980b9;
+      border-left: 4px solid #1d4e89;
       padding-left: 12px;
+    }
+
+    .experience-item h3 {
+      font-size: 1.25rem;
     }
 
     .experience-item header {
@@ -169,6 +176,10 @@ import { work } from "@cv"
 
     .experience-dates {
       margin-top: 12px;
+    }
+
+    .achievements-list li {
+      font-size: 0.9rem;
     }
   }
 </style>

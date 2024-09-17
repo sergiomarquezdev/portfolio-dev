@@ -50,35 +50,21 @@ const SKILLS_ICONS = {
     {highlightedSkills.map(({ name, icon }) => {
       const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
       return (
-          <li>
-            {IconComponent &&
-                <IconComponent/>} <span>{name}</span>
+          <li aria-label={`Habilidad destacada: ${name}`}>
+            {IconComponent ? <IconComponent /> : null} <span>{name}</span>
           </li>
       )
     })}
   </ul>
 
   <ul class="skills-list">
-    {otherSkills.map(({ name, icon }) => {
+    {[...otherSkills, ...databasesSkills].map(({ name, icon }) => {
       const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
       return (
-          <li>
-            {IconComponent &&
-                <IconComponent/>} <span>{name}</span>
+          <li aria-label={`Habilidad: ${name}`}>
+            {IconComponent && <IconComponent />} <span>{name}</span>
           </li>
-      )
-    })}
-  </ul>
-
-  <ul class="skills-list">
-    {databasesSkills.map(({ name, icon }) => {
-      const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
-      return (
-          <li>
-            {IconComponent &&
-                <IconComponent/>} <span>{name}</span>
-          </li>
-      )
+      );
     })}
   </ul>
 
@@ -87,7 +73,7 @@ const SKILLS_ICONS = {
 <style>
   .skills-list {
     display: flex;
-    gap: 10px; 
+    gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 20px;
   }
@@ -104,9 +90,15 @@ const SKILLS_ICONS = {
     padding: 0.4rem 0.8rem;
   }
 
+  li:focus {
+    outline: 2px solid #1d4e89;
+    outline-offset: 4px;
+  }
+
   .highlighted-skills li {
-    background: #e0e0e0;
+    background: #d0d0d0;
     font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   h3 {
@@ -117,7 +109,8 @@ const SKILLS_ICONS = {
 
   @media (max-width: 700px) {
     li {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
     }
   }
 </style>
