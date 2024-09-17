@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { title } = Astro.props
-const { image, summary, url } = basics
+const { summary, url } = basics
 ---
 
 <!doctype html>
@@ -44,7 +44,7 @@ const { image, summary, url } = basics
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" as="style">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" as="style">
-  <script type="application/ld+json">
+  <script is:inline type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
