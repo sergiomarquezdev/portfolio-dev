@@ -20,8 +20,10 @@ import Certificate from "@/icons/Certificate.astro"
                 <time class="certificate-date">{formattedDate}</time>
               </header>
               <footer>
-                <a href={url} target="_blank" class="certificate-link">{Certificate &&
-                    <Certificate/>} Ver Certificado</a>
+                <a href={url} target="_blank" class="certificate-link"
+                   title="Ver Certificado" aria-label="Ver Certificado">
+                  {Certificate && <Certificate/>} Ver Certificado
+                </a>
               </footer>
             </article>
           </li>
@@ -52,7 +54,7 @@ import Certificate from "@/icons/Certificate.astro"
     background: #f4f4f4;
     padding: 24px;
     border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .certificate h3 {
@@ -63,12 +65,12 @@ import Certificate from "@/icons/Certificate.astro"
 
   .certificate-issuer {
     margin-top: 6px;
-    color: #7f8c8d;
+    color: #2c3e50;
     font-size: 1rem;
   }
 
   .certificate-date {
-    color: #95a5a6;
+    color: #555;
     font-size: 1rem;
     font-weight: 400;
   }
