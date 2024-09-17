@@ -12,6 +12,15 @@ const { image, summary, url } = basics
 <!doctype html>
 <html lang="es">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-S7RNVV6FFQ"></script>
+  <script is:inline type="text/partytown">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S7RNVV6FFQ');
+  </script>
+  
   <link rel="sitemap" href="/sitemap-index.xml" />
   <link rel="canonical" href={url} />
   <meta charset="UTF-8" />
@@ -19,8 +28,7 @@ const { image, summary, url } = basics
   <meta name="description" content={summary} />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/icon" href="favicon.ico" />
-  <link rel="preload" as="image" href={image} />
-
+  
   <meta property="og:url" content={url} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
@@ -32,22 +40,23 @@ const { image, summary, url } = basics
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={summary} />
 
-  <!-- Google tag (gtag.js) -->
-  <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-S7RNVV6FFQ"></script>
-  <script is:inline type="text/partytown">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-S7RNVV6FFQ');
-  </script>
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" as="style">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Sergio Márquez",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Madrid",
+        "addressCountry": "ES"
+      },
+      "email": "mailto:sergiomarquezdev@gmail.com",
+      "image": "https://sergiomarquez.dev/img/sergio-marquez-perez-profile-picture.webp",
       "jobTitle": "Full Stack Developer",
+      "name": "Sergio Márquez",
       "worksFor": {
         "@type": "Organization",
         "name": "VITALY"
@@ -68,39 +77,6 @@ const { image, summary, url } = basics
 </html>
 
 <style is:global>
-
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-Thin.woff2') format('woff2'),
-    url('/fonts/Montserrat-Thin.woff') format('woff');
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-ThinItalic.woff2') format('woff2'),
-    url('/fonts/Montserrat-ThinItalic.woff') format('woff');
-    font-style: italic;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/Inter-Regular.woff2') format('woff2'),
-    url('/fonts/Inter-Regular.woff') format('woff');
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/Inter-Italic.woff2') format('woff2'),
-    url('/fonts/Inter-Italic.woff') format('woff');
-    font-style: italic;
-    font-display: swap;
-  }
-
   html {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     background: #fff;
@@ -141,7 +117,7 @@ const { image, summary, url } = basics
   h3,
   h4 {
     margin: 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", "Gill Sans", "Segoe UI", "Helvetica Neue", sans-serif;
   }
 
   p {
