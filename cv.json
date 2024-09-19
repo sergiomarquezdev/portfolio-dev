@@ -141,6 +141,16 @@
 
     "projects": [
         {
+            "name": "Portfolio DEV",
+            "isActive": true,
+            "description": "Portfolio de Sergio Márquez, una aplicación web desarrollada con Astro que muestra mis habilidades, experiencia y proyectos como Desarrollador Full Stack.",
+            "highlights": ["Astro", "Typescript", "GitHub Actions"],
+            "url": "https://sergiomarquez.dev",
+            "github": [
+                "https://github.com/sergiomarquezdev/portfolio-dev"
+            ]
+        },
+        {
             "name": "One dAIly Blog",
             "isActive": true,
             "description": "Blog que genera contenido de forma automática a diario utilizando la API de OpenAI. El frontend está desarrollado en Angular y TailwindCSS, mientras que el backend está hecho con Node.js, Express.js y PostgreSQL.",
@@ -168,7 +178,7 @@
             "github": ["https://github.com/sergiomarquezdev/acestream-docker-home"]
         },
         {
-            "name": "Monitor de Rodajes",
+            "name": "Monitor de Rodajes de Cine",
             "isActive": false,
             "description": "Este script en Python realiza scraping en la página web del Ministerio de Cultura de España para detectar cambios en la sección de rodajes. Cuando se detecta un nuevo documento, el script descarga el PDF actualizado, compara su contenido con la versión anterior y envía un correo electrónico con las diferencias encontradas.",
             "highlights": ["Python", "Scraping", "Automatización"],
