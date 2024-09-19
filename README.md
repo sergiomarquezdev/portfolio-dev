@@ -7,11 +7,6 @@ Bienvenido al repositorio del proyecto **Portfolio de Sergio Márquez**, una apl
 - **Frontend:**
   - **Astro**: Framework para construir aplicaciones web rápidas y optimizadas.
 
-- **Backend:**
-  - **Node.js**: Entorno de ejecución para JavaScript en el servidor.
-  - **Express.js**: Framework para construir aplicaciones web en Node.js.
-  - **PostgreSQL**: Sistema de gestión de bases de datos relacional.
-
 - **DevOps:**
   - **Github Actions**: Integración y entrega continua para automatizar el despliegue.
 
