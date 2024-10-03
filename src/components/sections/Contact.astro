@@ -16,21 +16,21 @@ import { WEB3FORMS_API_KEY } from "@cv"
 
     <div class="form-group">
       <label for="name">Nombre</label>
-      <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" required />
-      <div class="empty-feedback invalid-feedback">Por favor, proporciona tu nombre completo.</div>
+      <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" required aria-describedby="nameFeedback" />
+      <div id="nameFeedback" class="empty-feedback invalid-feedback">Por favor, proporciona tu nombre completo.</div>
     </div>
 
     <div class="form-group">
       <label for="email">Correo Electrónico</label>
-      <input type="email" id="email" name="email" required />
-      <div class="empty-feedback">Por favor, proporciona tu correo electrónico.</div>
+      <input type="email" id="email" name="email" required aria-describedby="emailFeedback" />
+      <div id="emailFeedback" class="empty-feedback">Por favor, proporciona tu correo electrónico.</div>
       <div class="invalid-feedback">Por favor, proporciona un correo electrónico válido.</div>
     </div>
 
     <div class="form-group">
       <label for="message">Mensaje</label>
-      <textarea id="message" name="message" minlength="10" required></textarea>
-      <div class="empty-feedback invalid-feedback">Por favor, ingresa tu mensaje.</div>
+      <textarea id="message" name="message" minlength="10" required aria-describedby="messageFeedback"></textarea>
+      <div id="messageFeedback" class="empty-feedback invalid-feedback">Por favor, ingresa tu mensaje.</div>
     </div>
 
     <button type="submit">Enviar</button>
@@ -120,14 +120,19 @@ import { WEB3FORMS_API_KEY } from "@cv"
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("form");
-    const result = document.getElementById("result");
+    const form = document.getElementById("form") as HTMLFormElement | null;
+    const result = document.getElementById("result") as HTMLElement | null;
+
+    if (!form || !result) {
+      console.error("Form or result element not found");
+      return;
+    }
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       form.classList.add("was-validated");
       if (!form.checkValidity()) {
-        form.querySelectorAll(":invalid")[0].focus();
+        (form.querySelectorAll(":invalid")[0] as HTMLElement).focus(); // Se asegura de que el elemento sea un HTMLElement
         return;
       }
       const formData = new FormData(form);
