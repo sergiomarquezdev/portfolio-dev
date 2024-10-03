@@ -206,6 +206,7 @@ button.loading::after {
 
   if (!form || !result || !submitButton){
     console.log ("Form, result or submitButton elements not found.")
+    return;
   }
 
   form.addEventListener("submit", function (e) {
