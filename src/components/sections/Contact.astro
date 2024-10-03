@@ -16,7 +16,7 @@ import { WEB3FORMS_API_KEY } from "@cv"
 
     <div class="form-group">
       <label for="name">Nombre</label>
-      <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" required aria-describedby="nameFeedback" />
+      <input type="text" id="name" name="name" required aria-describedby="nameFeedback" />
       <div id="nameFeedback" class="empty-feedback invalid-feedback">Por favor, proporciona tu nombre completo.</div>
     </div>
 
@@ -44,11 +44,11 @@ import { WEB3FORMS_API_KEY } from "@cv"
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: linear-gradient(135deg, #f0f8ff, #ffffff);
+  background: linear-gradient(135deg, #f4f4f4, #ffffff);
   padding: 32px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -72,7 +72,7 @@ label {
 
 input, textarea {
   padding: 12px;
-  border: 2px solid #bdc3c7;
+  border: 2px solid #e0e0e0;
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
