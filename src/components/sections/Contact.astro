@@ -214,7 +214,8 @@ button.loading::after {
     form.classList.add("was-validated");
 
     if (!form.checkValidity()) {
-      (form.querySelectorAll(":invalid")[0]).focus();
+      const invalidElement = form.querySelectorAll(":invalid")[0] as HTMLElement;
+      invalidElement.focus();
       return;
     }
 
