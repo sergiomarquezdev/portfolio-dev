@@ -1,58 +1,55 @@
-name: Deploy Astro App to Xiaomi MI 9T
+name: Deploy Astro App to VPS
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "20"
 
-      - name: Install dependencies
-        run: npm install
+            - name: Install dependencies
+              run: npm install
 
-      - name: Build Astro app
-        run: npm run build
+            - name: Build Astro app
+              run: npm run build
 
-      - name: Prepare deployment on server
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.MI9T_HOST }}
-          username: ${{ secrets.MI9T_USER }}
-          key: ${{ secrets.MI9T_SSH_KEY }}
-          port: 8022
-          script: |
-            rm -rf /data/data/com.termux/files/usr/share/nginx/html/*
-            mkdir -p /data/data/com.termux/files/usr/share/nginx/html
-            chown -R ${{ secrets.MI9T_USER }}:$USER /data/data/com.termux/files/usr/share/nginx/html
-            chmod -R 775 /data/data/com.termux/files/usr/share/nginx/html
+            - name: Prepare deployment on server
+              uses: appleboy/ssh-action@v0.1.7
+              with:
+                  host: ${{ secrets.VPS_HOST }}
+                  username: ${{ secrets.VPS_USER }}
+                  key: ${{ secrets.VPS_SSH_KEY }}
+                  script: |
+                      sudo rm -rf /var/www/portfolio-dev/*
+                      sudo mkdir -p /var/www/portfolio-dev
+                      sudo chown -R ${{ secrets.VPS_USER }}:$USER /var/www/portfolio-dev
+                      sudo chmod -R 775 /var/www/portfolio-dev
 
-      - name: Deploy files via SSH
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.MI9T_HOST }}
-          username: ${{ secrets.MI9T_USER }}
-          key: ${{ secrets.MI9T_SSH_KEY }}
-          port: 8022
-          source: "dist/*"
-          target: "/data/data/com.termux/files/usr/share/nginx/html/"
+            - name: Deploy files via SSH
+              uses: appleboy/scp-action@v0.1.7
+              with:
+                  host: ${{ secrets.VPS_HOST }}
+                  username: ${{ secrets.VPS_USER }}
+                  key: ${{ secrets.VPS_SSH_KEY }}
+                  source: "dist/*"
+                  target: "/var/www/portfolio-dev/"
 
-      - name: Restart Nginx
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.MI9T_HOST }}
-          username: ${{ secrets.MI9T_USER }}
-          key: ${{ secrets.MI9T_SSH_KEY }}
-          port: 8022
-          script: |
-            pkill nginx && nginx
+            - name: Restart Nginx
+              uses: appleboy/ssh-action@v1.0.3
+              with:
+                  host: ${{ secrets.VPS_HOST }}
+                  username: ${{ secrets.VPS_USER }}
+                  key: ${{ secrets.VPS_SSH_KEY }}
+                  script: |
+                      sudo systemctl restart nginx
