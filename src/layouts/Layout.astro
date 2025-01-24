@@ -1,84 +1,120 @@
 ---
-import { basics } from "@cv"
+import { basics } from "@cv";
 
 interface Props {
-  title: string
+  title: string;
 }
 
-const { title } = Astro.props
-const { summary, url } = basics
+const { title } = Astro.props;
+const { summary, url } = basics;
 ---
 
 <!doctype html>
 <html lang="es">
-<head>
-  <!-- Google tag (gtag.js) -->
-  <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-S7RNVV6FFQ"></script>
-  <script is:inline type="text/partytown">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-S7RNVV6FFQ');
-  </script>
-  
-  <link rel="sitemap" href="/sitemap-index.xml" />
-  <link rel="canonical" href={url} />
-  <meta charset="UTF-8" />
-  <title>{title}</title>
-  <meta name="description" content={summary} />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/icon" href="favicon.ico" />
-  
-  <meta property="og:url" content={url} />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={summary} />
+  <head>
+    <!-- Meta charset primero para convención -->
+    <meta charset="UTF-8" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:domain" content={url.split("//")[1] ?? ''} />
-  <meta property="twitter:url" content={url} />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={summary} />
+    <!-- Título dinámico -->
+    <title>{title}</title>
+    <meta name="description" content={summary} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/icon" href="favicon.ico" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" as="style">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" as="style">
-  <script is:inline type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Madrid",
-        "addressCountry": "ES"
-      },
-      "email": "mailto:sergiomarquezdev@gmail.com",
-      "image": "https://sergiomarquez.dev/img/sergio-marquez-perez-profile-picture.webp",
-      "jobTitle": "Full Stack Developer",
-      "name": "Sergio Márquez",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "VITALY"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/sergio-marquez-perez/",
-        "https://github.com/sergiomarquezdev/",
-        "https://x.com/smarquezp05/"
-      ],
-      "url": "https://sergiomarquez.dev",
-      "description": "Desarrollador Full Stack especializado en Java, Angular, Docker y Kubernetes."
-    }
-  </script>
-</head>
-<body>
-<slot />
-</body>
+    <!-- Google Tag (gtag.js) con Partytown -->
+    <script
+      is:inline
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-S7RNVV6FFQ"></script>
+    <script is:inline type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-S7RNVV6FFQ");
+    </script>
+
+    <!-- SEO y Open Graph -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={url} />
+
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={summary} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
+    <meta property="twitter:url" content={url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={summary} />
+
+    <!-- Preconexión y precarga de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap"
+      as="style"
+    />
+
+    <!-- JSON-LD para Schema.org -->
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Madrid",
+          "addressCountry": "ES"
+        },
+        "email": "mailto:sergiomarquezdev@gmail.com",
+        "image": "https://sergiomarquez.dev/img/sergio-marquez-perez-profile-picture.webp",
+        "jobTitle": "Full Stack Developer",
+        "name": "Sergio Márquez",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "VITALY"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/sergio-marquez-perez/",
+          "https://github.com/sergiomarquezdev/",
+          "https://x.com/smarquezp05/"
+        ],
+        "url": "https://sergiomarquez.dev",
+        "description": "Desarrollador Full Stack especializado en Java, Angular, Docker y Kubernetes."
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Podrías incluir un <header> global aquí si tienes navegación -->
+    <slot />
+    <!-- Podrías incluir un <footer> global aquí si deseas enlaces de autor, redes, etc. -->
+  </body>
 </html>
 
 <style is:global>
   html {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
     background: #fff;
     letter-spacing: -0.025rem;
     scroll-behavior: smooth;
@@ -117,7 +153,8 @@ const { summary, url } = basics
   h3,
   h4 {
     margin: 0;
-    font-family: "Montserrat", "Gill Sans", "Segoe UI", "Helvetica Neue", sans-serif;
+    font-family: "Montserrat", "Gill Sans", "Segoe UI", "Helvetica Neue",
+      sans-serif;
   }
 
   p {
@@ -140,6 +177,7 @@ const { summary, url } = basics
       display: block !important;
     }
 
+    /* Ocultar la barra de desarrollo de Astro al imprimir */
     astro-dev-toolbar {
       display: none !important;
     }

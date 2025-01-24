@@ -1,9 +1,17 @@
 ---
-const { title } = Astro.props
+const { title } = Astro.props;
+
+// Generamos una ID para el encabezado si existe título
+const headingId = title
+  ? `section-heading-${title.replace(/\s+/g, "-").toLowerCase()}`
+  : "";
 ---
 
-<section aria-label={title ? title : "Sección sin título"}>
-  {title && <h2>{title}</h2>}
+<section
+  aria-labelledby={title ? headingId : undefined}
+  aria-label={!title ? "Sección sin título" : undefined}
+>
+  {title && <h2 id={headingId}>{title}</h2>}
   <slot />
 </section>
 
@@ -19,6 +27,8 @@ const { title } = Astro.props
     font-weight: 700;
     line-height: 1.5;
     font-size: 2rem;
+    /* Color adicional si deseas unificar con tu paleta */
+    color: #1d4e89;
   }
 
   h2:focus {

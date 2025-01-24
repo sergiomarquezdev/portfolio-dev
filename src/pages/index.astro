@@ -1,42 +1,69 @@
 ---
-import Layout from "@/layouts/Layout.astro"
-import About from "@/components/sections/About.astro"
-import Education from "@/components/sections/Education.astro"
-import Experience from "@/components/sections/Experience.astro"
-import Hero from "@/components/sections/Hero.astro"
-import Projects from "@/components/sections/Projects.astro"
-import Skills from "@/components/sections/Skills.astro"
-import Certificates from "@/components/sections/Certificates.astro"
-import Contact from "@/components/sections/Contact.astro"
+import Layout from "@/layouts/Layout.astro";
+import About from "@/components/sections/About.astro";
+import Education from "@/components/sections/Education.astro";
+import Experience from "@/components/sections/Experience.astro";
+import Hero from "@/components/sections/Hero.astro";
+import Projects from "@/components/sections/Projects.astro";
+import Skills from "@/components/sections/Skills.astro";
+import Certificates from "@/components/sections/Certificates.astro";
+import Contact from "@/components/sections/Contact.astro";
 
-import { basics } from "@cv"
-const { name, label } = basics
+import { basics } from "@cv";
+const { name, label } = basics;
+
+// Si tu componente Hero no incluye un <h1>, podrías definirlo aquí.
+// const pageTitle = `${name} - ${label}`
 ---
 
 <Layout title={`${name} - ${label}`}>
   <main>
+    <!-- Hero con la presentación principal y CTA -->
     <section aria-label="Hero">
       <Hero />
     </section>
-    <section aria-label="Sobre mí">
+
+    <!-- Sección Sobre Mí -->
+    <section aria-labelledby="sobre-mi">
+      <h2 id="sobre-mi" class="section-heading">Sobre mí</h2>
       <About />
     </section>
-    <section aria-label="Experiencia laboral">
+
+    <!-- Experiencia laboral -->
+    <section aria-labelledby="experiencia-laboral">
+      <h2 id="experiencia-laboral" class="section-heading">
+        Experiencia laboral
+      </h2>
       <Experience />
     </section>
-    <section aria-label="Educación">
+
+    <!-- Educación -->
+    <section aria-labelledby="educacion">
+      <h2 id="educacion" class="section-heading">Educación</h2>
       <Education />
     </section>
-    <section aria-label="Certificados">
+
+    <!-- Certificados -->
+    <section aria-labelledby="certificados">
+      <h2 id="certificados" class="section-heading">Certificados</h2>
       <Certificates />
     </section>
-    <section aria-label="Proyectos">
+
+    <!-- Proyectos -->
+    <section aria-labelledby="proyectos">
+      <h2 id="proyectos" class="section-heading">Proyectos</h2>
       <Projects />
     </section>
-    <section aria-label="Habilidades">
+
+    <!-- Habilidades -->
+    <section aria-labelledby="habilidades">
+      <h2 id="habilidades" class="section-heading">Habilidades</h2>
       <Skills />
     </section>
-    <section aria-label="Contacto">
+
+    <!-- Contacto -->
+    <section aria-labelledby="contacto">
+      <h2 id="contacto" class="section-heading">Contacto</h2>
       <Contact />
     </section>
   </main>
@@ -44,17 +71,31 @@ const { name, label } = basics
 
 <style>
   main {
-    padding: 1rem;
-    margin: auto;
     width: 100%;
     max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
     line-height: 1.6;
+  }
+
+  .section-heading {
+    /* Estilo para los títulos de cada sección */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.75rem;
+    color: #1d4e89;
   }
 
   @media (max-width: 700px) {
     main {
       padding: 1.5rem;
       width: 95%;
+    }
+
+    .section-heading {
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
     }
   }
 </style>

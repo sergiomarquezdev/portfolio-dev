@@ -6,31 +6,43 @@ import { education } from "@cv"
 <Section title="Educación">
   <ul class="education-list">
     {education.map(({ institution, startDate, endDate, area, score }) => {
-      const startYear = new Date(startDate).getFullYear()
-      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Actual"
+      const startDateObj = new Date(startDate)
+      const endDateObj = endDate ? new Date(endDate) : null
+
+      const startYear = startDateObj.getFullYear()
+      const endYear = endDateObj ? endDateObj.getFullYear() : "Actual"
+
       const years = `${startYear} - ${endYear}`
 
       return (
-          <li class="education-item">
-            <article>
-              <header>
-                <div class="institution">
-                  <h3>{institution}</h3>
-                </div>
-                <time class="education-dates" datetime={`${startYear}`}>{years}</time>
-              </header>
-              <footer>
-                <p class="education-area">{area}</p>
-                {score && <p class="education-score">Nota: {score}</p>}
-              </footer>
-            </article>
-          </li>
+        <li class="education-item">
+          <article>
+            <header>
+              <div class="institution">
+                <h3>{institution}</h3>
+              </div>
+              <time
+                class="education-dates"
+                datetime={`${startYear}`}
+                aria-label={`Años de estudio: ${years}`}
+              >
+                {years}
+              </time>
+            </header>
+
+            <footer>
+              <p class="education-area">{area}</p>
+              {score && <p class="education-score">Nota: {score}</p>}
+            </footer>
+          </article>
+        </li>
       )
     })}
   </ul>
 </Section>
 
 <style>
+  /* Ajuste para que los párrafos en education tengan margen controlado */
   p {
     margin: 0;
   }
@@ -55,15 +67,18 @@ import { education } from "@cv"
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
+  /* Título de la institución */
   .institution h3 {
     font-weight: 700;
     color: #2c3e50;
     font-size: 1.4rem;
+    margin: 0;
   }
 
   .education-dates {
     color: #333;
     font-size: 1rem;
+    text-align: right;
   }
 
   .education-area {
@@ -80,16 +95,14 @@ import { education } from "@cv"
   }
 
   @media (max-width: 700px) {
-    .education-dates {
-      text-align: right;
-    }
-
     .education-item {
       padding-left: 12px;
+      border-left: 4px solid #1d4e89;
     }
 
     .education-dates {
       font-size: 1rem;
+      margin-top: 8px;
     }
 
     .education-area {

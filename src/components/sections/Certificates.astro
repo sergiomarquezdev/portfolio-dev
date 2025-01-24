@@ -1,15 +1,20 @@
 ---
-import Section from "../Section.astro"
-import { certificates } from "@cv"
-import Certificate from "@/icons/Certificate.astro"
+import Section from "../Section.astro";
+import { certificates } from "@cv";
+import Certificate from "@/icons/Certificate.astro";
 ---
 
 <Section title="Certificados">
   <ul class="certificates-list">
-    {certificates.map(({ name, date, issuer, url }) => {
-      const formattedDate = new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long' });
+    {
+      certificates.map(({ name, date, issuer, url }) => {
+        const dateObj = new Date(date);
+        const formattedDate = dateObj.toLocaleDateString("es-ES", {
+          year: "numeric",
+          month: "long",
+        });
 
-      return (
+        return (
           <li class="certificates-item">
             <article>
               <header>
@@ -17,20 +22,32 @@ import Certificate from "@/icons/Certificate.astro"
                   <h3>{name}</h3>
                   <p class="certificate-issuer">Emitido por {issuer}</p>
                 </div>
-                <time class="certificate-date" datetime={new Date(date).toISOString().split('T')[0]}>
+                <time
+                  class="certificate-date"
+                  datetime={dateObj.toISOString().split("T")[0]}
+                  aria-label={`Fecha de emisión: ${formattedDate}`}
+                >
                   {formattedDate}
                 </time>
               </header>
+
               <footer>
-                <a href={url} target="_blank" class="certificate-link"
-                   title={`Ver el certificado ${name}`} aria-label={`Ver el certificado ${name} emitido por ${issuer}`}>
+                <a
+                  href={url}
+                  target="_blank"
+                  class="certificate-link"
+                  title={`Ver el certificado ${name}`}
+                  aria-label={`Ver el certificado ${name} emitido por ${issuer}`}
+                  rel="noopener noreferrer"
+                >
                   {Certificate && <Certificate />} Ver Certificado
                 </a>
               </footer>
             </article>
           </li>
-      );
-    })}
+        );
+      })
+    }
   </ul>
 </Section>
 
@@ -63,6 +80,7 @@ import Certificate from "@/icons/Certificate.astro"
     font-weight: 700;
     color: #2c3e50;
     font-size: 1.25rem;
+    margin: 0;
   }
 
   .certificate-issuer {
@@ -76,6 +94,7 @@ import Certificate from "@/icons/Certificate.astro"
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 12px;
+    text-align: right;
   }
 
   .certificate-link {
@@ -83,8 +102,10 @@ import Certificate from "@/icons/Certificate.astro"
     text-decoration: none;
     font-weight: 500;
     margin-top: 12px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-size: 1rem;
+    gap: 6px;
   }
 
   .certificate-link:hover {
@@ -99,7 +120,6 @@ import Certificate from "@/icons/Certificate.astro"
     }
 
     .certificate-date {
-      text-align: right;
       font-size: 1rem;
     }
 
@@ -108,4 +128,3 @@ import Certificate from "@/icons/Certificate.astro"
     }
   }
 </style>
-

@@ -1,26 +1,26 @@
 ---
-import Section from "../Section.astro"
-import { highlightedSkills, databasesSkills, otherSkills } from "@cv"
+import Section from "../Section.astro";
+import { highlightedSkills, databasesSkills, otherSkills } from "@cv";
 
-import Java from "@/icons/java.astro"
-import Spring from "@/icons/spring.astro"
-import Angular from "@/icons/angular.astro"
-import Docker from "@/icons/docker.astro"
-import Kubernetes from "@/icons/kubernetes.astro"
-import CICD from "@/icons/cicd.astro"
-import Javascript from "@/icons/javascript.astro"
-import Typescript from "@/icons/typescript.astro"
-import Node from "@/icons/node.astro"
-import Python from "@/icons/python.astro"
-import Go from "@/icons/go.astro"
-import PostgreSQL from "@/icons/postgresql.astro"
-import OracleSQL from "@/icons/oraclesql.astro"
-import MySQL from "@/icons/mysql.astro"
-import MongoDB from "@/icons/mongodb.astro"
-import Firebase from "@/icons/firebase.astro"
-import React from "@/icons/react.astro"
-import Vue from "@/icons/vue.astro"
-import Astrosvg from "@/icons/astrosvg.astro"
+import Java from "@/icons/java.astro";
+import Spring from "@/icons/spring.astro";
+import Angular from "@/icons/angular.astro";
+import Docker from "@/icons/docker.astro";
+import Kubernetes from "@/icons/kubernetes.astro";
+import CICD from "@/icons/cicd.astro";
+import Javascript from "@/icons/javascript.astro";
+import Typescript from "@/icons/typescript.astro";
+import Node from "@/icons/node.astro";
+import Python from "@/icons/python.astro";
+import Go from "@/icons/go.astro";
+import PostgreSQL from "@/icons/postgresql.astro";
+import OracleSQL from "@/icons/oraclesql.astro";
+import MySQL from "@/icons/mysql.astro";
+import MongoDB from "@/icons/mongodb.astro";
+import Firebase from "@/icons/firebase.astro";
+import React from "@/icons/react.astro";
+import Vue from "@/icons/vue.astro";
+import Astrosvg from "@/icons/astrosvg.astro";
 
 const SKILLS_ICONS = {
   Java,
@@ -41,33 +41,40 @@ const SKILLS_ICONS = {
   Firebase,
   React,
   Vue,
-  Astrosvg
+  Astrosvg,
 } as const;
 ---
 
 <Section title="Habilidades">
+  <!-- Habilidades Destacadas -->
   <ul class="skills-list highlighted-skills">
-    {highlightedSkills.map(({ name, icon }) => {
-      const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
-      return (
+    {
+      highlightedSkills.map(({ name, icon }) => {
+        const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
+        return (
           <li aria-label={`Habilidad destacada: ${name}`}>
-            {IconComponent ? <IconComponent /> : null} <span>{name}</span>
+            {IconComponent ? <IconComponent /> : null}
+            <span>{name}</span>
           </li>
-      )
-    })}
+        );
+      })
+    }
   </ul>
 
+  <!-- Otras habilidades, incluyendo bases de datos -->
   <ul class="skills-list">
-    {[...otherSkills, ...databasesSkills].map(({ name, icon }) => {
-      const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
-      return (
+    {
+      [...otherSkills, ...databasesSkills].map(({ name, icon }) => {
+        const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
+        return (
           <li aria-label={`Habilidad: ${name}`}>
-            {IconComponent && <IconComponent />} <span>{name}</span>
+            {IconComponent && <IconComponent />}
+            <span>{name}</span>
           </li>
-      );
-    })}
+        );
+      })
+    }
   </ul>
-
 </Section>
 
 <style>
@@ -76,21 +83,23 @@ const SKILLS_ICONS = {
     gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    padding: 0;
+    list-style: none;
   }
 
-  li {
+  .skills-list li {
+    display: flex;
     align-items: center;
+    gap: 6px;
     background: #f4f4f4;
     border-radius: 8px;
     color: #2c3e50;
-    display: flex;
     font-size: 0.85rem;
     font-weight: 500;
-    gap: 6px;
     padding: 0.4rem 0.8rem;
   }
 
-  li:focus {
+  .skills-list li:focus {
     outline: 2px solid #1d4e89;
     outline-offset: 4px;
   }
@@ -101,14 +110,8 @@ const SKILLS_ICONS = {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  h3 {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-    color: #34495e;
-  }
-
   @media (max-width: 700px) {
-    li {
+    .skills-list li {
       font-size: 0.75rem;
       padding: 0.3rem 0.6rem;
     }

@@ -12,53 +12,62 @@ import { work } from "@cv"
       const endYearMonth = endDateObj ? endDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
 
       return (
-          <li class="experience-item">
-            <article>
-              <header>
-                <div>
-                  <h3>
-                    <a href={website} target="_blank" title={`Ver ${company}`} aria-label={`Ver la página web de ${company}, donde trabajé como ${position}`}>
-                      {company}
-                    </a>
-                  </h3>
-                  <h4>{position}</h4>
-                </div>
+        <li class="experience-item">
+          <article>
+            <header>
+              <div>
+                <h3>
+                  <a
+                    href={website}
+                    target="_blank"
+                    title={`Ver ${company}`}
+                    aria-label={`Ver la página web de ${company}, donde trabajé como ${position}`}
+                    rel="noopener noreferrer"
+                  >
+                    {company}
+                  </a>
+                </h3>
+                <h4>{position}</h4>
+              </div>
 
-                <div class="experience-dates">
-                  <time datetime={startDateObj.toISOString().split('T')[0]} data-title={startDate}>
-                    {startYearMonth}
-                  </time>
-                  {" - "}
-                  <time datetime={endDateObj ? endDateObj.toISOString().split('T')[0] : ''} data-title={endDate}>
-                    {endYearMonth}
-                  </time>
-                </div>
-              </header>
+              <div class="experience-dates">
+                <time datetime={startDateObj.toISOString().split('T')[0]} data-title={startDate}>
+                  {startYearMonth}
+                </time>
+                {" - "}
+                <time datetime={endDateObj ? endDateObj.toISOString().split('T')[0] : ''} data-title={endDate}>
+                  {endYearMonth}
+                </time>
+              </div>
+            </header>
 
-              <footer>
-                <p>{summary}</p>
-                <ul class="highlights-list">
-                  {highlights.map(({ role, startDate, endDate, achievements }) => {
-                    const roleStartDateObj = new Date(startDate);
-                    const roleEndDateObj = endDate ? new Date(endDate) : null;
-                    const roleStartYearMonth = roleStartDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" });
-                    const roleEndYearMonth = roleEndDateObj ? roleEndDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
+            <!-- Usamos un <div> en lugar de <footer>
+                 si consideramos que no es el “pie” del artículo,
+                 sino el contenido principal final de la experiencia. -->
+            <div class="experience-details">
+              <p>{summary}</p>
+              <ul class="highlights-list">
+                {highlights.map(({ role, startDate, endDate, achievements }) => {
+                  const roleStartDateObj = new Date(startDate);
+                  const roleEndDateObj = endDate ? new Date(endDate) : null;
+                  const roleStartYearMonth = roleStartDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" });
+                  const roleEndYearMonth = roleEndDateObj ? roleEndDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
 
-                    return (
-                        <li class="highlight-item">
-                          <strong>{role} ({roleStartYearMonth} - {roleEndYearMonth})</strong>
-                          <ul class="achievements-list">
-                            {achievements.map(achievement => (
-                                <li>{achievement}</li>
-                            ))}
-                          </ul>
-                        </li>
-                    );
-                  })}
-                </ul>
-              </footer>
-            </article>
-          </li>
+                  return (
+                    <li class="highlight-item">
+                      <strong>{role} ({roleStartYearMonth} - {roleEndYearMonth})</strong>
+                      <ul class="achievements-list">
+                        {achievements.map(achievement => (
+                          <li>{achievement}</li>
+                        ))}
+                      </ul>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </article>
+        </li>
       );
     })}
   </ul>
@@ -85,16 +94,20 @@ import { work } from "@cv"
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
+  /* Empresa (h3) */
   .experience-item h3 {
     font-weight: 700;
     color: #2c3e50;
     font-size: 1.5rem;
+    margin: 0;
   }
 
+  /* Puesto (h4) */
   .experience-item h4 {
     color: #5d6d7e;
     font-weight: 500;
     margin-top: 4px;
+    margin-bottom: 0;
   }
 
   .experience-item a {
@@ -117,18 +130,21 @@ import { work } from "@cv"
     color: #333;
     font-size: 1rem;
     font-weight: 400;
+    text-align: right;
   }
 
   .experience-dates time {
     display: inline-block;
   }
 
-  .experience-item p {
+  /* Descripción de la experiencia */
+  .experience-details p {
     margin-bottom: 16px;
     color: #34495e;
     font-size: 1rem;
   }
 
+  /* Lista de roles y logros */
   .highlights-list {
     margin-top: 12px;
     padding-left: 24px;
@@ -157,8 +173,8 @@ import { work } from "@cv"
 
   @media (max-width: 700px) {
     .experience-dates {
-      text-align: right;
       font-size: 0.9rem;
+      margin-top: 8px;
     }
 
     .experience-item {
@@ -171,11 +187,9 @@ import { work } from "@cv"
     }
 
     .experience-item header {
+      display: flex;
       flex-direction: column;
-    }
-
-    .experience-dates {
-      margin-top: 12px;
+      gap: 8px;
     }
 
     .achievements-list li {
