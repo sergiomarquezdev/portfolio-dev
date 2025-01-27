@@ -219,9 +219,9 @@ import { WEB3FORMS_API_KEY } from "@cv";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("form");
-    const result = document.getElementById("result");
-    const submitButton = document.querySelector('button[type="submit"]');
+    const form = document.getElementById("form") as HTMLFormElement | null;
+    const result = document.getElementById("result") as HTMLElement | null;
+    const submitButton = document.querySelector('button[type="submit"]') as HTMLButtonElement;
 
     if (!form || !result || !submitButton) {
       console.log("Form, result, or submitButton elements not found.");
@@ -233,7 +233,7 @@ import { WEB3FORMS_API_KEY } from "@cv";
       form.classList.add("was-validated");
 
       if (!form.checkValidity()) {
-        const invalidElement = form.querySelector(":invalid");
+        const invalidElement = form.querySelectorAll(":invalid")[0] as HTMLElement;
         if (invalidElement) invalidElement.focus();
         return;
       }
