@@ -4,24 +4,20 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
     site: "https://sergiomarquez.dev/",
+    output: "static",
     integrations: [
         sitemap({
-            i18n: {
-                defaultLocale: 'es',
-                locales: {
-                    es: 'es-ES',
-                    en: 'en-US',
-                }
-            },
             filter: (page) => !page.includes('/_'),
         }),
         partytown({
             config: {
                 forward: ["dataLayer.push"],
+                debug: false,
             },
         }),
     ],
     compressHTML: true,
+    trailingSlash: "never",
     build: {
         inlineStylesheets: "auto",
     },
@@ -42,6 +38,12 @@ export default defineConfig({
         build: {
             cssMinify: "lightningcss",
             assetsInlineLimit: 4096,
+            minify: 'terser',
+            terserOptions: {
+                compress: {
+                    drop_console: true,
+                },
+            },
             rollupOptions: {
                 output: {
                     entryFileNames: 'entry.[hash].js',
