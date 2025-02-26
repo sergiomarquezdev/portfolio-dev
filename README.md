@@ -32,7 +32,7 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
   - Interfaces bien definidas para todas las secciones
 
 - **SEO Optimizado**
-  - Generación automática de sitemap con soporte i18n
+  - Generación automática de sitemap
   - Metadatos Open Graph y Twitter Cards
   - Schema.org con JSON-LD
   - Rutas semánticas y contenido accesible
@@ -41,6 +41,12 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
   - Despliegue automático con GitHub Actions
   - Comprobación de tipos TypeScript en build
   - Optimización de assets durante la compilación
+  - Configuración avanzada para minificación CSS con esbuild
+
+- **Accesibilidad**
+  - Configuración para pruebas de accesibilidad (WCAG 2.0 AA)
+  - Atributos ARIA correctamente implementados
+  - Estructura semántica HTML5
 
 ## 🛠️ Stack Tecnológico
 
@@ -55,14 +61,20 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
 
 ### DevOps
 - **GitHub Actions** - CI/CD para despliegue automático
-- **Vercel/Netlify** - Despliegue en producción
+- **VPS propio con Nginx** - Hosting del sitio
+
+### Herramientas de Calidad
+- **ESLint** v9.21.0 - Linting de código
+- **Prettier** v3.5.2 - Formateo de código
+- **Terser** v5.39.0 - Minificación avanzada de JavaScript
+- **LightningCSS/esbuild** - Minificación CSS
 
 ## 📂 Estructura del Proyecto
 
 ```
 portfolio-dev/
 ├── .github/
-│   └── workflows/         # Configuraciones de CI/CD
+│   └── workflows/         # Configuraciones de CI/CD (deploy.yml)
 ├── public/
 │   ├── img/              # Imágenes y recursos estáticos
 │   ├── robots.txt        # Configuración para crawlers
@@ -70,14 +82,14 @@ portfolio-dev/
 ├── src/
 │   ├── components/       # Componentes reutilizables
 │   │   └── sections/     # Secciones principales del portfolio
-│   ├── layouts/          # Plantillas de página
-│   ├── pages/            # Páginas de la aplicación
+│   ├── layouts/          # Plantillas de página (Layout.astro)
+│   ├── pages/            # Páginas de la aplicación (index.astro)
 │   ├── icons/            # Iconos SVG optimizados
-│   ├── i18n/             # Configuración de internacionalización
 │   ├── cv.d.ts           # Tipos para datos del CV
 │   ├── env.d.ts          # Tipos de variables de entorno
 │   └── types.d.ts        # Definiciones de tipos globales
 ├── cv.json               # Datos estructurados del CV
+├── accessibility.config.js # Configuración para pruebas de accesibilidad
 ├── astro.config.mjs      # Configuración de Astro
 ├── package.json          # Dependencias y scripts
 └── tsconfig.json         # Configuración de TypeScript
@@ -114,35 +126,55 @@ portfolio-dev/
 | `npm run dev` | Inicia el servidor de desarrollo local en `localhost:4321` |
 | `npm run build` | Comprueba tipos y construye el proyecto para producción |
 | `npm run preview` | Previsualiza la build de producción localmente |
-| `npm run astro` | CLI de Astro para comandos adicionales |
+| `npm run check` | Ejecuta la comprobación de tipos de TypeScript |
+| `npm run lint` | Ejecuta ESLint para verificar la calidad del código |
+| `npm run lint-fix` | Corrige automáticamente problemas detectados por ESLint |
+| `npm run format` | Formatea el código usando Prettier |
 
 ## 🔄 Flujo de Despliegue
 
 El proyecto implementa Integración y Despliegue Continuo (CI/CD):
 
-1. Los cambios en la rama `main` activan automáticamente el workflow
-2. GitHub Actions ejecuta la construcción y comprobación de tipos
-3. El sitio se despliega en producción si todas las comprobaciones pasan
-4. El sitio queda disponible en [sergiomarquez.dev](https://sergiomarquez.dev)
+1. Los cambios en la rama `main` activan automáticamente el workflow de GitHub Actions
+2. El proceso de CI/CD:
+   - Comprueba la integridad del código con TypeScript
+   - Construye la aplicación para producción
+   - Prepara el servidor para el despliegue
+   - Transfiere los archivos generados al VPS
+   - Reinicia Nginx para aplicar los cambios
+   - Verifica que el despliegue se ha completado correctamente
+3. El sitio queda disponible en [sergiomarquez.dev](https://sergiomarquez.dev)
 
-## 🌐 Internacionalización (i18n)
+## 📊 Optimizaciones de Rendimiento
 
-El portfolio incluye soporte para múltiples idiomas:
+Este portfolio incorpora múltiples optimizaciones para garantizar la mejor experiencia:
 
-- Configuración i18n en `astro.config.mjs`
-- Detección automática del idioma del navegador
-- Selector de idioma en la interfaz
-- URLs localizadas (/es/, /en/)
-- Contenido traducido mediante sistema de diccionarios
+- **HTML minificado** mediante la opción `compressHTML` de Astro
+- **CSS minificado** usando esbuild o LightningCSS
+- **JavaScript optimizado** con Terser, eliminando console.logs y optimizando tamaño
+- **División de chunks** inteligente con Rollup
+- **Precarga de fuentes** para evitar parpadeos de texto
+- **Scripts de terceros** ejecutados con Partytown para no bloquear el renderizado
+
+## 🔍 SEO y Accesibilidad
+
+El proyecto está optimizado para motores de búsqueda y accesibilidad:
+
+- **Meta tags** completos para SEO
+- **Open Graph** y Twitter Cards para compartir en redes sociales
+- **Schema.org** con JSON-LD para datos estructurados
+- **Etiquetas ARIA** para mejorar la navegación con lectores de pantalla
+- **Configuración de accesibilidad** para pruebas automatizadas según WCAG 2.0 AA
 
 ## 🎨 Personalización
 
 Para personalizar este portfolio para tu uso:
 
-1. Actualiza el archivo `cv.json` con tu información
+1. Actualiza el archivo `cv.json` con tu información personal y profesional
 2. Reemplaza las imágenes en `/public/img/`
 3. Modifica los colores y estilos en los componentes
 4. Actualiza la configuración en `astro.config.mjs`
+5. Adapta las pruebas de accesibilidad en `accessibility.config.js`
 
 ## 📝 Licencia
 
@@ -157,12 +189,6 @@ Sergio Márquez
 - Web: [sergiomarquez.dev](https://sergiomarquez.dev)
 - LinkedIn: [Sergio Márquez Pérez](https://www.linkedin.com/in/sergio-marquez-perez/)
 - GitHub: [sergiomarquezdev](https://github.com/sergiomarquezdev/)
-
-## 🙏 Agradecimientos
-
-- Al equipo de Astro por crear un framework increíble
-- A la comunidad de desarrolladores por compartir conocimientos
-- A todos los que han dado feedback sobre mi portfolio
 
 ---
 
