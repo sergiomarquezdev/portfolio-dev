@@ -21,17 +21,17 @@ import { projects } from "@cv";
                         title={`Ver el proyecto ${name}`}
                         aria-label={`Abrir el proyecto ${name} en una nueva pestaña`}
                         rel="noopener noreferrer"
-                        class="text-secondary-dark hover:text-primary"
+                        class="text-secondary-dark dark:text-gray-200 hover:text-primary dark:hover:text-primary-light"
                       >
                         {name}
                       </a>
                     ) : (
-                      <span class="text-secondary-dark">{name}</span>
+                      <span class="text-secondary-dark dark:text-gray-200">{name}</span>
                     )}
                   </h3>
                   {isActive && (
                     <span
-                      class="active-indicator inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"
+                      class="active-indicator inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
                       aria-label="Proyecto en activo"
                     >
                       Activo
@@ -42,7 +42,7 @@ import { projects } from "@cv";
                       <a
                         href={link}
                         target="_blank"
-                        class="github-link text-gray-600 hover:text-primary transition-colors"
+                        class="github-link text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light transition-colors"
                         title={`Ver el código fuente de ${name} en GitHub`}
                         aria-label={`Ver el código fuente de ${name} en GitHub en una nueva pestaña`}
                         rel="noopener noreferrer"
@@ -51,10 +51,10 @@ import { projects } from "@cv";
                       </a>
                     ))}
                 </div>
-                <p class="text-gray-600 mb-4">{description}</p>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">{description}</p>
               </header>
 
-              <footer class="mt-auto pt-4 border-t border-gray-100">
+              <footer class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
                 <div class="flex flex-wrap gap-2">
                   {highlights.map((highlight) => (
                     <span class="skill-tag text-xs">{highlight}</span>
@@ -115,6 +115,16 @@ import { projects } from "@cv";
 
   .skill-tag:hover {
     background: #e0e0e0;
+  }
+
+  /* Estilos para modo oscuro */
+  :global(.dark) .skill-tag {
+    background: #2a2a2a;
+    color: #e0e0e0;
+  }
+
+  :global(.dark) .skill-tag:hover {
+    background: #333333;
   }
 
   @media (max-width: 700px) {

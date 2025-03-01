@@ -1,5 +1,6 @@
 ---
 import { basics } from "@cv";
+import ThemeToggle from "./ThemeToggle.astro";
 const { name } = basics;
 
 // Enlaces de navegación
@@ -14,39 +15,48 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-white shadow-sm py-3 px-4 transition-all duration-300 animate-fade-in">
+<header class="sticky top-0 z-50 bg-white dark:bg-dark-card shadow-sm py-3 px-4 transition-all duration-300">
   <div class="max-w-4xl mx-auto flex justify-between items-center">
     <!-- Logo/Nombre -->
-    <a href="#" class="text-lg font-bold text-primary hover:no-underline animate-slide-in-left">
+    <a href="#" class="text-lg font-bold text-primary hover:no-underline">
       {name}
     </a>
 
     <!-- Navegación para pantallas medianas y grandes -->
-    <nav class="hidden md:block">
-      <ul class="flex space-x-6">
+    <nav class="hidden md:flex items-center">
+      <ul class="flex space-x-6 mr-4">
         {navLinks.map(({ href, label }, index) => (
-          <li class={`animate-fade-in delay-${Math.min(index * 100, 500)}`}>
+          <li>
             <a
               href={href}
-              class="text-gray-700 hover:text-primary text-sm font-medium transition-colors duration-300 hover:no-underline"
+              class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors duration-300 hover:no-underline"
             >
               {label}
             </a>
           </li>
         ))}
       </ul>
+
+      <!-- Botón de cambio de tema -->
+      <ThemeToggle />
     </nav>
 
-    <!-- Botón de menú móvil -->
-    <button
-      id="mobile-menu-button"
-      class="md:hidden text-gray-700 hover:text-primary animate-fade-in delay-200"
-      aria-label="Abrir menú de navegación"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-      </svg>
-    </button>
+    <!-- Contenedor para móvil: botón de menú y botón de tema -->
+    <div class="md:hidden flex items-center space-x-2">
+      <!-- Botón de cambio de tema -->
+      <ThemeToggle />
+
+      <!-- Botón de menú móvil -->
+      <button
+        id="mobile-menu-button"
+        class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+        aria-label="Abrir menú de navegación"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Menú móvil (oculto por defecto) -->
@@ -57,7 +67,7 @@ const navLinks = [
           <li>
             <a
               href={href}
-              class="block text-gray-700 hover:text-primary text-sm font-medium transition-colors duration-300 hover:no-underline px-4 py-2"
+              class="block text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors duration-300 hover:no-underline px-4 py-2"
             >
               {label}
             </a>
@@ -110,6 +120,11 @@ const navLinks = [
   header {
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Estilo para el header en modo oscuro */
+  :global(.dark) header {
+    background-color: rgba(30, 30, 30, 0.95);
   }
 
   /* Estilo para el enlace activo */

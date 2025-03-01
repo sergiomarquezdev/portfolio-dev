@@ -22,6 +22,21 @@ const { summary, url } = basics;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/icon" href="favicon.ico" />
 
+    <!-- Script para inicializar el tema antes de que se renderice la página -->
+    <script is:inline>
+      // Verificar si hay un tema guardado en localStorage
+      const savedTheme = localStorage.getItem('theme');
+      // Verificar la preferencia del sistema
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      // Aplicar el tema adecuado
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+
     <!-- Google Tag (gtag.js) con Partytown -->
     <script
       is:inline
@@ -93,7 +108,7 @@ const { summary, url } = basics;
       }
     </script>
   </head>
-  <body>
+  <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
     <slot />
   </body>
 </html>

@@ -60,11 +60,20 @@ import { education } from "@cv"
     padding-left: 16px;
   }
 
+  :global(.dark) .education-item {
+    border-left: 5px solid #2c6cb0;
+  }
+
   .education-item article {
     background: #f4f4f4;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.dark) .education-item article {
+    background: #2a2a2a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   /* Título de la institución */
@@ -75,16 +84,28 @@ import { education } from "@cv"
     margin: 0;
   }
 
+  :global(.dark) .institution h3 {
+    color: #e0e0e0;
+  }
+
   .education-dates {
     color: #333;
     font-size: 1rem;
     text-align: right;
   }
 
+  :global(.dark) .education-dates {
+    color: #a0a0a0;
+  }
+
   .education-area {
     margin-top: 16px;
     color: #2c3e50;
     font-size: 1rem;
+  }
+
+  :global(.dark) .education-area {
+    color: #a0a0a0;
   }
 
   .education-score {
@@ -94,10 +115,18 @@ import { education } from "@cv"
     font-size: 1rem;
   }
 
+  :global(.dark) .education-score {
+    color: #b0b0b0;
+  }
+
   @media (max-width: 700px) {
     .education-item {
       padding-left: 12px;
       border-left: 4px solid #1d4e89;
+    }
+
+    :global(.dark) .education-item {
+      border-left: 4px solid #2c6cb0;
     }
 
     .education-dates {

@@ -69,11 +69,20 @@ import Certificate from "@/icons/Certificate.astro";
     padding-left: 20px;
   }
 
+  :global(.dark) .certificates-item {
+    border-left: 5px solid #2c6cb0;
+  }
+
   .certificates-item article {
     background: #f4f4f4;
     padding: 24px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.dark) .certificates-item article {
+    background: #2a2a2a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   .certificate h3 {
@@ -83,10 +92,18 @@ import Certificate from "@/icons/Certificate.astro";
     margin: 0;
   }
 
+  :global(.dark) .certificate h3 {
+    color: #e0e0e0;
+  }
+
   .certificate-issuer {
     margin-top: 6px;
     color: #2c3e50;
     font-size: 1rem;
+  }
+
+  :global(.dark) .certificate-issuer {
+    color: #a0a0a0;
   }
 
   .certificate-date {
@@ -95,6 +112,10 @@ import Certificate from "@/icons/Certificate.astro";
     font-weight: 400;
     margin-bottom: 12px;
     text-align: right;
+  }
+
+  :global(.dark) .certificate-date {
+    color: #a0a0a0;
   }
 
   .certificate-link {
@@ -108,15 +129,27 @@ import Certificate from "@/icons/Certificate.astro";
     gap: 6px;
   }
 
+  :global(.dark) .certificate-link {
+    color: #2c6cb0;
+  }
+
   .certificate-link:hover {
     text-decoration: underline;
     color: #123456;
+  }
+
+  :global(.dark) .certificate-link:hover {
+    color: #4a8dda;
   }
 
   @media (max-width: 700px) {
     .certificates-item {
       border-left: 4px solid #1d4e89;
       padding-left: 12px;
+    }
+
+    :global(.dark) .certificates-item {
+      border-left: 4px solid #2c6cb0;
     }
 
     .certificate-date {

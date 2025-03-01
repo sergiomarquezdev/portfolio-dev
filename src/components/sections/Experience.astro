@@ -17,22 +17,22 @@ import { work } from "@cv"
             <header class="mb-4">
               <div class="flex flex-col md:flex-row md:justify-between md:items-center">
                 <div>
-                  <h3 class="text-xl font-bold text-secondary-dark mb-1">
+                  <h3 class="text-xl font-bold text-secondary-dark dark:text-gray-200 mb-1">
                     <a
                       href={website}
                       target="_blank"
                       title={`Ver ${company}`}
                       aria-label={`Ver la página web de ${company}, donde trabajé como ${position}`}
                       rel="noopener noreferrer"
-                      class="hover:text-primary"
+                      class="hover:text-primary dark:hover:text-primary-light"
                     >
                       {company}
                     </a>
                   </h3>
-                  <h4 class="text-lg text-secondary font-medium">{position}</h4>
+                  <h4 class="text-lg text-secondary dark:text-gray-300 font-medium">{position}</h4>
                 </div>
 
-                <div class="experience-dates mt-2 md:mt-0 text-gray-600 font-medium">
+                <div class="experience-dates mt-2 md:mt-0 text-gray-600 dark:text-gray-400 font-medium">
                   <time datetime={startDateObj.toISOString().split('T')[0]} data-title={startDate}>
                     {startYearMonth}
                   </time>
@@ -45,7 +45,7 @@ import { work } from "@cv"
             </header>
 
             <div class="experience-details">
-              <p class="text-gray-700">{summary}</p>
+              <p class="text-gray-700 dark:text-gray-300">{summary}</p>
               <ul class="highlights-list space-y-4 mt-4">
                 {highlights.map(({ role, startDate, endDate, achievements }) => {
                   const roleStartDateObj = new Date(startDate);
@@ -54,13 +54,13 @@ import { work } from "@cv"
                   const roleEndYearMonth = roleEndDateObj ? roleEndDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
 
                   return (
-                    <li class="highlight-item pl-4 border-l-2 border-primary-light">
-                      <strong class="text-secondary-dark block mb-2">{role} ({roleStartYearMonth} - {roleEndYearMonth})</strong>
+                    <li class="highlight-item pl-4 border-l-2 border-primary-light dark:border-primary">
+                      <strong class="text-secondary-dark dark:text-gray-200 block mb-2">{role} ({roleStartYearMonth} - {roleEndYearMonth})</strong>
                       <ul class="achievements-list space-y-2">
                         {achievements.map(achievement => (
                           <li class="flex items-start">
-                            <span class="text-primary inline-block mr-2 mt-1">•</span>
-                            <span>{achievement}</span>
+                            <span class="text-primary dark:text-primary-light inline-block mr-2 mt-1">•</span>
+                            <span class="dark:text-gray-300">{achievement}</span>
                           </li>
                         ))}
                       </ul>
@@ -100,6 +100,11 @@ import { work } from "@cv"
     border-radius: 4px;
     opacity: 0;
     transition: opacity 0.3s ease;
+  }
+
+  /* Gradiente para modo oscuro */
+  :global(.dark) .experience-item::before {
+    background: linear-gradient(to bottom, #2c6cb0, rgba(44, 108, 176, 0.2));
   }
 
   .experience-item:hover::before {

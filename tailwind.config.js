@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -36,6 +37,16 @@ export default {
           'Helvetica Neue',
           'sans-serif',
         ],
+      },
+      backgroundColor: {
+        dark: '#121212',
+        'dark-card': '#1e1e1e',
+      },
+      textColor: {
+        dark: {
+          primary: '#e0e0e0',
+          secondary: '#a0a0a0',
+        },
       },
     },
   },
