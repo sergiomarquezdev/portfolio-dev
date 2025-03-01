@@ -18,7 +18,7 @@ const { name, label } = basics;
 
 <Layout title={`${name} - ${label}`}>
   <!-- Indicador de progreso de lectura -->
-  <div id="reading-progress-container" class="fixed top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-800 z-50">
+  <div id="reading-progress-container" class="fixed top-0 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-800 z-50">
     <div id="reading-progress" class="h-full bg-primary dark:bg-primary-light w-0 transition-all duration-100"></div>
   </div>
 
@@ -62,7 +62,7 @@ const { name, label } = basics;
     </section>
   </main>
 
-  <footer class="bg-gray-100 dark:bg-dark-card py-8 text-center text-gray-600 dark:text-gray-400 text-sm">
+  <footer class="bg-gray-100 dark:bg-dark-card pt-8 pb-2 text-center text-gray-600 dark:text-gray-400 text-sm">
     <div class="max-w-4xl mx-auto px-6">
       <p>&copy; {new Date().getFullYear()} {name}</p>
     </div>
