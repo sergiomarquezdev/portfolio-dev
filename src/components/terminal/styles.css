@@ -1,0 +1,157 @@
+/* Terminal styles */
+
+/* Estilo para el cursor parpadeante */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+#terminal-input::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+/* Estilo para hacer que el scrollbar sea más discreto */
+#terminal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+#terminal-content::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+#terminal-content::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+#terminal-content::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Reducir el espacio entre líneas en la terminal */
+.terminal-text p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+#terminal-output p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+/* Colores de texto personalizados para la terminal */
+.terminal-text-white {
+  color: #ffffff !important;
+}
+
+.terminal-text-green {
+  color: #10b981 !important;
+}
+
+.terminal-text-yellow {
+  color: #fbbf24 !important;
+}
+
+.terminal-text-blue {
+  color: #3b82f6 !important;
+}
+
+.terminal-text-red {
+  color: #ef4444 !important;
+}
+
+.terminal-text-gray {
+  color: #9ca3af !important;
+}
+
+.terminal-text-gray-light {
+  color: #6b7280 !important;
+}
+
+.terminal-text-gray-lighter {
+  color: #4b5563 !important;
+}
+
+/* Estilo para el código secreto */
+.secret-code {
+  color: rgba(255, 255, 255, 0.1);
+  transition: color 0.3s;
+}
+
+.secret-code:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Estilos para el modo Matrix avanzado */
+.matrix-advanced {
+  filter: hue-rotate(30deg) brightness(1.2) !important;
+  opacity: 0.8 !important;
+}
+
+/* Animación para el mini-juego */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+#game-goal {
+  animation: pulse 1.5s infinite;
+}
+
+/* Estilos para la tabla de comandos */
+.grid-cols-2 {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+}
+
+/* Asegurar que la terminal siempre tenga fondo oscuro y texto claro */
+#terminal-container .bg-gray-800 {
+  background-color: #1f2937 !important; /* Fondo oscuro fijo */
+}
+
+#terminal-container .bg-gray-700 {
+  background-color: #374151 !important; /* Barra de título oscura fija */
+}
+
+/* Asegurar que los textos siempre sean claros */
+#terminal-container {
+  color: #e5e7eb !important; /* Texto claro fijo */
+}
+
+/* Eliminar transiciones de color para la terminal */
+#terminal-container,
+#terminal-content,
+.terminal-input-line,
+#terminal-input {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Estilos para el botón de modo desarrollador */
+#dev-mode-toggle {
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+#dev-mode-toggle:hover {
+  transform: scale(1.05);
+}
+
+#dev-mode-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Animación de pulso para el botón cuando está activo */
+@keyframes pulse-dev-mode {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+#dev-mode-toggle.active-dev-mode {
+  background-color: #10b981 !important; /* Verde cuando está activo */
+  animation: pulse-dev-mode 2s infinite;
+}

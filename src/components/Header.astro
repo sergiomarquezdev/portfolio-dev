@@ -1,7 +1,6 @@
 ---
 import { basics } from "@cv";
 import ThemeToggle from "./ThemeToggle.astro";
-import CodeEffectToggle from "./CodeEffectToggle.astro";
 const { name } = basics;
 
 // Enlaces de navegación
@@ -16,21 +15,21 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-white dark:bg-dark-card shadow-sm py-3 px-4 transition-all duration-300">
-  <div class="max-w-4xl mx-auto flex justify-between items-center">
+<header class="sticky top-0 z-50 bg-white dark:bg-dark-card shadow-sm py-3 px-0 transition-all duration-300 w-full">
+  <div class="w-full max-w-6xl mx-auto flex justify-between items-center px-6">
     <!-- Logo/Nombre -->
-    <a href="#" class="text-lg font-bold text-primary hover:no-underline">
+    <a href="#" class="text-xl font-bold text-primary hover:no-underline">
       {name}
     </a>
 
     <!-- Navegación para pantallas medianas y grandes -->
     <nav class="hidden md:flex items-center">
-      <ul class="flex space-x-6 mr-4">
+      <ul class="flex space-x-8 mr-6">
         {navLinks.map(({ href, label }, index) => (
           <li>
             <a
               href={href}
-              class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors duration-300 hover:no-underline"
+              class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary text-base font-medium transition-colors duration-300 hover:no-underline"
             >
               {label}
             </a>
@@ -39,9 +38,6 @@ const navLinks = [
       </ul>
 
       <div class="flex items-center space-x-2">
-        <!-- Botón de efecto de código -->
-        <CodeEffectToggle />
-
         <!-- Botón de cambio de tema -->
         <ThemeToggle />
       </div>
@@ -49,9 +45,6 @@ const navLinks = [
 
     <!-- Contenedor para móvil: botón de menú y botón de tema -->
     <div class="md:hidden flex items-center space-x-2">
-      <!-- Botón de efecto de código -->
-      <CodeEffectToggle />
-
       <!-- Botón de cambio de tema -->
       <ThemeToggle />
 
@@ -115,9 +108,13 @@ const navLinks = [
         if (window.scrollY > 50) {
           header.classList.add('py-2', 'shadow-md');
           header.classList.remove('py-3', 'shadow-sm');
+          // Mantener el ancho completo
+          header.style.width = '100%';
         } else {
           header.classList.add('py-3', 'shadow-sm');
           header.classList.remove('py-2', 'shadow-md');
+          // Mantener el ancho completo
+          header.style.width = '100%';
         }
       });
     }
@@ -129,6 +126,9 @@ const navLinks = [
   header {
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    left: 0;
+    right: 0;
   }
 
   /* Estilo para el header en modo oscuro */

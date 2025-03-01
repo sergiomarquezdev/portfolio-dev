@@ -7,6 +7,9 @@
   // Variable para controlar si el efecto está activo
   let isCodeEffectActive = false;
 
+  // Variable para controlar si el modo avanzado está activo
+  let isAdvancedMode = false;
+
   // Función para inicializar el efecto Código
   function initCodeEffect() {
     // Si ya está activo, no hacer nada
@@ -27,6 +30,9 @@
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Comprobar si el modo avanzado está activo
+    isAdvancedMode = canvas.classList.contains('matrix-advanced');
+
     // Mostrar el canvas con una animación suave
     canvas.classList.remove('hidden');
     setTimeout(() => {
@@ -34,8 +40,13 @@
     }, 100);
 
     // Mensaje en la consola
-    console.log('%c¡Modo Desarrollador activado!', 'color: #00FF00; font-weight: bold; font-size: 14px; text-shadow: 0 0 5px #00FF00;');
-    console.log('%cBienvenido al mundo del código...', 'color: #00FF00; font-style: italic;');
+    if (isAdvancedMode) {
+      console.log('%c¡Modo Desarrollador Avanzado activado!', 'color: #00FFFF; font-weight: bold; font-size: 14px; text-shadow: 0 0 5px #00FFFF;');
+      console.log('%cHas desbloqueado la versión mejorada...', 'color: #00FFFF; font-style: italic;');
+    } else {
+      console.log('%c¡Modo Desarrollador activado!', 'color: #00FF00; font-weight: bold; font-size: 14px; text-shadow: 0 0 5px #00FF00;');
+      console.log('%cBienvenido al mundo del código...', 'color: #00FF00; font-style: italic;');
+    }
 
     // Ajustar el tamaño del canvas al tamaño de la ventana
     function resizeCanvas() {
@@ -120,12 +131,25 @@
         const alpha = brightness[i] * 0.7; // Reducimos la opacidad para que sea más sutil
 
         // Color y fuente para el código
-        if (drops[i] * fontSize < 50) {
-          // Fragmentos en la parte superior son más brillantes
-          ctx.fillStyle = `rgba(180, 255, 180, ${alpha})`;
+        if (isAdvancedMode) {
+          // En modo avanzado, usamos colores más variados
+          const hue = (i % 60) + 120; // Variación de color entre verde y azul
+          if (drops[i] * fontSize < 50) {
+            // Fragmentos en la parte superior son más brillantes
+            ctx.fillStyle = `hsla(${hue}, 100%, 80%, ${alpha * 1.2})`;
+          } else {
+            // El resto de fragmentos con el color variable
+            ctx.fillStyle = `hsla(${hue}, 100%, 50%, ${alpha})`;
+          }
         } else {
-          // El resto de fragmentos son verde código
-          ctx.fillStyle = `rgba(0, ${green}, 0, ${alpha})`;
+          // Modo normal con colores verdes
+          if (drops[i] * fontSize < 50) {
+            // Fragmentos en la parte superior son más brillantes
+            ctx.fillStyle = `rgba(180, 255, 180, ${alpha})`;
+          } else {
+            // El resto de fragmentos son verde código
+            ctx.fillStyle = `rgba(0, ${green}, 0, ${alpha})`;
+          }
         }
 
         ctx.font = `${fontSize}px "Fira Code", monospace`;
@@ -200,12 +224,33 @@
     return isCodeEffectActive;
   };
 
+  // Función para activar el modo avanzado
+  window.toggleAdvancedCodeEffect = function() {
+    const canvas = document.getElementById('matrix-canvas') as HTMLCanvasElement;
+    if (canvas) {
+      canvas.classList.add('matrix-advanced');
+      isAdvancedMode = true;
+
+      // Si el efecto ya está activo, reiniciarlo para aplicar los nuevos colores
+      if (isCodeEffectActive) {
+        stopCodeEffect();
+        setTimeout(() => {
+          initCodeEffect();
+        }, 1000);
+      } else {
+        initCodeEffect();
+      }
+    }
+    return true;
+  };
+
   // Declarar los tipos para TypeScript
   declare global {
     interface Window {
       initCodeEffect: typeof initCodeEffect;
       stopCodeEffect: typeof stopCodeEffect;
       toggleCodeEffect: () => boolean;
+      toggleAdvancedCodeEffect: () => boolean;
     }
   }
 </script>

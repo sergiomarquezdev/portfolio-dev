@@ -1,151 +1,99 @@
 ---
-import { basics } from "@cv";
 import "../styles/global.css";
 import MatrixEffect from "@/components/MatrixEffect.astro";
+import Terminal from "@/components/Terminal.astro";
+import ScrollToTop from "@/components/ScrollToTop.astro";
+import Header from "@/components/Header.astro";
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
 }
 
-const { title } = Astro.props;
-const { summary, url } = basics;
+const {
+  title = "Sergio Márquez - Full Stack Developer",
+  description = "Portfolio profesional de Sergio Márquez, desarrollador Full Stack especializado en Java, Angular, Docker y Kubernetes.",
+  image = "/images/og-image.jpg"
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
-    <!-- Meta charset primero para convención -->
     <meta charset="UTF-8" />
-
-    <!-- Título dinámico -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <meta name="description" content={summary} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/icon" href="favicon.ico" />
+    <meta name="description" content={description} />
 
-    <!-- Script para inicializar el tema antes de que se renderice la página -->
-    <script is:inline>
-      // Verificar si hay un tema guardado en localStorage
-      const savedTheme = localStorage.getItem('theme');
-      // Verificar la preferencia del sistema
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      // Aplicar el tema adecuado
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    </script>
-
-    <!-- Script para manejar el cambio de tema y disparar el evento personalizado -->
-    <script>
-      // Función para observar cambios en la clase 'dark' del elemento html
-      function observeThemeChanges() {
-        // Crear un nuevo MutationObserver
-        const observer = new MutationObserver((mutations) => {
-          mutations.forEach((mutation) => {
-            if (mutation.attributeName === 'class') {
-              // Disparar un evento personalizado cuando cambie la clase
-              const event = new CustomEvent('themeChanged', {
-                detail: {
-                  isDark: document.documentElement.classList.contains('dark')
-                }
-              });
-              document.dispatchEvent(event);
-            }
-          });
-        });
-
-        // Configurar el observer para observar cambios en el atributo class
-        observer.observe(document.documentElement, { attributes: true });
-      }
-
-      // Iniciar el observer cuando el DOM esté cargado
-      document.addEventListener('DOMContentLoaded', observeThemeChanges);
-    </script>
-
-    <!-- Google Tag (gtag.js) con Partytown -->
-    <script
-      is:inline
-      type="text/partytown"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-S7RNVV6FFQ"></script>
-    <script is:inline type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-S7RNVV6FFQ");
-    </script>
-
-    <!-- SEO y Open Graph -->
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" href={url} />
-
-    <meta property="og:url" content={url} />
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={summary} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
 
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
-    <meta property="twitter:url" content={url} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={summary} />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-    <!-- Preconexión y precarga de fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/inter-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
-    <!-- Precargar la fuente monoespaciada para el efecto de código -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Theme script -->
+    <script is:inline>
+      // Función para establecer el tema
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        }
 
-    <!-- JSON-LD para Schema.org -->
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Madrid",
-          "addressCountry": "ES"
-        },
-        "email": "mailto:sergiomarquezdev@gmail.com",
-        "image": "https://sergiomarquez.dev/img/sergio-marquez-perez-profile-picture.webp",
-        "jobTitle": "Full Stack Developer",
-        "name": "Sergio Márquez",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "VITALY"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/sergio-marquez-perez/",
-          "https://github.com/sergiomarquezdev/",
-          "https://x.com/smarquezdev/"
-        ],
-        "url": "https://sergiomarquez.dev",
-        "description": "Desarrollador Full Stack especializado en Java, Angular, Docker y Kubernetes."
+        // Disparar un evento personalizado para notificar cambios en el tema
+        document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
       }
+
+      // Comprobar la preferencia del usuario
+      const userTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+      // Establecer el tema inicial
+      if (userTheme) {
+        setTheme(userTheme);
+      } else {
+        setTheme(systemTheme);
+      }
+
+      // Escuchar cambios en la preferencia del sistema
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+
+      // Exponer la función para cambiar el tema
+      window.setTheme = setTheme;
     </script>
   </head>
   <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
     <MatrixEffect />
+    <Terminal />
+    <ScrollToTop />
+    <Header />
     <slot />
   </body>
 </html>
