@@ -2,9 +2,9 @@
 // FooterControls.astro - Barra de navegación flotante con controles principales
 ---
 
-<div class="fixed bottom-2 left-0 flex items-center z-40 pointer-events-none">
-  <div id="footer-controls" class="transition-all duration-300 transform opacity-100 translate-x-0 pointer-events-auto">
-    <div class="flex flex-col items-center gap-3 py-5 px-2.5 ml-3 rounded-full backdrop-blur-md bg-white/30 dark:bg-dark-secondary/80 shadow-lg dark:border dark:border-gray-700">
+<div class="fixed md:bottom-2 md:left-0 bottom-4 left-0 right-0 md:right-auto flex items-center justify-center md:justify-start z-40 pointer-events-none">
+  <div id="footer-controls" class="transition-all duration-300 transform opacity-100 translate-y-0 md:translate-x-0 pointer-events-auto">
+    <div class="flex md:flex-col flex-row items-center md:gap-3 gap-4 md:py-5 md:px-2.5 py-3 px-4 md:ml-3 mx-auto rounded-full backdrop-blur-md bg-white/30 dark:bg-dark-secondary/80 shadow-lg dark:border dark:border-gray-700">
       <!-- Botón para cambiar el tema -->
       <button
         id="theme-toggle"
@@ -39,8 +39,8 @@
         </svg>
       </button>
 
-      <!-- Separador horizontal -->
-      <div class="w-6 h-px bg-gray-300 dark:bg-gray-700"></div>
+      <!-- Separador (horizontal en desktop, vertical en móvil) -->
+      <div class="md:w-6 md:h-px h-6 w-px bg-gray-300 dark:bg-gray-700"></div>
 
       <!-- Botón para activar el modo desarrollador -->
       <button
@@ -54,8 +54,8 @@
         </svg>
       </button>
 
-      <!-- Separador horizontal -->
-      <div class="w-6 h-px bg-gray-300 dark:bg-gray-700"></div>
+      <!-- Separador (horizontal en desktop, vertical en móvil) -->
+      <div class="md:w-6 md:h-px h-6 w-px bg-gray-300 dark:bg-gray-700"></div>
 
       <!-- Botón para abrir la terminal -->
       <button
@@ -88,16 +88,26 @@
     // Determinar si estamos en un dispositivo móvil
     const isMobile = () => window.innerWidth < 768;
 
-    // Función para ocultar la barra
+    // Función para ocultar la barra (diferente en móvil y desktop)
     const hideControls = () => {
-      footerControls.classList.remove('opacity-100', 'translate-x-0');
-      footerControls.classList.add('opacity-0', '-translate-x-16');
+      if (isMobile()) {
+        footerControls.classList.remove('opacity-100', 'translate-y-0');
+        footerControls.classList.add('opacity-0', 'translate-y-16');
+      } else {
+        footerControls.classList.remove('opacity-100', 'translate-x-0');
+        footerControls.classList.add('opacity-0', '-translate-x-16');
+      }
     };
 
     // Función para mostrar la barra
     const showControls = () => {
-      footerControls.classList.remove('opacity-0', '-translate-x-16');
-      footerControls.classList.add('opacity-100', 'translate-x-0');
+      if (isMobile()) {
+        footerControls.classList.remove('opacity-0', 'translate-y-16');
+        footerControls.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        footerControls.classList.remove('opacity-0', '-translate-x-16');
+        footerControls.classList.add('opacity-100', 'translate-x-0');
+      }
 
       // Configurar temporizador para ocultar después de inactividad
       resetHideTimer();
@@ -178,25 +188,45 @@
       resetHideTimer();
     });
 
-    // También mostrar cuando el mouse se mueve por la parte izquierda de la pantalla
+    // También mostrar cuando el mouse se mueve por la parte izquierda de la pantalla (solo en desktop)
     document.addEventListener('mousemove', (e) => {
-      const leftThreshold = isMobile() ? 30 : 50; // Menos espacio en móvil
-      const verticalThreshold = isMobile() ? window.innerHeight / 3 : window.innerHeight / 2; // Más arriba en móvil
+      if (!isMobile()) {
+        const leftThreshold = 50;
+        const verticalThreshold = window.innerHeight / 2;
 
-      if (e.clientX < leftThreshold && e.clientY > verticalThreshold) {
-        showControls();
+        if (e.clientX < leftThreshold && e.clientY > verticalThreshold) {
+          showControls();
+        }
+      } else {
+        // En móvil, mostrar cuando el mouse se mueve por la parte inferior
+        const bottomThreshold = window.innerHeight - 50;
+
+        if (e.clientY > bottomThreshold) {
+          showControls();
+        }
       }
     });
 
-    // También responder a eventos touch en la parte izquierda en móviles
+    // También responder a eventos touch en la parte apropiada en móviles
     document.addEventListener('touchmove', (e) => {
       if (e.touches && e.touches[0]) {
         const touch = e.touches[0];
-        const leftThreshold = 30;
-        const verticalThreshold = window.innerHeight / 3;
 
-        if (touch.clientX < leftThreshold && touch.clientY > verticalThreshold) {
-          showControls();
+        if (isMobile()) {
+          // En móvil, detectar toques en la parte inferior
+          const bottomThreshold = window.innerHeight - 50;
+
+          if (touch.clientY > bottomThreshold) {
+            showControls();
+          }
+        } else {
+          // En desktop, mantener el comportamiento original
+          const leftThreshold = 30;
+          const verticalThreshold = window.innerHeight / 3;
+
+          if (touch.clientX < leftThreshold && touch.clientY > verticalThreshold) {
+            showControls();
+          }
         }
       }
     });
@@ -224,6 +254,7 @@
 
   #footer-controls > div {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    max-width: fit-content;
   }
 
   /* Optimización de rendimiento para animaciones */
@@ -243,21 +274,23 @@
   }
 
   /* Ajustes para dispositivos móviles */
-  @media (max-width: 640px) {
+  @media (max-width: 767px) {
     #footer-controls > div {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      gap: 2px;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      gap: 16px;
     }
 
     #footer-controls button {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
     }
 
     #footer-controls svg {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
     }
   }
 </style>
