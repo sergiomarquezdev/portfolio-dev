@@ -1,6 +1,7 @@
 ---
 import { basics } from "@cv";
 import "../styles/global.css";
+import MatrixEffect from "@/components/MatrixEffect.astro";
 
 interface Props {
   title: string;
@@ -35,6 +36,33 @@ const { summary, url } = basics;
       } else {
         document.documentElement.classList.remove('dark');
       }
+    </script>
+
+    <!-- Script para manejar el cambio de tema y disparar el evento personalizado -->
+    <script>
+      // Función para observar cambios en la clase 'dark' del elemento html
+      function observeThemeChanges() {
+        // Crear un nuevo MutationObserver
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+              // Disparar un evento personalizado cuando cambie la clase
+              const event = new CustomEvent('themeChanged', {
+                detail: {
+                  isDark: document.documentElement.classList.contains('dark')
+                }
+              });
+              document.dispatchEvent(event);
+            }
+          });
+        });
+
+        // Configurar el observer para observar cambios en el atributo class
+        observer.observe(document.documentElement, { attributes: true });
+      }
+
+      // Iniciar el observer cuando el DOM esté cargado
+      document.addEventListener('DOMContentLoaded', observeThemeChanges);
     </script>
 
     <!-- Google Tag (gtag.js) con Partytown -->
@@ -80,6 +108,14 @@ const { summary, url } = basics;
       rel="stylesheet"
     />
 
+    <!-- Precargar la fuente monoespaciada para el efecto de código -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- JSON-LD para Schema.org -->
     <script is:inline type="application/ld+json">
       {
@@ -109,6 +145,7 @@ const { summary, url } = basics;
     </script>
   </head>
   <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
+    <MatrixEffect />
     <slot />
   </body>
 </html>

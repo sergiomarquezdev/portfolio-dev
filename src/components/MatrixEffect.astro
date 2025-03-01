@@ -1,0 +1,211 @@
+<canvas id="matrix-canvas" class="hidden fixed top-0 left-0 w-full h-full pointer-events-none z-10 opacity-0 transition-opacity duration-1000 ease-in-out"></canvas>
+
+<script>
+  // Variable para almacenar el intervalo del efecto Código
+  let codeInterval: number | null = null;
+
+  // Variable para controlar si el efecto está activo
+  let isCodeEffectActive = false;
+
+  // Función para inicializar el efecto Código
+  function initCodeEffect() {
+    // Si ya está activo, no hacer nada
+    if (isCodeEffectActive) return;
+
+    // Marcar como activo
+    isCodeEffectActive = true;
+
+    // Limpiar el intervalo anterior si existe
+    if (codeInterval) {
+      clearInterval(codeInterval);
+      codeInterval = null;
+    }
+
+    const canvas = document.getElementById('matrix-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Mostrar el canvas con una animación suave
+    canvas.classList.remove('hidden');
+    setTimeout(() => {
+      canvas.classList.add('opacity-70');
+    }, 100);
+
+    // Mensaje en la consola
+    console.log('%c¡Modo Desarrollador activado!', 'color: #00FF00; font-weight: bold; font-size: 14px; text-shadow: 0 0 5px #00FF00;');
+    console.log('%cBienvenido al mundo del código...', 'color: #00FF00; font-style: italic;');
+
+    // Ajustar el tamaño del canvas al tamaño de la ventana
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    // Llamar a resize inicialmente y cuando cambie el tamaño de la ventana
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Fragmentos de código para mostrar (JavaScript, HTML, CSS, TypeScript, etc.)
+    const codeSnippets = [
+      // JavaScript
+      'function', 'const', 'let', 'var', 'return', 'if', 'else', 'for', 'while', 'switch', 'case',
+      'class', 'extends', 'super', 'new', 'this', 'async', 'await', 'try', 'catch', 'finally',
+      'import', 'export', 'from', 'default', 'null', 'undefined', 'true', 'false', 'NaN',
+      // HTML
+      '<div>', '</div>', '<span>', '</span>', '<p>', '</p>', '<h1>', '</h1>', '<a>', '</a>',
+      '<button>', '</button>', '<input>', '<form>', '</form>', '<img>', '<section>', '</section>',
+      // CSS
+      'display: flex;', 'color: #fff;', 'margin: 0;', 'padding: 10px;', 'border-radius: 4px;',
+      'background-color:', 'font-size:', 'font-weight:', 'transition:', 'transform:',
+      // TypeScript
+      'interface', 'type', 'enum', 'namespace', 'readonly', 'as', 'is', 'keyof', 'typeof',
+      // React
+      'useState', 'useEffect', 'useContext', 'useRef', 'useMemo', 'useCallback', '<React.Fragment>',
+      // Angular
+      'ngOnInit', '@Component', '@Input', '@Output', '*ngFor', '*ngIf', 'EventEmitter',
+      // Astro
+      'Astro.props', 'client:load', 'client:visible', 'is:inline', '<slot />', 'getStaticPaths',
+      // Comentarios y operadores
+      '//', '/*', '*/', '===', '!==', '>=', '<=', '=>', '...', '&&', '||', '??', '?.',
+    ];
+
+    // Tamaño de la fuente
+    const fontSize = 14;
+
+    // Número de columnas (basado en el ancho de la ventana)
+    const columns = Math.floor(canvas.width / fontSize);
+
+    // Array para rastrear la posición Y de cada columna
+    const drops: number[] = [];
+
+    // Array para almacenar la velocidad de cada columna
+    const speeds: number[] = [];
+
+    // Array para almacenar el brillo de cada columna (0-1)
+    const brightness: number[] = [];
+
+    // Array para almacenar el fragmento de código actual para cada columna
+    const currentSnippets: string[] = [];
+
+    // Inicializar todas las gotas
+    for (let i = 0; i < columns; i++) {
+      drops[i] = Math.random() * -100; // Posición inicial aleatoria fuera de la pantalla
+      speeds[i] = Math.random() * 0.5 + 0.5; // Velocidad aleatoria entre 0.5 y 1
+      brightness[i] = Math.random() * 0.5 + 0.5; // Brillo aleatorio entre 0.5 y 1
+      // Asignar un fragmento de código aleatorio a cada columna
+      currentSnippets[i] = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+    }
+
+    // Función para dibujar el efecto Código
+    function draw() {
+      // Ya verificamos que ctx no es null arriba, pero TypeScript no lo sabe
+      // dentro de esta función anidada, así que hacemos una comprobación adicional
+      if (!ctx) return;
+
+      // Limpiar el canvas completamente antes de dibujar el nuevo frame
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // No aplicamos un fondo semi-transparente para evitar oscurecer la página
+      // Solo dibujamos los fragmentos de código
+
+      // Dibujar los fragmentos de código
+      for (let i = 0; i < drops.length; i++) {
+        // Obtener el fragmento de código actual para esta columna
+        const snippet = currentSnippets[i];
+
+        // Calcular el color basado en el brillo de la columna
+        const green = Math.floor(brightness[i] * 255);
+        const alpha = brightness[i] * 0.7; // Reducimos la opacidad para que sea más sutil
+
+        // Color y fuente para el código
+        if (drops[i] * fontSize < 50) {
+          // Fragmentos en la parte superior son más brillantes
+          ctx.fillStyle = `rgba(180, 255, 180, ${alpha})`;
+        } else {
+          // El resto de fragmentos son verde código
+          ctx.fillStyle = `rgba(0, ${green}, 0, ${alpha})`;
+        }
+
+        ctx.font = `${fontSize}px "Fira Code", monospace`;
+
+        // Dibujar el fragmento de código
+        // Ajustar la posición X para que los fragmentos más largos no se corten
+        const xPos = i * fontSize * 1.5 % canvas.width;
+        ctx.fillText(snippet, xPos, drops[i] * fontSize);
+
+        // Cambiar aleatoriamente el fragmento (efecto de cambio de código)
+        if (Math.random() > 0.99) {
+          currentSnippets[i] = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+        }
+
+        // Reiniciar la gota cuando llegue al final o aleatoriamente
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+          // Actualizar velocidad, brillo y fragmento al reiniciar
+          speeds[i] = Math.random() * 0.5 + 0.5;
+          brightness[i] = Math.random() * 0.5 + 0.5;
+          currentSnippets[i] = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+        }
+
+        // Mover la gota hacia abajo según su velocidad
+        drops[i] += speeds[i];
+      }
+    }
+
+    // Ejecutar la función draw cada 33ms (aproximadamente 30 FPS)
+    codeInterval = setInterval(draw, 33) as unknown as number;
+    return codeInterval;
+  }
+
+  // Función para detener el efecto Código
+  function stopCodeEffect() {
+    // Si no está activo, no hacer nada
+    if (!isCodeEffectActive) return;
+
+    // Marcar como inactivo
+    isCodeEffectActive = false;
+
+    const canvas = document.getElementById('matrix-canvas') as HTMLCanvasElement;
+    if (canvas) {
+      // Ocultar el canvas con una animación suave
+      canvas.classList.remove('opacity-70');
+    }
+
+    // Mensaje en la consola
+    console.log('%cModo Desarrollador desactivado', 'color: #888; font-style: italic;');
+
+    // Limpiar el intervalo después de la animación
+    setTimeout(() => {
+      if (codeInterval) {
+        clearInterval(codeInterval);
+        codeInterval = null;
+      }
+      if (canvas) {
+        canvas.classList.add('hidden');
+      }
+    }, 1000);
+  }
+
+  // Exponer las funciones al objeto window para poder llamarlas desde otros componentes
+  window.initCodeEffect = initCodeEffect;
+  window.stopCodeEffect = stopCodeEffect;
+  window.toggleCodeEffect = function() {
+    if (isCodeEffectActive) {
+      stopCodeEffect();
+    } else {
+      initCodeEffect();
+    }
+    return isCodeEffectActive;
+  };
+
+  // Declarar los tipos para TypeScript
+  declare global {
+    interface Window {
+      initCodeEffect: typeof initCodeEffect;
+      stopCodeEffect: typeof stopCodeEffect;
+      toggleCodeEffect: () => boolean;
+    }
+  }
+</script>

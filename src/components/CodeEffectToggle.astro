@@ -1,0 +1,63 @@
+---
+// CodeEffectToggle.astro - Componente para activar/desactivar el modo desarrollador
+---
+
+<button
+  id="code-effect-toggle"
+  type="button"
+  class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg text-sm p-2.5 inline-flex items-center justify-center transition-colors duration-300"
+  aria-label="Activar modo desarrollador"
+  title="Activar modo desarrollador"
+>
+  <!-- Icono de código (siempre visible) -->
+  <svg
+    id="code-effect-icon"
+    class="w-5 h-5"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+    ></path>
+  </svg>
+</button>
+
+<script>
+  // Configurar el botón de activación del modo desarrollador
+  document.addEventListener('DOMContentLoaded', () => {
+    const codeEffectToggle = document.getElementById('code-effect-toggle');
+
+    if (codeEffectToggle) {
+      // Función para actualizar la apariencia del botón
+      const updateButtonAppearance = (isActive: boolean) => {
+        if (isActive) {
+          codeEffectToggle.classList.add('bg-green-100', 'dark:bg-green-900', 'text-green-600', 'dark:text-green-300');
+          codeEffectToggle.setAttribute('title', 'Desactivar modo desarrollador');
+          codeEffectToggle.setAttribute('aria-label', 'Desactivar modo desarrollador');
+        } else {
+          codeEffectToggle.classList.remove('bg-green-100', 'dark:bg-green-900', 'text-green-600', 'dark:text-green-300');
+          codeEffectToggle.setAttribute('title', 'Activar modo desarrollador');
+          codeEffectToggle.setAttribute('aria-label', 'Activar modo desarrollador');
+        }
+      };
+
+      // Manejar el clic en el botón
+      codeEffectToggle.addEventListener('click', () => {
+        // Verificar que la función toggleCodeEffect existe en window
+        if (typeof window.toggleCodeEffect === 'function') {
+          // Llamar a la función y obtener el nuevo estado
+          const isActive = window.toggleCodeEffect();
+          // Actualizar la apariencia del botón
+          updateButtonAppearance(isActive);
+        } else {
+          console.error('La función toggleCodeEffect no está disponible');
+        }
+      });
+    }
+  });
+</script>

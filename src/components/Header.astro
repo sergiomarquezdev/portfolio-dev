@@ -1,6 +1,7 @@
 ---
 import { basics } from "@cv";
 import ThemeToggle from "./ThemeToggle.astro";
+import CodeEffectToggle from "./CodeEffectToggle.astro";
 const { name } = basics;
 
 // Enlaces de navegación
@@ -37,12 +38,20 @@ const navLinks = [
         ))}
       </ul>
 
-      <!-- Botón de cambio de tema -->
-      <ThemeToggle />
+      <div class="flex items-center space-x-2">
+        <!-- Botón de efecto de código -->
+        <CodeEffectToggle />
+
+        <!-- Botón de cambio de tema -->
+        <ThemeToggle />
+      </div>
     </nav>
 
     <!-- Contenedor para móvil: botón de menú y botón de tema -->
     <div class="md:hidden flex items-center space-x-2">
+      <!-- Botón de efecto de código -->
+      <CodeEffectToggle />
+
       <!-- Botón de cambio de tema -->
       <ThemeToggle />
 
