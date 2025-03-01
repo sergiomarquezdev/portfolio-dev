@@ -206,3 +206,60 @@
     transform: scale(1);
   }
 }
+
+/* Si ya existe algún contenido, preservarlo */
+:root {
+  /* Variables de colores para modo claro */
+  --color-primary: #3b82f6; /* Azul principal */
+  --color-primary-dark: #2563eb;
+  --color-primary-light: #60a5fa;
+
+  /* Colores de fondo */
+  --color-bg: #ffffff;
+  --color-bg-offset: #f5f5f5;
+
+  /* Colores de texto */
+  --color-text: #374151;
+  --color-text-offset: #6b7280;
+}
+
+:root.dark {
+  /* Variables de colores para modo oscuro */
+  --color-primary: #3b82f6; /* Mantener azul para consistencia */
+  --color-primary-dark: #60a5fa; /* Invertir para modo oscuro */
+  --color-primary-light: #2563eb; /* Invertir para modo oscuro */
+
+  /* Colores de fondo para modo oscuro - más suave que negro puro */
+  --color-bg: #111827; /* Antes era #000 o similar */
+  --color-bg-offset: #1f2937;
+
+  /* Colores de texto para modo oscuro */
+  --color-text: #f9fafb;
+  --color-text-offset: #e5e7eb;
+}
+
+/* Aplicar variables a clases de Tailwind */
+.dark {
+  --tw-bg-opacity: 1;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.dark .dark\:bg-dark {
+  --tw-bg-opacity: 1;
+  background-color: var(--color-bg) !important;
+}
+
+.dark .dark\:bg-dark-card {
+  --tw-bg-opacity: 1;
+  background-color: var(--color-bg-offset) !important;
+}
+
+/* Transiciones suaves entre modos */
+html {
+  transition: background-color 0.3s ease;
+}
+
+body {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}

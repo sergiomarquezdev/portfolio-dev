@@ -9,18 +9,18 @@ import './styles.css';
     <div class="px-4 py-2 flex justify-between items-center" style="background-color: #374151;">
       <div class="text-sm font-medium" style="color: #ffffff;">Terminal</div>
       <div class="flex space-x-2">
-        <button id="terminal-minimize" class="w-5 h-5 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors flex items-center justify-center" title="Minimizar">
+        <button id="terminal-minimize" class="w-5 h-5 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none" title="Minimizar" aria-label="Minimizar terminal">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 text-yellow-800">
             <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd" />
           </svg>
         </button>
-        <button id="terminal-maximize" class="w-5 h-5 rounded-full bg-green-500 hover:bg-green-400 transition-colors flex items-center justify-center" title="Maximizar">
+        <button id="terminal-maximize" class="w-5 h-5 rounded-full bg-green-500 hover:bg-green-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none" title="Maximizar" aria-label="Maximizar terminal">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 text-green-800">
             <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z" clip-rule="evenodd" />
             <path fill-rule="evenodd" d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z" clip-rule="evenodd" />
           </svg>
         </button>
-        <button id="terminal-close" class="w-5 h-5 rounded-full bg-red-500 hover:bg-red-400 transition-colors flex items-center justify-center" title="Cerrar">
+        <button id="terminal-close" class="w-5 h-5 rounded-full bg-red-500 hover:bg-red-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none" title="Cerrar" aria-label="Cerrar terminal">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 text-red-800">
             <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
           </svg>
@@ -49,13 +49,13 @@ import './styles.css';
 <!-- Botón para abrir la terminal -->
 <button
   id="terminal-toggle"
-  class="fixed bottom-4 right-4 z-40 w-12 h-12 rounded-full bg-primary shadow-lg flex items-center justify-center hover:bg-primary-dark transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+  class="fixed bottom-4 right-4 z-40 w-12 h-12 rounded-full bg-primary shadow-lg flex items-center justify-center hover:bg-primary-dark transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:scale-105 active:scale-95"
   aria-label="Abrir terminal"
   title="Abrir terminal"
   style="color: white !important;"
 >
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
   </svg>
 </button>
 
@@ -64,7 +64,7 @@ import './styles.css';
   <!-- Botón para cambiar el tema -->
   <button
     id="theme-toggle"
-    class="w-10 h-10 rounded-full bg-primary shadow-lg flex items-center justify-center hover:bg-primary-dark transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+    class="w-10 h-10 rounded-full bg-primary shadow-lg flex items-center justify-center hover:bg-primary-dark transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:scale-105 active:scale-95"
     aria-label="Cambiar tema"
     title="Cambiar tema"
     style="color: white !important;"
@@ -101,13 +101,13 @@ import './styles.css';
   <!-- Botón para activar el modo desarrollador -->
   <button
     id="dev-mode-toggle"
-    class="w-10 h-10 rounded-full bg-primary shadow-lg flex items-center justify-center hover:bg-primary-dark transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+    class="w-10 h-10 rounded-full bg-primary shadow-lg flex items-center justify-center hover:bg-primary-dark transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:scale-105 active:scale-95"
     aria-label="Activar modo desarrollador"
     title="Activar modo desarrollador"
     style="color: white !important;"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
     </svg>
   </button>
 </div>
@@ -396,3 +396,39 @@ import './styles.css';
     }
   });
 </script>
+
+<style>
+  /* Estilo adicional para el botón de modo desarrollador activo */
+  #dev-mode-toggle.active-dev-mode {
+    background-color: #f59e0b;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+  }
+
+  /* Mejora de las animaciones */
+  button {
+    transform: translateZ(0); /* Optimizar rendimiento de animaciones */
+  }
+
+  /* Tooltip personalizado para botones */
+  button[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    right: 100%;
+    margin-right: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>

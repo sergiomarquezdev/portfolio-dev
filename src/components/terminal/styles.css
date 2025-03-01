@@ -17,16 +17,17 @@
 }
 
 #terminal-content::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: rgba(31, 41, 55, 0.5);
+  border-radius: 4px;
 }
 
 #terminal-content::-webkit-scrollbar-thumb {
-  background: #333;
+  background: rgba(75, 85, 99, 0.8);
   border-radius: 4px;
 }
 
 #terminal-content::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: rgba(107, 114, 128, 0.9);
 }
 
 /* Espaciado entre líneas en la terminal */
@@ -54,37 +55,42 @@
   margin-top: 0.5rem;
 }
 
-/* Colores de texto personalizados para la terminal */
+/* Estilos de texto para la terminal */
+.terminal-text {
+  color: #ffffff !important;
+  line-height: 1.6;
+}
+
 .terminal-text-white {
   color: #ffffff !important;
 }
 
 .terminal-text-green {
-  color: #10b981 !important;
-}
-
-.terminal-text-yellow {
-  color: #fbbf24 !important;
+  color: #10b981 !important; /* Usando un verde más vibrante para mejorar contraste */
 }
 
 .terminal-text-blue {
-  color: #3b82f6 !important;
+  color: #3b82f6 !important; /* Azul consistente con el color primario */
 }
 
 .terminal-text-red {
-  color: #ef4444 !important;
+  color: #ef4444 !important; /* Rojo más vibrante para mejores alertas */
+}
+
+.terminal-text-yellow {
+  color: #f59e0b !important; /* Amarillo anaranjado con mejor contraste */
 }
 
 .terminal-text-gray {
   color: #9ca3af !important;
 }
 
-.terminal-text-gray-light {
-  color: #6b7280 !important;
+.terminal-text-cyan {
+  color: #06b6d4 !important; /* Cian más brillante */
 }
 
-.terminal-text-gray-lighter {
-  color: #4b5563 !important;
+.terminal-text-magenta {
+  color: #d946ef !important; /* Magenta más brillante */
 }
 
 /* Estilo para el código secreto */
@@ -105,9 +111,16 @@
 
 /* Animación para el mini-juego */
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 #game-goal {
@@ -121,6 +134,57 @@
   gap: 0.6rem 1.2rem;
   margin-top: 0.4rem;
   margin-bottom: 0.4rem;
+}
+
+/* Estilos para la tabla de help */
+.terminal-help-grid {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 0.6rem 1.2rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.terminal-command {
+  color: #3b82f6 !important; /* Azul consistente para todos los comandos */
+  font-weight: 600;
+}
+
+.terminal-description {
+  color: #ffffff !important;
+}
+
+/* Animación de entrada para la terminal */
+@keyframes terminalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Clase para el estado activado */
+.terminal-active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  pointer-events: auto !important;
+  animation: terminalFadeIn 0.2s ease-out;
+}
+
+/* Atajos de teclado resaltados */
+.keyboard-shortcut {
+  display: inline-block;
+  background-color: rgba(71, 85, 105, 0.8);
+  color: white;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  font-weight: 500;
+  margin: 0 0.15rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Asegurar que la terminal siempre tenga fondo oscuro y texto claro */
@@ -194,4 +258,19 @@
 #terminal-container .terminal-text-gray-light,
 #terminal-container .terminal-text-gray-lighter {
   color: inherit;
+}
+
+/* Efectos de estado para botones de terminal */
+.active-dev-mode {
+  background-color: #f59e0b !important;
+}
+
+/* Efecto de cursor parpadeante */
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
