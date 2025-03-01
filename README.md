@@ -24,6 +24,7 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
 - **Diseño Profesional**
   - Interfaz minimalista y moderna con Tailwind CSS
   - Diseño totalmente responsive (Mobile-first)
+  - Optimizado para experiencia móvil con controles adaptables
   - Animaciones elegantes con CSS nativo y Intersection Observer
   - Navegación intuitiva con secciones bien definidas
   - Indicador de progreso de lectura
@@ -46,6 +47,7 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
   - Transiciones suaves entre secciones
   - Scroll padding para evitar que el header oculte el contenido al navegar
   - Scroll automático en componentes interactivos
+  - Controles de navegación optimizados para interacción táctil
 
 - **Gestión de Datos**
   - CV estructurado en formato JSON para mantenimiento sencillo
@@ -209,6 +211,8 @@ El portfolio incluye varias mejoras de UX para una experiencia más atractiva:
 - **Scroll padding** para evitar que el header fijo oculte el contenido al navegar
 - **Terminal interactiva** con efectos de escritura y comandos personalizados
 - **Scroll automático** en componentes interactivos para mejor usabilidad
+- **Controles adaptativos** que se ajustan a diferentes dimensiones de pantalla
+- **Transiciones inteligentes** en elementos interactivos según el contexto de uso
 
 ## 💻 Terminal Interactiva
 
@@ -229,7 +233,21 @@ Una de las características más destacadas es la terminal interactiva que permi
   - **Atajos de teclado** - Ctrl+Alt+T para abrir/cerrar la terminal
   - **Modo desarrollador** - Activa efectos visuales especiales
   - **Interfaz personalizable** - Terminal redimensionable, maximizable y arrastrable
-  - **Código Konami** - Descubre el huevo de pascua con la secuencia ↑↑↓↓←→←→BA
+  - **Código Konami** - Descubre el huevo de pascua con la secuencia ↑↑↓↓←→←→BA (solo en desktop)
+  - **Retroalimentación visual** - Respuestas adaptadas al contexto móvil/desktop
+  - **Diseño responsivo** - Se adapta perfectamente a diferentes tamaños de pantalla
+
+## 📱 Optimización Móvil
+
+El portfolio está completamente optimizado para dispositivos móviles con especial atención a la experiencia del usuario:
+
+- **Diseño Mobile-First:** Desarrollado priorizando la experiencia en dispositivos móviles
+- **Navegación adaptativa:** El header se adapta perfectamente a pantallas pequeñas con un menú móvil accesible
+- **Controles táctiles:** Footer con controles de navegación optimizados para interacción táctil
+- **Espaciado optimizado:** Cuidadosa distribución de elementos con espaciado adaptativo según el tamaño de pantalla
+- **Rendimiento:** Carga optimizada de recursos para conexiones móviles
+- **Gestos táctiles:** Soporte para eventos touch en componentes interactivos
+- **Visibilidad inteligente:** Controles que aparecen/desaparecen según la interacción del usuario
 
 ## 🔍 SEO y Accesibilidad
 
@@ -253,6 +271,18 @@ Para personalizar este portfolio para tu uso:
 4. Actualiza la configuración en `astro.config.mjs`
 5. Adapta las pruebas de accesibilidad en `accessibility.config.js`
 6. Personaliza los comandos de la terminal en `src/components/terminal/commands.ts`
+7. Ajusta los componentes responsivos en `src/components/sections/` para adaptar el espaciado a tu contenido
+8. Verifica la experiencia móvil con las herramientas de desarrollo del navegador
+
+### 🔧 Ajustes para Experiencia Móvil
+
+Para optimizar la experiencia en dispositivos móviles:
+
+- Comprueba el diseño en múltiples tamaños de pantalla (320px-768px)
+- Ajusta los valores de padding/margin en media queries para tu contenido específico
+- Prueba la usabilidad de los controles navegables en dispositivos táctiles reales
+- Verifica que los tamaños de fuente sean legibles en pantallas pequeñas
+- Asegúrate de que los elementos interactivos tengan suficiente área táctil (mínimo 44x44px)
 
 ## 📝 Licencia
 

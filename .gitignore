@@ -50,3 +50,7 @@ logs
 
 # Partytown cache
 .partytown/
+
+# Repomix cache
+repomix-output.xml
+codebase.xml
