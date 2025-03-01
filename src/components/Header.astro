@@ -18,7 +18,7 @@ const navLinks = [
     <!-- Navegación desktop y móvil -->
     <nav class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="#" class="text-gray-900 dark:text-white font-bold text-xl flex items-center">
+      <a href="#" id="logo-link" class="text-gray-900 dark:text-white font-bold text-xl flex items-center">
         <span class="text-primary">&lt;</span>{name}<span class="text-primary">/&gt;</span>
       </a>
 
@@ -69,6 +69,7 @@ const navLinks = [
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.querySelectorAll('.nav-link');
+    const logoLink = document.getElementById('logo-link');
     const header = document.getElementById('main-header');
 
     // Mostrar/ocultar el menú móvil
@@ -86,6 +87,13 @@ const navLinks = [
         }
       });
     });
+
+    // Cerrar el menú móvil al hacer clic en el logo/enlace home
+    if (logoLink && mobileMenu) {
+      logoLink.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    }
 
     // Resaltar la sección activa durante el desplazamiento
     const updateActiveSection = () => {
