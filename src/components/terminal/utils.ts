@@ -14,14 +14,29 @@ export function createAppendToTerminal(terminalOutput: HTMLElement | null, termi
       .replace(/class="text-gray-500"/g, 'class="terminal-text-gray-light"')
       .replace(/class="text-gray-600"/g, 'class="terminal-text-gray-lighter"');
 
+    // Asegurar que todo el texto tenga un color asignado
+    if (!text.includes('class="terminal-text-')) {
+      text = `<span class="terminal-text-white">${text}</span>`;
+    }
+
     const p = document.createElement('p');
-    p.className = className;
+    p.className = className + ' terminal-text-white'; // Añadir clase de texto blanco por defecto
+
+    // Función para asegurar que el scroll se mantenga en la parte inferior
+    const scrollToBottom = () => {
+      if (terminalContent) {
+        // Usar requestAnimationFrame para asegurar que el scroll ocurra después de que el DOM se actualice
+        requestAnimationFrame(() => {
+          terminalContent.scrollTop = terminalContent.scrollHeight;
+        });
+      }
+    };
 
     if (!typeEffect) {
       // Sin efecto de escritura, mostrar inmediatamente
       p.innerHTML = text;
       terminalOutput?.appendChild(p);
-      terminalContent?.scrollTo(0, terminalContent.scrollHeight);
+      scrollToBottom();
       return;
     }
 
@@ -38,8 +53,11 @@ export function createAppendToTerminal(terminalOutput: HTMLElement | null, termi
         p.innerHTML = text.slice(0, i + 1);
         i++;
         setTimeout(typeWriter, speed);
+        // Scroll durante la animación de escritura
+        scrollToBottom();
       } else {
-        terminalContent?.scrollTo(0, terminalContent.scrollHeight);
+        // Scroll final cuando termina la animación
+        scrollToBottom();
       }
     }
 
@@ -61,6 +79,14 @@ export function createToggleTerminal(
       terminalContainer?.classList.remove('hidden', 'scale-95', 'opacity-0', 'pointer-events-none');
       terminalContainer?.classList.add('scale-100', 'opacity-100');
       terminalInput?.focus();
+
+      // Asegurar que el scroll esté en la parte inferior cuando se abre la terminal
+      const terminalContent = terminalContainer?.querySelector('#terminal-content');
+      if (terminalContent) {
+        setTimeout(() => {
+          terminalContent.scrollTop = terminalContent.scrollHeight;
+        }, 50); // Pequeño retraso para asegurar que el contenido esté renderizado
+      }
     } else {
       terminalContainer?.classList.remove('scale-100', 'opacity-100');
       terminalContainer?.classList.add('scale-95', 'opacity-0');
@@ -81,11 +107,36 @@ export function createToggleMaximize(terminalContainer: HTMLElement | null) {
     isMaximized = !isMaximized;
 
     if (isMaximized) {
-      terminalContainer?.classList.add('fixed', 'inset-4', 'w-auto', 'h-auto', 'max-w-none');
+      // Usar posicionamiento que respete el header (inset-4 es demasiado agresivo)
+      terminalContainer?.classList.add('fixed', 'w-auto', 'h-auto', 'max-w-none');
       terminalContainer?.classList.remove('bottom-4', 'right-4', 'w-96', 'h-80');
+
+      // Establecer dimensiones que respeten el header
+      if (terminalContainer) {
+        terminalContainer.style.top = '80px'; // Dejar espacio para el header
+        terminalContainer.style.left = '20px';
+        terminalContainer.style.right = '20px';
+        terminalContainer.style.bottom = '20px';
+        terminalContainer.style.width = 'auto';
+        terminalContainer.style.height = 'auto';
+
+        // Asegurar que el z-index sea suficientemente alto
+        terminalContainer.style.zIndex = '1000';
+      }
     } else {
-      terminalContainer?.classList.remove('fixed', 'inset-4', 'w-auto', 'h-auto', 'max-w-none');
+      // Restaurar a tamaño normal
+      terminalContainer?.classList.remove('fixed', 'w-auto', 'h-auto', 'max-w-none');
       terminalContainer?.classList.add('bottom-4', 'right-4', 'w-96', 'h-80');
+
+      // Limpiar estilos inline
+      if (terminalContainer) {
+        terminalContainer.style.top = '';
+        terminalContainer.style.left = '';
+        terminalContainer.style.right = '';
+        terminalContainer.style.bottom = '';
+        terminalContainer.style.width = '';
+        terminalContainer.style.height = '';
+      }
     }
 
     return isMaximized;
@@ -120,8 +171,15 @@ export function makeTerminalDraggable(
     const y = e.clientY - dragOffsetY;
 
     if (terminalContainer) {
-      terminalContainer.style.left = `${x}px`;
-      terminalContainer.style.top = `${y}px`;
+      // Asegurar que la terminal no se salga de la pantalla
+      const maxX = window.innerWidth - (terminalContainer.offsetWidth || 0);
+      const maxY = window.innerHeight - (terminalContainer.offsetHeight || 0);
+
+      const boundedX = Math.max(0, Math.min(x, maxX));
+      const boundedY = Math.max(0, Math.min(y, maxY));
+
+      terminalContainer.style.left = `${boundedX}px`;
+      terminalContainer.style.top = `${boundedY}px`;
       terminalContainer.style.right = 'auto';
       terminalContainer.style.bottom = 'auto';
       terminalContainer.classList.add('absolute');
@@ -151,10 +209,10 @@ export function initTerminal(terminalOutput: HTMLElement | null, terminalInput: 
 
   // Mostrar mensaje de bienvenida
   const welcomeMessage = `
-    <p class="terminal-text-green">¡Bienvenido a la terminal interactiva de Sergio Márquez!</p>
-    <p class="terminal-text-gray">Escribe <span class="terminal-text-yellow">help</span> para ver los comandos disponibles.</p>
-    <p class="terminal-text-gray-light text-xs mt-1">Pulsa <span class="terminal-text-blue">Ctrl+Alt+T</span> para abrir/cerrar la terminal.</p>
-    <p class="terminal-text-gray-lighter text-xs">Pssst... ¿conoces el código Konami? ↑↑↓↓←→←→BA</p>
+    <p class="terminal-text-green font-medium">¡Bienvenido a la terminal interactiva de Sergio Márquez!</p>
+    <p class="terminal-text-gray mt-2">Escribe <span class="terminal-text-yellow">help</span> para ver los comandos disponibles.</p>
+    <p class="terminal-text-gray-light text-xs mt-3">Pulsa <span class="terminal-text-blue">Ctrl+Alt+T</span> para abrir/cerrar la terminal.</p>
+    <p class="terminal-text-gray-lighter text-xs mt-1">Pssst... ¿conoces el código Konami? <span class="terminal-text-white">↑↑↓↓←→←→BA</span></p>
   `;
 
   if (terminalOutput) {
@@ -164,5 +222,13 @@ export function initTerminal(terminalOutput: HTMLElement | null, terminalInput: 
   // Limpiar el input
   if (terminalInput) {
     terminalInput.value = '';
+  }
+
+  // Asegurar que el scroll esté en la parte inferior después de inicializar
+  const terminalContent = terminalOutput?.parentElement;
+  if (terminalContent) {
+    requestAnimationFrame(() => {
+      terminalContent.scrollTop = terminalContent.scrollHeight;
+    });
   }
 }

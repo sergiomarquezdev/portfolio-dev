@@ -28,7 +28,7 @@ export function processCommand(
       // Crear una tabla para mejor alineación
       let helpTable = '<div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1">';
       portfolioData.commands.forEach(cmd => {
-        helpTable += `<div><span class="terminal-text-green font-medium">${cmd.name}</span></div><div>${cmd.description}</div>`;
+        helpTable += `<div><span class="terminal-text-green font-medium">${cmd.name}</span></div><div class="terminal-text-white">${cmd.description}</div>`;
       });
       helpTable += '</div>';
       appendToTerminal(helpTable, '', true);
@@ -37,23 +37,23 @@ export function processCommand(
     case 'about':
       const about = portfolioData.about;
       appendToTerminal(`<span class="terminal-text-yellow">Sobre mí:</span>`, '', true);
-      appendToTerminal(`<span class="terminal-text-green">Nombre:</span> ${about.name}`, '', true);
-      appendToTerminal(`<span class="terminal-text-green">Rol:</span> ${about.role}`, '', true);
-      appendToTerminal(`<span class="terminal-text-green">Ubicación:</span> ${about.location}`, '', true);
-      appendToTerminal(`<span class="terminal-text-green">Resumen:</span> ${about.summary}`, '', true);
+      appendToTerminal(`<span class="terminal-text-green">Nombre:</span> <span class="terminal-text-white">${about.name}</span>`, '', true);
+      appendToTerminal(`<span class="terminal-text-green">Rol:</span> <span class="terminal-text-white">${about.role}</span>`, '', true);
+      appendToTerminal(`<span class="terminal-text-green">Ubicación:</span> <span class="terminal-text-white">${about.location}</span>`, '', true);
+      appendToTerminal(`<span class="terminal-text-green">Resumen:</span> <span class="terminal-text-white">${about.summary}</span>`, '', true);
       break;
 
     case 'skills':
       appendToTerminal('<span class="terminal-text-yellow">Mis habilidades:</span>', '', true);
       portfolioData.skills.forEach(skillGroup => {
-        appendToTerminal(`<span class="terminal-text-green">${skillGroup.category}:</span> ${skillGroup.items.join(', ')}`, '', true);
+        appendToTerminal(`<span class="terminal-text-green">${skillGroup.category}:</span> <span class="terminal-text-white">${skillGroup.items.join(', ')}</span>`, '', true);
       });
       break;
 
     case 'projects':
       appendToTerminal('<span class="terminal-text-yellow">Mis proyectos:</span>', '', true);
       portfolioData.projects.forEach(project => {
-        appendToTerminal(`<span class="terminal-text-green">${project.name}:</span> ${project.description}`, '', true);
+        appendToTerminal(`<span class="terminal-text-green">${project.name}:</span> <span class="terminal-text-white">${project.description}</span>`, '', true);
         appendToTerminal(`<span class="terminal-text-blue">${project.url}</span>`, '', true);
       });
       break;
@@ -61,7 +61,7 @@ export function processCommand(
     case 'contact':
       const contact = portfolioData.contact;
       appendToTerminal('<span class="terminal-text-yellow">Información de contacto:</span>', '', true);
-      appendToTerminal(`<span class="terminal-text-green">Email:</span> ${contact.email}`, '', true);
+      appendToTerminal(`<span class="terminal-text-green">Email:</span> <span class="terminal-text-white">${contact.email}</span>`, '', true);
       appendToTerminal(`<span class="terminal-text-green">LinkedIn:</span> <span class="terminal-text-blue">${contact.linkedin}</span>`, '', true);
       appendToTerminal(`<span class="terminal-text-green">GitHub:</span> <span class="terminal-text-blue">${contact.github}</span>`, '', true);
       appendToTerminal(`<span class="terminal-text-green">Twitter:</span> <span class="terminal-text-blue">${contact.twitter}</span>`, '', true);
@@ -81,7 +81,7 @@ export function processCommand(
         }
       } else {
         const currentTheme = document.documentElement.classList.contains('dark') ? 'oscuro' : 'claro';
-        appendToTerminal(`<span class="terminal-text-green">Tema actual: ${currentTheme}</span>`, '', true);
+        appendToTerminal(`<span class="terminal-text-green">Tema actual: <span class="terminal-text-white">${currentTheme}</span></span>`, '', true);
         appendToTerminal('<span class="terminal-text-gray">Uso: theme dark|light</span>', '', true);
       }
       break;
@@ -164,12 +164,12 @@ export function processCommand(
       const dirToList = dirArg || currentDirectory;
 
       if (sections[dirToList as keyof typeof sections]) {
-        appendToTerminal('<span class="terminal-text-yellow">Contenido de ' + dirToList + ':</span>', '', true);
+        appendToTerminal(`<span class="terminal-text-yellow">Contenido de <span class="terminal-text-white">${dirToList}</span>:</span>`, '', true);
         sections[dirToList as keyof typeof sections].forEach(item => {
           appendToTerminal(`<span class="terminal-text-blue">${item}/</span>`, '', true);
         });
       } else {
-        appendToTerminal(`<span class="terminal-text-red">Error: El directorio ${dirToList} no existe</span>`, '', true);
+        appendToTerminal(`<span class="terminal-text-red">Error: El directorio <span class="terminal-text-white">${dirToList}</span> no existe</span>`, '', true);
       }
       break;
 
@@ -182,7 +182,7 @@ export function processCommand(
         appendToTerminal('<span class="terminal-text-green">Cambiado al directorio principal</span>', '', true);
       } else if (sections[currentDirectory as keyof typeof sections]?.includes(newDir)) {
         updatedDirectory = newDir;
-        appendToTerminal(`<span class="terminal-text-green">Cambiado al directorio ${newDir}</span>`, '', true);
+        appendToTerminal(`<span class="terminal-text-green">Cambiado al directorio <span class="terminal-text-white">${newDir}</span></span>`, '', true);
       } else if (newDir === '..') {
         if (currentDirectory !== '~') {
           updatedDirectory = '~';
@@ -191,7 +191,7 @@ export function processCommand(
           appendToTerminal('<span class="terminal-text-yellow">Ya estás en el directorio principal</span>', '', true);
         }
       } else {
-        appendToTerminal(`<span class="terminal-text-red">Error: El directorio ${newDir} no existe</span>`, '', true);
+        appendToTerminal(`<span class="terminal-text-red">Error: El directorio <span class="terminal-text-white">${newDir}</span> no existe</span>`, '', true);
       }
 
       return { currentDirectory: updatedDirectory };
@@ -199,7 +199,7 @@ export function processCommand(
 
     case 'konami':
       appendToTerminal('<span class="terminal-text-yellow">¡Has descubierto un huevo de pascua!</span>', '', true);
-      appendToTerminal('<span class="terminal-text-green">Código Konami activado: ↑ ↑ ↓ ↓ ← → ← → B A</span>', '', true);
+      appendToTerminal('<span class="terminal-text-green">Código Konami activado: <span class="terminal-text-white">↑ ↑ ↓ ↓ ← → ← → B A</span></span>', '', true);
 
       import('./game').then(module => {
         module.startGame(appendToTerminal, terminalOutput);
@@ -207,7 +207,7 @@ export function processCommand(
       break;
 
     default:
-      appendToTerminal(`<span class="terminal-text-red">Error: Comando no reconocido: ${command}</span>`, '', true);
+      appendToTerminal(`<span class="terminal-text-red">Error: Comando no reconocido: <span class="terminal-text-white">${command}</span></span>`, '', true);
       appendToTerminal('<span class="terminal-text-gray">Escribe <span class="terminal-text-yellow">help</span> para ver los comandos disponibles.</span>', '', true);
       break;
   }

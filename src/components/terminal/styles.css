@@ -29,17 +29,29 @@
   background: #444;
 }
 
-/* Reducir el espacio entre líneas en la terminal */
+/* Espaciado entre líneas en la terminal */
 .terminal-text p {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  line-height: 1.2;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.3;
+  color: #ffffff !important; /* Asegurar que todo el texto sea blanco por defecto */
 }
 
 #terminal-output p {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  line-height: 1.2;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.3;
+  color: #ffffff !important; /* Asegurar que todo el texto sea blanco por defecto */
+}
+
+/* Añadir un poco más de espacio entre comandos */
+#terminal-output p:not(:first-child) {
+  margin-top: 0.4rem;
+}
+
+/* Añadir un poco más de espacio después de cada comando y su respuesta */
+#terminal-output p:has(span.terminal-text-green + span.terminal-text-white) + p {
+  margin-top: 0.5rem;
 }
 
 /* Colores de texto personalizados para la terminal */
@@ -106,7 +118,9 @@
 .grid-cols-2 {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.5rem 1rem;
+  gap: 0.6rem 1.2rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 
 /* Asegurar que la terminal siempre tenga fondo oscuro y texto claro */
@@ -120,7 +134,17 @@
 
 /* Asegurar que los textos siempre sean claros */
 #terminal-container {
-  color: #e5e7eb !important; /* Texto claro fijo */
+  color: #ffffff !important; /* Texto claro fijo */
+}
+
+/* Asegurar que el contenido de la terminal siempre tenga texto blanco */
+#terminal-content {
+  color: #ffffff !important;
+}
+
+/* Asegurar que el input de la terminal siempre tenga texto blanco */
+#terminal-input {
+  color: #ffffff !important;
 }
 
 /* Eliminar transiciones de color para la terminal */
@@ -154,4 +178,20 @@
 #dev-mode-toggle.active-dev-mode {
   background-color: #10b981 !important; /* Verde cuando está activo */
   animation: pulse-dev-mode 2s infinite;
+}
+
+/* Asegurar que todos los elementos dentro de la terminal tengan texto blanco por defecto */
+#terminal-container * {
+  color: #ffffff;
+}
+
+/* Permitir que las clases de color específicas sobrescriban el color por defecto */
+#terminal-container .terminal-text-green,
+#terminal-container .terminal-text-yellow,
+#terminal-container .terminal-text-blue,
+#terminal-container .terminal-text-red,
+#terminal-container .terminal-text-gray,
+#terminal-container .terminal-text-gray-light,
+#terminal-container .terminal-text-gray-lighter {
+  color: inherit;
 }
