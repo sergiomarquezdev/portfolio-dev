@@ -29,11 +29,23 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
   - Indicador de progreso de lectura
   - Botón "Volver arriba" con aparición inteligente
 
+- **Terminal Interactiva**
+  - Terminal completamente funcional integrada en la interfaz
+  - Comandos personalizados para explorar el portfolio (help, about, skills, projects, contact)
+  - Autocompletado de comandos con Tab
+  - Historial de comandos navegable con flechas arriba/abajo
+  - Efectos de escritura para una experiencia más inmersiva
+  - Soporte para atajos de teclado (Ctrl+Alt+T para abrir/cerrar)
+  - Modo desarrollador con efectos visuales especiales
+  - Terminal redimensionable, maximizable y arrastrable
+  - Huevo de pascua con código Konami (↑↑↓↓←→←→BA)
+
 - **Experiencia de Usuario Mejorada**
   - Animaciones de entrada para elementos cuando entran en el viewport
   - Resaltado automático de la sección activa en la navegación
   - Transiciones suaves entre secciones
   - Scroll padding para evitar que el header oculte el contenido al navegar
+  - Scroll automático en componentes interactivos
 
 - **Gestión de Datos**
   - CV estructurado en formato JSON para mantenimiento sencillo
@@ -98,7 +110,14 @@ portfolio-dev/
 │   └── favicon.ico       # Icono del sitio
 ├── src/
 │   ├── components/       # Componentes reutilizables
-│   │   └── sections/     # Secciones principales del portfolio (Hero, About, etc.)
+│   │   ├── sections/     # Secciones principales del portfolio (Hero, About, etc.)
+│   │   └── terminal/     # Componentes de la terminal interactiva
+│   │       ├── Terminal.astro    # Componente principal de la terminal
+│   │       ├── commands.ts       # Procesamiento de comandos
+│   │       ├── game.ts           # Mini-juego y código Konami
+│   │       ├── styles.css        # Estilos específicos de la terminal
+│   │       ├── types.ts          # Tipos e interfaces para la terminal
+│   │       └── utils.ts          # Funciones de utilidad para la terminal
 │   ├── layouts/          # Plantillas de página (Layout.astro)
 │   ├── pages/            # Páginas de la aplicación (index.astro)
 │   ├── styles/           # Estilos globales y utilidades CSS
@@ -176,6 +195,7 @@ Este portfolio incorpora múltiples optimizaciones para garantizar la mejor expe
 - **Precarga de fuentes** para evitar parpadeos de texto
 - **Scripts de terceros** ejecutados con Partytown para no bloquear el renderizado
 - **Animaciones optimizadas** que solo se activan cuando los elementos entran en el viewport
+- **Componentes modulares** para mejor mantenibilidad y reutilización
 
 ## 🎭 Animaciones y Experiencia de Usuario
 
@@ -187,6 +207,29 @@ El portfolio incluye varias mejoras de UX para una experiencia más atractiva:
 - **Resaltado automático** de la sección activa en la navegación
 - **Botón "Volver arriba"** que aparece después de cierto scroll
 - **Scroll padding** para evitar que el header fijo oculte el contenido al navegar
+- **Terminal interactiva** con efectos de escritura y comandos personalizados
+- **Scroll automático** en componentes interactivos para mejor usabilidad
+
+## 💻 Terminal Interactiva
+
+Una de las características más destacadas es la terminal interactiva que permite a los visitantes explorar el portfolio de forma única:
+
+- **Comandos disponibles:**
+  - `help` - Muestra la lista de comandos disponibles
+  - `about` - Muestra información personal y profesional
+  - `skills` - Lista las habilidades técnicas por categorías
+  - `projects` - Muestra los proyectos destacados
+  - `contact` - Muestra información de contacto
+  - `clear` - Limpia la terminal
+  - `exit` - Cierra la terminal
+
+- **Características avanzadas:**
+  - **Autocompletado** - Presiona Tab para autocompletar comandos
+  - **Historial** - Usa las flechas arriba/abajo para navegar por comandos anteriores
+  - **Atajos de teclado** - Ctrl+Alt+T para abrir/cerrar la terminal
+  - **Modo desarrollador** - Activa efectos visuales especiales
+  - **Interfaz personalizable** - Terminal redimensionable, maximizable y arrastrable
+  - **Código Konami** - Descubre el huevo de pascua con la secuencia ↑↑↓↓←→←→BA
 
 ## 🔍 SEO y Accesibilidad
 
@@ -198,6 +241,7 @@ El proyecto está optimizado para motores de búsqueda y accesibilidad:
 - **Etiquetas ARIA** para mejorar la navegación con lectores de pantalla
 - **Configuración de accesibilidad** para pruebas automatizadas según WCAG 2.0 AA
 - **Tipografía optimizada** con Inter para texto y Montserrat para encabezados
+- **Contraste adecuado** para asegurar la legibilidad en todos los elementos
 
 ## 🎨 Personalización
 
@@ -208,6 +252,7 @@ Para personalizar este portfolio para tu uso:
 3. Modifica los colores y estilos en `tailwind.config.js` y `src/styles/global.css`
 4. Actualiza la configuración en `astro.config.mjs`
 5. Adapta las pruebas de accesibilidad en `accessibility.config.js`
+6. Personaliza los comandos de la terminal en `src/components/terminal/commands.ts`
 
 ## 📝 Licencia
 
