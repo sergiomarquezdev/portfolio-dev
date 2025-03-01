@@ -85,6 +85,9 @@
     let hideTimeout: number | null = null;
     let userInteracting = false;
 
+    // Determinar si estamos en un dispositivo móvil
+    const isMobile = () => window.innerWidth < 768;
+
     // Función para ocultar la barra
     const hideControls = () => {
       footerControls.classList.remove('opacity-100', 'translate-x-0');
@@ -164,13 +167,48 @@
       resetHideTimer();
     });
 
+    // Detectar toques en dispositivos móviles
+    footerControls.addEventListener('touchstart', () => {
+      userInteracting = true;
+      showControls();
+    });
+
+    footerControls.addEventListener('touchend', () => {
+      userInteracting = false;
+      resetHideTimer();
+    });
+
     // También mostrar cuando el mouse se mueve por la parte izquierda de la pantalla
     document.addEventListener('mousemove', (e) => {
-      const leftThreshold = 50; // 50px desde el borde izquierdo
-      if (e.clientX < leftThreshold && e.clientY > window.innerHeight / 2) {
+      const leftThreshold = isMobile() ? 30 : 50; // Menos espacio en móvil
+      const verticalThreshold = isMobile() ? window.innerHeight / 3 : window.innerHeight / 2; // Más arriba en móvil
+
+      if (e.clientX < leftThreshold && e.clientY > verticalThreshold) {
         showControls();
       }
     });
+
+    // También responder a eventos touch en la parte izquierda en móviles
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        const touch = e.touches[0];
+        const leftThreshold = 30;
+        const verticalThreshold = window.innerHeight / 3;
+
+        if (touch.clientX < leftThreshold && touch.clientY > verticalThreshold) {
+          showControls();
+        }
+      }
+    });
+
+    // Función para manejar cambios de tamaño de pantalla
+    const handleResize = () => {
+      // Mostrar siempre al redimensionar para evitar problemas de visibilidad
+      showControls();
+    };
+
+    // Agregar listener para redimensionamiento
+    window.addEventListener('resize', handleResize);
 
     // Inicializar
     updateVisibility();
@@ -202,5 +240,24 @@
   /* Modo oscuro para el botón activo */
   .dark #dev-mode-toggle.active-dev-mode {
     background-color: rgba(245, 158, 11, 0.5);
+  }
+
+  /* Ajustes para dispositivos móviles */
+  @media (max-width: 640px) {
+    #footer-controls > div {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      gap: 2px;
+    }
+
+    #footer-controls button {
+      width: 36px;
+      height: 36px;
+    }
+
+    #footer-controls svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 </style>

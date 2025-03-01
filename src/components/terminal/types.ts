@@ -40,9 +40,19 @@ export const portfolioData = {
     { name: "whoami", description: "Muestra quién eres" },
     { name: "ls", description: "Lista las secciones del portfolio" },
     { name: "cd", description: "Navega a una sección del portfolio" },
-    { name: "konami", description: "Pulsa en orden: ↑↑↓↓←→←→BA" }
   ]
 };
+
+// Función para detectar si el dispositivo es móvil
+export function isMobileDevice(): boolean {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+         (window.innerWidth <= 768);
+}
+
+// Añadir el comando Konami sólo en dispositivos de escritorio
+if (typeof window !== 'undefined' && !isMobileDevice()) {
+  portfolioData.commands.push({ name: "konami", description: "Pulsa en orden: ↑↓←→" });
+}
 
 // Secciones del portfolio para el comando ls y cd
 export const sections = {
@@ -66,8 +76,9 @@ export interface TerminalState {
 // Global TypeScript declarations
 declare global {
   interface Window {
-    toggleCodeEffect: () => boolean;
-    toggleAdvancedCodeEffect: () => boolean;
-    isCodeEffectActive: () => boolean;
+    toggleMatrixEffect?: () => boolean;
+    toggleCodeEffect?: () => boolean;
+    toggleAdvancedCodeEffect?: () => boolean;
+    isCodeEffectActive?: () => boolean;
   }
 }

@@ -25,7 +25,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 ---
 
 <!-- Sin título aquí porque Hero suele tener su propio H1 -->
-<div class="bg-gradient-to-r from-white to-gray-100 dark:from-dark dark:to-dark-card dark:bg-none shadow-sm pt-14">
+<div class="bg-gradient-to-r from-white to-gray-100 dark:from-dark dark:to-dark-card dark:bg-none shadow-sm pt-20 md:pt-16">
   <Section>
     <div class="flex flex-row items-center justify-between gap-8 py-4 md:py-6 lg:py-8">
       <div class="flex flex-col gap-5 pr-8 md:gap-6">
@@ -50,7 +50,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
         </div>
 
         <!-- Enlaces a redes sociales y correo -->
-        <nav class="no-print mt-4 flex flex-wrap gap-4" aria-label="Redes sociales y contacto">
+        <nav class="no-print mt-2 md:mt-4 flex flex-wrap gap-4" aria-label="Redes sociales y contacto">
           {
             email && (
               <a
@@ -112,7 +112,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
   @media (max-width: 700px) {
     div {
       flex-direction: column-reverse;
-      padding: 20px;
+      padding: 12px;
     }
 
     div > div {
@@ -126,7 +126,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     h1 {
@@ -140,6 +140,14 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 
     img {
       width: 140px;
+    }
+
+    .flex-col {
+      gap: 3px !important;
+    }
+
+    nav {
+      margin-top: 0.75rem !important;
     }
   }
 </style>

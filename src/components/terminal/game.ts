@@ -141,17 +141,22 @@ export function startGame(
   return () => {}; // Función vacía si no se pudo iniciar el juego
 }
 
-// Código Konami: ↑↑↓↓←→←→BA
+// Código Konami simplificado: ↑↓←→
 const konamiCode = [
-  'ArrowUp', 'ArrowUp',
-  'ArrowDown', 'ArrowDown',
-  'ArrowLeft', 'ArrowRight',
-  'ArrowLeft', 'ArrowRight',
-  'b', 'a'
+  'ArrowUp',
+  'ArrowDown',
+  'ArrowLeft',
+  'ArrowRight'
 ];
 
 // Secuencia actual para comprobar el Konami Code
 let konamiCodePosition = 0;
+
+// Función para detectar si el dispositivo es móvil
+function isMobileDevice(): boolean {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+         (window.innerWidth <= 768);  // También comprobamos el ancho de la pantalla
+}
 
 // Función para configurar la detección del código Konami
 export function setupKonamiCodeDetector(
@@ -159,6 +164,11 @@ export function setupKonamiCodeDetector(
   isTerminalOpen: () => boolean,
   terminalInput: HTMLInputElement | null
 ) {
+  // No inicializar en dispositivos móviles
+  if (isMobileDevice()) {
+    return; // Salir de la función sin configurar nada
+  }
+
   document.addEventListener('keydown', (e) => {
     // Si el foco está en un input o textarea, no activar el código Konami
     const target = e.target as HTMLElement;
@@ -314,7 +324,7 @@ export function runMiniGame(appendToTerminal: (text: string, className?: string,
 // Tipos para TypeScript
 declare global {
   interface Window {
-    toggleMatrixEffect?: () => void;
+    toggleMatrixEffect?: () => boolean;
     toggleCodeEffect?: () => boolean;
   }
 }

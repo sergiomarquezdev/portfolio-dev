@@ -203,11 +203,14 @@ export function initTerminal(terminalOutput: HTMLElement | null, terminalInput: 
 export type AppendToTerminalFn = (text: string, className?: string, clearBefore?: boolean) => void;
 export type ToggleTerminalFn = () => boolean;
 
+// Importamos la función para detectar dispositivos móviles
+import { isMobileDevice } from './types';
+
 // Mensaje de bienvenida de la terminal
 export const welcomeMessage = `
 <span class="terminal-text-green">Bienvenido a la terminal interactiva del portfolio.</span>
 <p class="font-medium">Escribe <span class="terminal-text-blue">help</span> para ver la lista de comandos disponibles.</p>
 <p class="mt-2">Prueba los comandos <span class="terminal-text-blue">about</span>, <span class="terminal-text-blue">skills</span>, <span class="terminal-text-blue">projects</span> o <span class="terminal-text-blue">contact</span> para explorar el portfolio.</p>
 <p class="mt-3">Puedes usar <span class="keyboard-shortcut">Ctrl+Alt+T</span> para mostrar/ocultar esta terminal en cualquier momento.</p>
-<p class="mt-1">También puedes probar el <span class="secret-code">código Konami</span> para una sorpresa...</p>
+${typeof window !== 'undefined' && !isMobileDevice() ? '<p class="mt-1">También puedes probar el <span class="secret-code">código Konami</span> para una sorpresa...</p>' : ''}
 `;

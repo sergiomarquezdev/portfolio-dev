@@ -48,7 +48,7 @@ const navLinks = [
   </div>
 
   <!-- Menú móvil (oculto por defecto) -->
-  <div id="mobile-menu" class="hidden md:hidden absolute left-0 right-0 top-full bg-white dark:bg-dark-secondary border-b dark:border-gray-800 border-gray-100 shadow-lg">
+  <div id="mobile-menu" class="hidden md:hidden absolute left-0 right-0 top-full bg-white dark:bg-dark shadow-lg border-b dark:border-gray-800 border-gray-100">
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
         {navLinks.map(({ href, label }) => (
@@ -130,6 +130,25 @@ const navLinks = [
   /* Estilo para el header en modo oscuro */
   :global(.dark) header {
     background-color: rgba(30, 30, 30, 0.95);
+  }
+
+  /* Mejoras para el menú móvil en modo oscuro */
+  #mobile-menu {
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  :global(.dark) #mobile-menu {
+    background-color: #1f2937; /* dark - el mismo que se usa en otras partes oscuras */
+    border-color: #374151;
+  }
+
+  #mobile-menu a:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+    border-radius: 0.25rem;
+  }
+
+  :global(.dark) #mobile-menu a:hover {
+    background-color: rgba(99, 102, 241, 0.1);
   }
 
   /* Estilo para el enlace activo */

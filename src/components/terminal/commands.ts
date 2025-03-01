@@ -1,5 +1,5 @@
 // Terminal commands processing
-import { portfolioData, sections } from './types';
+import { portfolioData, sections, isMobileDevice } from './types';
 
 // Function to process commands
 export function processCommand(
@@ -198,8 +198,14 @@ export function processCommand(
       break;
 
     case 'konami':
+      // Verificar si estamos en un dispositivo móvil
+      if (isMobileDevice()) {
+        appendToTerminal('<span class="terminal-text-red">Esta función solo está disponible en ordenadores de escritorio.</span>', '', true);
+        return { currentDirectory };
+      }
+
       appendToTerminal('<span class="terminal-text-yellow">¡Has descubierto un huevo de pascua!</span>', '', true);
-      appendToTerminal('<span class="terminal-text-green">Código Konami activado: <span class="terminal-text-white">↑ ↑ ↓ ↓ ← → ← → B A</span></span>', '', true);
+      appendToTerminal('<span class="terminal-text-green">Código Konami activado: <span class="terminal-text-white">↑ ↓ ← →</span></span>', '', true);
 
       import('./game').then(module => {
         module.startGame(appendToTerminal, terminalOutput);
