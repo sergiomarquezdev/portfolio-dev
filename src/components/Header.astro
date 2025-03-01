@@ -129,7 +129,7 @@ const navLinks = [
 
   /* Estilo para el header en modo oscuro */
   :global(.dark) header {
-    background-color: rgba(30, 30, 30, 0.95);
+    background-color: rgba(17, 24, 39, 0.95); /* dark color con mayor opacidad */
   }
 
   /* Mejoras para el menú móvil en modo oscuro */
@@ -140,6 +140,13 @@ const navLinks = [
   :global(.dark) #mobile-menu {
     background-color: #1f2937; /* dark - el mismo que se usa en otras partes oscuras */
     border-color: #374151;
+  }
+
+  #mobile-menu a {
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0;
+    display: block;
+    border-radius: 0.375rem;
   }
 
   #mobile-menu a:hover {
