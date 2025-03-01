@@ -1,5 +1,6 @@
 ---
 import { basics } from "@cv";
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -56,14 +57,12 @@ const { summary, url } = basics;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap"
-      as="style"
+      rel="stylesheet"
     />
     <link
-      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap"
-      as="style"
+      rel="stylesheet"
     />
 
     <!-- JSON-LD para Schema.org -->
@@ -95,95 +94,6 @@ const { summary, url } = basics;
     </script>
   </head>
   <body>
-    <!-- Podrías incluir un <header> global aquí si tienes navegación -->
     <slot />
-    <!-- Podrías incluir un <footer> global aquí si deseas enlaces de autor, redes, etc. -->
   </body>
 </html>
-
-<style is:global>
-  html {
-    font-family:
-      "Inter",
-      -apple-system,
-      BlinkMacSystemFont,
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Fira Sans",
-      "Droid Sans",
-      "Helvetica Neue",
-      sans-serif;
-    background: #fff;
-    letter-spacing: -0.025rem;
-    scroll-behavior: smooth;
-  }
-
-  body,
-  figure {
-    margin: 0;
-    padding: 0;
-  }
-
-  a {
-    text-decoration: none;
-    color: #1d4e89;
-    transition: color 0.3s ease;
-  }
-
-  a:hover {
-    color: #123456;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    margin: 0;
-    font-family: "Montserrat", "Gill Sans", "Segoe UI", "Helvetica Neue",
-      sans-serif;
-  }
-
-  p {
-    color: #333;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .print {
-    display: none !important;
-  }
-
-  @media print {
-    .no-print {
-      display: none !important;
-    }
-
-    .print {
-      display: block !important;
-    }
-
-    /* Ocultar la barra de desarrollo de Astro al imprimir */
-    astro-dev-toolbar {
-      display: none !important;
-    }
-
-    article {
-      break-inside: avoid;
-    }
-  }
-</style>

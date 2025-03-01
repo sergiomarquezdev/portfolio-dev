@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
 import About from "@/components/sections/About.astro";
 import Education from "@/components/sections/Education.astro";
 import Experience from "@/components/sections/Experience.astro";
@@ -17,76 +18,136 @@ const { name, label } = basics;
 ---
 
 <Layout title={`${name} - ${label}`}>
-  <main>
-    <!-- Hero con la presentación principal y CTA -->
-    <section aria-label="Hero">
-      <Hero />
-    </section>
+  <!-- Header con navegación -->
+  <Header />
 
+  <!-- Hero con la presentación principal -->
+  <Hero />
+
+  <main class="bg-gray-50 pb-16">
     <!-- Sección Sobre Mí -->
-    <section aria-labelledby="sobre-mi">
+    <section id="sobre-mi" aria-labelledby="sobre-mi">
       <About />
     </section>
 
-    <!-- Experiencia laboral -->
-    <section aria-labelledby="experiencia-laboral">
+    <!-- Experiencia laboral - Mantiene posición prioritaria -->
+    <section id="experiencia" aria-labelledby="experiencia-laboral">
       <Experience />
     </section>
 
-    <!-- Educación -->
-    <section aria-labelledby="educacion">
-      <Education />
-    </section>
-
-    <!-- Certificados -->
-    <section aria-labelledby="certificados">
-      <Certificates />
-    </section>
-
-    <!-- Proyectos -->
-    <section aria-labelledby="proyectos">
+    <!-- Proyectos - Movido más arriba para destacar tu trabajo práctico -->
+    <section id="proyectos" aria-labelledby="proyectos">
       <Projects />
     </section>
 
-    <!-- Habilidades -->
-    <section aria-labelledby="habilidades">
+    <!-- Habilidades - Movido más arriba para complementar proyectos y experiencia -->
+    <section id="habilidades" aria-labelledby="habilidades">
       <Skills />
     </section>
 
-    <!-- Contacto -->
-    <section aria-labelledby="contacto">
+    <!-- Certificados -->
+    <section id="certificados" aria-labelledby="certificados">
+      <Certificates />
+    </section>
+
+    <!-- Educación - Movida más abajo ya que la experiencia práctica suele ser más relevante -->
+    <section id="educacion" aria-labelledby="educacion">
+      <Education />
+    </section>
+
+    <!-- Contacto - Se mantiene al final como llamada a la acción -->
+    <section id="contacto" aria-labelledby="contacto">
       <Contact />
     </section>
   </main>
+
+  <!-- Botón Volver Arriba -->
+  <button
+    id="back-to-top"
+    class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-40"
+    aria-label="Volver arriba"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <footer class="bg-gray-100 py-8 text-center text-gray-600 text-sm">
+    <div class="max-w-4xl mx-auto px-6">
+      <p>&copy; {new Date().getFullYear()} {name}. Todos los derechos reservados.</p>
+      <p class="mt-2">
+        Desarrollado con
+        <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+          Astro
+        </a> y
+        <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+          Tailwind CSS
+        </a>
+      </p>
+    </div>
+  </footer>
 </Layout>
 
-<style>
-  main {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 1rem;
-    line-height: 1.6;
-  }
+<script>
+  // Script para resaltar la sección activa en la navegación
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('header nav a');
 
-  .section-heading {
-    /* Estilo para los títulos de cada sección */
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-family: "Montserrat", sans-serif;
-    font-size: 1.75rem;
-    color: #1d4e89;
-  }
+    function highlightActiveSection() {
+      let scrollPosition = window.scrollY;
 
-  @media (max-width: 700px) {
-    main {
-      padding: 1.5rem;
-      width: 95%;
+      // Añadir un offset para considerar la altura del header
+      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height || 0;
+      scrollPosition += headerHeight + 50; // Añadir margen adicional
+
+      // Encontrar la sección actual
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top + window.scrollY;
+        const sectionHeight = rect.height;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          // Quitar clase activa de todos los enlaces
+          navLinks.forEach(link => {
+            link.classList.remove('text-primary', 'font-semibold');
+          });
+
+          // Añadir clase activa al enlace correspondiente
+          const activeLink = document.querySelector(`header nav a[href="#${sectionId}"]`);
+          if (activeLink) {
+            activeLink.classList.add('text-primary', 'font-semibold');
+          }
+        }
+      });
     }
 
-    .section-heading {
-      font-size: 1.5rem;
-      margin-top: 1.5rem;
+    // Ejecutar al cargar la página
+    highlightActiveSection();
+
+    // Ejecutar al hacer scroll
+    window.addEventListener('scroll', highlightActiveSection);
+
+    // Lógica para el botón "Volver arriba"
+    const backToTopButton = document.getElementById('back-to-top');
+
+    if (backToTopButton) {
+      // Mostrar/ocultar botón según la posición de scroll
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 1000) {
+          backToTopButton.classList.add('opacity-100', 'visible');
+          backToTopButton.classList.remove('opacity-0', 'invisible');
+        } else {
+          backToTopButton.classList.add('opacity-0', 'invisible');
+          backToTopButton.classList.remove('opacity-100', 'visible');
+        }
+      });
+
+      // Acción al hacer clic en el botón
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
-  }
-</style>
+  });
+</script>

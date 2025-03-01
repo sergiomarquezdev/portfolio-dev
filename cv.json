@@ -1,8 +1,7 @@
 {
-    "WEB3FORMS_API_KEY": "8b1fbad4-77bf-4d2d-ac1f-284bb9c2f9fc",
     "basics": {
         "name": "Sergio Márquez",
-        "label": "Full Stack Developer | Especializado en Java con Spring Framework, Angular, Docker, Kubernetes y CI/CD",
+        "label": "Backend Developer | Java & Spring | AI Enthusiast | Docker | Kubernetes",
         "image": "/img/sergio-marquez-perez-profile-picture.webp",
         "imageAlt": "Foto de perfil de Sergio Márquez, Desarrollador Full Stack",
         "email": "sergiomarquezdev@gmail.com",

@@ -13,40 +13,40 @@ import { work } from "@cv"
 
       return (
         <li class="experience-item">
-          <article>
-            <header>
-              <div>
-                <h3>
-                  <a
-                    href={website}
-                    target="_blank"
-                    title={`Ver ${company}`}
-                    aria-label={`Ver la página web de ${company}, donde trabajé como ${position}`}
-                    rel="noopener noreferrer"
-                  >
-                    {company}
-                  </a>
-                </h3>
-                <h4>{position}</h4>
-              </div>
+          <article class="card">
+            <header class="mb-4">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                <div>
+                  <h3 class="text-xl font-bold text-secondary-dark mb-1">
+                    <a
+                      href={website}
+                      target="_blank"
+                      title={`Ver ${company}`}
+                      aria-label={`Ver la página web de ${company}, donde trabajé como ${position}`}
+                      rel="noopener noreferrer"
+                      class="hover:text-primary"
+                    >
+                      {company}
+                    </a>
+                  </h3>
+                  <h4 class="text-lg text-secondary font-medium">{position}</h4>
+                </div>
 
-              <div class="experience-dates">
-                <time datetime={startDateObj.toISOString().split('T')[0]} data-title={startDate}>
-                  {startYearMonth}
-                </time>
-                {" - "}
-                <time datetime={endDateObj ? endDateObj.toISOString().split('T')[0] : ''} data-title={endDate}>
-                  {endYearMonth}
-                </time>
+                <div class="experience-dates mt-2 md:mt-0 text-gray-600 font-medium">
+                  <time datetime={startDateObj.toISOString().split('T')[0]} data-title={startDate}>
+                    {startYearMonth}
+                  </time>
+                  {" - "}
+                  <time datetime={endDateObj ? endDateObj.toISOString().split('T')[0] : ''} data-title={endDate}>
+                    {endYearMonth}
+                  </time>
+                </div>
               </div>
             </header>
 
-            <!-- Usamos un <div> en lugar de <footer>
-                 si consideramos que no es el “pie” del artículo,
-                 sino el contenido principal final de la experiencia. -->
             <div class="experience-details">
-              <p>{summary}</p>
-              <ul class="highlights-list">
+              <p class="text-gray-700">{summary}</p>
+              <ul class="highlights-list space-y-4 mt-4">
                 {highlights.map(({ role, startDate, endDate, achievements }) => {
                   const roleStartDateObj = new Date(startDate);
                   const roleEndDateObj = endDate ? new Date(endDate) : null;
@@ -54,11 +54,14 @@ import { work } from "@cv"
                   const roleEndYearMonth = roleEndDateObj ? roleEndDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
 
                   return (
-                    <li class="highlight-item">
-                      <strong>{role} ({roleStartYearMonth} - {roleEndYearMonth})</strong>
-                      <ul class="achievements-list">
+                    <li class="highlight-item pl-4 border-l-2 border-primary-light">
+                      <strong class="text-secondary-dark block mb-2">{role} ({roleStartYearMonth} - {roleEndYearMonth})</strong>
+                      <ul class="achievements-list space-y-2">
                         {achievements.map(achievement => (
-                          <li>{achievement}</li>
+                          <li class="flex items-start">
+                            <span class="text-primary inline-block mr-2 mt-1">•</span>
+                            <span>{achievement}</span>
+                          </li>
                         ))}
                       </ul>
                     </li>
@@ -77,123 +80,40 @@ import { work } from "@cv"
   .experience-list {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
     padding: 0;
     list-style: none;
   }
 
   .experience-item {
-    border-left: 5px solid #1d4e89;
-    padding-left: 16px;
+    position: relative;
   }
 
-  .experience-item article {
-    background: #f4f4f4;
-    padding: 24px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  .experience-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #1d4e89, rgba(29, 78, 137, 0.2));
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
-  /* Empresa (h3) */
-  .experience-item h3 {
-    font-weight: 700;
-    color: #2c3e50;
-    font-size: 1.5rem;
-    margin: 0;
-  }
-
-  /* Puesto (h4) */
-  .experience-item h4 {
-    color: #5d6d7e;
-    font-weight: 500;
-    margin-top: 4px;
-    margin-bottom: 0;
-  }
-
-  .experience-item a {
-    color: #1d4e89;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .experience-item a:hover {
-    color: #123456;
-    text-decoration: underline;
-  }
-
-  .experience-item a:focus {
-    outline: 2px solid #1d4e89;
-    outline-offset: 2px;
-  }
-
-  .experience-dates {
-    color: #333;
-    font-size: 1rem;
-    font-weight: 400;
-    text-align: right;
-  }
-
-  .experience-dates time {
-    display: inline-block;
-  }
-
-  /* Descripción de la experiencia */
-  .experience-details p {
-    margin-bottom: 16px;
-    color: #34495e;
-    font-size: 1rem;
-  }
-
-  /* Lista de roles y logros */
-  .highlights-list {
-    margin-top: 12px;
-    padding-left: 24px;
-  }
-
-  .highlight-item {
-    margin-bottom: 16px;
-  }
-
-  .highlight-item strong {
-    font-weight: 600;
-    color: #4a4a4a;
+  .experience-item:hover::before {
+    opacity: 1;
   }
 
   .achievements-list {
-    list-style-type: disc;
-    padding-left: 24px;
-    margin-top: 8px;
-  }
-
-  .achievements-list li {
-    margin-bottom: 8px;
-    color: #2c3e50;
-    font-size: 0.95rem;
+    list-style: none;
+    padding-left: 0;
   }
 
   @media (max-width: 700px) {
-    .experience-dates {
-      font-size: 0.9rem;
-      margin-top: 8px;
-    }
-
-    .experience-item {
-      border-left: 4px solid #1d4e89;
-      padding-left: 12px;
-    }
-
-    .experience-item h3 {
-      font-size: 1.25rem;
-    }
-
-    .experience-item header {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .achievements-list li {
-      font-size: 0.9rem;
+    .experience-list {
+      gap: 24px;
     }
   }
 </style>

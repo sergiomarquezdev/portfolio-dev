@@ -5,26 +5,29 @@ const { summary } = basics;
 ---
 
 <Section title="Sobre mí">
-  <p class="about-summary">
-    {summary}
-  </p>
+  <div class="card bg-white hover:bg-white">
+    <p class="text-lg text-gray-700 leading-relaxed mb-0">
+      {summary}
+    </p>
+  </div>
 </Section>
 
 <style>
-  .about-summary {
+  .card {
     font-size: 1.1rem;
     line-height: 1.8;
     color: #34495e;
-    background: #f4f4f4;
-    padding: 24px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     max-width: 900px;
     margin: 0 auto;
+    border-left: 4px solid #1d4e89;
   }
 
   @media (max-width: 700px) {
-    .about-summary {
+    .card {
       padding: 20px;
       font-size: 1rem;
     }

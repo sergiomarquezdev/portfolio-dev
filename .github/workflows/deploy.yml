@@ -39,10 +39,24 @@ jobs:
                   username: ${{ secrets.VPS_USER }}
                   key: ${{ secrets.VPS_SSH_KEY }}
                   script: |
+                      # Backup .env file if it exists
+                      if [ -f /var/www/portfolio-dev/.env ]; then
+                        echo "Backing up .env file"
+                        cp /var/www/portfolio-dev/.env /tmp/portfolio-dev-env-backup
+                      fi
+
+                      # Clean directory but preserve .env
                       sudo rm -rf /var/www/portfolio-dev/*
                       sudo mkdir -p /var/www/portfolio-dev
                       sudo chown -R ${{ secrets.VPS_USER }}:$USER /var/www/portfolio-dev
                       sudo chmod -R 775 /var/www/portfolio-dev
+
+                      # Restore .env file if backup exists
+                      if [ -f /tmp/portfolio-dev-env-backup ]; then
+                        echo "Restoring .env file"
+                        cp /tmp/portfolio-dev-env-backup /var/www/portfolio-dev/.env
+                        rm /tmp/portfolio-dev-env-backup
+                      fi
 
             - name: Deploy files via SSH
               uses: appleboy/scp-action@v0.1.7
