@@ -1,20 +1,22 @@
 ---
 import "../styles/global.css";
+import { SEO } from "astro-seo";
 import MatrixEffect from "@/components/MatrixEffect.astro";
 import Terminal from "@/components/Terminal.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
+import FooterControls from "@/components/FooterControls.astro";
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   image?: string;
 }
 
 const {
-  title = "Sergio Márquez - Full Stack Developer",
-  description = "Portfolio profesional de Sergio Márquez, desarrollador Full Stack especializado en Java, Angular, Docker y Kubernetes.",
-  image = "/images/og-image.jpg"
+  title = "Samuel Marquez - Desarrollador Full Stack",
+  description = "Desarrollador web especializado en tecnologías Frontend y Backend, con experiencia en React, TypeScript, Node.js y .NET.",
+  image = "/img/profile.jpg"
 } = Astro.props;
 ---
 
@@ -25,22 +27,28 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: image,
+        },
+        optional: {
+          description: description,
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        creator: "@samuelmb_dev",
+        title: title,
+        description: description,
+        image: image,
+      }}
+    />
 
     <!-- Preload fonts -->
     <link
@@ -53,40 +61,37 @@ const {
 
     <!-- Theme script -->
     <script is:inline>
-      // Función para establecer el tema
-      function setTheme(theme) {
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
+      // Código para gestión del tema (claro/oscuro)
+      const theme = (() => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+          return localStorage.getItem("theme");
         }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
 
-        // Disparar un evento personalizado para notificar cambios en el tema
-        document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
-      }
-
-      // Comprobar la preferencia del usuario
-      const userTheme = localStorage.getItem('theme');
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-
-      // Establecer el tema inicial
-      if (userTheme) {
-        setTheme(userTheme);
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
       } else {
-        setTheme(systemTheme);
+        document.documentElement.classList.remove("dark");
       }
+
+      window.localStorage.setItem("theme", theme);
 
       // Escuchar cambios en la preferencia del sistema
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-          setTheme(e.matches ? 'dark' : 'light');
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
+        if (localStorage.getItem("theme") === null) {
+          if (e.matches) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+          }
         }
       });
-
-      // Exponer la función para cambiar el tema
-      window.setTheme = setTheme;
     </script>
   </head>
   <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
@@ -95,5 +100,6 @@ const {
     <ScrollToTop />
     <Header />
     <slot />
+    <FooterControls />
   </body>
 </html>
