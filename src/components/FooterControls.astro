@@ -123,8 +123,8 @@
 
       // Configurar nuevo temporizador
       hideTimeout = setTimeout(() => {
-        // Solo ocultar si no estamos en la parte superior y no hay interacción del usuario
-        if (window.scrollY > 100 && !userInteracting) {
+        // Ocultar si no hay interacción del usuario, independientemente de la posición del scroll
+        if (!userInteracting) {
           hideControls();
         }
       }, inactivityDelay) as unknown as number;
@@ -134,14 +134,13 @@
     const updateVisibility = () => {
       const currentScrollY = window.scrollY;
 
-      // Si está en la parte superior, siempre visible
+      // Si está en la parte superior, mostrar inicialmente pero permitir que se oculte después
       if (currentScrollY < 100) {
         showControls();
-        return;
+        // No hacemos return aquí para permitir que el timer de inactividad funcione
       }
-
-      // Si hay un cambio significativo en el scroll
-      if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
+      else if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
+        // Si hay un cambio significativo en el scroll
         if (currentScrollY > lastScrollY) {
           // Scrolling hacia abajo - ocultar
           hideControls();
