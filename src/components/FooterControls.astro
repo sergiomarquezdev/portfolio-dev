@@ -2,7 +2,7 @@
 // FooterControls.astro - Barra de navegación flotante con controles principales
 ---
 
-<div class="fixed md:bottom-2 md:left-0 bottom-4 left-0 right-0 md:right-auto flex items-center justify-center md:justify-start z-40 pointer-events-none">
+<div class="fixed md:top-1/2 md:-translate-y-1/2 md:bottom-auto md:left-0 bottom-4 left-0 right-0 md:right-auto flex items-center justify-center md:justify-start z-40 pointer-events-none">
   <div id="footer-controls" class="transition-all duration-300 transform opacity-100 translate-y-0 md:translate-x-0 pointer-events-auto">
     <div class="flex md:flex-col flex-row items-center md:gap-3 gap-3 md:py-4 md:px-2 py-2 px-3 md:ml-3 mx-auto rounded-full backdrop-blur-md bg-white/40 dark:bg-dark-secondary/90 shadow-lg dark:border dark:border-gray-700/50">
       <!-- Botón para cambiar el tema -->
@@ -191,9 +191,8 @@
     document.addEventListener('mousemove', (e) => {
       if (!isMobile()) {
         const leftThreshold = 50;
-        const verticalThreshold = window.innerHeight / 2;
-
-        if (e.clientX < leftThreshold && e.clientY > verticalThreshold) {
+        // Ya no necesitamos un límite vertical específico ya que los controles están centrados
+        if (e.clientX < leftThreshold) {
           showControls();
         }
       } else {
@@ -219,11 +218,10 @@
             showControls();
           }
         } else {
-          // En desktop, mantener el comportamiento original
+          // En desktop, ajustamos a la posición izquierda sin límite vertical estricto
           const leftThreshold = 30;
-          const verticalThreshold = window.innerHeight / 3;
 
-          if (touch.clientX < leftThreshold && touch.clientY > verticalThreshold) {
+          if (touch.clientX < leftThreshold) {
             showControls();
           }
         }
