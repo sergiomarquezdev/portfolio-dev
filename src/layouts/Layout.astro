@@ -5,7 +5,7 @@ import MatrixEffect from "@/components/MatrixEffect.astro";
 import Terminal from "@/components/Terminal.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
-import FooterControls from "@/components/FooterControls.astro";
+import FloatingToolbar from "@/components/FloatingToolbar.astro";
 
 interface Props {
   title?: string;
@@ -96,6 +96,6 @@ const {
     <ScrollToTop />
     <Header />
     <slot />
-    <FooterControls />
+    <FloatingToolbar />
   </body>
 </html>
