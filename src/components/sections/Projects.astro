@@ -1,72 +1,54 @@
 ---
-import GitHub from "@/icons/GitHub.astro";
+import { GitHubIcon } from "@/icons";
 import Section from "../Section.astro";
 import { projects } from "@cv";
+
+const { title } = Astro.props;
 ---
 
-<Section title="Proyectos">
-  <ul class="projects-grid">
+<Section title={title || "Proyectos"} id="proyectos">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {
-      projects.map(
-        ({ name, description, highlights, url, github, isActive }) => (
-          <li class="project-item">
-            <article class="card h-full flex flex-col">
-              <header class="flex-1">
-                <div class="flex items-center gap-2 mb-3">
-                  <h3 class="text-lg font-bold">
-                    {url ? (
-                      <a
-                        href={url}
-                        target="_blank"
-                        title={`Ver el proyecto ${name}`}
-                        aria-label={`Abrir el proyecto ${name} en una nueva pestaña`}
-                        rel="noopener noreferrer"
-                        class="text-secondary-dark dark:text-gray-200 hover:text-primary dark:hover:text-primary-light"
-                      >
-                        {name}
-                      </a>
-                    ) : (
-                      <span class="text-secondary-dark dark:text-gray-200">{name}</span>
-                    )}
-                  </h3>
-                  {isActive && (
-                    <span
-                      class="active-indicator inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
-                      aria-label="Proyecto en activo"
-                    >
-                      Activo
-                    </span>
-                  )}
-                  {github &&
-                    github.map((link) => (
-                      <a
-                        href={link}
-                        target="_blank"
-                        class="github-link text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light transition-colors"
-                        title={`Ver el código fuente de ${name} en GitHub`}
-                        aria-label={`Ver el código fuente de ${name} en GitHub en una nueva pestaña`}
-                        rel="noopener noreferrer"
-                      >
-                        <GitHub />
-                      </a>
-                    ))}
-                </div>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">{description}</p>
-              </header>
+      projects.map(({ name, description, highlights, url, github }) => (
+        <article class="relative flex flex-col h-full overflow-hidden rounded-xl bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800 transition-colors duration-300 shadow-md hover:shadow-lg p-5 border border-gray-200 dark:border-gray-800">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">{name}</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{description}</p>
 
-              <footer class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
-                <div class="flex flex-wrap gap-2">
-                  {highlights.map((highlight) => (
-                    <span class="skill-tag text-xs">{highlight}</span>
-                  ))}
-                </div>
-              </footer>
-            </article>
-          </li>
-        )
-      )
+          <div class="flex flex-wrap gap-2 mb-4">
+            {highlights.map((tag) => (
+              <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary/20 rounded">{tag}</span>
+            ))}
+          </div>
+
+          <div class="flex gap-4 mt-auto pt-4">
+            {github && (
+              <a
+                href={typeof github === 'string' ? github : Array.isArray(github) ? github[0] : ''}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-700 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"
+                aria-label={`GitHub de ${name}`}
+                title={`Ver código en GitHub de ${name}`}
+              >
+                <GitHubIcon class="w-5 h-5" />
+              </a>
+            )}
+            {url && (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm font-medium text-primary hover:text-primary-dark transition-colors"
+                aria-label={`Visitar ${name}`}
+              >
+                Visitar →
+              </a>
+            )}
+          </div>
+        </article>
+      ))
     }
-  </ul>
+  </div>
 </Section>
 
 <style>

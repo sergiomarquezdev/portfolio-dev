@@ -1,12 +1,7 @@
 ---
 import { basics } from "@cv";
-import Section from "@/components/Section.astro";
-import Mail from "@/icons/Mail.astro";
-import X from "@/icons/X.astro";
-import LinkedIn from "@/icons/LinkedIn.astro";
-import GitHub from "@/icons/GitHub.astro";
-import WorldMap from "@/icons/WorldMap.astro";
-import Blog from "@/icons/Blog.astro";
+import Section from "../Section.astro";
+import { MailIcon as Mail, XIcon as X, LinkedInIcon as LinkedIn, GitHubIcon as GitHub, WorldMapIcon as WorldMap, BlogIcon as Blog } from "@/icons";
 import type { SocialIcon } from "@/types";
 
 const { name, label, image, imageAlt, location, profiles, email } = basics;
