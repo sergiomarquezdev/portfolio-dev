@@ -1,3 +1,17 @@
+/**
+ * commands.ts - Sistema de procesamiento de comandos para la terminal interactiva
+ *
+ * Este módulo implementa:
+ * - Procesamiento de comandos de la terminal (help, about, skills, etc.)
+ * - Funcionalidad de autocompletado de comandos
+ * - Respuestas formateadas con colores y estilos
+ * - Sistema de navegación entre directorios virtuales
+ * - Comandos especiales como matrix y konami
+ *
+ * Cada comando tiene su propia implementación y puede interactuar con otros
+ * componentes del sistema, como el efecto Matrix o los datos del CV.
+ */
+
 // Terminal commands processing
 import { portfolioData, sections } from './types';
 

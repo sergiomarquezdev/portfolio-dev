@@ -1,4 +1,13 @@
 ---
+/**
+ * Layout.astro - Componente de plantilla principal para todas las páginas
+ *
+ * Características:
+ * - Configura el HTML base, metadatos SEO y estilos globales
+ * - Incluye componentes principales como Terminal, Header y FloatingToolbar
+ * - Maneja la lógica de cambio de tema claro/oscuro
+ * - Proporciona una estructura semántica accesible
+ */
 import "../styles/global.css";
 import { SEO } from "astro-seo";
 import MatrixEffect from "@/components/MatrixEffect.astro";
@@ -14,9 +23,9 @@ interface Props {
 }
 
 const {
-  title = "Samuel Marquez - Desarrollador Full Stack",
-  description = "Desarrollador web especializado en tecnologías Frontend y Backend, con experiencia en React, TypeScript, Node.js y .NET.",
-  image = "/img/profile.jpg"
+  title = "Sergio Márquez - Desarrollador Full Stack",
+  description = "Desarrollador Full Stack con experiencia avanzada en Java, Spring Framework, Angular, Docker y Kubernetes. Especializado en crear aplicaciones web robustas y escalables.",
+  image = "/img/sergio-marquez-perez-profile-picture.webp"
 } = Astro.props;
 ---
 
@@ -43,7 +52,7 @@ const {
       }}
       twitter={{
         card: "summary_large_image",
-        creator: "@samuelmb_dev",
+        creator: "@smarquezdev",
         title: title,
         description: description,
         image: image,

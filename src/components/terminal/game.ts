@@ -1,3 +1,17 @@
+/**
+ * game.ts - Implementación de juegos interactivos para la terminal
+ *
+ * Este módulo proporciona:
+ * - Mini-juego principal de "atrapa el objetivo" desbloqueado con código Konami
+ * - Juego de adivinar número disponible como comando directo
+ * - Sistema de detector de código Konami (secuencia ↑↓←→)
+ * - Recompensas visuales (modo Matrix avanzado) al completar los juegos
+ * - Lógica adaptativa para diferentes dispositivos (desktop/móvil)
+ *
+ * Los juegos están diseñados para ser accesibles y proporcionar una
+ * experiencia interactiva dentro del entorno de la terminal.
+ */
+
 // Terminal mini-game functionality
 
 export function startGame(

@@ -1,3 +1,17 @@
+/**
+ * types.ts - Definiciones de tipos e interfaces para la terminal interactiva
+ *
+ * Este módulo proporciona:
+ * - Interfaces TypeScript para la terminal y sus componentes
+ * - Datos de portfolio para mostrar en respuestas de comandos
+ * - Estructura de secciones para navegación en la terminal
+ * - Detección de dispositivos para adaptar comportamiento
+ * - Extensiones de la interfaz Window para funcionalidades globales
+ *
+ * Centraliza todas las definiciones de tipos para garantizar consistencia
+ * en todo el sistema de terminal interactiva.
+ */
+
 // Terminal types and data
 
 // Portfolio data for commands

@@ -1,4 +1,14 @@
 ---
+/**
+ * Projects.astro - Componente para mostrar la lista de proyectos
+ *
+ * Características:
+ * - Muestra proyectos en formato de tarjetas en una cuadrícula responsive
+ * - Cada tarjeta incluye nombre, descripción completa, etiquetas de tecnologías
+ * - Enlaces a GitHub y al proyecto en vivo cuando están disponibles
+ * - Diseño adaptativo: 1 columna en móvil, 2 en tablet, 3 en desktop
+ * - Las tarjetas utilizan flexbox para posicionar los enlaces en la parte inferior
+ */
 import { GitHubIcon } from "@/icons";
 import Section from "../Section.astro";
 import { projects } from "@cv";

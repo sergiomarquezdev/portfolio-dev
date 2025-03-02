@@ -1,8 +1,19 @@
 ---
+/**
+ * Hero.astro - Componente principal de encabezado del portfolio
+ *
+ * Características:
+ * - Muestra información principal del perfil: nombre, título, ubicación
+ * - Presenta avatar/imagen de perfil optimizada para móvil y desktop
+ * - Incluye enlaces a redes sociales y correo electrónico
+ * - Implementa diseño responsivo con diferentes layouts para móvil y desktop
+ * - Optimiza la experiencia con efectos visuales como blur en el fondo del avatar
+ * - Adapta la presentación de elementos según el tamaño de pantalla
+ * - Separa el contenido para impresión y visualización web
+ */
 import { basics } from "@cv";
 import Section from "../Section.astro";
-import { MailIcon as Mail, XIcon as X, LinkedInIcon as LinkedIn, GitHubIcon as GitHub, WorldMapIcon as WorldMap, BlogIcon as Blog } from "@/icons";
-import type { SocialIcon } from "@/types";
+import { MailIcon as Mail, XIcon as X, LinkedInIcon as LinkedIn, GitHubIcon as GitHub, WorldMapIcon as WorldMap, BlogIcon as Blog, type SocialIcon } from "@/icons";
 
 const { name, label, image, imageAlt, location, profiles, email } = basics;
 const { city, region } = location;

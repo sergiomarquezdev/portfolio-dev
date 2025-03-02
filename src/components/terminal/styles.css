@@ -1,3 +1,16 @@
+/**
+ * styles.css - Estilos específicos para la terminal interactiva
+ *
+ * Este archivo proporciona:
+ * - Estilos base para el contenedor de la terminal
+ * - Colores y efectos visuales para el texto y elementos interactivos
+ * - Animaciones para el cursor parpadeante y efectos de tipado
+ * - Personalización de la barra de desplazamiento para mejor estética
+ * - Estilos para los diferentes estados de la terminal (maximizada, etc.)
+ * - Efectos visuales específicos para el modo desarrollador
+ * - Estilos adaptados para modo claro/oscuro y diferentes dispositivos
+ */
+
 /* Terminal styles */
 
 /* Estilo para el cursor parpadeante */

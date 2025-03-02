@@ -1,3 +1,18 @@
+/**
+ * index.ts - Sistema centralizado de iconos para el portfolio
+ *
+ * Todos los iconos del proyecto están accesibles desde este único punto de importación,
+ * organizados por categorías para facilitar su identificación y mantenimiento.
+ *
+ * Esta estructura simplificada facilita:
+ * 1. Importación con una sola línea en componentes consumidores
+ * 2. Mantenimiento centralizado de los iconos del proyecto
+ * 3. Consistencia visual en toda la aplicación
+ */
+
+// Definición de tipos relacionados con iconos
+export type SocialIcon = Record<string, any>;
+
 // UI Icons
 export { default as SunIcon } from './ui/SunIcon.astro';
 export { default as MoonIcon } from './ui/MoonIcon.astro';
@@ -30,9 +45,9 @@ export { default as FirebaseIcon } from './tech/firebase.astro';
 export { default as AstroIcon } from './tech/astrosvg.astro';
 export { default as CICDIcon } from './tech/cicd.astro';
 
-// Social/Misc Icons
-export { default as LinkedInIcon } from './social/LinkedIn.astro';
+// Social Icons
 export { default as GitHubIcon } from './social/GitHub.astro';
+export { default as LinkedInIcon } from './social/LinkedIn.astro';
 export { default as XIcon } from './social/X.astro';
 export { default as MailIcon } from './social/Mail.astro';
 export { default as WorldMapIcon } from './social/WorldMap.astro';

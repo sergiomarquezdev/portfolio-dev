@@ -1,3 +1,18 @@
+/**
+ * utils.ts - Utilidades para el funcionamiento de la terminal interactiva
+ *
+ * Este módulo proporciona:
+ * - Funciones para añadir texto a la terminal con efectos de tipado
+ * - Control de visibilidad de la terminal (mostrar/ocultar)
+ * - Funcionalidad para maximizar y restaurar la terminal
+ * - Sistema de arrastre para mover la terminal por la pantalla
+ * - Inicialización de la terminal con mensaje de bienvenida
+ * - Tipos auxiliares para funciones de callback
+ *
+ * Implementa la lógica central para la manipulación de la interfaz
+ * de la terminal, separando estas funcionalidades del resto del código.
+ */
+
 // Terminal utility functions
 
 // Function to add text to the terminal with typing effect

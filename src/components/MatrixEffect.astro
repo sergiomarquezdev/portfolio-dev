@@ -1,3 +1,18 @@
+---
+/**
+ * MatrixEffect.astro - Efecto visual estilo "Matrix" para el modo desarrollador
+ *
+ * Características:
+ * - Genera un efecto de "lluvia de código" similar al de la película Matrix
+ * - Se activa/desactiva mediante comandos en la terminal o botón dedicado
+ * - Incluye modo avanzado con colores especiales (desbloqueable)
+ * - Optimizado para rendimiento con requestAnimationFrame
+ * - Adaptable a diferentes tamaños de pantalla
+ * - Funciona como capa visual sin interferir con la interacción del usuario
+ * - Se integra con otros componentes a través de la API window
+ */
+---
+
 <canvas id="matrix-canvas" class="hidden fixed top-0 left-0 w-full h-full pointer-events-none z-10 opacity-0 transition-opacity duration-1000 ease-in-out"></canvas>
 
 <script>
