@@ -39,7 +39,7 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
   - Soporte para atajos de teclado (Ctrl+Alt+T para abrir/cerrar)
   - Modo desarrollador con efectos visuales especiales
   - Terminal redimensionable, maximizable y arrastrable
-  - Huevo de pascua con código Konami (↑↑↓↓←→←→BA)
+  - Huevo de pascua con código Konami (↑↓←→) que desbloquea un mini-juego con interfaz adaptativa
 
 - **Experiencia de Usuario Mejorada**
   - Animaciones de entrada para elementos cuando entran en el viewport
@@ -213,6 +213,7 @@ El portfolio incluye varias mejoras de UX para una experiencia más atractiva:
 - **Scroll automático** en componentes interactivos para mejor usabilidad
 - **Controles adaptativos** que se ajustan a diferentes dimensiones de pantalla
 - **Transiciones inteligentes** en elementos interactivos según el contexto de uso
+- **Interfaz contextual** que se adapta al progreso del usuario
 
 ## 💻 Terminal Interactiva
 
@@ -233,9 +234,13 @@ Una de las características más destacadas es la terminal interactiva que permi
   - **Atajos de teclado** - Ctrl+Alt+T para abrir/cerrar la terminal
   - **Modo desarrollador** - Activa efectos visuales especiales
   - **Interfaz personalizable** - Terminal redimensionable, maximizable y arrastrable
-  - **Código Konami** - Descubre el huevo de pascua con la secuencia ↑↑↓↓←→←→BA (solo en desktop)
+  - **Código Konami** - Secuencia ↑↓←→ que desbloquea un mini-juego con interfaz dinámica:
+    - Instrucciones que desaparecen automáticamente tras el primer punto
+    - Feedback visual inmediato al conseguir objetivos
+    - Recompensa especial al completar 5 niveles (activación automática del modo Matrix avanzado)
   - **Retroalimentación visual** - Respuestas adaptadas al contexto móvil/desktop
   - **Diseño responsivo** - Se adapta perfectamente a diferentes tamaños de pantalla
+  - **Experiencia progresiva** - La interfaz evoluciona según la interacción del usuario
 
 ## 📱 Optimización Móvil
 
