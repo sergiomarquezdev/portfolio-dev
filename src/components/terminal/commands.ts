@@ -1,6 +1,9 @@
 // Terminal commands processing
 import { portfolioData, sections, isMobileDevice } from './types';
 
+// Importar solo la función necesaria para el juego de adivinanza
+import { runMiniGame } from './game';
+
 // Function to process commands
 export function processCommand(
   command: string,
@@ -197,20 +200,21 @@ export function processCommand(
       return { currentDirectory: updatedDirectory };
       break;
 
+    case 'game':
+      appendToTerminal('Iniciando juego de adivinar el número...', 'terminal-text-blue', false);
+      let gameProcessor = runMiniGame(appendToTerminal);
+      return {
+        activeGame: gameProcessor,
+        currentDirectory
+      };
+
     case 'konami':
-      // Verificar si estamos en un dispositivo móvil
-      if (isMobileDevice()) {
-        appendToTerminal('<span class="terminal-text-red">Esta función solo está disponible en ordenadores de escritorio.</span>', '', true);
-        return { currentDirectory };
-      }
-
-      appendToTerminal('<span class="terminal-text-yellow">¡Has descubierto un huevo de pascua!</span>', '', true);
-      appendToTerminal('<span class="terminal-text-green">Código Konami activado: <span class="terminal-text-white">↑ ↓ ← →</span></span>', '', true);
-
-      import('./game').then(module => {
-        module.startGame(appendToTerminal, terminalOutput);
-      });
-      break;
+      // Solo dar una pista sobre el código secreto
+      appendToTerminal('<span class="terminal-text-yellow">¡Has descubierto una pista secreta!</span>', '', true);
+      appendToTerminal('<span class="terminal-text-green">Código Konami: <span class="terminal-text-white">↑ ↓ ← →</span></span>', '', true);
+      appendToTerminal('<span class="terminal-text-blue">Presiona esta secuencia de teclas para desbloquear un mini-juego.</span>', '', true);
+      appendToTerminal('<span class="terminal-text-blue">Completa el juego para descubrir un efecto visual especial.</span>', '', true);
+      return { currentDirectory };
 
     default:
       appendToTerminal(`<span class="terminal-text-red">Error: Comando no reconocido: <span class="terminal-text-white">${command}</span></span>`, '', true);
@@ -221,13 +225,13 @@ export function processCommand(
   return { currentDirectory };
 }
 
-// Function to get command suggestions for autocomplete
-export function getCommandSuggestions(input: string) {
-  if (!input) return [];
+// Exportar lista de comandos para autocompletado y ayuda
+export function getCommandSuggestions(input: string): string[] {
+  const commands = [
+    'help', 'clear', 'echo', 'date', 'ls', 'cd', 'cat', 'pwd', 'whoami', 'uname',
+    'exit', 'github', 'linkedin', 'email', 'game', 'theme', 'devmode', 'matrix', 'konami'
+  ];
 
-  const possibleCommands = portfolioData.commands
-    .map(cmd => cmd.name)
-    .filter(cmd => cmd.startsWith(input.toLowerCase()));
-
-  return possibleCommands;
+  // Filtrar comandos que coincidan con la entrada
+  return commands.filter(cmd => cmd.startsWith(input.toLowerCase()));
 }

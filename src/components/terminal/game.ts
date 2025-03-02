@@ -10,12 +10,19 @@ export function startGame(
   gameContainer.style.backgroundColor = '#1f2937'; // Fondo oscuro fijo
   gameContainer.innerHTML = `
     <p class="text-center terminal-text-yellow mb-2">¡Mini-juego desbloqueado!</p>
-    <div id="game-container" class="w-full h-40 relative overflow-hidden rounded" style="background-color: #111827;">
+    <div class="flex justify-between items-center mb-2">
+      <div class="terminal-text-green font-medium">Objetivo: 5 puntos</div>
+      <div id="game-score" class="terminal-text-white font-medium">Puntos: 0</div>
+    </div>
+    <div id="game-container" class="w-full h-48 relative overflow-hidden rounded" style="background-color: #111827;">
       <div id="game-player" class="absolute w-6 h-6 rounded-full" style="background-color: #10b981; bottom: 10px; left: 10px;"></div>
       <div id="game-goal" class="absolute w-6 h-6 rounded-full" style="background-color: #fbbf24; top: 10px; right: 10px;"></div>
       <div class="absolute bottom-2 left-2 text-xs terminal-text-white">Usa las flechas para mover</div>
       <div class="absolute bottom-2 right-2 text-xs terminal-text-white">ESC para salir</div>
-      <div id="game-score" class="absolute top-2 right-2 text-xs terminal-text-white">Puntos: 0</div>
+      <div id="game-instruction" class="absolute top-2 left-0 w-full text-center text-xs terminal-text-green font-medium bg-black bg-opacity-40 py-1"
+        style="transition: opacity 0.3s ease-out;">
+        ¡Atrapa todas las esferas amarillas para descubrir el secreto!
+      </div>
     </div>
   `;
   terminalOutput?.appendChild(gameContainer);
@@ -106,8 +113,21 @@ export function startGame(
           }
         }, 200);
 
-        // Terminar el juego después de 10 puntos
-        if (score >= 10) {
+        // Ocultar el mensaje de instrucción después del primer punto
+        if (score === 1) {
+          const instructionMessage = document.getElementById('game-instruction');
+          if (instructionMessage) {
+            instructionMessage.style.opacity = '0';
+            setTimeout(() => {
+              if (instructionMessage) {
+                instructionMessage.style.display = 'none';
+              }
+            }, 300); // Esperar a que termine la transición de opacidad
+          }
+        }
+
+        // Terminar el juego después de 5 puntos
+        if (score >= 5) {
           gameActive = false;
           appendToTerminal('<span class="terminal-text-green">¡Felicidades! Has completado el mini-juego.</span>', '', true);
           appendToTerminal('<span class="terminal-text-yellow">Recompensa desbloqueada: Modo Matrix Avanzado</span>', '', true);
@@ -160,29 +180,23 @@ function isMobileDevice(): boolean {
 
 // Función para configurar la detección del código Konami
 export function setupKonamiCodeDetector(
-  toggleTerminal: () => boolean,
-  isTerminalOpen: () => boolean,
+  toggleTerminal: () => boolean | undefined,
+  isTerminalOpen: () => boolean | undefined,
   terminalInput: HTMLInputElement | null
 ) {
   // No inicializar en dispositivos móviles
   if (isMobileDevice()) {
+    console.log("Dispositivo móvil detectado. Código Konami desactivado.");
     return; // Salir de la función sin configurar nada
   }
 
+  console.log("Código Konami inicializado. Secuencia: ↑↓←→");
+
+  // Configurar un único event listener para detectar el código
   document.addEventListener('keydown', (e) => {
-    // Si el foco está en un input o textarea, no activar el código Konami
-    const target = e.target as HTMLElement;
-    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
-      if (target !== terminalInput) {
-        return;
-      }
-    }
-
     // Comprobar si la tecla pulsada coincide con la siguiente en la secuencia
-    const key = e.key.toLowerCase();
-    const requiredKey = konamiCode[konamiCodePosition].toLowerCase();
-
-    if (key === requiredKey) {
+    if (e.key === konamiCode[konamiCodePosition]) {
+      // Avanzar en la secuencia
       konamiCodePosition++;
 
       // Si se ha completado toda la secuencia
@@ -195,34 +209,68 @@ export function setupKonamiCodeDetector(
           window.toggleMatrixEffect();
         }
 
-        // Abrir la terminal y mostrar mensaje si no está abierta
-        if (!isTerminalOpen()) {
-          toggleTerminal();
-
-          // Esperar a que la terminal esté abierta
-          setTimeout(() => {
-            // Buscar el elemento de salida de la terminal
-            const terminalOutput = document.getElementById('terminal-output');
-            if (terminalOutput) {
-              // Añadir un mensaje especial
-              const message = document.createElement('p');
-              message.innerHTML = '<span class="terminal-text-green">¡Código Konami activado! El modo Matrix ha sido habilitado.</span>';
-              terminalOutput.appendChild(message);
-
-              // Asegurar scroll al final
-              const terminalContent = document.getElementById('terminal-content');
-              if (terminalContent) {
-                terminalContent.scrollTop = terminalContent.scrollHeight;
-              }
-            }
-          }, 300);
-        }
+        // Gestionar la terminal y el juego
+        handleKonamiSuccess(toggleTerminal, isTerminalOpen);
       }
     } else {
       // Reiniciar la secuencia si hay un error
       konamiCodePosition = 0;
     }
   });
+}
+
+// Función auxiliar para manejar el éxito del código Konami
+function handleKonamiSuccess(
+  toggleTerminal: () => boolean | undefined,
+  isTerminalOpen: () => boolean | undefined
+) {
+  // Si la terminal ya está abierta, añadir mensaje y activar juego
+  if (isTerminalOpen()) {
+    activateKonamiGame();
+  } else {
+    // Si la terminal no está abierta, abrirla primero
+    toggleTerminal();
+
+    // Esperar a que la terminal esté abierta
+    setTimeout(activateKonamiGame, 300);
+  }
+}
+
+// Función para activar el juego Konami
+function activateKonamiGame() {
+  const terminalOutput = document.getElementById('terminal-output');
+  if (!terminalOutput) return;
+
+  // Añadir mensaje especial
+  const message = document.createElement('p');
+  message.innerHTML = '<span class="terminal-text-green">¡Código Konami activado! Se ha habilitado el modo Matrix y el mini-juego.</span>';
+  terminalOutput.appendChild(message);
+
+  // Añadir instrucciones del juego
+  const instructions = document.createElement('p');
+  instructions.innerHTML = '<span class="terminal-text-yellow">Objetivo:</span> <span class="terminal-text-white">Alcanza el punto amarillo con tu círculo verde. Completa 5 niveles para desbloquear el modo Matrix avanzado.</span>';
+  terminalOutput.appendChild(instructions);
+
+  // Función para añadir texto a la terminal
+  const appendToGameTerminal = (text: string, className: string = "", typeEffect: boolean = false) => {
+    const p = document.createElement('p');
+    if (className) p.className = className;
+    p.innerHTML = text;
+    terminalOutput.appendChild(p);
+
+    // Asegurar scroll al final
+    const content = document.getElementById('terminal-content');
+    if (content) content.scrollTop = content.scrollHeight;
+  };
+
+  // Iniciar el juego
+  startGame(appendToGameTerminal, terminalOutput);
+
+  // Asegurar scroll al final
+  const terminalContent = document.getElementById('terminal-content');
+  if (terminalContent) {
+    terminalContent.scrollTop = terminalContent.scrollHeight;
+  }
 }
 
 // Juego bonus para la terminal
@@ -326,5 +374,6 @@ declare global {
   interface Window {
     toggleMatrixEffect?: () => boolean;
     toggleCodeEffect?: () => boolean;
+    toggleAdvancedCodeEffect?: () => boolean;
   }
 }

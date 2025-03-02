@@ -85,40 +85,41 @@ export function createToggleTerminal(terminalContainer: HTMLElement | null, term
 
 // Function to toggle maximize/restore terminal
 export function createToggleMaximize(terminalContainer: HTMLElement | null) {
+  let isMaximized = false;
+
+  // Guardar las propiedades originales
+  let originalStyles = {
+    width: '',
+    height: '',
+    bottom: '',
+    right: '',
+    top: '',
+    left: ''
+  };
+
   return function toggleMaximize() {
     if (!terminalContainer) return false;
 
-    const isMaximized = terminalContainer.style.top === '80px';
+    if (!isMaximized) {
+      // Guardar el estado actual
+      originalStyles = {
+        width: terminalContainer.style.width || '',
+        height: terminalContainer.style.height || '',
+        bottom: terminalContainer.style.bottom || '',
+        right: terminalContainer.style.right || '',
+        top: terminalContainer.style.top || '',
+        left: terminalContainer.style.left || ''
+      };
 
-    if (isMaximized) {
-      // Restaurar tamaño original
-      terminalContainer.style.top = '';
-      terminalContainer.style.right = '';
-      terminalContainer.style.bottom = '';
-      terminalContainer.style.left = '';
-      terminalContainer.style.width = '';
-      terminalContainer.style.height = '';
-      terminalContainer.style.maxWidth = '';
-      terminalContainer.style.maxHeight = '';
-      terminalContainer.style.transform = '';
-
-      // Actualizar el botón maximizar (si existe)
-      const terminalMaximize = document.getElementById('terminal-maximize');
-      if (terminalMaximize) {
-        terminalMaximize.setAttribute('title', 'Maximizar');
-        terminalMaximize.setAttribute('aria-label', 'Maximizar terminal');
-      }
-    } else {
       // Maximizar
-      terminalContainer.style.top = '80px';
+      terminalContainer.style.top = '80px'; // Dejar espacio para la barra de navegación
+      terminalContainer.style.left = '20px';
       terminalContainer.style.right = '20px';
       terminalContainer.style.bottom = '20px';
-      terminalContainer.style.left = '20px';
-      terminalContainer.style.width = 'auto';
-      terminalContainer.style.height = 'auto';
+      terminalContainer.style.width = 'calc(100% - 40px)';
+      terminalContainer.style.height = 'calc(100% - 100px)';
       terminalContainer.style.maxWidth = 'none';
-      terminalContainer.style.maxHeight = 'none';
-      terminalContainer.style.transform = 'none';
+      isMaximized = true;
 
       // Actualizar el botón maximizar (si existe)
       const terminalMaximize = document.getElementById('terminal-maximize');
@@ -126,9 +127,26 @@ export function createToggleMaximize(terminalContainer: HTMLElement | null) {
         terminalMaximize.setAttribute('title', 'Restaurar');
         terminalMaximize.setAttribute('aria-label', 'Restaurar terminal');
       }
+    } else {
+      // Restaurar el estado original
+      terminalContainer.style.width = originalStyles.width;
+      terminalContainer.style.height = originalStyles.height;
+      terminalContainer.style.bottom = originalStyles.bottom;
+      terminalContainer.style.right = originalStyles.right;
+      terminalContainer.style.top = originalStyles.top;
+      terminalContainer.style.left = originalStyles.left;
+      terminalContainer.style.maxWidth = '';
+      isMaximized = false;
+
+      // Actualizar el botón maximizar (si existe)
+      const terminalMaximize = document.getElementById('terminal-maximize');
+      if (terminalMaximize) {
+        terminalMaximize.setAttribute('title', 'Maximizar');
+        terminalMaximize.setAttribute('aria-label', 'Maximizar terminal');
+      }
     }
 
-    return !isMaximized;
+    return isMaximized;
   };
 }
 
