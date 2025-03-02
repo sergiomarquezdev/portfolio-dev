@@ -1,5 +1,5 @@
 // Terminal commands processing
-import { portfolioData, sections, isMobileDevice } from './types';
+import { portfolioData, sections } from './types';
 
 // Importar solo la función necesaria para el juego de adivinanza
 import { runMiniGame } from './game';
@@ -11,7 +11,6 @@ export function processCommand(
   appendToTerminal: (text: string, className?: string, typeEffect?: boolean) => void,
   toggleTerminal: () => void,
   devModeToggle: HTMLElement | null,
-  isDevModeActive: boolean,
   setDevModeActive: (active: boolean) => void,
   terminalOutput: HTMLElement | null
 ) {
@@ -198,7 +197,6 @@ export function processCommand(
       }
 
       return { currentDirectory: updatedDirectory };
-      break;
 
     case 'game':
       appendToTerminal('Iniciando juego de adivinar el número...', 'terminal-text-blue', false);

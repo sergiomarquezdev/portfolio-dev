@@ -200,8 +200,7 @@ import './styles.css';
         appendToTerminal,
         toggleTerminal,
         devModeToggle,
-        isDevModeActive,
-        (active) => { isDevModeActive = active; },
+        (active: boolean) => { isDevModeActive = active; },
         terminalOutput
       );
 
@@ -314,8 +313,7 @@ import './styles.css';
     setTimeout(() => {
       setupKonamiCodeDetector(
         toggleTerminal,
-        isTerminalOpen,
-        terminalInput
+        isTerminalOpen
       );
     }, 300);
 
@@ -350,29 +348,55 @@ import './styles.css';
   /* Mejora de las animaciones */
   button {
     transform: translateZ(0); /* Optimizar rendimiento de animaciones */
+    position: relative; /* Asegurar que los tooltips se posicionen correctamente */
   }
 
   /* Tooltip personalizado para botones */
-  button[title]:hover::after {
+  button[title]::before {
     content: attr(title);
     position: absolute;
-    top: -30px;
+    top: -35px;
     left: 50%;
     transform: translateX(-50%);
     padding: 4px 8px;
     border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #111827;
     color: white;
     font-size: 12px;
     white-space: nowrap;
     z-index: 1000;
     opacity: 0;
-    animation: fadeIn 0.3s forwards;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    pointer-events: none;
+    border: 1px solid #374151;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   }
 
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
+  button[title]:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Flecha para el tooltip */
+  button[title]::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #111827 transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  button[title]:hover::after {
+    opacity: 1;
+    visibility: visible;
   }
 </style>

@@ -181,16 +181,12 @@ function isMobileDevice(): boolean {
 // Función para configurar la detección del código Konami
 export function setupKonamiCodeDetector(
   toggleTerminal: () => boolean | undefined,
-  isTerminalOpen: () => boolean | undefined,
-  terminalInput: HTMLInputElement | null
+  isTerminalOpen: () => boolean | undefined
 ) {
   // No inicializar en dispositivos móviles
   if (isMobileDevice()) {
-    console.log("Dispositivo móvil detectado. Código Konami desactivado.");
     return; // Salir de la función sin configurar nada
   }
-
-  console.log("Código Konami inicializado. Secuencia: ↑↓←→");
 
   // Configurar un único event listener para detectar el código
   document.addEventListener('keydown', (e) => {
@@ -252,7 +248,7 @@ function activateKonamiGame() {
   terminalOutput.appendChild(instructions);
 
   // Función para añadir texto a la terminal
-  const appendToGameTerminal = (text: string, className: string = "", typeEffect: boolean = false) => {
+  const appendToGameTerminal = (text: string, className: string = "") => {
     const p = document.createElement('p');
     if (className) p.className = className;
     p.innerHTML = text;

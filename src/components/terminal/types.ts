@@ -79,6 +79,5 @@ declare global {
     toggleMatrixEffect?: () => boolean;
     toggleCodeEffect?: () => boolean;
     toggleAdvancedCodeEffect?: () => boolean;
-    isCodeEffectActive?: () => boolean;
   }
 }

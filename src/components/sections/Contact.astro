@@ -174,7 +174,7 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
     const submitButton = document.querySelector('button[type="submit"]') as HTMLButtonElement;
 
     if (!form || !result || !submitButton) {
-      console.log("Form, result, or submitButton elements not found.");
+      console.warn("No se pudieron encontrar elementos del formulario de contacto.");
       return;
     }
 
@@ -214,13 +214,15 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
             form.reset();
             form.classList.remove("was-validated");
           } else {
-            console.log(response);
+            if (response.status >= 500) {
+              console.error("Error del servidor al enviar el formulario:", response.status);
+            }
             result.classList.add("error");
             result.innerHTML = json.message;
           }
         })
         .catch((error) => {
-          console.log(error);
+          console.error("Error al enviar el formulario:", error);
           result.innerHTML = "Algo salió mal. Por favor, inténtalo de nuevo.";
           result.classList.add("error");
         })

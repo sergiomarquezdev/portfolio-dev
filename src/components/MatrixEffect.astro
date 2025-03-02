@@ -39,15 +39,6 @@
       canvas.classList.add('opacity-70');
     }, 100);
 
-    // Mensaje en la consola
-    if (isAdvancedMode) {
-      console.log('%c¡Modo Desarrollador Avanzado activado!', 'color: #00FFFF; font-weight: bold; font-size: 14px; text-shadow: 0 0 5px #00FFFF;');
-      console.log('%cHas desbloqueado la versión mejorada...', 'color: #00FFFF; font-style: italic;');
-    } else {
-      console.log('%c¡Modo Desarrollador activado!', 'color: #00FF00; font-weight: bold; font-size: 14px; text-shadow: 0 0 5px #00FF00;');
-      console.log('%cBienvenido al mundo del código...', 'color: #00FF00; font-style: italic;');
-    }
-
     // Ajustar el tamaño del canvas al tamaño de la ventana
     function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -197,9 +188,6 @@
       canvas.classList.remove('opacity-70');
     }
 
-    // Mensaje en la consola
-    console.log('%cModo Desarrollador desactivado', 'color: #888; font-style: italic;');
-
     // Limpiar el intervalo después de la animación
     setTimeout(() => {
       if (codeInterval) {
@@ -244,13 +232,14 @@
     return true;
   };
 
-  // Declarar los tipos para TypeScript
+  // Definir tipos globales
   declare global {
     interface Window {
-      initCodeEffect: typeof initCodeEffect;
-      stopCodeEffect: typeof stopCodeEffect;
-      toggleCodeEffect: () => boolean;
-      toggleAdvancedCodeEffect: () => boolean;
+      toggleMatrixEffect?: () => boolean;
+      toggleCodeEffect?: () => boolean;
+      toggleAdvancedCodeEffect?: () => boolean;
+      initCodeEffect?: typeof initCodeEffect;
+      stopCodeEffect?: typeof stopCodeEffect;
     }
   }
 </script>
