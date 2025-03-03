@@ -1,78 +1,134 @@
 # Portfolio de Sergio Márquez - sergiomarquez.dev
 
-![Astro](https://img.shields.io/badge/Astro-5.3.1-orange)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.7.3-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC)
-![Partytown](https://img.shields.io/badge/Partytown-2.1.3-green)
-![Sitemap](https://img.shields.io/badge/Sitemap-3.2.1-brightgreen)
-[![Deployment Status](https://github.com/sergiomarquezdev/portfolio-dev/actions/workflows/deploy.yml/badge.svg)](https://github.com/sergiomarquezdev/portfolio-dev/actions/workflows/deploy.yml)
+<div align="center">
+  <img src="https://img.shields.io/badge/Astro-5.3.1-orange" alt="Astro">
+  <img src="https://img.shields.io/badge/TypeScript-5.7.3-blue" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Partytown-2.1.3-green" alt="Partytown">
+  <img src="https://img.shields.io/badge/Sitemap-3.2.1-brightgreen" alt="Sitemap">
+  <a href="https://github.com/sergiomarquezdev/portfolio-dev/actions/workflows/deploy.yml">
+    <img src="https://github.com/sergiomarquezdev/portfolio-dev/actions/workflows/deploy.yml/badge.svg" alt="Deployment Status">
+  </a>
+  <br>
+  <br>
+  <a href="https://sergiomarquez.dev" target="_blank">
+    <img src="public/img/portfolio-preview.png" alt="Portfolio Preview" width="600">
+  </a>
+  <br>
+  <strong>
+    <a href="https://sergiomarquez.dev" target="_blank">Visitar Portfolio ↗</a>
+  </strong>
+</div>
+
+## 📋 Tabla de contenidos
+
+- [Descripción](#-descripción)
+- [Características Principales](#-características-principales)
+- [Demo](#-demo)
+- [Stack Tecnológico](#️-stack-tecnológico)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Inicio Rápido](#-inicio-rápido)
+- [Scripts Disponibles](#-scripts-disponibles)
+- [Flujo de Despliegue](#-flujo-de-despliegue)
+- [Optimizaciones de Rendimiento](#-optimizaciones-de-rendimiento)
+- [Animaciones y Experiencia de Usuario](#-animaciones-y-experiencia-de-usuario)
+- [Terminal Interactiva](#-terminal-interactiva)
+- [Licencia](#-licencia)
+- [Contacto](#-contacto)
 
 ## 🎯 Descripción
 
 Portfolio personal moderno y optimizado para desarrolladores, construido con **Astro** y **Tailwind CSS**. Diseñado para mostrar mi experiencia como Desarrollador Full Stack, proyectos destacados y habilidades técnicas con un enfoque en rendimiento, experiencia de usuario y SEO.
 
-🌐 [Visitar Portfolio](https://sergiomarquez.dev)
-
 ## ✨ Características Principales
 
-- **Rendimiento Optimizado**
-  - Construido con Astro 5.3.1 para una carga ultra rápida (<0.5s FCP)
-  - Optimización automática de imágenes y recursos estáticos
-  - Puntuación perfecta en Lighthouse (Performance, Accessibility, SEO)
-  - Uso de Partytown para scripts de terceros sin bloqueo
+<details>
+<summary><strong>Rendimiento Optimizado</strong></summary>
+<br>
 
-- **Diseño Profesional**
-  - Interfaz minimalista y moderna con Tailwind CSS
-  - Diseño totalmente responsive (Mobile-first)
-  - Optimizado para experiencia móvil con controles adaptables
-  - Animaciones elegantes con CSS nativo y Intersection Observer
-  - Navegación intuitiva con secciones bien definidas
-  - Indicador de progreso de lectura
-  - Botón "Volver arriba" con aparición inteligente
-  - Barra de herramientas flotante con funciones de cambio de tema, activación de modo desarrollador y apertura de terminal
+- Construido con Astro 5.3.1 para una carga ultra rápida (<0.5s FCP)
+- Optimización automática de imágenes y recursos estáticos
+- Puntuación perfecta en Lighthouse (Performance, Accessibility, SEO)
+- Uso de Partytown para scripts de terceros sin bloqueo
+</details>
 
-- **Terminal Interactiva**
-  - Terminal completamente funcional integrada en la interfaz
-  - Comandos personalizados para explorar el portfolio (help, about, skills, projects, contact)
-  - Autocompletado de comandos con Tab
-  - Historial de comandos navegable con flechas arriba/abajo
-  - Efectos de escritura para una experiencia más inmersiva
-  - Soporte para atajos de teclado (Ctrl+Alt+T para abrir/cerrar)
-  - Modo desarrollador con efectos visuales especiales
-  - Terminal redimensionable, maximizable y arrastrable
-  - Huevo de pascua con código Konami (↑↓←→) que desbloquea un mini-juego con interfaz adaptativa
+<details>
+<summary><strong>Diseño Profesional</strong></summary>
+<br>
 
-- **Experiencia de Usuario Mejorada**
-  - Animaciones de entrada para elementos cuando entran en el viewport
-  - Resaltado automático de la sección activa en la navegación
-  - Transiciones suaves entre secciones
-  - Scroll padding para evitar que el header oculte el contenido al navegar
-  - Scroll automático en componentes interactivos
-  - Controles de navegación optimizados para interacción táctil
+- Interfaz minimalista y moderna con Tailwind CSS
+- Diseño totalmente responsive (Mobile-first)
+- Optimizado para experiencia móvil con controles adaptables
+- Animaciones elegantes con CSS nativo y Intersection Observer
+- Navegación intuitiva con secciones bien definidas
+- Indicador de progreso de lectura
+- Botón "Volver arriba" con aparición inteligente
+- Barra de herramientas flotante con funciones de cambio de tema, activación de modo desarrollador y apertura de terminal
+</details>
 
-- **Gestión de Datos**
-  - CV estructurado en formato JSON para mantenimiento sencillo
-  - Tipado estricto con TypeScript para mayor robustez
-  - Interfaces bien definidas para todas las secciones
+<details>
+<summary><strong>Terminal Interactiva</strong></summary>
+<br>
 
-- **SEO Optimizado**
-  - Generación automática de sitemap
-  - Metadatos Open Graph y Twitter Cards
-  - Schema.org con JSON-LD
-  - Rutas semánticas y contenido accesible
+- Terminal completamente funcional integrada en la interfaz
+- Comandos personalizados para explorar el portfolio
+- Autocompletado de comandos con Tab
+- Historial de comandos navegable con flechas arriba/abajo
+- Efectos de escritura para una experiencia más inmersiva
+- Soporte para atajos de teclado (Ctrl+Alt+T para abrir/cerrar)
+- Modo desarrollador con efectos visuales especiales
+- Terminal redimensionable, maximizable y arrastrable
+- Huevo de pascua con código Konami (↑↓←→) que desbloquea un mini-juego
+</details>
 
-- **CI/CD y DevOps**
-  - Despliegue automático con GitHub Actions
-  - Comprobación de tipos TypeScript en build
-  - Optimización de assets durante la compilación
-  - Configuración avanzada para minificación CSS con LightningCSS
-  - Preservación de archivos .env durante el despliegue
+<details>
+<summary><strong>Experiencia de Usuario Mejorada</strong></summary>
+<br>
 
-- **Accesibilidad**
-  - Configuración para pruebas de accesibilidad (WCAG 2.0 AA)
-  - Atributos ARIA correctamente implementados
-  - Estructura semántica HTML5
-  - Contraste de colores adecuado
+- Animaciones de entrada para elementos cuando entran en el viewport
+- Resaltado automático de la sección activa en la navegación
+- Transiciones suaves entre secciones
+- Scroll padding para evitar que el header oculte el contenido
+- Scroll automático en componentes interactivos
+- Controles de navegación optimizados para interacción táctil
+</details>
+
+<details>
+<summary><strong>Gestión de Datos y SEO</strong></summary>
+<br>
+
+- CV estructurado en formato JSON para mantenimiento sencillo
+- Tipado estricto con TypeScript para mayor robustez
+- Generación automática de sitemap
+- Metadatos Open Graph y Twitter Cards
+- Schema.org con JSON-LD
+- Rutas semánticas y contenido accesible
+</details>
+
+<details>
+<summary><strong>CI/CD y DevOps</strong></summary>
+<br>
+
+- Despliegue automático con GitHub Actions
+- Comprobación de tipos TypeScript en build
+- Optimización de assets durante la compilación
+- Configuración avanzada para minificación CSS con LightningCSS
+- Preservación de archivos .env durante el despliegue
+</details>
+
+## 🚀 Demo
+
+Visita el portfolio en vivo: [sergiomarquez.dev](https://sergiomarquez.dev)
+
+### Capturas de pantalla
+
+<div align="center">
+  <img src="public/img/screenshot-desktop.png" alt="Desktop View" width="600">
+  <br>
+  <img src="public/img/screenshot-mobile.png" alt="Mobile View" width="300">
+  <br>
+  <img src="public/img/screenshot-terminal.png" alt="Terminal Feature" width="600">
+</div>
 
 ## 🛠️ Stack Tecnológico
 
@@ -116,16 +172,7 @@ portfolio-dev/
 │   │   ├── sections/     # Secciones principales del portfolio (Hero, About, etc.)
 │   │   └── features/     # Componentes funcionales avanzados
 │   │       ├── terminal/ # Componentes de la terminal interactiva
-│   │       │   ├── Terminal.astro    # Componente principal de la terminal
-│   │       │   ├── commands.ts       # Procesamiento de comandos
-│   │       │   ├── game.ts           # Mini-juego y código Konami
-│   │       │   ├── styles.css        # Estilos específicos de la terminal
-│   │       │   ├── types.ts          # Tipos e interfaces para la terminal
-│   │       │   └── utils.ts          # Funciones de utilidad para la terminal
 │   │       └── toolbar/  # Componentes de la barra de herramientas flotante
-│   │           ├── FloatingToolbar.astro  # Componente principal de la barra flotante
-│   │           ├── styles.css        # Estilos específicos de la barra de herramientas
-│   │           └── utils/            # Funciones de utilidad para la barra flotante
 │   ├── layouts/          # Plantillas de página (Layout.astro)
 │   ├── pages/            # Páginas de la aplicación (index.astro)
 │   ├── styles/           # Estilos globales y utilidades CSS
@@ -204,10 +251,6 @@ Este portfolio incorpora múltiples optimizaciones para garantizar la mejor expe
 - **Scripts de terceros** ejecutados con Partytown para no bloquear el renderizado
 - **Animaciones optimizadas** que solo se activan cuando los elementos entran en el viewport
 - **Componentes modulares** para mejor mantenibilidad y reutilización
-- **Arquitectura refactorizada** con separación clara de:
-  - Estilos en archivos CSS específicos por componente
-  - Lógica de utilidades en carpetas dedicadas
-  - Estructura basada en eventos para comunicación entre componentes
 
 ## 🎭 Animaciones y Experiencia de Usuario
 
@@ -218,12 +261,8 @@ El portfolio incluye varias mejoras de UX para una experiencia más atractiva:
 - **Indicador de progreso de lectura** en la parte superior de la página
 - **Resaltado automático** de la sección activa en la navegación
 - **Botón "Volver arriba"** que aparece después de cierto scroll
-- **Scroll padding** para evitar que el header fijo oculte el contenido al navegar
 - **Terminal interactiva** con efectos de escritura y comandos personalizados
-- **Scroll automático** en componentes interactivos para mejor usabilidad
 - **Controles adaptativos** que se ajustan a diferentes dimensiones de pantalla
-- **Transiciones inteligentes** en elementos interactivos según el contexto de uso
-- **Interfaz contextual** que se adapta al progreso del usuario
 
 ## 💻 Terminal Interactiva
 
@@ -243,76 +282,20 @@ Una de las características más destacadas es la terminal interactiva que permi
   - **Historial** - Usa las flechas arriba/abajo para navegar por comandos anteriores
   - **Atajos de teclado** - Ctrl+Alt+T para abrir/cerrar la terminal
   - **Modo desarrollador** - Activa efectos visuales especiales
-  - **Interfaz personalizable** - Terminal redimensionable, maximizable y arrastrable
-  - **Código Konami** - Secuencia ↑↓←→ que desbloquea un mini-juego con interfaz dinámica:
-    - Instrucciones que desaparecen automáticamente tras el primer punto
-    - Feedback visual inmediato al conseguir objetivos
-    - Recompensa especial al completar 5 niveles (activación automática del modo Matrix avanzado)
-  - **Retroalimentación visual** - Respuestas adaptadas al contexto móvil/desktop
-  - **Diseño responsivo** - Se adapta perfectamente a diferentes tamaños de pantalla
-  - **Experiencia progresiva** - La interfaz evoluciona según la interacción del usuario
-
-## 📱 Optimización Móvil
-
-El portfolio está completamente optimizado para dispositivos móviles con especial atención a la experiencia del usuario:
-
-- **Diseño Mobile-First:** Desarrollado priorizando la experiencia en dispositivos móviles
-- **Navegación adaptativa:** El header se adapta perfectamente a pantallas pequeñas con un menú móvil accesible
-- **Controles táctiles:** Footer con controles de navegación optimizados para interacción táctil
-- **Espaciado optimizado:** Cuidadosa distribución de elementos con espaciado adaptativo según el tamaño de pantalla
-- **Rendimiento:** Carga optimizada de recursos para conexiones móviles
-- **Gestos táctiles:** Soporte para eventos touch en componentes interactivos
-- **Visibilidad inteligente:** Controles que aparecen/desaparecen según la interacción del usuario
-
-## 🔍 SEO y Accesibilidad
-
-El proyecto está optimizado para motores de búsqueda y accesibilidad:
-
-- **Meta tags** completos para SEO
-- **Open Graph** y Twitter Cards para compartir en redes sociales
-- **Schema.org** con JSON-LD para datos estructurados
-- **Etiquetas ARIA** para mejorar la navegación con lectores de pantalla
-- **Configuración de accesibilidad** para pruebas automatizadas según WCAG 2.0 AA
-- **Tipografía optimizada** con Inter para texto y Montserrat para encabezados
-- **Contraste adecuado** para asegurar la legibilidad en todos los elementos
-
-## 🎨 Personalización
-
-Para personalizar este portfolio para tu uso:
-
-1. Actualiza el archivo `cv.json` con tu información personal y profesional
-2. Reemplaza las imágenes en `/public/img/`
-3. Modifica los colores y estilos en `tailwind.config.js` y `src/styles/global.css`
-4. Actualiza la configuración en `astro.config.mjs`
-5. Adapta las pruebas de accesibilidad en `accessibility.config.js`
-6. Personaliza los comandos de la terminal en `src/components/features/terminal/commands.ts`
-7. Ajusta los componentes responsivos en `src/components/sections/` para adaptar el espaciado a tu contenido
-8. Verifica la experiencia móvil con las herramientas de desarrollo del navegador
-
-### 🔧 Ajustes para Experiencia Móvil
-
-Para optimizar la experiencia en dispositivos móviles:
-
-- Comprueba el diseño en múltiples tamaños de pantalla (320px-768px)
-- Ajusta los valores de padding/margin en media queries para tu contenido específico
-- Prueba la usabilidad de los controles navegables en dispositivos táctiles reales
-- Verifica que los tamaños de fuente sean legibles en pantallas pequeñas
-- Asegúrate de que los elementos interactivos tengan suficiente área táctil (mínimo 44x44px)
+  - **Código Konami** - Secuencia ↑↓←→ que desbloquea un mini-juego
 
 ## 📝 Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENSE](LICENSE) para más detalles.
 
-## 📧 Contacto
+## 📬 Contacto
 
-Sergio Márquez
+Sergio Márquez - [@sergiomarquezdev](https://twitter.com/sergiomarquezdev) - contacto@sergiomarquez.dev
 
-- Twitter/X: [@smarquezdev](https://twitter.com/smarquezdev)
-- Email: sergiomarquezdev@gmail.com
-- Web: [sergiomarquez.dev](https://sergiomarquez.dev)
-- LinkedIn: [Sergio Márquez Pérez](https://www.linkedin.com/in/sergio-marquez-perez/)
-- GitHub: [sergiomarquezdev](https://github.com/sergiomarquezdev/)
+Enlace del proyecto: [https://github.com/sergiomarquezdev/portfolio-dev](https://github.com/sergiomarquezdev/portfolio-dev)
 
 ---
 
-Desarrollado con ❤️ por [Sergio Márquez](https://github.com/sergiomarquezdev)
+<div align="center">
+  <sub>Hecho con ❤️ por <a href="https://sergiomarquez.dev">Sergio Márquez</a></sub>
+</div>
