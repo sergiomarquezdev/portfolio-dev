@@ -1,0 +1,19 @@
+---
+/**
+ * TerminalContent.astro - Área de contenido de la terminal
+ *
+ * Contiene la salida de comandos y el área de entrada
+ */
+import TerminalInput from './TerminalInput.astro';
+
+interface Props {
+  prompt?: string;
+}
+
+const { prompt = "$" } = Astro.props;
+---
+
+<div id="terminal-content" class="flex-1 p-5 overflow-y-auto font-mono text-sm terminal-text" style="background-color: #1f2937; color: #ffffff;">
+  <div id="terminal-output"></div>
+  <TerminalInput prompt={prompt} />
+</div>
