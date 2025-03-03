@@ -29,6 +29,7 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
   - Navegación intuitiva con secciones bien definidas
   - Indicador de progreso de lectura
   - Botón "Volver arriba" con aparición inteligente
+  - Barra de herramientas flotante con funciones de cambio de tema, activación de modo desarrollador y apertura de terminal
 
 - **Terminal Interactiva**
   - Terminal completamente funcional integrada en la interfaz
@@ -113,13 +114,18 @@ portfolio-dev/
 ├── src/
 │   ├── components/       # Componentes reutilizables
 │   │   ├── sections/     # Secciones principales del portfolio (Hero, About, etc.)
-│   │   └── terminal/     # Componentes de la terminal interactiva
-│   │       ├── Terminal.astro    # Componente principal de la terminal
-│   │       ├── commands.ts       # Procesamiento de comandos
-│   │       ├── game.ts           # Mini-juego y código Konami
-│   │       ├── styles.css        # Estilos específicos de la terminal
-│   │       ├── types.ts          # Tipos e interfaces para la terminal
-│   │       └── utils.ts          # Funciones de utilidad para la terminal
+│   │   └── features/     # Componentes funcionales avanzados
+│   │       ├── terminal/ # Componentes de la terminal interactiva
+│   │       │   ├── Terminal.astro    # Componente principal de la terminal
+│   │       │   ├── commands.ts       # Procesamiento de comandos
+│   │       │   ├── game.ts           # Mini-juego y código Konami
+│   │       │   ├── styles.css        # Estilos específicos de la terminal
+│   │       │   ├── types.ts          # Tipos e interfaces para la terminal
+│   │       │   └── utils.ts          # Funciones de utilidad para la terminal
+│   │       └── toolbar/  # Componentes de la barra de herramientas flotante
+│   │           ├── FloatingToolbar.astro  # Componente principal de la barra flotante
+│   │           ├── styles.css        # Estilos específicos de la barra de herramientas
+│   │           └── utils/            # Funciones de utilidad para la barra flotante
 │   ├── layouts/          # Plantillas de página (Layout.astro)
 │   ├── pages/            # Páginas de la aplicación (index.astro)
 │   ├── styles/           # Estilos globales y utilidades CSS
@@ -198,6 +204,10 @@ Este portfolio incorpora múltiples optimizaciones para garantizar la mejor expe
 - **Scripts de terceros** ejecutados con Partytown para no bloquear el renderizado
 - **Animaciones optimizadas** que solo se activan cuando los elementos entran en el viewport
 - **Componentes modulares** para mejor mantenibilidad y reutilización
+- **Arquitectura refactorizada** con separación clara de:
+  - Estilos en archivos CSS específicos por componente
+  - Lógica de utilidades en carpetas dedicadas
+  - Estructura basada en eventos para comunicación entre componentes
 
 ## 🎭 Animaciones y Experiencia de Usuario
 
@@ -275,7 +285,7 @@ Para personalizar este portfolio para tu uso:
 3. Modifica los colores y estilos en `tailwind.config.js` y `src/styles/global.css`
 4. Actualiza la configuración en `astro.config.mjs`
 5. Adapta las pruebas de accesibilidad en `accessibility.config.js`
-6. Personaliza los comandos de la terminal en `src/components/terminal/commands.ts`
+6. Personaliza los comandos de la terminal en `src/components/features/terminal/commands.ts`
 7. Ajusta los componentes responsivos en `src/components/sections/` para adaptar el espaciado a tu contenido
 8. Verifica la experiencia móvil con las herramientas de desarrollo del navegador
 

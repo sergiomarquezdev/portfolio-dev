@@ -1,0 +1,101 @@
+/**
+ * styles.css - Estilos para la barra de herramientas flotante
+ *
+ * Este archivo contiene todos los estilos relacionados con el componente FloatingToolbar,
+ * incluyendo animaciones, variantes para móvil/desktop, y estados de los botones.
+ *
+ * @author Portfolio Dev Team
+ * @version 1.0.0
+ */
+
+/* Contenedor principal */
+.floating-toolbar {
+  position: fixed;
+  z-index: 50;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Posición en desktop (izquierda) */
+@media (min-width: 768px) {
+  .floating-toolbar {
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Posición en móvil (abajo) */
+@media (max-width: 767px) {
+  .floating-toolbar {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+}
+
+/* Botones */
+.toolbar-button {
+  @apply flex items-center justify-center;
+  @apply w-10 h-10 rounded-full;
+  @apply bg-white dark:bg-zinc-800;
+  @apply text-zinc-800 dark:text-zinc-200;
+  @apply shadow-md hover:shadow-lg;
+  @apply transition-all duration-150 ease-in-out;
+  @apply hover:scale-110;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary;
+}
+
+/* Efecto hover para botones */
+.toolbar-button:hover {
+  @apply bg-gray-100 dark:bg-zinc-700;
+}
+
+/* Estado activo para el toggler del modo desarrollador */
+.toolbar-button.active-dev-mode {
+  @apply bg-primary text-white;
+  @apply hover:bg-primary-dark;
+  @apply animate-pulse;
+}
+
+/* Estado activo para cualquier botón */
+.toolbar-button.active {
+  @apply bg-primary text-white;
+  @apply hover:bg-primary-dark;
+}
+
+/* Animaciones específicas para la barra según la posición */
+
+/* Transiciones para desktop (izquierda) */
+@media (min-width: 768px) {
+  .floating-toolbar.opacity-0.-translate-x-16 {
+    opacity: 0;
+    transform: translate(-1rem, -50%);
+  }
+
+  .floating-toolbar.opacity-100.translate-x-0 {
+    opacity: 1;
+    transform: translate(0.5rem, -50%);
+  }
+}
+
+/* Transiciones para móvil (abajo) */
+@media (max-width: 767px) {
+  .floating-toolbar.opacity-0.translate-y-16 {
+    opacity: 0;
+    transform: translate(-50%, 1rem);
+  }
+
+  .floating-toolbar.opacity-100.translate-y-0 {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Ajuste especial para modo oscuro */
+.dark .toolbar-button {
+  @apply shadow-lg shadow-zinc-800/20;
+}

@@ -1,0 +1,123 @@
+---
+/**
+ * FloatingToolbar.astro - Componente para barra de herramientas flotante interactiva
+ *
+ * Este componente muestra una barra de herramientas flotante que:
+ * - Se posiciona en la izquierda en desktop y en la parte inferior en móvil
+ * - Se muestra/oculta automáticamente según el scroll del usuario
+ * - Proporciona botones para cambiar el tema, activar el modo desarrollador y abrir la terminal
+ * - Utiliza un sistema de eventos personalizado para la comunicación con otros componentes
+ *
+ * @author Portfolio Dev Team
+ * @version 1.0.0
+ */
+import './styles.css';
+---
+
+<script>
+  // Importar utilidades desde el nuevo archivo
+  import {
+    initToolbar,
+    TOOLBAR_EVENTS,
+    setDevModeButtonState,
+    listenToToolbarEvent
+  } from './utils/toolbar-utils';
+
+  // Inicializar la barra de herramientas al cargar la página
+  document.addEventListener('DOMContentLoaded', () => {
+    const toolbar = initToolbar('floating-toolbar');
+
+    // Verificar si el objeto toolbar se inicializó correctamente
+    if (toolbar) {
+      toolbar.initialize();
+    }
+
+    // Actualizar estado inicial del botón de modo desarrollador si es necesario
+    const isDevMode = localStorage.getItem('devMode') === 'true';
+    if (isDevMode) {
+      setDevModeButtonState(true);
+    }
+
+    // Escuchar eventos relevantes para actualizar el estado de los botones
+
+    // Evento para cuando cambia el tema
+    listenToToolbarEvent(TOOLBAR_EVENTS.TOGGLE_THEME, () => {
+      // Se gestiona en el componente Layout, no necesitamos hacer nada aquí
+    });
+
+    // Evento para cuando se activa/desactiva el modo desarrollador
+    listenToToolbarEvent(TOOLBAR_EVENTS.TOGGLE_DEV_MODE, () => {
+      const isActive = localStorage.getItem('devMode') === 'true';
+
+      // Cambiar el estado
+      localStorage.setItem('devMode', isActive ? 'false' : 'true');
+
+      // Actualizar el estado visual del botón
+      setDevModeButtonState(!isActive);
+
+      // Disparar un evento para que otros componentes sepan del cambio
+      document.dispatchEvent(new CustomEvent('devmode-changed', {
+        detail: { active: !isActive }
+      }));
+    });
+
+    // Evento para cuando se abre/cierra la terminal
+    listenToToolbarEvent(TOOLBAR_EVENTS.TOGGLE_TERMINAL, () => {
+      // Este evento es manejado por Terminal.astro, no necesitamos hacer nada aquí
+    });
+  });
+</script>
+
+<!-- Barra de herramientas flotante -->
+<div id="floating-toolbar" class="floating-toolbar flex opacity-100 translate-x-0 translate-y-0">
+  <!-- Botón para cambiar de tema -->
+  <button
+    id="theme-toggle"
+    aria-label="Cambiar tema"
+    title="Cambiar tema"
+    class="toolbar-button"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+      />
+    </svg>
+  </button>
+
+  <!-- Botón para activar/desactivar modo desarrollador -->
+  <button
+    id="dev-mode-toggle"
+    aria-label="Modo desarrollador"
+    title="Activar modo desarrollador"
+    class="toolbar-button"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+      />
+    </svg>
+  </button>
+
+  <!-- Botón para abrir la terminal -->
+  <button
+    id="terminal-toggle"
+    aria-label="Abrir terminal"
+    title="Abrir terminal"
+    class="toolbar-button"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+      />
+    </svg>
+  </button>
+</div>

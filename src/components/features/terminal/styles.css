@@ -280,7 +280,7 @@
 
 /* Clase para animar el cursor parpadeante */
 .cursor-blink {
-  animation: blink 1s infinite;
+  animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
