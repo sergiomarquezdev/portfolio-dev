@@ -288,7 +288,9 @@ export function runMiniGame(appendToTerminal: (text: string, className?: string,
   // Implementación básica de un minijuego de adivinar un número
   const min = 1;
   const max = 100;
-  const secretNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  const array = new Uint32Array(1);
+  window.crypto.getRandomValues(array);
+  const secretNumber = Math.floor(array[0] / (0xFFFFFFFF + 1) * (max - min + 1)) + min;
   let attempts = 0;
   let gameActive = true;
 
