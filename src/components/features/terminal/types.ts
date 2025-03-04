@@ -129,20 +129,6 @@ if (typeof window !== 'undefined' && !isMobileDevice()) {
   portfolioData.commands.push({ name: "konami", description: "Pulsa en orden: ↑↓←→" });
 }
 
-// Secciones del portfolio
-export const sections: Record<string, string[]> = {
-  "~": ["about", "skills", "projects", "experience", "education", "contact", "social"],
-  "about": ["summary", "interests", "goals"],
-  "skills": ["frontend", "backend", "devops", "databases"],
-  "projects": ["portfolio", "blog"],
-  "contact": ["email", "phone", "form", "social"],
-  "social": ["twitter", "linkedin", "github", "blog"],
-  "twitter": [],
-  "linkedin": [],
-  "github": [],
-  "blog": []
-};
-
 // TypeScript declarations
 export interface TerminalState {
   isTerminalOpen: boolean;

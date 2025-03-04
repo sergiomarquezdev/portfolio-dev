@@ -12,7 +12,7 @@
  */
 
 // Terminal commands processing
-import { portfolioData, sections } from './types';
+import { portfolioData } from './types';
 
 // Importar solo la función necesaria para el juego de adivinanza
 import { runMiniGame } from './game';
@@ -21,14 +21,45 @@ import { runMiniGame } from './game';
 function showRandomTip(appendToTerminal: (text: string, className?: string, typeEffect?: boolean) => void) {
   const tips = [
     "Usa las teclas de flecha arriba/abajo para navegar por el historial de comandos.",
-    "Presiona Tab para autocompletar comandos y rutas.",
+    "Presiona Tab para autocompletar comandos y sugerencias.",
     "Ejecuta 'help' para ver todos los comandos disponibles.",
     "Si necesitas limpiar la pantalla, usa el comando 'clear'.",
-    "Puedes cambiar el tema de la terminal con 'theme dark' o 'theme light'."
+    "Puedes cambiar el tema de la terminal con 'theme dark' o 'theme light'.",
+    "Intenta ejecutar 'matrix' para activar un efecto visual especial.",
+    "Usa 'whoami' para ver tu identificación en la terminal.",
+    "Prueba el comando 'game' para divertirte con un mini-juego de adivinanza.",
+    "Esta terminal es redimensionable y movible. Prueba arrastrarla por la pantalla.",
+    "Puedes maximizar la terminal haciendo doble clic en su barra de título.",
+    "¿Conoces el código Konami? Prueba 'konami' para una pista.",
+    "Puedes cerrar la terminal con el comando 'exit' o con el botón X.",
+    "La tecla Ctrl+Alt+T abre o cierra la terminal rápidamente.",
   ];
 
   const randomTip = tips[Math.floor(Math.random() * tips.length)];
   appendToTerminal(`<span class="terminal-text-green">Tip:</span> <span class="terminal-text-gray">${randomTip}</span>`, '', true);
+}
+
+// Función auxiliar para sugerir comandos similares
+function suggestSimilarCommands(input: string, appendToTerminal: (text: string, className?: string, typeEffect?: boolean) => void): void {
+  // Obtener todos los comandos disponibles
+  const allCommands = getAllCommands();
+
+  // Encontrar comandos que podrían ser similares al ingresado
+  // Usamos una búsqueda simple por inclusión de caracteres
+  const possibleMatches = allCommands.filter(cmd =>
+    cmd.includes(input.substring(0, 2)) || // Primeros dos caracteres
+    input.includes(cmd.substring(0, 2))    // O viceversa
+  );
+
+  // Limitar a máximo 3 sugerencias
+  const suggestions = possibleMatches.slice(0, 3);
+
+  if (suggestions.length > 0) {
+    appendToTerminal('<span class="terminal-text-yellow">¿Quizás quisiste decir?</span>', '', true);
+    suggestions.forEach(suggestion => {
+      appendToTerminal(`<span class="terminal-text-blue">  ${suggestion}</span>`, '', true);
+    });
+  }
 }
 
 // Function to process commands
@@ -55,17 +86,44 @@ export function processCommand(
     // COMANDOS DE AYUDA Y CONTROL BÁSICO
     case 'help':
       appendToTerminal('<span class="terminal-text-yellow font-bold">Comandos disponibles:</span>', '', true);
-      // Crear una tabla para mejor alineación
-      let helpTable = '<div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1">';
-      portfolioData.commands.forEach(cmd => {
-        helpTable += `<div><span class="terminal-text-green font-medium">${cmd.name}</span></div><div class="terminal-text-white">${cmd.description}</div>`;
+
+      // Agrupar los comandos por categoría para una mejor visualización
+      const categories = {
+        "Básicos": ['help', 'whoami', 'clear', 'exit'],
+        "Portfolio": ['about', 'skills', 'projects', 'contact'],
+        "Extras": ['theme', 'matrix', 'game', 'konami']
+      };
+
+      // Crear tabla mejorada con categorías
+      let helpTable = '<div class="mt-1">';
+
+      // Generar tablas por categoría
+      Object.entries(categories).forEach(([category, commandNames]) => {
+        // Añadir encabezado de categoría
+        helpTable += `<div class="mb-1"><span class="terminal-text-blue font-medium">${category}:</span></div>`;
+
+        // Crear tabla para esta categoría
+        helpTable += '<div class="grid grid-cols-2 gap-x-4 gap-y-1 ml-2 mb-2">';
+
+        // Filtrar comandos que pertenecen a esta categoría
+        commandNames.forEach(name => {
+          // Buscar el comando en la lista de comandos
+          const cmd = portfolioData.commands.find(c => c.name === name);
+          if (cmd) {
+            helpTable += `<div><span class="terminal-text-green font-medium">${cmd.name}</span></div><div class="terminal-text-white">${cmd.description}</div>`;
+          }
+        });
+
+        helpTable += '</div>';
       });
 
       helpTable += '</div>';
       appendToTerminal(helpTable, '', true);
 
+      // Añadir un separador antes del tip
+      appendToTerminal('<span class="terminal-text-gray">───────────────────────────────────────</span>', '', true);
+
       // Mostrar un tip aleatorio después de la ayuda
-      appendToTerminal('', '', true);
       showRandomTip(appendToTerminal);
       break;
 
@@ -114,18 +172,32 @@ export function processCommand(
     // PERSONALIZACIÓN Y EXTRAS
     case 'theme':
       const themeArg = args[1]?.toLowerCase();
+
+      // Función para notificar al resto de la aplicación sobre el cambio de tema
+      const notifyThemeChange = (themeName: string) => {
+        // Disparar un evento para que otros componentes puedan reaccionar al cambio
+        document.dispatchEvent(new CustomEvent('themeChanged', {
+          detail: { theme: themeName }
+        }));
+      };
+
       if (themeArg === 'dark') {
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
         appendToTerminal('<span class="terminal-text-green">Tema cambiado a oscuro.</span>', '', true);
+        appendToTerminal('<span class="terminal-text-gray">Se ha activado el modo oscuro en toda la aplicación.</span>', '', true);
+        notifyThemeChange('dark');
       } else if (themeArg === 'light') {
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
         appendToTerminal('<span class="terminal-text-green">Tema cambiado a claro.</span>', '', true);
+        appendToTerminal('<span class="terminal-text-gray">Se ha activado el modo claro en toda la aplicación.</span>', '', true);
+        notifyThemeChange('light');
       } else {
         const currentTheme = document.documentElement.classList.contains('dark') ? 'oscuro' : 'claro';
         appendToTerminal(`<span class="terminal-text-green">Tema actual: <span class="terminal-text-white">${currentTheme}</span></span>`, '', true);
         appendToTerminal('<span class="terminal-text-gray">Uso: theme dark|light</span>', '', true);
+        appendToTerminal('<span class="terminal-text-gray">El tema se guarda en las preferencias y se mantiene entre sesiones.</span>', '', true);
       }
       break;
 
@@ -173,6 +245,11 @@ export function processCommand(
     default:
       appendToTerminal(`<span class="terminal-text-red">Error: Comando no reconocido: <span class="terminal-text-white">${command}</span></span>`, '', true);
       appendToTerminal('<span class="terminal-text-gray">Escribe <span class="terminal-text-yellow">help</span> para ver los comandos disponibles.</span>', '', true);
+
+      // Sugerir comandos similares si el comando ingresado no se reconoce
+      if (command.length > 1) {
+        suggestSimilarCommands(command.toLowerCase(), appendToTerminal);
+      }
       break;
   }
 
@@ -181,8 +258,38 @@ export function processCommand(
 
 // Exportar lista de comandos para autocompletado y ayuda
 export function getCommandSuggestions(input: string): string[] {
-  // Lista completa y actualizada de todos los comandos disponibles, agrupados por categorías
-  const commands = [
+  // Si la entrada está vacía, devolver todos los comandos
+  if (!input.trim()) {
+    return getAllCommands();
+  }
+
+  const inputLower = input.toLowerCase();
+
+  // Si la entrada contiene espacios, busca comandos con argumentos
+  if (inputLower.includes(' ')) {
+    const parts = inputLower.split(' ');
+    const mainCommand = parts[0];
+    const partialArg = parts.length > 1 ? parts.slice(1).join(' ') : '';
+
+    // Sugerencias específicas para cada comando
+    if (mainCommand === 'theme') {
+      const themeOptions = ['theme dark', 'theme light'];
+
+      // Filtrar opciones que coinciden con lo que el usuario está escribiendo
+      return themeOptions.filter(cmd => cmd.startsWith(inputLower));
+    }
+
+    // Si no hay sugerencias específicas para este comando, devuelve una lista vacía
+    return [];
+  }
+
+  // Para entrada sin espacios, buscar coincidencias en los comandos
+  return findMatchingCommands(inputLower);
+}
+
+// Función auxiliar para obtener todos los comandos disponibles
+function getAllCommands(): string[] {
+  return [
     // Comandos de ayuda y control básico
     'help',            // Muestra la ayuda
     'whoami',          // Identifica al usuario
@@ -201,22 +308,21 @@ export function getCommandSuggestions(input: string): string[] {
     'game',            // Inicia un mini-juego
     'konami'           // Para usuarios de escritorio (código Konami)
   ];
+}
 
-  // Si la entrada contiene espacios, busca comandos con argumentos
-  if (input.includes(' ')) {
-    const parts = input.split(' ');
-    const mainCommand = parts[0].toLowerCase();
+// Función auxiliar para encontrar comandos que coinciden con la entrada del usuario
+function findMatchingCommands(input: string): string[] {
+  const allCommands = getAllCommands();
 
-    // Sugerencias específicas para cada comando
-    if (mainCommand === 'theme') {
-      return ['theme dark', 'theme light']
-        .filter(cmd => cmd.startsWith(input.toLowerCase()));
-    }
+  // Primero intentar coincidencias exactas de prefijo (comportamiento original)
+  const prefixMatches = allCommands.filter(cmd => cmd.startsWith(input));
 
-    // Si no hay sugerencias específicas, devuelve una lista vacía
-    return [];
+  // Si hay coincidencias de prefijo, devolverlas
+  if (prefixMatches.length > 0) {
+    return prefixMatches;
   }
 
-  // Filtrar comandos que coincidan con la entrada
-  return commands.filter(cmd => cmd.startsWith(input.toLowerCase()));
+  // Si no hay coincidencias de prefijo, buscar coincidencias parciales
+  // (cuando el texto de entrada aparece en cualquier parte del comando)
+  return allCommands.filter(cmd => cmd.includes(input));
 }

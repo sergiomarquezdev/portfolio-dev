@@ -260,23 +260,13 @@ Una de las características más destacadas es la terminal interactiva que permi
   - `skills` - Lista las habilidades técnicas por categorías
   - `projects` - Muestra los proyectos destacados
   - `contact` - Muestra información de contacto
-  - `pwd` - Muestra el directorio actual
-  - `ls` - Lista el contenido del directorio actual
-  - `cd` - Navega entre directorios del portfolio
-  - `open` - Abre perfiles de redes sociales o URLs
-  - `echo` - Muestra un mensaje en la terminal
-  - `date` - Muestra la fecha y hora actual
   - `theme` - Cambia entre tema claro y oscuro
   - `clear` - Limpia la terminal
   - `exit` - Cierra la terminal
   - `game` - Inicia un mini-juego de adivinanza
   - `matrix` - Activa/desactiva el modo desarrollador
-
-- **Sistema de navegación:**
-  - Navegación entre directorios sociales (`cd social`, `cd github`)
-  - Acceso directo a perfiles con `open` desde cualquier ubicación
-  - Visualización detallada con `ls -l`
-  - Historial de navegación con `cd -`
+  - `whoami` - Identifica al usuario
+  - `konami` - Proporciona pistas sobre la secuencia secreta
 
 - **Características avanzadas:**
   - **Autocompletado** - Presiona Tab para autocompletar comandos
