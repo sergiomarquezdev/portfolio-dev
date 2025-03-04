@@ -119,6 +119,8 @@ export const portfolioData = {
     { name: "whoami", description: "Muestra quién eres" },
     { name: "ls", description: "Lista las secciones del portfolio" },
     { name: "cd", description: "Navega a una sección del portfolio" },
+    { name: "pwd", description: "Muestra el directorio actual" },
+    { name: "game", description: "Inicia un mini-juego de adivinanza" }
   ]
 };
 
@@ -134,18 +136,22 @@ if (typeof window !== 'undefined' && !isMobileDevice()) {
 }
 
 // Secciones del portfolio para el comando ls y cd
-export const sections = {
-  "~": ["about", "skills", "projects", "experience", "education", "contact"],
+export const sections: Record<string, string[]> = {
+  "~": ["about", "skills", "projects", "experience", "education", "contact", "social"],
   "about": ["summary", "interests", "goals"],
   "skills": ["frontend", "backend", "devops", "databases"],
   "projects": ["portfolio", "blog"],
-  "contact": ["email", "linkedin", "github", "twitter"]
+  "contact": ["email", "phone", "form", "social"],
+  "social": ["twitter", "linkedin", "github", "blog"],
+  "twitter": [],
+  "linkedin": [],
+  "github": [],
+  "blog": []
 };
 
 // TypeScript declarations
 export interface TerminalState {
   isTerminalOpen: boolean;
-  commandHistory: string[];
   historyIndex: number;
   isMaximized: boolean;
   currentDirectory: string;
