@@ -118,7 +118,6 @@ export const portfolioData = {
     { name: "date", description: "Muestra la fecha y hora actual" },
     { name: "whoami", description: "Muestra quién eres" },
     { name: "ls", description: "Lista las secciones del portfolio" },
-    { name: "cd", description: "Navega a una sección del portfolio" },
     { name: "pwd", description: "Muestra el directorio actual" },
     { name: "game", description: "Inicia un mini-juego de adivinanza" }
   ]
@@ -135,7 +134,7 @@ if (typeof window !== 'undefined' && !isMobileDevice()) {
   portfolioData.commands.push({ name: "konami", description: "Pulsa en orden: ↑↓←→" });
 }
 
-// Secciones del portfolio para el comando ls y cd
+// Secciones del portfolio para el comando ls
 export const sections: Record<string, string[]> = {
   "~": ["about", "skills", "projects", "experience", "education", "contact", "social"],
   "about": ["summary", "interests", "goals"],

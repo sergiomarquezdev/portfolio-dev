@@ -18,9 +18,6 @@ import { portfolioData, sections } from './types';
 // Importar solo la función necesaria para el juego de adivinanza
 import { runMiniGame } from './game';
 
-// Historial de navegación para 'cd -'
-let navigationHistory: string[] = ['~'];
-
 // Función para obtener una fecha formateada para ls -l
 function getFormattedDate() {
   const date = new Date();
@@ -32,7 +29,7 @@ function getFormattedDate() {
   return `${month} ${day} ${hours}:${minutes}`;
 }
 
-// Mostrar un tip aleatorio al usuario
+// Mostrar un tip aleatorio para mejorar la experiencia de la terminal
 function showRandomTip(appendToTerminal: (text: string, className?: string, typeEffect?: boolean) => void) {
   const tips = [
     "Usa las teclas de flecha arriba/abajo para navegar por el historial de comandos.",
@@ -48,52 +45,55 @@ function showRandomTip(appendToTerminal: (text: string, className?: string, type
 
 /**
  * Muestra información del perfil social según la red social seleccionada
- * @param socialNetwork Nombre de la red social (twitter, linkedin, github, etc.)
- * @param appendToTerminal Función para añadir texto a la terminal
  */
 function showSocialProfile(
   socialNetwork: string,
   appendToTerminal: (text: string, className?: string, typeEffect?: boolean) => void
 ) {
-  // Datos comunes a todos los perfiles
-  const socialNetworks = {
-    twitter: {
+  // Información de perfiles sociales
+  const profiles: Record<string, {
+    username: string,
+    bio: string,
+    url: string,
+    color: string
+  }> = {
+    github: {
       username: '@sergiomarquezdev',
-      url: 'https://twitter.com/sergiomarquezdev',
-      bio: 'Full Stack Developer | Java & Angular specialist | Software Engineering enthusiast',
+      bio: 'Desarrollador Full Stack & DevOps',
+      url: 'https://github.com/sergiomarquezdev',
+      color: 'purple'
+    },
+    twitter: {
+      username: '@smarquezdev',
+      bio: 'Reflexiones sobre desarrollo y tecnología',
+      url: 'https://x.com/smarquezdev',
       color: 'blue'
     },
     linkedin: {
-      username: 'Sergio Márquez',
+      username: 'sergio-marquez-perez',
+      bio: 'Desarrollador Full Stack especializado en Java y Angular',
       url: 'https://www.linkedin.com/in/sergio-marquez-perez/',
-      bio: 'Full Stack Developer specializing in Java, Angular and Cloud technologies',
       color: 'sky-blue'
     },
-    github: {
-      username: 'sergiomarquezdev',
-      url: 'https://github.com/sergiomarquezdev',
-      bio: 'Building awesome software and sharing open source projects',
-      color: 'purple'
-    },
     blog: {
-      username: 'Sergio\'s Tech Blog',
+      username: 'Blog de Sergio Márquez',
+      bio: 'Artículos técnicos y tutoriales sobre desarrollo',
       url: 'https://blog.sergiomarquez.dev',
-      bio: 'Articles about software development, best practices and tech trends',
       color: 'green'
     }
   };
 
-  const profile = socialNetworks[socialNetwork as keyof typeof socialNetworks];
-
+  // Verificar si existe el perfil
+  const profile = profiles[socialNetwork];
   if (!profile) {
     appendToTerminal(`<span class="terminal-text-red">Error: Perfil de ${socialNetwork} no encontrado</span>`, '', true);
     return;
   }
 
-  // Mostrar cabecera con el título y color de la red social
+  // Mostrar información del perfil
   appendToTerminal(`<span class="terminal-text-${profile.color}">──── Perfil de ${socialNetwork.toUpperCase()} ────</span>`, '', true);
 
-  // Mostrar información del perfil
+  // Información detallada del perfil
   appendToTerminal(`<span class="terminal-text-yellow">Usuario:</span> <span class="terminal-text-white">${profile.username}</span>`, '', true);
   appendToTerminal(`<span class="terminal-text-yellow">Bio:</span> <span class="terminal-text-white">${profile.bio}</span>`, '', true);
   appendToTerminal(`<span class="terminal-text-yellow">URL:</span> <span class="terminal-text-white">${profile.url}</span>`, '', true);
@@ -149,14 +149,9 @@ export function processCommand(
       if (terminalOutput) terminalOutput.innerHTML = '';
       break;
 
-    case 'exit':
-      toggleTerminal();
-      break;
-
-    // COMANDOS DE NAVEGACIÓN Y SISTEMA DE ARCHIVOS
     case 'pwd':
-      // Mostrar ruta completa del directorio actual
-      let displayPath = '';
+      // Mostrar el directorio actual con formato
+      let displayPath = "";
       if (currentDirectory === '~') {
         displayPath = '~';
       } else if (['twitter', 'linkedin', 'github', 'blog'].includes(currentDirectory)) {
@@ -181,7 +176,7 @@ export function processCommand(
           appendToTerminal('<span class="terminal-text-white">total 4</span>', '', true);
         } else {
           appendToTerminal('<span class="terminal-text-yellow">Redes Sociales Disponibles:</span>', '', true);
-          appendToTerminal('<span class="terminal-text-white">Utiliza <span class="terminal-text-green">cd [nombre]</span> para acceder a cada perfil</span>', '', true);
+          appendToTerminal('<span class="terminal-text-white">Utiliza <span class="terminal-text-green">open [nombre]</span> para visitar los perfiles</span>', '', true);
           appendToTerminal('', '', true);
         }
 
@@ -230,102 +225,9 @@ export function processCommand(
       }
       break;
 
-    case 'cd':
-      const newDir = args[1]?.toLowerCase();
-      let updatedDirectory = currentDirectory;
-
-      if (!newDir || newDir === '~') {
-        // Volver al directorio raíz
-        navigationHistory.push('~');
-        updatedDirectory = '~';
-        appendToTerminal('<span class="terminal-text-green">Cambiado al directorio principal</span>', '', true);
-      } else if (newDir === '..') {
-        // Volver al directorio padre
-        if (currentDirectory !== '~') {
-          // Si estamos en una red social, volver a 'social'
-          if (['twitter', 'linkedin', 'github', 'blog'].includes(currentDirectory)) {
-            navigationHistory.push('social');
-            updatedDirectory = 'social';
-            appendToTerminal('<span class="terminal-text-green">Cambiado al directorio social</span>', '', true);
-          } else {
-            // En cualquier otro caso, volver a la raíz
-            navigationHistory.push('~');
-            updatedDirectory = '~';
-            appendToTerminal('<span class="terminal-text-green">Cambiado al directorio principal</span>', '', true);
-          }
-        } else {
-          appendToTerminal('<span class="terminal-text-yellow">Ya estás en el directorio principal</span>', '', true);
-        }
-      } else if (newDir === '-') {
-        // Implementación completa de cd -: volver al directorio anterior
-        if (navigationHistory.length > 1) {
-          // Obtener el directorio anterior (no el actual)
-          const previousDir = navigationHistory[navigationHistory.length - 2];
-          // Guardar directorio actual antes de cambiarlo
-          const currentDir = navigationHistory[navigationHistory.length - 1];
-
-          // Reordenar el historial: quitar el último y agregar el actual al final
-          navigationHistory.pop(); // Quitar el último (que era el actual)
-          navigationHistory.push(currentDir); // Agregar el actual al final
-
-          updatedDirectory = previousDir;
-          appendToTerminal(`<span class="terminal-text-green">Volviendo al directorio anterior: <span class="terminal-text-white">${previousDir}</span></span>`, '', true);
-
-          // Si el directorio anterior es una red social, mostrar su perfil
-          if (['twitter', 'linkedin', 'github', 'blog'].includes(previousDir)) {
-            showSocialProfile(previousDir, appendToTerminal);
-          }
-        } else {
-          appendToTerminal('<span class="terminal-text-yellow">No hay directorio anterior al que volver</span>', '', true);
-        }
-      } else if (newDir.includes('/')) {
-        // Navegación por ruta (implementación básica)
-        const parts = newDir.split('/').filter(p => p.length > 0);
-
-        if (parts.length === 2 && parts[0] === 'social' &&
-            ['twitter', 'linkedin', 'github', 'blog'].includes(parts[1])) {
-          navigationHistory.push(parts[1]);
-          updatedDirectory = parts[1];
-          showSocialProfile(updatedDirectory, appendToTerminal);
-        } else {
-          appendToTerminal(`<span class="terminal-text-red">Error: Ruta no válida o directorio inexistente</span>`, '', true);
-        }
-      } else if (sections[currentDirectory as keyof typeof sections]?.includes(newDir)) {
-        // Navegar a un subdirectorio desde el directorio actual
-        navigationHistory.push(newDir);
-        updatedDirectory = newDir;
-
-        // Mostrar información específica si es una red social
-        if (['twitter', 'linkedin', 'github', 'blog'].includes(newDir)) {
-          showSocialProfile(newDir, appendToTerminal);
-        } else {
-          appendToTerminal(`<span class="terminal-text-green">Cambiado al directorio <span class="terminal-text-white">${newDir}</span></span>`, '', true);
-        }
-      } else if (Object.keys(sections).includes(newDir)) {
-        // Navegación directa a un directorio conocido
-        navigationHistory.push(newDir);
-        updatedDirectory = newDir;
-
-        // Mostrar información específica si es una red social
-        if (['twitter', 'linkedin', 'github', 'blog'].includes(newDir)) {
-          showSocialProfile(newDir, appendToTerminal);
-        } else {
-          appendToTerminal(`<span class="terminal-text-green">Cambiado al directorio <span class="terminal-text-white">${newDir}</span></span>`, '', true);
-        }
-      } else {
-        appendToTerminal(`<span class="terminal-text-red">Error: El directorio <span class="terminal-text-white">${newDir}</span> no existe</span>`, '', true);
-      }
-
-      // Mostrar un tip después de algunos cambios de directorio (25% de probabilidad)
-      if (Math.random() < 0.25) {
-        showRandomTip(appendToTerminal);
-      }
-
-      return { currentDirectory: updatedDirectory };
-
     // INFORMACIÓN DEL PORTFOLIO
     case 'about':
-      const about = portfolioData.about;
+      const { about } = portfolioData;
       appendToTerminal(`<span class="terminal-text-yellow">Sobre mí:</span>`, '', true);
       appendToTerminal(`<span class="terminal-text-green">Nombre:</span> <span class="terminal-text-white">${about.name}</span>`, '', true);
       appendToTerminal(`<span class="terminal-text-green">Rol:</span> <span class="terminal-text-white">${about.role}</span>`, '', true);
@@ -349,7 +251,7 @@ export function processCommand(
       break;
 
     case 'contact':
-      const contact = portfolioData.contact;
+      const { contact } = portfolioData;
       appendToTerminal('<span class="terminal-text-yellow">Información de contacto:</span>', '', true);
       appendToTerminal(`<span class="terminal-text-green">Email:</span> <span class="terminal-text-white">${contact.email}</span>`, '', true);
       appendToTerminal(`<span class="terminal-text-green">LinkedIn:</span> <span class="terminal-text-blue">${contact.linkedin}</span>`, '', true);
@@ -374,45 +276,44 @@ export function processCommand(
 
     case 'open':
       const target = args[1]?.toLowerCase();
-      const url = args[2] || '';
 
-      // Mapeo de redes sociales y URLs comunes
-      const commonUrls: {[key: string]: string} = {
-        'blog': 'https://blog.sergiomarquez.dev',
-        'github': portfolioData.contact.github,
-        'linkedin': portfolioData.contact.linkedin,
-        'twitter': portfolioData.contact.twitter,
-        'portfolio': 'https://sergiomarquez.dev',
-        'email': `mailto:${portfolioData.contact.email}`
+      // URLs comunes para redes sociales y más
+      const commonUrls: Record<string, string> = {
+        twitter: 'https://x.com/smarquezdev',
+        linkedin: 'https://www.linkedin.com/in/sergio-marquez-perez/',
+        github: 'https://github.com/sergiomarquezdev',
+        blog: 'https://blog.sergiomarquez.dev',
+        portfolio: 'https://sergiomarquez.dev',
+        facebook: 'https://facebook.com/smarquezdev',
+        instagram: 'https://instagram.com/smarquezdev',
       };
 
-      // Comportamiento según el caso
-      // Caso 1: URL directa (si comienza con http o https)
-      if (target && (target.startsWith('http://') || target.startsWith('https://') || target.startsWith('mailto:'))) {
+      // Si hay un objetivo específico tipo URL (args[1] === "url")
+      if (target === 'url' && args[2]) {
+        const url = args[2].startsWith('http') ? args[2] : `https://${args[2]}`;
+        window.open(url, '_blank');
         appendToTerminal(`<span class="terminal-text-green">Abriendo URL externa: <span class="terminal-text-blue">${target}</span>...</span>`, '', true);
-        window.open(target, '_blank');
       }
-      // Caso 2: Sin argumentos pero en directorio de red social
+      // Si no hay target pero estamos en un directorio de red social, abrir ese perfil
       else if (!target && ['twitter', 'linkedin', 'github', 'blog'].includes(currentDirectory)) {
         const socialName = currentDirectory;
-        if (commonUrls[socialName]) {
-          appendToTerminal(`<span class="terminal-text-green">Abriendo ${socialName}...</span>`, '', true);
-          appendToTerminal(`<span class="terminal-text-gray">URL: <span class="terminal-text-blue">${commonUrls[socialName]}</span></span>`, '', true);
-          window.open(commonUrls[socialName], '_blank');
-        }
+        window.open(commonUrls[socialName], '_blank');
+        appendToTerminal(`<span class="terminal-text-green">Abriendo ${socialName}...</span>`, '', true);
+        appendToTerminal(`<span class="terminal-text-gray">URL: <span class="terminal-text-blue">${commonUrls[socialName]}</span></span>`, '', true);
       }
-      // Caso 3: Red social específica
+      // Si el target existe como red social o enlace común
       else if (target && commonUrls[target]) {
+        window.open(commonUrls[target], '_blank');
         appendToTerminal(`<span class="terminal-text-green">Abriendo ${target}...</span>`, '', true);
         appendToTerminal(`<span class="terminal-text-gray">URL: <span class="terminal-text-blue">${commonUrls[target]}</span></span>`, '', true);
-        window.open(commonUrls[target], '_blank');
       }
-      // Caso 4: URL personalizada con formato "open url https://example.com"
-      else if (target === 'url' && url && (url.startsWith('http://') || url.startsWith('https://'))) {
-        appendToTerminal(`<span class="terminal-text-green">Abriendo URL personalizada: <span class="terminal-text-blue">${url}</span>...</span>`, '', true);
+      // Si el target es una URL completa
+      else if (target && (target.startsWith('http://') || target.startsWith('https://'))) {
+        const url = target;
         window.open(url, '_blank');
+        appendToTerminal(`<span class="terminal-text-green">Abriendo URL personalizada: <span class="terminal-text-blue">${url}</span>...</span>`, '', true);
       }
-      // Caso 5: Error o información
+      // Mostrar ayuda de uso
       else {
         appendToTerminal('<span class="terminal-text-yellow">Uso del comando open:</span>', '', true);
         appendToTerminal('<span class="terminal-text-white">- <span class="terminal-text-green">open</span> (abre la red social actual si estás en un directorio de red social)</span>', '', true);
@@ -420,13 +321,13 @@ export function processCommand(
         appendToTerminal('<span class="terminal-text-white">- <span class="terminal-text-green">open url [URL]</span> (abre una URL personalizada, por ejemplo: open url https://example.com)</span>', '', true);
         appendToTerminal('<span class="terminal-text-white">- <span class="terminal-text-green">open [URL]</span> (abre directamente una URL completa que comience con http:// o https://)</span>', '', true);
 
-        // Si estamos en social, dar pista adicional
+        // Si estamos en el directorio social, mostrar las redes disponibles
         if (currentDirectory === 'social') {
           appendToTerminal('', '', true);
-          appendToTerminal('<span class="terminal-text-green">Tip:</span> <span class="terminal-text-white">Usa <span class="terminal-text-green">cd [red_social]</span> y luego <span class="terminal-text-green">open</span> para explorar y abrir perfiles</span>', '', true);
+          appendToTerminal('<span class="terminal-text-green">Tip:</span> <span class="terminal-text-white">Usa <span class="terminal-text-green">open [red_social]</span> para abrir directamente una red social</span>', '', true);
         }
 
-        // Lista de opciones disponibles
+        // Mostrar las redes sociales disponibles
         appendToTerminal('', '', true);
         appendToTerminal('<span class="terminal-text-yellow">Redes sociales disponibles:</span>', '', true);
         Object.keys(commonUrls).forEach(social => {
@@ -438,16 +339,14 @@ export function processCommand(
     // PERSONALIZACIÓN Y EXTRAS
     case 'theme':
       const themeArg = args[1]?.toLowerCase();
-      if (themeArg === 'dark' || themeArg === 'light') {
-        if (themeArg === 'dark') {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-          appendToTerminal('<span class="terminal-text-green">Tema cambiado a oscuro.</span>', '', true);
-        } else {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
-          appendToTerminal('<span class="terminal-text-green">Tema cambiado a claro.</span>', '', true);
-        }
+      if (themeArg === 'dark') {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        appendToTerminal('<span class="terminal-text-green">Tema cambiado a oscuro.</span>', '', true);
+      } else if (themeArg === 'light') {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        appendToTerminal('<span class="terminal-text-green">Tema cambiado a claro.</span>', '', true);
       } else {
         const currentTheme = document.documentElement.classList.contains('dark') ? 'oscuro' : 'claro';
         appendToTerminal(`<span class="terminal-text-green">Tema actual: <span class="terminal-text-white">${currentTheme}</span></span>`, '', true);
@@ -455,49 +354,46 @@ export function processCommand(
       }
       break;
 
+    case 'exit':
+      toggleTerminal();
+      break;
+
     case 'matrix':
       if (typeof window.toggleCodeEffect === 'function') {
-        const newDevModeActive = window.toggleCodeEffect();
-        setDevModeActive(newDevModeActive);
+        const isActive = window.toggleCodeEffect();
 
-        // Actualizar el aspecto del botón según el estado
+        // Actualizar el botón si existe
         if (devModeToggle) {
-          if (newDevModeActive) {
+          if (isActive) {
             devModeToggle.classList.add('active-dev-mode');
-            devModeToggle.setAttribute('title', 'Desactivar modo desarrollador');
             appendToTerminal('<span class="terminal-text-green">Modo desarrollador activado.</span>', '', true);
           } else {
             devModeToggle.classList.remove('active-dev-mode');
-            devModeToggle.setAttribute('title', 'Activar modo desarrollador');
             appendToTerminal('<span class="terminal-text-green">Modo desarrollador desactivado.</span>', '', true);
           }
         } else {
-          if (newDevModeActive) {
+          if (isActive) {
             appendToTerminal('<span class="terminal-text-green">Modo desarrollador activado.</span>', '', true);
           } else {
             appendToTerminal('<span class="terminal-text-green">Modo desarrollador desactivado.</span>', '', true);
           }
         }
+        setDevModeActive(isActive);
       } else {
         appendToTerminal('<span class="terminal-text-red">Error: El modo desarrollador no está disponible.</span>', '', true);
       }
       break;
 
     case 'game':
-      appendToTerminal('Iniciando juego de adivinar el número...', 'terminal-text-blue', false);
-      let gameProcessor = runMiniGame(appendToTerminal);
-      return {
-        activeGame: gameProcessor,
-        currentDirectory
-      };
+      runMiniGame(appendToTerminal);
+      break;
 
     case 'konami':
-      // Solo dar una pista sobre el código secreto
       appendToTerminal('<span class="terminal-text-yellow">¡Has descubierto una pista secreta!</span>', '', true);
       appendToTerminal('<span class="terminal-text-green">Código Konami: <span class="terminal-text-white">↑ ↓ ← →</span></span>', '', true);
       appendToTerminal('<span class="terminal-text-blue">Presiona esta secuencia de teclas para desbloquear un mini-juego.</span>', '', true);
       appendToTerminal('<span class="terminal-text-blue">Completa el juego para descubrir un efecto visual especial.</span>', '', true);
-      return { currentDirectory };
+      break;
 
     default:
       appendToTerminal(`<span class="terminal-text-red">Error: Comando no reconocido: <span class="terminal-text-white">${command}</span></span>`, '', true);
@@ -522,7 +418,6 @@ export function getCommandSuggestions(input: string): string[] {
     'pwd',             // Muestra el directorio actual
     'ls',              // Lista directorios y archivos
     'ls -l',           // Lista con formato detallado
-    'cd',              // Cambia el directorio actual
 
     // Información del portfolio
     'about',           // Muestra información sobre el autor
@@ -550,9 +445,6 @@ export function getCommandSuggestions(input: string): string[] {
     // Sugerencias específicas para cada comando
     if (mainCommand === 'open') {
       return ['open twitter', 'open linkedin', 'open github', 'open blog', 'open url']
-        .filter(cmd => cmd.startsWith(input.toLowerCase()));
-    } else if (mainCommand === 'cd') {
-      return ['cd ~', 'cd ..', 'cd -', 'cd about', 'cd skills', 'cd projects', 'cd contact', 'cd social']
         .filter(cmd => cmd.startsWith(input.toLowerCase()));
     } else if (mainCommand === 'theme') {
       return ['theme dark', 'theme light']
