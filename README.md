@@ -260,8 +260,23 @@ Una de las características más destacadas es la terminal interactiva que permi
   - `skills` - Lista las habilidades técnicas por categorías
   - `projects` - Muestra los proyectos destacados
   - `contact` - Muestra información de contacto
+  - `pwd` - Muestra el directorio actual
+  - `ls` - Lista el contenido del directorio actual
+  - `cd` - Navega entre directorios del portfolio
+  - `open` - Abre perfiles de redes sociales o URLs
+  - `echo` - Muestra un mensaje en la terminal
+  - `date` - Muestra la fecha y hora actual
+  - `theme` - Cambia entre tema claro y oscuro
   - `clear` - Limpia la terminal
   - `exit` - Cierra la terminal
+  - `game` - Inicia un mini-juego de adivinanza
+  - `matrix` - Activa/desactiva el modo desarrollador
+
+- **Sistema de navegación:**
+  - Navegación entre directorios sociales (`cd social`, `cd github`)
+  - Acceso directo a perfiles con `open` desde cualquier ubicación
+  - Visualización detallada con `ls -l`
+  - Historial de navegación con `cd -`
 
 - **Características avanzadas:**
   - **Autocompletado** - Presiona Tab para autocompletar comandos
@@ -269,6 +284,11 @@ Una de las características más destacadas es la terminal interactiva que permi
   - **Atajos de teclado** - Ctrl+Alt+T para abrir/cerrar la terminal
   - **Modo desarrollador** - Activa efectos visuales especiales
   - **Código Konami** - Secuencia ↑↓←→ que desbloquea un mini-juego
+
+- **Personalización:**
+  - Cambio de tema con el comando `theme dark` o `theme light`
+  - Terminal redimensionable y maximizable
+  - Arrastrable a cualquier posición en la pantalla
 
 ## 📝 Licencia
 
