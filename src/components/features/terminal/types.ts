@@ -114,7 +114,7 @@ export const portfolioData = {
     { name: "clear", description: "Limpia la terminal" },
     { name: "exit", description: "Cierra la terminal" },
     { name: "whoami", description: "Muestra quién eres" },
-    { name: "game", description: "Inicia un mini-juego de adivinanza" }
+    { name: "konami", description: "Proporciona pistas sobre la secuencia secreta" }
   ]
 };
 

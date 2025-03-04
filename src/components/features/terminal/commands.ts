@@ -14,9 +14,6 @@
 // Terminal commands processing
 import { portfolioData } from './types';
 
-// Importar solo la función necesaria para el juego de adivinanza
-import { runMiniGame } from './game';
-
 // Mostrar un tip aleatorio para mejorar la experiencia de la terminal
 function showRandomTip(appendToTerminal: (text: string, className?: string, typeEffect?: boolean) => void) {
   const tips = [
@@ -27,7 +24,6 @@ function showRandomTip(appendToTerminal: (text: string, className?: string, type
     "Puedes cambiar el tema de la terminal con 'theme dark' o 'theme light'.",
     "Intenta ejecutar 'matrix' para activar un efecto visual especial.",
     "Usa 'whoami' para ver tu identificación en la terminal.",
-    "Prueba el comando 'game' para divertirte con un mini-juego de adivinanza.",
     "Esta terminal es redimensionable y movible. Prueba arrastrarla por la pantalla.",
     "Puedes maximizar la terminal haciendo doble clic en su barra de título.",
     "¿Conoces el código Konami? Prueba 'konami' para una pista.",
@@ -87,34 +83,12 @@ export function processCommand(
     case 'help':
       appendToTerminal('<span class="terminal-text-yellow font-bold">Comandos disponibles:</span>', '', true);
 
-      // Agrupar los comandos por categoría para una mejor visualización
-      const categories = {
-        "Básicos": ['help', 'whoami', 'clear', 'exit'],
-        "Portfolio": ['about', 'skills', 'projects', 'contact'],
-        "Extras": ['theme', 'matrix', 'game', 'konami']
-      };
+      // Crear una tabla simple para mostrar todos los comandos
+      let helpTable = '<div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1">';
 
-      // Crear tabla mejorada con categorías
-      let helpTable = '<div class="mt-1">';
-
-      // Generar tablas por categoría
-      Object.entries(categories).forEach(([category, commandNames]) => {
-        // Añadir encabezado de categoría
-        helpTable += `<div class="mb-1"><span class="terminal-text-blue font-medium">${category}:</span></div>`;
-
-        // Crear tabla para esta categoría
-        helpTable += '<div class="grid grid-cols-2 gap-x-4 gap-y-1 ml-2 mb-2">';
-
-        // Filtrar comandos que pertenecen a esta categoría
-        commandNames.forEach(name => {
-          // Buscar el comando en la lista de comandos
-          const cmd = portfolioData.commands.find(c => c.name === name);
-          if (cmd) {
-            helpTable += `<div><span class="terminal-text-green font-medium">${cmd.name}</span></div><div class="terminal-text-white">${cmd.description}</div>`;
-          }
-        });
-
-        helpTable += '</div>';
+      // Mostrar todos los comandos en orden
+      portfolioData.commands.forEach(cmd => {
+        helpTable += `<div><span class="terminal-text-green font-medium">${cmd.name}</span></div><div class="terminal-text-white">${cmd.description}</div>`;
       });
 
       helpTable += '</div>';
@@ -231,10 +205,6 @@ export function processCommand(
       }
       break;
 
-    case 'game':
-      runMiniGame(appendToTerminal);
-      break;
-
     case 'konami':
       appendToTerminal('<span class="terminal-text-yellow">¡Has descubierto una pista secreta!</span>', '', true);
       appendToTerminal('<span class="terminal-text-green">Código Konami: <span class="terminal-text-white">↑ ↓ ← →</span></span>', '', true);
@@ -305,7 +275,6 @@ function getAllCommands(): string[] {
     // Personalización y extras
     'theme',           // Cambia el tema (dark/light)
     'matrix',          // Activa/desactiva el modo desarrollador
-    'game',            // Inicia un mini-juego
     'konami'           // Para usuarios de escritorio (código Konami)
   ];
 }
