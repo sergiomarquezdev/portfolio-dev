@@ -113,12 +113,7 @@ export const portfolioData = {
     { name: "matrix", description: "Activa/desactiva el modo desarrollador" },
     { name: "clear", description: "Limpia la terminal" },
     { name: "exit", description: "Cierra la terminal" },
-    { name: "open", description: "Abre una URL (ej: open blog)" },
-    { name: "echo", description: "Muestra un mensaje en la terminal" },
-    { name: "date", description: "Muestra la fecha y hora actual" },
     { name: "whoami", description: "Muestra quién eres" },
-    { name: "ls", description: "Lista las secciones del portfolio" },
-    { name: "pwd", description: "Muestra el directorio actual" },
     { name: "game", description: "Inicia un mini-juego de adivinanza" }
   ]
 };
@@ -134,7 +129,7 @@ if (typeof window !== 'undefined' && !isMobileDevice()) {
   portfolioData.commands.push({ name: "konami", description: "Pulsa en orden: ↑↓←→" });
 }
 
-// Secciones del portfolio para el comando ls
+// Secciones del portfolio
 export const sections: Record<string, string[]> = {
   "~": ["about", "skills", "projects", "experience", "education", "contact", "social"],
   "about": ["summary", "interests", "goals"],
