@@ -11,10 +11,6 @@
   </a>
   <br>
   <br>
-  <a href="https://sergiomarquez.dev" target="_blank">
-    <img src="public/img/portfolio-preview.png" alt="Portfolio Preview" width="600">
-  </a>
-  <br>
   <strong>
     <a href="https://sergiomarquez.dev" target="_blank">Visitar Portfolio ↗</a>
   </strong>
@@ -119,16 +115,6 @@ Portfolio personal moderno y optimizado para desarrolladores, construido con **A
 ## 🚀 Demo
 
 Visita el portfolio en vivo: [sergiomarquez.dev](https://sergiomarquez.dev)
-
-### Capturas de pantalla
-
-<div align="center">
-  <img src="public/img/screenshot-desktop.png" alt="Desktop View" width="600">
-  <br>
-  <img src="public/img/screenshot-mobile.png" alt="Mobile View" width="300">
-  <br>
-  <img src="public/img/screenshot-terminal.png" alt="Terminal Feature" width="600">
-</div>
 
 ## 🛠️ Stack Tecnológico
 
