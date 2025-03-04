@@ -113,8 +113,7 @@ export const portfolioData = {
     { name: "matrix", description: "Activa/desactiva el modo desarrollador" },
     { name: "clear", description: "Limpia la terminal" },
     { name: "exit", description: "Cierra la terminal" },
-    { name: "whoami", description: "Muestra quién eres" },
-    { name: "konami", description: "Proporciona pistas sobre la secuencia secreta" }
+    { name: "whoami", description: "Muestra quién eres" }
   ]
 };
 

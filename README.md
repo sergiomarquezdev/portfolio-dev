@@ -151,8 +151,8 @@ portfolio-dev/
 │   └── workflows/         # Configuraciones de CI/CD (deploy.yml)
 ├── public/
 │   ├── img/              # Imágenes y recursos estáticos
-│   ├── robots.txt        # Configuración para crawlers
-│   └── favicon.ico       # Icono del sitio
+│   │   ├── robots.txt        # Configuración para crawlers
+│   │   └── favicon.ico       # Icono del sitio
 ├── src/
 │   ├── components/       # Componentes reutilizables
 │   │   ├── sections/     # Secciones principales del portfolio (Hero, About, etc.)
@@ -263,7 +263,6 @@ Una de las características más destacadas es la terminal interactiva que permi
   - `theme` - Cambia entre tema claro y oscuro
   - `clear` - Limpia la terminal
   - `exit` - Cierra la terminal
-  - `game` - Inicia un mini-juego de adivinanza
   - `matrix` - Activa/desactiva el modo desarrollador
   - `whoami` - Identifica al usuario
   - `konami` - Proporciona pistas sobre la secuencia secreta
