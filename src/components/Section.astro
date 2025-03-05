@@ -9,7 +9,7 @@
  * - Genera automáticamente IDs para los encabezados basados en el título
  * - Utiliza slot para insertar contenido personalizado en cada sección
  */
-const { title } = Astro.props;
+const { title, customMargin = "mb-8" } = Astro.props;
 
 // Generamos una ID para el encabezado si existe título
 const headingId = title
@@ -20,7 +20,7 @@ const headingId = title
 <section
   aria-labelledby={title ? headingId : undefined}
   aria-label={!title ? "Sección sin título" : undefined}
-  class="max-w-4xl mx-auto mb-8 px-6 md:px-8 lg:px-6"
+  class={`max-w-4xl mx-auto px-6 md:px-8 lg:px-6 ${customMargin}`}
 >
   {title && <h2 id={headingId} class="section-title">{title}</h2>}
   <slot />
