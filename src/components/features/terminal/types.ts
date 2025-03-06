@@ -98,7 +98,7 @@ export const portfolioData = {
     { name: "Blog Técnico", description: "Blog sobre desarrollo web y tecnologías", url: "https://blog.sergiomarquez.dev" }
   ],
   contact: {
-    email: "sergiomarquezdev@gmail.com",
+    email: "contacto@sergiomarquez.dev",
     linkedin: "https://www.linkedin.com/in/sergio-marquez-perez/",
     github: "https://github.com/sergiomarquezdev/",
     twitter: "https://x.com/smarquezdev/"
