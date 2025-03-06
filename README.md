@@ -285,7 +285,7 @@ Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENSE](L
 
 ## 📬 Contacto
 
-Sergio Márquez - [@sergiomarquezdev](https://twitter.com/sergiomarquezdev) - contacto@sergiomarquez.dev
+Sergio Márquez - [@smarquezdev](https://twitter.com/smarquezdev) - contacto@sergiomarquez.dev
 
 Enlace del proyecto: [https://github.com/sergiomarquezdev/portfolio-dev](https://github.com/sergiomarquezdev/portfolio-dev)
 
