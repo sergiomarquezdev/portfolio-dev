@@ -29,7 +29,6 @@
             }
         ]
     },
-
     "work": [
         {
             "company": "VITALY",
@@ -72,7 +71,6 @@
             ]
         }
     ],
-
     "education": [
         {
             "institution": "I.E.S. Castelar",
@@ -95,7 +93,6 @@
             "courses": []
         }
     ],
-
     "certificates": [
         {
             "name": "EF SET English Certificate 76/100 (C2 Proficient)",
@@ -112,39 +109,98 @@
             "description": "Curso especializado en el aprendizaje de los frameworks más populares de JavaScript: Angular, React y Vue.js, con un enfoque en desarrollo frontend avanzado."
         }
     ],
-
     "highlightedSkills": [
-        { "name": "Java", "icon": "Java" },
-        { "name": "Spring Framework", "icon": "Spring" },
-        { "name": "Angular", "icon": "Angular" },
-        { "name": "Docker", "icon": "Docker" },
-        { "name": "Kubernetes", "icon": "Kubernetes" },
-        { "name": "CI/CD", "icon": "CICD" }
+        {
+            "name": "Java",
+            "icon": "Java"
+        },
+        {
+            "name": "Spring Framework",
+            "icon": "Spring"
+        },
+        {
+            "name": "Angular",
+            "icon": "Angular"
+        },
+        {
+            "name": "Docker",
+            "icon": "Docker"
+        },
+        {
+            "name": "Kubernetes",
+            "icon": "Kubernetes"
+        },
+        {
+            "name": "CI/CD",
+            "icon": "CICD"
+        }
     ],
     "otherSkills": [
-        { "name": "Javascript", "icon": "Javascript" },
-        { "name": "Typescript", "icon": "Typescript" },
-        { "name": "Node.js", "icon": "Node" },
-        { "name": "Python", "icon": "Python" },
-        { "name": "Go", "icon": "Go" },
-        { "name": "React", "icon": "React" },
-        { "name": "Vue.js", "icon": "Vue" },
-        { "name": "Astro", "icon": "Astrosvg" }
+        {
+            "name": "Javascript",
+            "icon": "Javascript"
+        },
+        {
+            "name": "Typescript",
+            "icon": "Typescript"
+        },
+        {
+            "name": "Node.js",
+            "icon": "Node"
+        },
+        {
+            "name": "Python",
+            "icon": "Python"
+        },
+        {
+            "name": "Go",
+            "icon": "Go"
+        },
+        {
+            "name": "React",
+            "icon": "React"
+        },
+        {
+            "name": "Vue.js",
+            "icon": "Vue"
+        },
+        {
+            "name": "Astro",
+            "icon": "Astrosvg"
+        }
     ],
     "databasesSkills": [
-        { "name": "PostgreSQL", "icon": "PostgreSQL" },
-        { "name": "Oracle SQL", "icon": "OracleSQL" },
-        { "name": "MySQL", "icon": "MySQL" },
-        { "name": "MongoDB", "icon": "MongoDB" },
-        { "name": "Firebase", "icon": "Firebase" }
+        {
+            "name": "PostgreSQL",
+            "icon": "PostgreSQL"
+        },
+        {
+            "name": "Oracle SQL",
+            "icon": "OracleSQL"
+        },
+        {
+            "name": "MySQL",
+            "icon": "MySQL"
+        },
+        {
+            "name": "MongoDB",
+            "icon": "MongoDB"
+        },
+        {
+            "name": "Firebase",
+            "icon": "Firebase"
+        }
     ],
-
     "projects": [
         {
             "name": "Portfolio DEV",
             "isActive": true,
             "description": "Portfolio de Sergio Márquez, una aplicación web desarrollada con Astro que muestra mis habilidades, experiencia y proyectos como Desarrollador Full Stack.",
-            "highlights": ["Astro", "Typescript", "GitHub Actions"],
+            "highlights": [
+                "Astro",
+                "Typescript",
+                "GitHub Actions"
+            ],
             "url": "https://sergiomarquez.dev",
             "github": [
                 "https://github.com/sergiomarquezdev/portfolio-dev"
@@ -154,7 +210,13 @@
             "name": "One dAIly Blog",
             "isActive": true,
             "description": "Blog que genera contenido de forma automática a diario utilizando la API de OpenAI. El frontend está desarrollado en Angular y TailwindCSS, mientras que el backend está hecho con Node.js, Express.js y PostgreSQL.",
-            "highlights": ["Angular", "Node.js", "OpenAI", "PostgreSQL", "TailwindCSS"],
+            "highlights": [
+                "Angular",
+                "Node.js",
+                "OpenAI",
+                "PostgreSQL",
+                "TailwindCSS"
+            ],
             "url": "https://blog.sergiomarquez.dev/",
             "github": [
                 "https://github.com/sergiomarquezdev/one-daily-blog",
@@ -162,10 +224,43 @@
             ]
         },
         {
+            "name": "PinguFly",
+            "isActive": true,
+            "description": "Videojuego 2D clásico donde lanzas un pingüino lo más lejos posible a través de un hermoso paisaje invernal y compites por la mejor distancia. Reimaginación moderna del clásico juego Yeti Sports Pingu Throw con física realista, sistema de lanzamiento en dos fases y entorno dinámico.",
+            "highlights": [
+                "Phaser 3",
+                "JavaScript ES6+",
+                "Vite",
+                "Matter.js"
+            ],
+            "url": "https://pingufly.sergiomarquez.dev/",
+            "github": [
+                "https://github.com/sergiomarquezdev/pingufly-2d"
+            ]
+        },
+        {
+            "name": "Pizarra Digital por Gestos",
+            "isActive": true,
+            "description": "Aplicación Python que permite dibujar en una pizarra digital utilizando gestos de manos capturados a través de la cámara web. Combina visión por computadora y seguimiento de manos en tiempo real para crear una experiencia de dibujo interactiva sin contacto físico, con funciones como cambio de colores, interpolación adaptativa y control por gestos.",
+            "highlights": [
+                "Python",
+                "OpenCV",
+                "MediaPipe",
+                "Visión por Computadora"
+            ],
+            "url": null,
+            "github": [
+                "https://github.com/sergiomarquezdev/pizarra-digital-python"
+            ]
+        },
+        {
             "name": "MartaMontalban.es",
             "isActive": true,
             "description": "Desarrollo y diseño del portfolio web de Marta Montalbán, auxiliar de cámara en cine, utilizando WordPress y Elementor Pro, optimizando para SEO y un rendimiento web adecuado con tiempos de carga reducidos. Implementación de buenas prácticas en accesibilidad web y experiencia de usuario.",
-            "highlights": ["WordPress", "Elementor Pro"],
+            "highlights": [
+                "WordPress",
+                "Elementor Pro"
+            ],
             "url": "https://martamontalban.es",
             "github": null
         },
@@ -173,15 +268,25 @@
             "name": "Acestream Dockerizado",
             "isActive": true,
             "description": "Proyecto que dockeriza Acestream en un contenedor usando Ubuntu 22.04 y Python 3.10. Este contenedor permite ejecutar Acestream en un entorno aislado y con configuración automática para simplificar su uso. Incluye un script .bat para la instalación automática en Windows.",
-            "highlights": ["Docker", "Ubuntu 22.04", "Python 3.10"],
+            "highlights": [
+                "Docker",
+                "Ubuntu 22.04",
+                "Python 3.10"
+            ],
             "url": null,
-            "github": ["https://github.com/sergiomarquezdev/acestream-docker-home"]
+            "github": [
+                "https://github.com/sergiomarquezdev/acestream-docker-home"
+            ]
         },
         {
             "name": "Monitor de Rodajes de Cine",
             "isActive": false,
             "description": "Este script en Python realiza scraping en la página web del Ministerio de Cultura de España para detectar cambios en la sección de rodajes. Cuando se detecta un nuevo documento, el script descarga el PDF actualizado, compara su contenido con la versión anterior y envía un correo electrónico con las diferencias encontradas.",
-            "highlights": ["Python", "Scraping", "Automatización"],
+            "highlights": [
+                "Python",
+                "Scraping",
+                "Automatización"
+            ],
             "url": null,
             "github": [
                 "https://github.com/sergiomarquezdev/monitor-rodajes-cultura-gob"
