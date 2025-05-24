@@ -29,6 +29,7 @@ pnpm-debug.log*
 !.vscode/settings.json
 .idea/
 .cursor/
+.cursorrules
 *.suo
 *.ntvs*
 *.njsproj
