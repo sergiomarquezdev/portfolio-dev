@@ -99,7 +99,7 @@ const personSchema = {
       }}
     />
 
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
     <!-- Preload fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,11 +142,11 @@ const personSchema = {
     </script>
   </head>
   <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
-    <MatrixEffect client:idle />
-    <Terminal client:idle />
-    <ScrollToTop client:idle />
+    <MatrixEffect/>
+    <Terminal/>
+    <ScrollToTop/>
     <Header />
     <slot />
-    <FloatingToolbar client:idle />
+    <FloatingToolbar/>
   </body>
 </html>

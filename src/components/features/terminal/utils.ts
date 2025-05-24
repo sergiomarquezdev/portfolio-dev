@@ -19,8 +19,7 @@
 export function createAppendToTerminal(terminalOutput: HTMLElement | null, terminalContent: HTMLElement | null) {
   return function appendToTerminal(
     text: string,
-    className: string = "terminal-text-white",
-    withPrompt: boolean = false
+    className: string = "terminal-text-white"
   ) {
     if (!terminalOutput) return;
 
@@ -229,7 +228,7 @@ export function initTerminal(terminalOutput: HTMLElement | null, terminalInput: 
 }
 
 // Exportar tipos
-export type AppendToTerminalFn = (text: string, className?: string, withPrompt?: boolean) => void;
+export type AppendToTerminalFn = (text: string, className?: string) => void;
 export type ToggleTerminalFn = () => boolean;
 
 // Importamos la función para detectar dispositivos móviles

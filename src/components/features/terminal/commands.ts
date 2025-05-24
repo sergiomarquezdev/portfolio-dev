@@ -239,7 +239,6 @@ export function getCommandSuggestions(input: string): string[] {
   if (inputLower.includes(' ')) {
     const parts = inputLower.split(' ');
     const mainCommand = parts[0];
-    const partialArg = parts.length > 1 ? parts.slice(1).join(' ') : '';
 
     // Sugerencias específicas para cada comando
     if (mainCommand === 'theme') {

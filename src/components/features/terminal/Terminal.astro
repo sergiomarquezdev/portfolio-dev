@@ -133,13 +133,13 @@ const { initialPrompt = "$" } = Astro.props;
         // Si la terminal está abierta, mostrar un mensaje
         if (isTerminalOpen() && terminalOutput) {
           if (isDevModeActive) {
-            appendToTerminal('<span class="terminal-text-green">Modo desarrollador activado.</span>', '', false);
+            appendToTerminal('<span class="terminal-text-green">Modo desarrollador activado.</span>', '');
           } else {
-            appendToTerminal('<span class="terminal-text-green">Modo desarrollador desactivado.</span>', '', false);
+            appendToTerminal('<span class="terminal-text-green">Modo desarrollador desactivado.</span>', '');
           }
         }
       } else if (isTerminalOpen() && terminalOutput) {
-        appendToTerminal('<span class="terminal-text-red">Error: El modo desarrollador no está disponible.</span>', '', false);
+        appendToTerminal('<span class="terminal-text-red">Error: El modo desarrollador no está disponible.</span>', '');
       }
     }
 
@@ -161,7 +161,7 @@ const { initialPrompt = "$" } = Astro.props;
 
       // Si la terminal está abierta, mostrar un mensaje
       if (isTerminalOpen() && terminalOutput) {
-        appendToTerminal(`<span class="terminal-text-green">Tema cambiado a: ${newTheme}.</span>`, '', false);
+        appendToTerminal(`<span class="terminal-text-green">Tema cambiado a: ${newTheme}.</span>`, '');
       }
     }
 
@@ -248,25 +248,18 @@ const { initialPrompt = "$" } = Astro.props;
       } else if (e.key === 'Tab') {
         // Autocompletar comandos
         e.preventDefault();
-        const inputValue = terminalInput.value.trim();
-        if (inputValue) {
-          const suggestions = getCommandSuggestions(inputValue);
-          if (suggestions.length === 1) {
-            // Si hay una única sugerencia, autocompletar
-            terminalInput.value = suggestions[0];
-            terminalInput.selectionStart = terminalInput.selectionEnd = terminalInput.value.length;
-          } else if (suggestions.length > 1) {
-            // Mostrar sugerencias
-            appendToTerminal('<span class="terminal-text-blue">Sugerencias:</span> ' +
-              suggestions.map(s => `<span class="terminal-text-white">${s}</span>`).join(', '), '', false);
+        const currentInput = terminalInput.value.toLowerCase();
+        const suggestions = getCommandSuggestions(currentInput);
 
-            // Asegurar que el scroll esté en la parte inferior después de mostrar sugerencias
-            if (terminalContent) {
-              requestAnimationFrame(() => {
-                terminalContent.scrollTop = terminalContent.scrollHeight;
-              });
-            }
-          }
+        if (suggestions.length === 1) {
+          terminalInput.value = suggestions[0];
+          // Mover el cursor al final
+          setTimeout(() => {
+            terminalInput.selectionStart = terminalInput.selectionEnd = terminalInput.value.length;
+          }, 0);
+        } else if (suggestions.length > 1) {
+          // Mostrar múltiples sugerencias
+          appendToTerminal(`Sugerencias: ${suggestions.map(s => `<span class="terminal-text-white">${s}</span>`).join(', ')}`, '');
         }
       }
     });
