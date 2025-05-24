@@ -1,12 +1,12 @@
 {
     "basics": {
         "name": "Sergio Márquez",
-        "label": "Backend Developer | Java & Spring | AI Enthusiast | Docker | Kubernetes",
-        "image": "/img/sergio-marquez-perez-profile-picture.webp",
-        "imageAlt": "Foto de perfil de Sergio Márquez, Desarrollador Full Stack",
+        "label": "Desarrollador Full Stack Sergio Márquez | Java, Spring, Angular | Experto en IA, Docker y Kubernetes",
+        "image": "/img/sergio_marquez_perez_ia_profile_pic_1-1.png",
+        "imageAlt": "Foto de perfil de Sergio Márquez Pérez, Desarrollador Full Stack experto en Java, Spring y Angular",
         "email": "contacto@sergiomarquez.dev",
         "url": "https://sergiomarquez.dev",
-        "summary": "Soy Sergio Márquez, Desarrollador Full Stack con experiencia avanzada en Java con Spring Framework y Angular. Domino la creación de aplicaciones web robustas y escalables, y tengo una base sólida en Docker, Kubernetes y CI/CD, lo que me permite automatizar y optimizar los despliegues. He trabajado en proyectos con arquitecturas en la nube, aplicando buenas prácticas de desarrollo (SOLID) para garantizar un código limpio y eficiente.",
+        "summary": "Sergio Márquez Pérez, Desarrollador Full Stack altamente cualificado con especialización en Java (Spring Framework) y Angular. Como Sergio Márquez, me dedico al diseño y desarrollo de aplicaciones web robustas y escalables. Mi experiencia incluye Docker, Kubernetes y CI/CD para la optimización de despliegues, junto con un profundo conocimiento de arquitecturas en la nube y principios SOLID para asegurar la entrega de código limpio y de alto rendimiento.",
         "location": {
             "city": "Leganés",
             "region": "Comunidad de Madrid"
@@ -195,7 +195,7 @@
         {
             "name": "Portfolio DEV",
             "isActive": true,
-            "description": "Portfolio de Sergio Márquez, una aplicación web desarrollada con Astro que muestra mis habilidades, experiencia y proyectos como Desarrollador Full Stack.",
+            "description": "Este es el portfolio personal de Sergio Márquez Pérez, una aplicación web interactiva construida con Astro. Aquí, Sergio Márquez detalla sus habilidades, experiencia profesional y proyectos destacados como Desarrollador Full Stack.",
             "highlights": [
                 "Astro",
                 "Typescript",
@@ -209,7 +209,7 @@
         {
             "name": "One dAIly Blog",
             "isActive": true,
-            "description": "Blog que genera contenido de forma automática a diario utilizando la API de OpenAI. El frontend está desarrollado en Angular y TailwindCSS, mientras que el backend está hecho con Node.js, Express.js y PostgreSQL.",
+            "description": "One dAIly Blog, un innovador proyecto personal de Sergio Márquez, genera contenido automáticamente a diario usando la API de OpenAI. Frontend en Angular y TailwindCSS, con backend en Node.js, Express.js y PostgreSQL.",
             "highlights": [
                 "Angular",
                 "Node.js",
@@ -226,7 +226,7 @@
         {
             "name": "PinguFly",
             "isActive": true,
-            "description": "Videojuego 2D clásico donde lanzas un pingüino lo más lejos posible a través de un hermoso paisaje invernal y compites por la mejor distancia. Reimaginación moderna del clásico juego Yeti Sports Pingu Throw con física realista, sistema de lanzamiento en dos fases y entorno dinámico.",
+            "description": "PinguFly, un videojuego 2D clásico desarrollado por Sergio Márquez, te reta a lanzar un pingüino lo más lejos posible. Esta reimaginación moderna del Yeti Sports Pingu Throw incluye física realista y un entorno dinámico.",
             "highlights": [
                 "Phaser 3",
                 "JavaScript ES6+",
@@ -241,7 +241,7 @@
         {
             "name": "Pizarra Digital por Gestos",
             "isActive": true,
-            "description": "Aplicación Python que permite dibujar en una pizarra digital utilizando gestos de manos capturados a través de la cámara web. Combina visión por computadora y seguimiento de manos en tiempo real para crear una experiencia de dibujo interactiva sin contacto físico, con funciones como cambio de colores, interpolación adaptativa y control por gestos.",
+            "description": "Aplicación Python desarrollada por Sergio Márquez que permite dibujar en una pizarra digital mediante gestos de manos capturados por webcam. Combina visión por computadora y seguimiento de manos para una experiencia interactiva.",
             "highlights": [
                 "Python",
                 "OpenCV",
@@ -267,7 +267,7 @@
         {
             "name": "Acestream Dockerizado",
             "isActive": true,
-            "description": "Proyecto que dockeriza Acestream en un contenedor usando Ubuntu 22.04 y Python 3.10. Este contenedor permite ejecutar Acestream en un entorno aislado y con configuración automática para simplificar su uso. Incluye un script .bat para la instalación automática en Windows.",
+            "description": "Este proyecto de Sergio Márquez dockeriza Acestream en un contenedor Ubuntu 22.04 con Python 3.10, simplificando su ejecución en un entorno aislado. Incluye script .bat para instalación en Windows.",
             "highlights": [
                 "Docker",
                 "Ubuntu 22.04",
@@ -281,7 +281,7 @@
         {
             "name": "Monitor de Rodajes de Cine",
             "isActive": false,
-            "description": "Este script en Python realiza scraping en la página web del Ministerio de Cultura de España para detectar cambios en la sección de rodajes. Cuando se detecta un nuevo documento, el script descarga el PDF actualizado, compara su contenido con la versión anterior y envía un correo electrónico con las diferencias encontradas.",
+            "description": "Un script en Python creado por Sergio Márquez que realiza scraping en la web del Ministerio de Cultura de España para monitorizar rodajes. Detecta cambios, descarga PDFs y notifica diferencias por email.",
             "highlights": [
                 "Python",
                 "Scraping",

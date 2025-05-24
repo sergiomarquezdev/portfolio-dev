@@ -15,6 +15,7 @@ import Terminal from "@/components/Terminal.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
 import FloatingToolbar from "@/components/features/toolbar/FloatingToolbar.astro";
+import cvData from "@cv"; // Importar datos del CV
 
 interface Props {
   title?: string;
@@ -23,10 +24,37 @@ interface Props {
 }
 
 const {
-  title = "Sergio Márquez - Desarrollador Full Stack",
-  description = "Desarrollador Full Stack con experiencia avanzada en Java, Spring Framework, Angular, Docker y Kubernetes. Especializado en crear aplicaciones web robustas y escalables.",
-  image = "/img/sergio-marquez-perez-profile-picture.webp"
+  title = "Sergio Márquez | Desarrollador Full Stack y Experto en IA",
+  description = "Portfolio de Sergio Márquez Pérez, Desarrollador Full Stack experto en Java, Spring, Angular, IA y Cloud. Descubre mis proyectos y experiencia en desarrollo web.",
+  image = "/img/sergio_marquez_perez_ia_profile_pic_2-1.png"
 } = Astro.props;
+
+const { basics, work, education, highlightedSkills, otherSkills, databasesSkills } = cvData;
+const siteUrl = Astro.site ? Astro.site.toString().slice(0, -1) : basics.url; // Asegurar que no haya / al final
+const fullNameForSchema = basics.name.includes("Pérez") ? basics.name : basics.name + " Pérez"; // Ensure Pérez is added if not present
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": fullNameForSchema, // Updated to full name
+  "url": siteUrl,
+  "image": `${siteUrl}${basics.image}`,
+  "jobTitle": "Desarrollador Full Stack", // Updated jobTitle
+  "worksFor": work.length > 0 ? {
+    "@type": "Organization",
+    "name": work[0].company
+  } : undefined,
+  "alumniOf": education.map(edu => ({
+    "@type": "EducationalOrganization",
+    "name": edu.institution
+  })),
+  "sameAs": basics.profiles.map(profile => profile.url),
+  "knowsAbout": [
+    ...highlightedSkills.map(skill => skill.name),
+    ...otherSkills.map(skill => skill.name),
+    ...databasesSkills.map(skill => skill.name)
+  ].filter((value, index, self) => self.indexOf(value) === index) // Eliminar duplicados
+};
 ---
 
 <!doctype html>
@@ -44,7 +72,7 @@ const {
         basic: {
           title: title,
           type: "website",
-          image: image,
+          image: `${siteUrl}${image}`,
         },
         optional: {
           description: description,
@@ -55,9 +83,23 @@ const {
         creator: "@smarquezdev",
         title: title,
         description: description,
-        image: image,
+        image: `${siteUrl}${image}`,
+      }}
+      extend={{
+        meta: [
+          {
+            name: "author",
+            content: fullNameForSchema, // Using full name for author too
+          },
+          {
+            name: "keywords",
+            content: `Sergio Márquez, Sergio Márquez Pérez, Desarrollador Full Stack, Backend Developer, Frontend Developer, Java, Spring Framework, Angular, Inteligencia Artificial, IA, Docker, Kubernetes, Cloud Computing, Portfolio, ${highlightedSkills.map(s => s.name).join(", ")}` // Updated keywords
+          }
+        ]
       }}
     />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
     <!-- Preload fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,11 +142,11 @@ const {
     </script>
   </head>
   <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
-    <MatrixEffect />
-    <Terminal />
-    <ScrollToTop />
+    <MatrixEffect client:idle />
+    <Terminal client:idle />
+    <ScrollToTop client:idle />
     <Header />
     <slot />
-    <FloatingToolbar />
+    <FloatingToolbar client:idle />
   </body>
 </html>

@@ -169,7 +169,7 @@ portfolio-dev/
 ├── cv.json               # Datos estructurados del CV
 ├── accessibility.config.js # Configuración para pruebas de accesibilidad
 ├── astro.config.mjs      # Configuración de Astro
-├── tailwind.config.js    # Configuración de Tailwind CSS
+├── tailwind.config.cjs    # Configuración de Tailwind CSS
 ├── postcss.config.js     # Configuración de PostCSS
 ├── package.json          # Dependencias y scripts
 └── tsconfig.json         # Configuración de TypeScript
