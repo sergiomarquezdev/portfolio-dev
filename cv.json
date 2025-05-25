@@ -1,12 +1,12 @@
 {
     "basics": {
-        "name": "Sergio Márquez",
-        "label": "Desarrollador Full Stack | Java, Spring, Angular | Experto en IA, Docker y Kubernetes",
+        "name": "Sergio Márquez Pérez",
+        "label": "IA/ML Developer | Backend Developer | Python | Java & Spring",
         "image": "/img/sergio_marquez_perez_ia_profile_pic_1-1.png",
-        "imageAlt": "Foto de perfil de Sergio Márquez Pérez, Desarrollador Full Stack experto en Java, Spring y Angular",
+        "imageAlt": "Foto de perfil de Sergio Márquez Pérez, IA/ML Developer y Backend Developer experto en Python, Java y Spring.",
         "email": "contacto@sergiomarquez.dev",
         "url": "https://sergiomarquez.dev",
-        "summary": "Sergio Márquez Pérez, Desarrollador Full Stack altamente cualificado con especialización en Java (Spring Framework) y Angular. Como Sergio Márquez, me dedico al diseño y desarrollo de aplicaciones web robustas y escalables. Mi experiencia incluye Docker, Kubernetes y CI/CD para la optimización de despliegues, junto con un profundo conocimiento de arquitecturas en la nube y principios SOLID para asegurar la entrega de código limpio y de alto rendimiento.",
+        "summary": "¡Hola! Soy Sergio Márquez Pérez, un desarrollador especializándome en backend con una sólida base en Java y Spring Framework, complementada por una experiencia fullstack con Angular en el frontend. Actualmente también adentrándome de lleno en el mundo de la inteligencia artificial. En mi trayectoria, he trabajado principalmente con Java, tanto en desarrollos con versiones antiguas como en la creación de APIs en versiones posteriores con Spring Framework. Además he podido experimentar con entornos cloud como Google Cloud y cuento con experiencia en tecnologías como Docker, Kubernetes y pipelines de CI/CD, optimizando procesos de despliegue y desarrollo. Esta experiencia también incluye el uso de bases de datos relacionales como PostgreSQL, Oracle SQL y MySQL, priorizando siempre el rendimiento y la seguridad. Además he complementado mis conocimientos aprendiendo con proyectos personales en Node.js, Python y Go, este último siendo el que más me llama la atención para futuros proyectos. Mi principal objetivo es consolidarme como desarrollador backend, mientras continúo investigando nuevas tecnologías que vayan apareciendo y que me permitan seguir creciendo profesionalmente en este sector.",
         "location": {
             "city": "Leganés",
             "region": "Comunidad de Madrid"
@@ -32,30 +32,52 @@
     "work": [
         {
             "company": "VITALY",
-            "position": "Desarrollador Full-Stack",
+            "position": "Desarrollador IA/ML",
+            "website": "https://vitaly.es/",
+            "startDate": "2025-05",
+            "endDate": null,
+            "summary": "Desarrollador IA/ML en VITALY, enfocado en la investigación, desarrollo y aplicación de soluciones de Inteligencia Artificial y Machine Learning para innovar y optimizar procesos.",
+            "highlights": [
+                {
+                    "role": "Desarrollador IA/ML",
+                    "startDate": "2025-05",
+                    "endDate": null,
+                    "achievements": [
+                        "Aplicación de técnicas de IA y ML para el desarrollo de nuevas funcionalidades y productos.",
+                        "Análisis de datos y creación de modelos predictivos.",
+                        "Colaboración en la definición de la estrategia de IA de la compañía."
+                    ]
+                }
+            ]
+        },
+        {
+            "company": "VITALY",
+            "position": "Desarrollador Full-Stack & Prácticas",
             "website": "https://vitaly.es/",
             "startDate": "2021-04",
-            "endDate": null,
-            "summary": "Como Desarrollador Full-Stack en VITALY, he tenido una trayectoria creciente, comenzando como programador en prácticas, avanzando a desarrollador full-stack y enfrentando desafíos tanto técnicos durante estos años como culturales durante mi estancia en Dublín.",
+            "endDate": "2025-05",
+            "summary": "Trayectoria de crecimiento en VITALY, desde programador en prácticas hasta Desarrollador Full-Stack. Foco en backend (Java/Spring), con experiencia en frontend (Angular), Docker, Kubernetes (GKE) y CI/CD. Participación clave en la integración de datos post-fusión y mejora continua de procesos y aplicaciones.",
             "highlights": [
                 {
                     "role": "Desarrollador Full-Stack",
                     "startDate": "2021-06",
-                    "endDate": null,
+                    "endDate": "2025-04",
                     "achievements": [
-                        "Diseño y desarrollo de APIs middleware con Spring Framework, mejorando la comunicación entre aplicaciones.",
-                        "Liderazgo en la migración a Google Kubernetes Engine, optimizando despliegues y automatización.",
-                        "Integración de datos tras la fusión de Preving y Cualtis (resultando en Vitaly), asegurando compatibilidad y eficiencia."
+                        "Desarrollador Full-Stack en Vitaly, con foco en la especialización en el backend (Java/Spring Framework), aunque con sólida experiencia en frontend (Angular), dockerización (Docker), despliegue en Google Cloud (Kubernetes) y automatización (GitLab CI/CD).",
+                        "APIs Middleware Estratégicas: Diseño y desarrollo de APIs middleware con Spring Framework, optimizando la integración y comunicación frontend/servicios externos, mejorando velocidad y seguridad.",
+                        "Migración y Optimización GKE: Lideré la migración a Google Kubernetes Engine, superando desafíos técnicos para optimizar despliegues y automatizar la entrega continua.",
+                        "Integración Datos Post-Fusión: Participé activamente en la integración de datos tras la fusión Preving/Cualtis, realizando análisis, mapeo y adaptación de aplicaciones para gestionar datos unificados.",
+                        "Mi trayectoria ha impulsado mis habilidades backend, preparado para desafíos complejos, fortalecido mi capacidad resolutiva y optimizado la colaboración en equipo."
                     ]
                 },
                 {
-                    "role": "Desarrollador Full-Stack desde Dublín",
+                    "role": "Desarrollador Full-Stack (Experiencia Internacional en Dublín)",
                     "startDate": "2022-06",
                     "endDate": "2022-09",
                     "achievements": [
-                        "Desarrollo de aplicaciones full-stack de forma remota desde Dublín, utilizando Java, Spring Framework y Angular, entre otras. Migración de aplicaciones desde servidores a la nube, utilizando Docker, Kubernetes y la plataforma de Google Cloud.",
-                        "Mejora significativa en la fluidez en inglés, alcanzando un buen nivel.",
-                        "Adaptación y flexibilidad en un entorno internacional, enfrentando desafíos culturales y profesionales."
+                        "Continuación de desarrollo full-stack en remoto desde Dublín, aplicando Java, Spring Framework, Angular y Docker.",
+                        "Mejora significativa del nivel de inglés y adaptación a un entorno profesional internacional.",
+                        "Refuerzo de la capacidad de adaptación, flexibilidad y resolución de problemas en un contexto cultural diferente."
                     ]
                 },
                 {
@@ -63,8 +85,8 @@
                     "startDate": "2021-04",
                     "endDate": "2021-06",
                     "achievements": [
-                        "Formación intensiva y práctica en tecnologías como Java Spring, Angular, Docker y Kubernetes.",
-                        "Contribución en proyectos clave aplicando conocimientos en entornos reales.",
+                        "Formación intensiva en Java Spring, Angular, Docker y Kubernetes.",
+                        "Aplicación práctica de conocimientos en proyectos reales y contribución al equipo de desarrollo.",
                         "Desarrollo de habilidades de trabajo en equipo y comunicación en un entorno ágil."
                     ]
                 }
@@ -119,6 +141,10 @@
             "icon": "Spring"
         },
         {
+            "name": "Python",
+            "icon": "Python"
+        },
+        {
             "name": "Angular",
             "icon": "Angular"
         },
@@ -149,20 +175,8 @@
             "icon": "Node"
         },
         {
-            "name": "Python",
-            "icon": "Python"
-        },
-        {
             "name": "Go",
             "icon": "Go"
-        },
-        {
-            "name": "React",
-            "icon": "React"
-        },
-        {
-            "name": "Vue.js",
-            "icon": "Vue"
         },
         {
             "name": "Astro",
