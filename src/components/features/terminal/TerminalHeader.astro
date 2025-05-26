@@ -22,27 +22,28 @@ const {
   <div class="flex space-x-3">
     <button
       id="terminal-minimize"
-      class="w-6 h-6 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none relative"
+      class="w-10 h-10 p-2 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none relative flex items-center justify-center"
       title="Minimizar"
       aria-label="Minimizar terminal"
     >
-      <MinimizeIcon class="w-4 h-4 m-auto text-yellow-800" />
+      <MinimizeIcon class="w-4 h-4 text-yellow-800" />
     </button>
     <button
       id="terminal-maximize"
-      class="w-6 h-6 rounded-full bg-green-500 hover:bg-green-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none relative"
+      class="w-10 h-10 p-2 rounded-full bg-green-500 hover:bg-green-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none relative flex items-center justify-center"
       title="Maximizar"
       aria-label="Maximizar terminal"
+      aria-pressed={isMaximized ? "true" : "false"}
     >
-      <MaximizeIcon class="w-4 h-4 m-auto text-green-800" />
+      <MaximizeIcon class="w-4 h-4 text-green-800" />
     </button>
     <button
       id="terminal-close"
-      class="w-6 h-6 rounded-full bg-red-500 hover:bg-red-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none relative"
+      class="w-10 h-10 p-2 rounded-full bg-red-500 hover:bg-red-400 transition-all hover:scale-105 hover:shadow-sm active:scale-95 focus:outline-none relative flex items-center justify-center"
       title="Cerrar"
       aria-label="Cerrar terminal"
     >
-      <CloseIcon class="w-4 h-4 m-auto text-red-800" />
+      <CloseIcon class="w-4 h-4 text-red-800" />
     </button>
   </div>
 </div>

@@ -16,16 +16,19 @@ import { ArrowUpIcon } from '../icons';
   class="fixed bottom-4 left-4 z-40 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center hover:bg-primary-dark transition-all duration-300 transform scale-0 opacity-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:bg-primary-dark dark:hover:bg-primary"
   aria-label="Volver arriba"
   title="Volver arriba"
+  aria-hidden="true"
+  tabindex="-1"
 >
   <ArrowUpIcon class="h-6 w-6" />
 </button>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const scrollToTopButton = document.getElementById('scroll-to-top');
+    const scrollToTopButton = document.getElementById('scroll-to-top') as HTMLButtonElement | null;
 
     // Función para verificar la posición del scroll y mostrar/ocultar el botón
     function toggleScrollToTopButton() {
+      if (!scrollToTopButton) return;
       // Calcular la altura total del documento
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
@@ -36,11 +39,15 @@ import { ArrowUpIcon } from '../icons';
 
       // Mostrar el botón cuando el usuario ha scrolleado más del 70% de la página
       if (scrollPercentage > 70) {
-        scrollToTopButton?.classList.remove('scale-0', 'opacity-0');
-        scrollToTopButton?.classList.add('scale-100', 'opacity-100');
+        scrollToTopButton.classList.remove('scale-0', 'opacity-0');
+        scrollToTopButton.classList.add('scale-100', 'opacity-100');
+        scrollToTopButton.setAttribute('aria-hidden', 'false');
+        scrollToTopButton.setAttribute('tabindex', '0');
       } else {
-        scrollToTopButton?.classList.remove('scale-100', 'opacity-100');
-        scrollToTopButton?.classList.add('scale-0', 'opacity-0');
+        scrollToTopButton.classList.remove('scale-100', 'opacity-100');
+        scrollToTopButton.classList.add('scale-0', 'opacity-0');
+        scrollToTopButton.setAttribute('aria-hidden', 'true');
+        scrollToTopButton.setAttribute('tabindex', '-1');
       }
     }
 

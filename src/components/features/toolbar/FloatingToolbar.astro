@@ -27,43 +27,58 @@ import './styles.css';
   document.addEventListener('DOMContentLoaded', () => {
     const toolbar = initToolbar('floating-toolbar');
 
-    // Verificar si el objeto toolbar se inicializó correctamente
     if (toolbar) {
       toolbar.initialize();
     }
 
+    const themeToggleButton = document.getElementById('theme-toggle') as HTMLButtonElement | null;
+    const devModeButton = document.getElementById('dev-mode-toggle') as HTMLButtonElement | null; // Ya se maneja en setDevModeButtonState
+    // const terminalToggleButton = document.getElementById('terminal-toggle') as HTMLButtonElement | null; // Se maneja en terminal/utils.ts
+
+    function updateThemeToggleButtonState() {
+      if (themeToggleButton) {
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        themeToggleButton.setAttribute('aria-pressed', String(isDarkMode));
+        if (isDarkMode) {
+          themeToggleButton.setAttribute('aria-label', 'Activar modo claro');
+          themeToggleButton.setAttribute('title', 'Activar modo claro');
+        } else {
+          themeToggleButton.setAttribute('aria-label', 'Activar modo oscuro');
+          themeToggleButton.setAttribute('title', 'Activar modo oscuro');
+        }
+      }
+    }
+
+    // Inicializar estado del botón de tema
+    updateThemeToggleButtonState();
+
     // Actualizar estado inicial del botón de modo desarrollador si es necesario
-    const isDevMode = localStorage.getItem('devMode') === 'true';
-    if (isDevMode) {
-      setDevModeButtonState(true);
+    const isDevModeInitial = localStorage.getItem('devMode') === 'true';
+    if (devModeButton) { // Asegurarse que el botón existe antes de llamar
+        setDevModeButtonState(isDevModeInitial);
     }
 
     // Escuchar eventos relevantes para actualizar el estado de los botones
-
-    // Evento para cuando cambia el tema
     listenToToolbarEvent(TOOLBAR_EVENTS.TOGGLE_THEME, () => {
-      // Se gestiona en el componente Layout, no necesitamos hacer nada aquí
+      // La lógica de cambio de tema está en Layout.astro o globalmente.
+      // Aquí solo actualizamos el estado ARIA del botón después de que el tema haya cambiado.
+      // Usamos un pequeño delay para asegurar que el cambio de clase 'dark' se haya aplicado al DOM.
+      setTimeout(updateThemeToggleButtonState, 50);
     });
 
-    // Evento para cuando se activa/desactiva el modo desarrollador
     listenToToolbarEvent(TOOLBAR_EVENTS.TOGGLE_DEV_MODE, () => {
       const isActive = localStorage.getItem('devMode') === 'true';
-
-      // Cambiar el estado
       localStorage.setItem('devMode', isActive ? 'false' : 'true');
-
-      // Actualizar el estado visual del botón
-      setDevModeButtonState(!isActive);
-
-      // Disparar un evento para que otros componentes sepan del cambio
+      if (devModeButton) { // Asegurarse que el botón existe
+        setDevModeButtonState(!isActive);
+      }
       document.dispatchEvent(new CustomEvent('devmode-changed', {
         detail: { active: !isActive }
       }));
     });
 
-    // Evento para cuando se abre/cierra la terminal
     listenToToolbarEvent(TOOLBAR_EVENTS.TOGGLE_TERMINAL, () => {
-      // Este evento es manejado por Terminal.astro, no necesitamos hacer nada aquí
+      // El estado ARIA de terminal-toggle (aria-expanded) se actualiza en terminal/utils.ts
     });
   });
 </script>
@@ -76,6 +91,7 @@ import './styles.css';
     aria-label="Cambiar tema"
     title="Cambiar tema"
     class="toolbar-button"
+    aria-pressed="false"
   >
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path
@@ -90,9 +106,10 @@ import './styles.css';
   <!-- Botón para activar/desactivar modo desarrollador -->
   <button
     id="dev-mode-toggle"
-    aria-label="Modo desarrollador"
+    aria-label="Activar modo desarrollador"
     title="Activar modo desarrollador"
     class="toolbar-button"
+    aria-pressed="false"
   >
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path
@@ -110,6 +127,8 @@ import './styles.css';
     aria-label="Abrir terminal"
     title="Abrir terminal"
     class="toolbar-button"
+    aria-expanded="false"
+    aria-controls="terminal-container"
   >
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path

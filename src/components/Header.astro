@@ -45,9 +45,11 @@ const navLinks = [
       <!-- Botón de menú móvil (visible solo en móvil) -->
       <button
         id="mobile-menu-button"
-        class="md:hidden text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+        class="md:hidden text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary p-2"
         aria-label="Abrir menú"
         title="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
       >
         <MenuIcon class="h-6 w-6" />
       </button>
@@ -55,12 +57,12 @@ const navLinks = [
   </div>
 
   <!-- Menú móvil (oculto por defecto) -->
-  <div id="mobile-menu" class="hidden md:hidden absolute left-0 right-0 top-full bg-white dark:bg-dark shadow-lg border-b dark:border-gray-800 border-gray-100">
+  <div id="mobile-menu" role="menu" class="hidden md:hidden absolute left-0 right-0 top-full bg-white dark:bg-dark shadow-lg border-b dark:border-gray-800 border-gray-100">
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
         {navLinks.map(({ href, label }) => (
           <li>
-            <a href={href} class="nav-link block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
+            <a href={href} role="menuitem" class="nav-link block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
               {label}
             </a>
           </li>
@@ -73,7 +75,7 @@ const navLinks = [
 <script>
   // Script para manejar el menú móvil
   document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuButton = document.getElementById('mobile-menu-button') as HTMLButtonElement | null;
     const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const logoLink = document.getElementById('logo-link');
@@ -82,23 +84,26 @@ const navLinks = [
     // Mostrar/ocultar el menú móvil
     if (mobileMenuButton && mobileMenu) {
       mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+        const isExpanded = mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
       });
     }
 
     // Cerrar el menú móvil al hacer clic en un enlace
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (mobileMenu) {
+        if (mobileMenu && mobileMenuButton) {
           mobileMenu.classList.add('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
         }
       });
     });
 
     // Cerrar el menú móvil al hacer clic en el logo/enlace home
-    if (logoLink && mobileMenu) {
+    if (logoLink && mobileMenu && mobileMenuButton) {
       logoLink.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
       });
     }
 
@@ -109,7 +114,7 @@ const navLinks = [
       const scrollPosition = window.scrollY + (header?.offsetHeight || 0) + 100;
 
       sections.forEach(section => {
-        const sectionElement = section as HTMLElement; // Cast para usar offsetTop y offsetHeight
+        const sectionElement = section as HTMLElement;
         const sectionTop = sectionElement.offsetTop;
         const sectionHeight = sectionElement.offsetHeight;
         const sectionId = section.getAttribute('id');

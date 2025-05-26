@@ -53,6 +53,7 @@ export function createToggleTerminal(terminalContainer: HTMLElement | null, term
     if (!terminalContainer) return;
 
     const isVisible = terminalContainer.classList.contains('opacity-100');
+    const toolbarTerminalButton = document.getElementById('terminal-toggle'); // Botón en FloatingToolbar
 
     if (isVisible) {
       // Ocultar la terminal
@@ -60,12 +61,11 @@ export function createToggleTerminal(terminalContainer: HTMLElement | null, term
       terminalContainer.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
       terminalContainer.classList.add('hidden');
 
-      // Actualizar el botón de la terminal (si existe)
-      const terminalToggle = document.getElementById('terminal-toggle');
-      if (terminalToggle) {
-        terminalToggle.setAttribute('aria-expanded', 'false');
-        terminalToggle.setAttribute('title', 'Abrir terminal');
-        terminalToggle.setAttribute('aria-label', 'Abrir terminal');
+      // Actualizar el botón de la terminal (si existe en la toolbar)
+      if (toolbarTerminalButton) {
+        toolbarTerminalButton.setAttribute('aria-expanded', 'false');
+        toolbarTerminalButton.setAttribute('title', 'Abrir terminal');
+        toolbarTerminalButton.setAttribute('aria-label', 'Abrir terminal');
       }
     } else {
       // Mostrar la terminal
@@ -74,17 +74,15 @@ export function createToggleTerminal(terminalContainer: HTMLElement | null, term
         terminalContainer.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
         terminalContainer.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
 
-        // Enfocar el input
         if (terminalInput) {
           terminalInput.focus();
         }
 
-        // Actualizar el botón de la terminal (si existe)
-        const terminalToggle = document.getElementById('terminal-toggle');
-        if (terminalToggle) {
-          terminalToggle.setAttribute('aria-expanded', 'true');
-          terminalToggle.setAttribute('title', 'Cerrar terminal');
-          terminalToggle.setAttribute('aria-label', 'Cerrar terminal');
+        // Actualizar el botón de la terminal (si existe en la toolbar)
+        if (toolbarTerminalButton) {
+          toolbarTerminalButton.setAttribute('aria-expanded', 'true');
+          toolbarTerminalButton.setAttribute('title', 'Cerrar terminal');
+          toolbarTerminalButton.setAttribute('aria-label', 'Cerrar terminal');
         }
       }, 10);
     }
@@ -110,6 +108,8 @@ export function createToggleMaximize(terminalContainer: HTMLElement | null) {
   return function toggleMaximize() {
     if (!terminalContainer) return false;
 
+    const terminalMaximizeButton = document.getElementById('terminal-maximize');
+
     if (!isMaximized) {
       // Guardar el estado actual
       originalStyles = {
@@ -132,10 +132,10 @@ export function createToggleMaximize(terminalContainer: HTMLElement | null) {
       isMaximized = true;
 
       // Actualizar el botón maximizar (si existe)
-      const terminalMaximize = document.getElementById('terminal-maximize');
-      if (terminalMaximize) {
-        terminalMaximize.setAttribute('title', 'Restaurar');
-        terminalMaximize.setAttribute('aria-label', 'Restaurar terminal');
+      if (terminalMaximizeButton) {
+        terminalMaximizeButton.setAttribute('title', 'Restaurar');
+        terminalMaximizeButton.setAttribute('aria-label', 'Restaurar terminal');
+        terminalMaximizeButton.setAttribute('aria-pressed', 'true');
       }
     } else {
       // Restaurar el estado original
@@ -149,10 +149,10 @@ export function createToggleMaximize(terminalContainer: HTMLElement | null) {
       isMaximized = false;
 
       // Actualizar el botón maximizar (si existe)
-      const terminalMaximize = document.getElementById('terminal-maximize');
-      if (terminalMaximize) {
-        terminalMaximize.setAttribute('title', 'Maximizar');
-        terminalMaximize.setAttribute('aria-label', 'Maximizar terminal');
+      if (terminalMaximizeButton) {
+        terminalMaximizeButton.setAttribute('title', 'Maximizar');
+        terminalMaximizeButton.setAttribute('aria-label', 'Maximizar terminal');
+        terminalMaximizeButton.setAttribute('aria-pressed', 'false');
       }
     }
 

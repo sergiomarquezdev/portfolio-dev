@@ -329,18 +329,22 @@ export function listenToToolbarEvent(eventName: string, callback: (event: Custom
 }
 
 /**
- * Marcar el botón de modo desarrollador como activo o inactivo
- * @param active - Si el modo está activo o no
+ * Establece el estado visual y ARIA del botón de modo desarrollador
+ * @param active - true si el modo desarrollador está activo, false en caso contrario
  */
 export function setDevModeButtonState(active: boolean): void {
-  const devModeToggle = document.getElementById('dev-mode-toggle');
-  if (devModeToggle) {
+  const devModeButton = document.getElementById('dev-mode-toggle');
+  if (devModeButton) {
     if (active) {
-      devModeToggle.classList.add('active-dev-mode');
-      devModeToggle.setAttribute('title', 'Desactivar modo desarrollador');
+      devModeButton.classList.add('active-dev-mode');
+      devModeButton.setAttribute('aria-pressed', 'true');
+      devModeButton.setAttribute('aria-label', 'Desactivar modo desarrollador');
+      devModeButton.setAttribute('title', 'Desactivar modo desarrollador');
     } else {
-      devModeToggle.classList.remove('active-dev-mode');
-      devModeToggle.setAttribute('title', 'Activar modo desarrollador');
+      devModeButton.classList.remove('active-dev-mode');
+      devModeButton.setAttribute('aria-pressed', 'false');
+      devModeButton.setAttribute('aria-label', 'Activar modo desarrollador');
+      devModeButton.setAttribute('title', 'Activar modo desarrollador');
     }
   }
 }
