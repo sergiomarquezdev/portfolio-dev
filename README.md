@@ -18,50 +18,44 @@
 
 ## 🎯 Descripción
 
-Portfolio personal moderno y optimizado, construido con Astro y Tailwind CSS. Diseñado para mostrar mi experiencia como Desarrollador Full Stack e IA/ML, proyectos destacados y habilidades técnicas, con un enfoque en rendimiento y experiencia de usuario.
+Portfolio personal moderno y optimizado, construido con **Astro** y **Tailwind CSS**. Muestra mi experiencia como Desarrollador Full Stack, proyectos y habilidades, con foco en rendimiento y experiencia de usuario.
+
+## ✨ Características Principales
+
+- **Rendimiento Optimizado:** Carga ultra rápida con Astro, optimización de imágenes y Lighthouse >95.
+- **Diseño Profesional:** Interfaz minimalista, responsive (Mobile-first) con Tailwind CSS y animaciones CSS.
+- **Terminal Interactiva:** CLI integrada con comandos personalizados, autocompletado e historial.
+- **Experiencia de Usuario Mejorada:** Animaciones de entrada, resaltado de navegación y transiciones suaves.
+- **Gestión de Datos y SEO:** CV en JSON, TypeScript, sitemap automático y metadatos optimizados.
+- **CI/CD:** Despliegue automático con GitHub Actions a VPS con Nginx.
 
 ## 🛠️ Stack Tecnológico Principal
 
-- **Astro:** Framework web para sitios de alto rendimiento.
-- **TypeScript:** Superset de JavaScript tipado.
-- **Tailwind CSS:** Framework CSS utilitario para diseño rápido.
-- **Integraciones Astro:** Partytown (scripts de terceros), Sitemap (generación automática).
+- **Core:** Astro (v5.8.0), TypeScript (v5.8.3), Tailwind CSS (v3.4.17)
+- **Integraciones Astro:** Tailwind CSS (v6.0.2), Partytown (v2.1.4), Sitemap (v3.4.0), Check (v0.9.4)
+- **Optimización:** LightningCSS (v1.30.1), Terser (v5.39.2)
+- **Calidad de Código:** ESLint (v9.27.0), Prettier (v3.5.3)
 
 ## 🚀 Inicio Rápido
 
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone https://github.com/sergiomarquezdev/portfolio-dev.git
-    cd portfolio-dev
-    ```
-
-2.  **Instalar dependencias:**
-    ```bash
-    npm install
-    ```
-
-3.  **Iniciar entorno de desarrollo:**
-    ```bash
-    npm run dev
-    ```
-    Visita `http://localhost:4321` en tu navegador.
+1.  **Clonar:** `git clone https://github.com/sergiomarquezdev/portfolio-dev.git && cd portfolio-dev`
+2.  **Instalar:** `npm install`
+3.  **Desarrollo:** `npm run dev` (Visita `http://localhost:4321`)
 
 ## 📦 Scripts Disponibles
 
-- `npm run dev`: Inicia el servidor de desarrollo.
-- `npm run build`: Construye el proyecto para producción.
-- `npm run preview`: Previsualiza la build de producción.
-- `npm run check`: Comprueba tipos con TypeScript.
-- `npm run lint`: Verifica la calidad del código con ESLint.
-- `npm run format`: Formatea el código con Prettier.
-
-## 🔄 Despliegue
-
-Despliegue continuo automatizado a través de GitHub Actions.
+| Comando         | Descripción                                     |
+| --------------- | ----------------------------------------------- |
+| `npm run dev`   | Inicia servidor de desarrollo.                  |
+| `npm run build` | Compila el proyecto para producción.            |
+| `npm run preview`| Previsualiza la build de producción.           |
+| `npm run check` | Comprobación de tipos con TypeScript.           |
+| `npm run lint`  | Verifica calidad de código con ESLint.          |
+| `npm run format`| Formatea código con Prettier.                   |
 
 ## 📝 Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+Licencia MIT. Ver archivo `LICENSE` para más detalles.
 
 ## 📬 Contacto
 
