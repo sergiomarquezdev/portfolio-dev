@@ -18,7 +18,7 @@
 
 ## 🎯 Descripción
 
-Portfolio personal moderno y optimizado, construido con **Astro** y **Tailwind CSS**. Muestra mi experiencia como Desarrollador Full Stack, proyectos y habilidades, con foco en rendimiento y experiencia de usuario.
+Portfolio personal moderno y optimizado, construido con **Astro** y **Tailwind CSS**. Muestra mi experiencia como Desarrollador Full Stack e IA/ML, proyectos y habilidades, con foco en rendimiento y experiencia de usuario.
 
 ## ✨ Características Principales
 
