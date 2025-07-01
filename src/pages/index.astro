@@ -98,9 +98,8 @@ const { name } = basics;
           // Añadir clase activa al enlace correspondiente
           const activeLink = document.querySelector(`header nav a[href="#${sectionId}"]`);
           if (activeLink) {
-            // Verificar si estamos en modo oscuro
-            const isDarkMode = document.documentElement.classList.contains('dark');
-            activeLink.classList.add(isDarkMode ? 'text-primary-light' : 'text-primary', 'font-semibold');
+            // Usar siempre las clases del modo oscuro ya que es el único tema
+            activeLink.classList.add('text-primary-light', 'font-semibold');
           }
         }
       });
@@ -112,11 +111,7 @@ const { name } = basics;
     // Ejecutar al hacer scroll
     window.addEventListener('scroll', highlightActiveSection);
 
-    // Actualizar el resaltado de la navegación cuando cambia el tema
-    document.getElementById('theme-toggle')?.addEventListener('click', () => {
-      // Esperar un momento para que se aplique el cambio de tema
-      setTimeout(highlightActiveSection, 100);
-    });
+
 
     // Actualizar la barra de progreso de lectura
     const progressBar = document.getElementById('reading-progress');

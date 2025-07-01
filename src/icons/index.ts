@@ -14,15 +14,12 @@
 export type SocialIcon = Record<string, any>;
 
 // UI Icons
-export { default as SunIcon } from './ui/SunIcon.astro';
-export { default as MoonIcon } from './ui/MoonIcon.astro';
+
 export { default as CodeIcon } from './ui/CodeIcon.astro';
-export { default as TerminalIcon } from './ui/TerminalIcon.astro';
+
 export { default as MenuIcon } from './ui/MenuIcon.astro';
 export { default as ArrowUpIcon } from './ui/ArrowUpIcon.astro';
-export { default as MinimizeIcon } from './ui/MinimizeIcon.astro';
-export { default as MaximizeIcon } from './ui/MaximizeIcon.astro';
-export { default as CloseIcon } from './ui/CloseIcon.astro';
+
 
 // Tech Icons
 export { default as ReactIcon } from './tech/react.astro';

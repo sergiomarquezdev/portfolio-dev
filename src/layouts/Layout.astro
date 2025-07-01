@@ -4,18 +4,15 @@
  *
  * Características:
  * - Configura el HTML base, metadatos SEO y estilos globales
- * - Incluye componentes principales como Terminal, Header y FloatingToolbar
- * - Maneja la lógica de cambio de tema claro/oscuro
+ * - Incluye componentes principales como Header
+ * - Tema oscuro por defecto para una experiencia moderna
  * - Proporciona una estructura semántica accesible
  */
 import "../styles/global.css";
 import "../styles/fonts.css";
 import { SEO } from "astro-seo";
-import MatrixEffect from "@/components/features/matrix/MatrixEffect.astro";
-import Terminal from "@/components/Terminal.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
-import FloatingToolbar from "@/components/features/toolbar/FloatingToolbar.astro";
 import cvData from "@cv"; // Importar datos del CV
 
 interface Props {
@@ -104,45 +101,14 @@ const personSchema = {
 
     <!-- Theme script -->
     <script is:inline>
-      // Código para gestión del tema (claro/oscuro)
-      const theme = (() => {
-        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-          return localStorage.getItem("theme");
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      })();
-
-      if (theme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-
-      window.localStorage.setItem("theme", theme);
-
-      // Escuchar cambios en la preferencia del sistema
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
-        if (localStorage.getItem("theme") === null) {
-          if (e.matches) {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-          } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-          }
-        }
-      });
+      // Aplicar tema oscuro por defecto
+      document.documentElement.classList.add("dark");
+      window.localStorage.setItem("theme", "dark");
     </script>
   </head>
   <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
-    <MatrixEffect/>
-    <Terminal/>
     <ScrollToTop/>
     <Header />
     <slot />
-    <FloatingToolbar/>
   </body>
 </html>

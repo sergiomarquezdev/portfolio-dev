@@ -4,12 +4,10 @@
  *
  * Características:
  * - Muestra información principal del perfil: nombre, título, ubicación
- * - Presenta avatar/imagen de perfil optimizada para móvil y desktop
  * - Incluye enlaces a redes sociales y correo electrónico
- * - Implementa diseño responsivo con diferentes layouts para móvil y desktop
- * - Optimiza la experiencia con efectos visuales como blur en el fondo del avatar
- * - Adapta la presentación de elementos según el tamaño de pantalla
+ * - Implementa diseño responsivo centrado y limpio
  * - Separa el contenido para impresión y visualización web
+ * - Diseño minimalista enfocado en el contenido textual
  */
 import { basics } from "@cv";
 import Section from "../Section.astro";
@@ -30,51 +28,39 @@ const linkedUrl = linkedInfo?.url;
 const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 ---
 
-<!-- Hero section con ajustes mejorados para todos los dispositivos -->
+<!-- Hero section con diseño centrado y minimalista -->
 <div class="bg-gradient-to-r from-white to-gray-100 dark:from-dark dark:to-dark-card dark:bg-none shadow-sm pt-[4.5rem] sm:pt-24 md:pt-28 lg:pt-32">
-  <Section class="py-4 sm:py-6 md:py-8 lg:py-10">
-    <!-- Contenedor principal con estructura diferente según dispositivo -->
-    <div class="flex flex-col items-center md:flex-row md:justify-between md:items-center gap-4 md:gap-8">
+  <Section class="py-8 sm:py-12 md:py-16 lg:py-20">
+    <!-- Contenedor principal centrado -->
+    <div class="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
 
-      <!-- Avatar para móvil (visible en xs-sm, oculto en md+) -->
-      <div class="mb-5 md:hidden">
-        <div class="relative flex justify-center">
-          <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20 rounded-full -m-2 blur-md"></div>
-          <img
-            src={image}
-            alt={imageAlt}
-            width="180"
-            height="180"
-            class="relative aspect-square w-40 sm:w-48 rounded-full object-cover shadow-lg border-4 border-white dark:border-gray-800"
-          />
-        </div>
-      </div>
 
-      <!-- Contenido de texto (centrado en móvil, alineado a la izquierda en desktop) -->
-      <div class="flex flex-col text-center md:text-left md:flex-1 gap-2 sm:gap-3 md:gap-4 lg:gap-5 md:mr-8 lg:mr-12 xl:mr-16">
+
+      <!-- Contenido de texto centrado -->
+      <div class="flex flex-col items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
         <!-- Nombre como H1 para SEO -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-dark dark:text-white">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-secondary-dark dark:text-white">
           {name}
         </h1>
 
         <!-- Titular (puesto o especialidad) como H2 -->
-        <h2 class="text-lg sm:text-xl md:text-2xl text-secondary dark:text-gray-300 font-medium max-w-full md:max-w-[90%]">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-secondary dark:text-gray-300 font-medium max-w-4xl">
           {label}
         </h2>
 
-        <!-- Localización con más espacio -->
-        <span class="flex items-center gap-2 justify-center md:justify-start text-gray-700 dark:text-gray-400 mt-1 sm:mt-2">
+        <!-- Localización -->
+        <span class="flex items-center gap-2 justify-center text-gray-700 dark:text-gray-400 text-lg sm:text-xl">
           <WorldMap />
           {city}, {region}
         </span>
 
         <!-- Información en versión de impresión -->
-        <div class="print text-gray-700 dark:text-gray-400">
+        <div class="print text-gray-700 dark:text-gray-400 text-lg">
           {printInfo}
         </div>
 
-        <!-- Enlaces a redes sociales y correo con mejor espaciado -->
-        <nav class="no-print mt-3 sm:mt-4 md:mt-5 mb-4 sm:mb-5 md:mb-6 flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start" aria-label="Redes sociales y contacto">
+        <!-- Enlaces a redes sociales y correo -->
+        <nav class="no-print mt-4 sm:mt-6 md:mt-8 flex flex-wrap gap-3 md:gap-4 justify-center" aria-label="Redes sociales y contacto">
           {
             email && (
               <a
@@ -83,9 +69,9 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
                 aria-label={`Enviar un correo a ${name} (${email})`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card transition-all hover:bg-primary hover:text-white hover:shadow-md focus:outline-primary focus:outline-offset-2 hover:no-underline"
+                class="flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card transition-all hover:bg-primary hover:text-white hover:shadow-lg focus:outline-primary focus:outline-offset-2 hover:no-underline"
               >
-                <Mail class="w-5 h-5 sm:w-[1.35rem] sm:h-[1.35rem]" />
+                <Mail class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
               </a>
             )
           }
@@ -99,9 +85,9 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
                   aria-label={`Visitar el perfil de ${name} en ${network}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card transition-all hover:bg-primary hover:text-white hover:shadow-md focus:outline-primary focus:outline-offset-2 hover:no-underline"
+                  class="flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card transition-all hover:bg-primary hover:text-white hover:shadow-lg focus:outline-primary focus:outline-offset-2 hover:no-underline"
                 >
-                  <Icon class="w-5 h-5 sm:w-[1.35rem] sm:h-[1.35rem]" />
+                  <Icon class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
                 </a>
               );
             })
@@ -109,30 +95,18 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
           <!-- Enlace al blog -->
           <a
             href="https://blog.sergiomarquez.dev"
-            class="flex h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-green-50 dark:bg-green-800 text-gray-800 dark:text-white transition-all hover:bg-green-500 hover:text-white hover:shadow-md focus:outline-primary focus:outline-offset-2 hover:no-underline"
+            class="flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-green-50 dark:bg-green-800 text-gray-800 dark:text-white transition-all hover:bg-green-500 hover:text-white hover:shadow-lg focus:outline-primary focus:outline-offset-2 hover:no-underline"
             title="Visitar mi blog"
             aria-label="Visitar mi blog"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Blog class="w-5 h-5 sm:w-[1.35rem] sm:h-[1.35rem]" />
+            <Blog class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
           </a>
         </nav>
       </div>
 
-      <!-- Avatar para desktop (oculto en xs-sm, visible en md+) -->
-      <div class="hidden md:block">
-        <div class="relative">
-          <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20 rounded-full -m-2 blur-md"></div>
-          <img
-            src={image}
-            alt={imageAlt}
-            width="360"
-            height="360"
-            class="relative aspect-square w-[180px] lg:w-[220px] xl:w-[260px] rounded-full object-cover shadow-xl border-4 border-white dark:border-gray-800"
-          />
-        </div>
-      </div>
+
     </div>
   </Section>
 </div>

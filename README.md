@@ -24,7 +24,6 @@ Portfolio personal moderno y optimizado, construido con **Astro** y **Tailwind C
 
 - **Rendimiento Optimizado:** Carga ultra rápida con Astro, optimización de imágenes y Lighthouse >95.
 - **Diseño Profesional:** Interfaz minimalista, responsive (Mobile-first) con Tailwind CSS y animaciones CSS.
-- **Terminal Interactiva:** CLI integrada con comandos personalizados, autocompletado e historial.
 - **Experiencia de Usuario Mejorada:** Animaciones de entrada, resaltado de navegación y transiciones suaves.
 - **Gestión de Datos y SEO:** CV en JSON, TypeScript, sitemap automático y metadatos optimizados.
 - **CI/CD:** Despliegue automático con GitHub Actions a VPS con Nginx.
