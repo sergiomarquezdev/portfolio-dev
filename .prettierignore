@@ -1,0 +1,2 @@
+# Ignorar archivos SVG complejos que Prettier no puede manejar
+src/icons/tech/postgresql.astro
