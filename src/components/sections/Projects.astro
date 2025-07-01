@@ -17,32 +17,32 @@ const { title } = Astro.props;
 ---
 
 <Section title={title || "Proyectos"} id="proyectos">
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {
       projects.map(({ name, description, highlights, url, github }) => (
-        <article class="relative flex flex-col h-full overflow-hidden rounded-xl bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800 transition-colors duration-300 shadow-md hover:shadow-lg p-5 border border-gray-200 dark:border-gray-800">
-          <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">{name}</h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{description}</p>
+        <article class="relative flex h-full flex-col overflow-hidden rounded-xl bg-card p-5 shadow-lg transition hover:transform hover:-translate-y-1">
+          <h3 class="mb-2 text-xl font-semibold text-text-main">{name}</h3>
+          <p class="mb-4 text-sm text-text-muted">{description}</p>
 
-          <div class="flex flex-wrap gap-2 mb-4">
+          <div class="mb-4 flex flex-wrap gap-2">
             {highlights.map((tag) => (
-              <span class="text-xs px-2 py-1 bg-primary/10 text-slate-700 dark:bg-primary/20 dark:text-slate-200 rounded">
+              <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary-light">
                 {tag}
               </span>
             ))}
           </div>
 
-          <div class="flex gap-4 mt-auto pt-4">
+          <div class="mt-auto flex items-center gap-4 pt-4">
             {github && (
               <a
                 href={typeof github === "string" ? github : Array.isArray(github) ? github[0] : ""}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-gray-700 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors p-2 rounded-md"
+                class="rounded-md p-2 text-text-muted transition-colors hover:text-primary-light"
                 aria-label={`GitHub de ${name}`}
                 title={`Ver código en GitHub de ${name}`}
               >
-                <GitHubIcon class="w-5 h-5" />
+                <GitHubIcon class="h-6 w-6" />
               </a>
             )}
             {url && (
@@ -50,7 +50,7 @@ const { title } = Astro.props;
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-sm font-medium text-primary hover:text-primary-dark transition-colors px-3 py-2 rounded-md"
+                class="text-sm font-semibold text-link transition hover:text-primary"
                 aria-label={`Visitar ${name}`}
               >
                 Visitar →

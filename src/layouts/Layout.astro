@@ -129,15 +129,8 @@ const personSchema = {
     />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-
-    <!-- Theme script -->
-    <script is:inline>
-      // Aplicar tema oscuro por defecto
-      document.documentElement.classList.add("dark");
-      window.localStorage.setItem("theme", "dark");
-    </script>
   </head>
-  <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
+  <body class="bg-body text-text-main">
     <ScrollToTop />
     <Header />
     <slot />

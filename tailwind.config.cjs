@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -9,19 +8,18 @@ module.exports = {
           DEFAULT: "#22d3ee",
           light: "#a5f3fc",
           dark: "#06b6d4",
-          "text-on-button": "#083344",
+          "text-on-button": "#ffffff",
         },
         secondary: {
-          DEFAULT: "#334155",
-          light: "#475569",
-          dark: "#1e293b",
+          DEFAULT: "#94a3b8",
+          light: "#cbd5e1",
+          dark: "#64748b",
         },
-        dark: {
-          DEFAULT: "#0f172a",
-          card: "#1e293b",
-          text: "#94a3b8",
-          primary: "#e2e8f0",
-        },
+        body: "#0f172a",
+        card: "#1e293b",
+        "text-main": "#e2e8f0",
+        "text-muted": "#94a3b8",
+        link: "#a5f3fc",
       },
       fontFamily: {
         sans: [
@@ -40,33 +38,28 @@ module.exports = {
         heading: ["Montserrat", "Gill Sans", "Segoe UI", "Helvetica Neue", "sans-serif"],
         mono: ["Fira Code", "ui-monospace", "SFMono-Regular", "monospace"],
       },
-      backgroundColor: {
-        dark: "#0f172a",
-        "dark-card": "#1e293b",
-      },
-      textColor: {
-        dark: {
-          primary: "#e2e8f0",
-          secondary: "#94a3b8",
-        },
-      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            color: theme("colors.text-main"),
             a: {
-              color: theme("colors.primary.DEFAULT"),
+              color: theme("colors.link"),
               "&:hover": {
-                color: theme("colors.primary.dark"),
+                color: theme("colors.primary.DEFAULT"),
               },
             },
             "h1, h2, h3, h4, h5, h6": {
+              color: theme("colors.text-main"),
               fontWeight: 700,
               marginTop: "1.5em",
               marginBottom: "0.5em",
             },
+            strong: {
+              color: theme("colors.text-main"),
+            },
             code: {
-              color: theme("colors.primary.dark"),
-              backgroundColor: theme("colors.gray.100"),
+              color: theme("colors.primary.light"),
+              backgroundColor: theme("colors.card"),
               borderRadius: "0.25rem",
               padding: "0.25rem 0.5rem",
               fontWeight: 500,
@@ -76,27 +69,6 @@ module.exports = {
             },
             "code::after": {
               content: '""',
-            },
-          },
-        },
-        dark: {
-          css: {
-            color: theme("textColor.dark.primary"),
-            a: {
-              color: theme("colors.primary.light"),
-              "&:hover": {
-                color: theme("colors.primary.DEFAULT"),
-              },
-            },
-            "h1, h2, h3, h4, h5, h6": {
-              color: theme("textColor.dark.primary"),
-            },
-            strong: {
-              color: theme("textColor.dark.primary"),
-            },
-            code: {
-              color: theme("colors.primary.light"),
-              backgroundColor: theme("backgroundColor.dark-card"),
             },
           },
         },
