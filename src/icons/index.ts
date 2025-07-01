@@ -11,7 +11,8 @@
  */
 
 // Definición de tipos relacionados con iconos
-export type SocialIcon = Record<string, unknown>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SocialIcon = Record<string, any>;
 
 // UI Icons
 export { default as MenuIcon } from "./ui/MenuIcon.astro";
