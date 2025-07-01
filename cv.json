@@ -1,310 +1,269 @@
 {
-    "basics": {
-        "name": "Sergio Márquez Pérez",
-        "label": "IA/ML Developer | Backend Developer | Python | Java & Spring",
-        "image": "/img/sergio_marquez_perez_ia_profile_pic_1-1.webp",
-        "imageAlt": "Foto de perfil de Sergio Márquez Pérez, IA/ML Developer y Backend Developer experto en Python, Java y Spring.",
-        "email": "contacto@sergiomarquez.dev",
-        "url": "https://sergiomarquez.dev",
-        "summary": "¡Hola! Soy Sergio Márquez Pérez, un desarrollador especializándome en backend con una sólida base en Java y Spring Framework, complementada por una experiencia fullstack con Angular en el frontend. Actualmente también adentrándome de lleno en el mundo de la inteligencia artificial. En mi trayectoria, he trabajado principalmente con Java, tanto en desarrollos con versiones antiguas como en la creación de APIs en versiones posteriores con Spring Framework. Además he podido experimentar con entornos cloud como Google Cloud y cuento con experiencia en tecnologías como Docker, Kubernetes y pipelines de CI/CD, optimizando procesos de despliegue y desarrollo. Esta experiencia también incluye el uso de bases de datos relacionales como PostgreSQL, Oracle SQL y MySQL, priorizando siempre el rendimiento y la seguridad. Además he complementado mis conocimientos aprendiendo con proyectos personales en Node.js, Python y Go, este último siendo el que más me llama la atención para futuros proyectos. Mi principal objetivo es consolidarme como desarrollador backend, mientras continúo investigando nuevas tecnologías que vayan apareciendo y que me permitan seguir creciendo profesionalmente en este sector.",
-        "location": {
-            "city": "Leganés",
-            "region": "Comunidad de Madrid"
-        },
-        "profiles": [
-            {
-                "network": "LinkedIn",
-                "username": "sergio-marquez-perez",
-                "url": "https://linkedin.com/in/sergio-marquez-perez/"
-            },
-            {
-                "network": "X",
-                "username": "smarquezdev",
-                "url": "https://x.com/smarquezdev/"
-            },
-            {
-                "network": "GitHub",
-                "username": "sergiomarquezdev",
-                "url": "https://github.com/sergiomarquezdev/"
-            }
-        ]
+  "basics": {
+    "name": "Sergio Márquez Pérez",
+    "label": "IA/ML Developer | Backend Developer | Python | Java & Spring",
+    "image": "/img/sergio_marquez_perez_ia_profile_pic_1-1.webp",
+    "imageAlt": "Foto de perfil de Sergio Márquez Pérez, IA/ML Developer y Backend Developer experto en Python, Java y Spring.",
+    "email": "contacto@sergiomarquez.dev",
+    "url": "https://sergiomarquez.dev",
+    "summary": "¡Hola! Soy Sergio Márquez Pérez, un desarrollador especializándome en backend con una sólida base en Java y Spring Framework, complementada por una experiencia fullstack con Angular en el frontend. Actualmente también adentrándome de lleno en el mundo de la inteligencia artificial. En mi trayectoria, he trabajado principalmente con Java, tanto en desarrollos con versiones antiguas como en la creación de APIs en versiones posteriores con Spring Framework. Además he podido experimentar con entornos cloud como Google Cloud y cuento con experiencia en tecnologías como Docker, Kubernetes y pipelines de CI/CD, optimizando procesos de despliegue y desarrollo. Esta experiencia también incluye el uso de bases de datos relacionales como PostgreSQL, Oracle SQL y MySQL, priorizando siempre el rendimiento y la seguridad. Además he complementado mis conocimientos aprendiendo con proyectos personales en Node.js, Python y Go, este último siendo el que más me llama la atención para futuros proyectos. Mi principal objetivo es consolidarme como desarrollador backend, mientras continúo investigando nuevas tecnologías que vayan apareciendo y que me permitan seguir creciendo profesionalmente en este sector.",
+    "location": {
+      "city": "Leganés",
+      "region": "Comunidad de Madrid"
     },
-    "work": [
-        {
-            "company": "VITALY",
-            "position": "Desarrollador IA/ML",
-            "website": "https://vitaly.es/",
-            "startDate": "2025-05",
-            "endDate": null,
-            "summary": "Desarrollador IA/ML en VITALY, enfocado en la investigación, desarrollo y aplicación de soluciones de Inteligencia Artificial y Machine Learning para innovar y optimizar procesos.",
-            "highlights": [
-                {
-                    "role": "Desarrollador IA/ML",
-                    "startDate": "2025-05",
-                    "endDate": null,
-                    "achievements": [
-                        "Aplicación de técnicas de IA y ML para el desarrollo de nuevas funcionalidades y productos.",
-                        "Análisis de datos y creación de modelos predictivos.",
-                        "Colaboración en la definición de la estrategia de IA de la compañía."
-                    ]
-                }
-            ]
-        },
-        {
-            "company": "VITALY",
-            "position": "Desarrollador Full-Stack & Prácticas",
-            "website": "https://vitaly.es/",
-            "startDate": "2021-04",
-            "endDate": "2025-05",
-            "summary": "Trayectoria de crecimiento en VITALY, desde programador en prácticas hasta Desarrollador Full-Stack. Foco en backend (Java/Spring), con experiencia en frontend (Angular), Docker, Kubernetes (GKE) y CI/CD. Participación clave en la integración de datos post-fusión y mejora continua de procesos y aplicaciones.",
-            "highlights": [
-                {
-                    "role": "Desarrollador Full-Stack",
-                    "startDate": "2021-06",
-                    "endDate": "2025-04",
-                    "achievements": [
-                        "Desarrollador Full-Stack en Vitaly, con foco en la especialización en el backend (Java/Spring Framework), aunque con sólida experiencia en frontend (Angular), dockerización (Docker), despliegue en Google Cloud (Kubernetes) y automatización (GitLab CI/CD).",
-                        "APIs Middleware Estratégicas: Diseño y desarrollo de APIs middleware con Spring Framework, optimizando la integración y comunicación frontend/servicios externos, mejorando velocidad y seguridad.",
-                        "Migración y Optimización GKE: Lideré la migración a Google Kubernetes Engine, superando desafíos técnicos para optimizar despliegues y automatizar la entrega continua.",
-                        "Integración Datos Post-Fusión: Participé activamente en la integración de datos tras la fusión Preving/Cualtis, realizando análisis, mapeo y adaptación de aplicaciones para gestionar datos unificados.",
-                        "Mi trayectoria ha impulsado mis habilidades backend, preparado para desafíos complejos, fortalecido mi capacidad resolutiva y optimizado la colaboración en equipo."
-                    ]
-                },
-                {
-                    "role": "Desarrollador Full-Stack (Experiencia Internacional en Dublín)",
-                    "startDate": "2022-06",
-                    "endDate": "2022-09",
-                    "achievements": [
-                        "Continuación de desarrollo full-stack en remoto desde Dublín, aplicando Java, Spring Framework, Angular y Docker.",
-                        "Mejora significativa del nivel de inglés y adaptación a un entorno profesional internacional.",
-                        "Refuerzo de la capacidad de adaptación, flexibilidad y resolución de problemas en un contexto cultural diferente."
-                    ]
-                },
-                {
-                    "role": "Programador en prácticas",
-                    "startDate": "2021-04",
-                    "endDate": "2021-06",
-                    "achievements": [
-                        "Formación intensiva en Java Spring, Angular, Docker y Kubernetes.",
-                        "Aplicación práctica de conocimientos en proyectos reales y contribución al equipo de desarrollo.",
-                        "Desarrollo de habilidades de trabajo en equipo y comunicación en un entorno ágil."
-                    ]
-                }
-            ]
-        }
-    ],
-    "education": [
-        {
-            "institution": "I.E.S. Castelar",
-            "url": "https://iescastelar.educarex.es/",
-            "area": "Desarrollo de Aplicaciones Multiplataforma",
-            "studyType": "Técnico Superior",
-            "startDate": "2020-09",
-            "endDate": "2021-06",
-            "score": "9.83",
-            "courses": []
-        },
-        {
-            "institution": "I.E.S. Suárez de Figueroa",
-            "url": "https://www.suarezdefigueroa.es/",
-            "area": "Desarrollo de Aplicaciones Web",
-            "studyType": "Técnico Superior",
-            "startDate": "2018-09",
-            "endDate": "2020-06",
-            "score": "9.30",
-            "courses": []
-        }
-    ],
-    "certificates": [
-        {
-            "name": "EF SET English Certificate 76/100 (C2 Proficient)",
-            "date": "2021-09-15",
-            "issuer": "EF Standard English Test (EF SET)",
-            "url": "https://www.efset.org/cert/Sp9SYB",
-            "description": "Certificado de nivel C2 en inglés, validado por la prueba estándar EF SET, lo que avala mi competencia en inglés para entornos laborales y técnicos."
-        },
-        {
-            "name": "Master en Frameworks Javascript: Aprende Angular, React, Vue",
-            "date": "2021-11-07",
-            "issuer": "Udemy",
-            "url": "https://ude.my/UC-873b8fa3-dd9a-40a3-8185-073a5e6df250/",
-            "description": "Curso especializado en el aprendizaje de los frameworks más populares de JavaScript: Angular, React y Vue.js, con un enfoque en desarrollo frontend avanzado."
-        }
-    ],
-    "highlightedSkills": [
-        {
-            "name": "Java",
-            "icon": "Java"
-        },
-        {
-            "name": "Spring Framework",
-            "icon": "Spring"
-        },
-        {
-            "name": "Python",
-            "icon": "Python"
-        },
-        {
-            "name": "Angular",
-            "icon": "Angular"
-        },
-        {
-            "name": "Docker",
-            "icon": "Docker"
-        },
-        {
-            "name": "Kubernetes",
-            "icon": "Kubernetes"
-        },
-        {
-            "name": "CI/CD",
-            "icon": "CICD"
-        }
-    ],
-    "otherSkills": [
-        {
-            "name": "Javascript",
-            "icon": "Javascript"
-        },
-        {
-            "name": "Typescript",
-            "icon": "Typescript"
-        },
-        {
-            "name": "Node.js",
-            "icon": "Node"
-        },
-        {
-            "name": "Go",
-            "icon": "Go"
-        },
-        {
-            "name": "Astro",
-            "icon": "Astrosvg"
-        }
-    ],
-    "databasesSkills": [
-        {
-            "name": "PostgreSQL",
-            "icon": "PostgreSQL"
-        },
-        {
-            "name": "Oracle SQL",
-            "icon": "OracleSQL"
-        },
-        {
-            "name": "MySQL",
-            "icon": "MySQL"
-        },
-        {
-            "name": "MongoDB",
-            "icon": "MongoDB"
-        },
-        {
-            "name": "Firebase",
-            "icon": "Firebase"
-        }
-    ],
-    "projects": [
-        {
-            "name": "Portfolio DEV",
-            "isActive": true,
-            "description": "Este es el portfolio personal de Sergio Márquez Pérez, una aplicación web interactiva construida con Astro. Aquí, Sergio Márquez detalla sus habilidades, experiencia profesional y proyectos destacados como Desarrollador Full Stack.",
-            "highlights": [
-                "Astro",
-                "Typescript",
-                "GitHub Actions"
-            ],
-            "url": "https://sergiomarquez.dev",
-            "github": [
-                "https://github.com/sergiomarquezdev/portfolio-dev"
-            ]
-        },
-        {
-            "name": "One dAIly Blog",
-            "isActive": true,
-            "description": "One dAIly Blog, un innovador proyecto personal de Sergio Márquez, genera contenido automáticamente a diario usando la API de OpenAI. Frontend en Angular y TailwindCSS, con backend en Node.js, Express.js y PostgreSQL.",
-            "highlights": [
-                "Angular",
-                "Node.js",
-                "OpenAI",
-                "PostgreSQL",
-                "TailwindCSS"
-            ],
-            "url": "https://blog.sergiomarquez.dev/",
-            "github": [
-                "https://github.com/sergiomarquezdev/one-daily-blog",
-                "https://github.com/sergiomarquezdev/one-daily-blog-backend"
-            ]
-        },
-        {
-            "name": "PinguFly",
-            "isActive": true,
-            "description": "PinguFly, un videojuego 2D clásico desarrollado por Sergio Márquez, te reta a lanzar un pingüino lo más lejos posible. Esta reimaginación moderna del Yeti Sports Pingu Throw incluye física realista y un entorno dinámico.",
-            "highlights": [
-                "Phaser 3",
-                "JavaScript ES6+",
-                "Vite",
-                "Matter.js"
-            ],
-            "url": "https://pingufly.sergiomarquez.dev/",
-            "github": [
-                "https://github.com/sergiomarquezdev/pingufly-2d"
-            ]
-        },
-        {
-            "name": "Pizarra Digital por Gestos",
-            "isActive": true,
-            "description": "Aplicación Python desarrollada por Sergio Márquez que permite dibujar en una pizarra digital mediante gestos de manos capturados por webcam. Combina visión por computadora y seguimiento de manos para una experiencia interactiva.",
-            "highlights": [
-                "Python",
-                "OpenCV",
-                "MediaPipe",
-                "Visión por Computadora"
-            ],
-            "url": null,
-            "github": [
-                "https://github.com/sergiomarquezdev/pizarra-digital-python"
-            ]
-        },
-        {
-            "name": "MartaMontalban.es",
-            "isActive": true,
-            "description": "Desarrollo y diseño del portfolio web de Marta Montalbán, auxiliar de cámara en cine, utilizando WordPress y Elementor Pro, optimizando para SEO y un rendimiento web adecuado con tiempos de carga reducidos. Implementación de buenas prácticas en accesibilidad web y experiencia de usuario.",
-            "highlights": [
-                "WordPress",
-                "Elementor Pro"
-            ],
-            "url": "https://martamontalban.es",
-            "github": null
-        },
-        {
-            "name": "Acestream Dockerizado",
-            "isActive": true,
-            "description": "Este proyecto de Sergio Márquez dockeriza Acestream en un contenedor Ubuntu 22.04 con Python 3.10, simplificando su ejecución en un entorno aislado. Incluye script .bat para instalación en Windows.",
-            "highlights": [
-                "Docker",
-                "Ubuntu 22.04",
-                "Python 3.10"
-            ],
-            "url": null,
-            "github": [
-                "https://github.com/sergiomarquezdev/acestream-docker-home"
-            ]
-        },
-        {
-            "name": "Monitor de Rodajes de Cine",
-            "isActive": false,
-            "description": "Un script en Python creado por Sergio Márquez que realiza scraping en la web del Ministerio de Cultura de España para monitorizar rodajes. Detecta cambios, descarga PDFs y notifica diferencias por email.",
-            "highlights": [
-                "Python",
-                "Scraping",
-                "Automatización"
-            ],
-            "url": null,
-            "github": [
-                "https://github.com/sergiomarquezdev/monitor-rodajes-cultura-gob"
-            ]
-        }
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "sergio-marquez-perez",
+        "url": "https://linkedin.com/in/sergio-marquez-perez/"
+      },
+      {
+        "network": "X",
+        "username": "smarquezdev",
+        "url": "https://x.com/smarquezdev/"
+      },
+      {
+        "network": "GitHub",
+        "username": "sergiomarquezdev",
+        "url": "https://github.com/sergiomarquezdev/"
+      }
     ]
+  },
+  "work": [
+    {
+      "company": "VITALY",
+      "position": "Desarrollador IA/ML",
+      "website": "https://vitaly.es/",
+      "startDate": "2025-05",
+      "endDate": null,
+      "summary": "Desarrollador IA/ML en VITALY, enfocado en la investigación, desarrollo y aplicación de soluciones de Inteligencia Artificial y Machine Learning para innovar y optimizar procesos.",
+      "highlights": [
+        {
+          "role": "Desarrollador IA/ML",
+          "startDate": "2025-05",
+          "endDate": null,
+          "achievements": [
+            "Aplicación de técnicas de IA y ML para el desarrollo de nuevas funcionalidades y productos.",
+            "Análisis de datos y creación de modelos predictivos.",
+            "Colaboración en la definición de la estrategia de IA de la compañía."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "VITALY",
+      "position": "Desarrollador Full-Stack & Prácticas",
+      "website": "https://vitaly.es/",
+      "startDate": "2021-04",
+      "endDate": "2025-05",
+      "summary": "Trayectoria de crecimiento en VITALY, desde programador en prácticas hasta Desarrollador Full-Stack. Foco en backend (Java/Spring), con experiencia en frontend (Angular), Docker, Kubernetes (GKE) y CI/CD. Participación clave en la integración de datos post-fusión y mejora continua de procesos y aplicaciones.",
+      "highlights": [
+        {
+          "role": "Desarrollador Full-Stack",
+          "startDate": "2021-06",
+          "endDate": "2025-04",
+          "achievements": [
+            "Desarrollador Full-Stack en Vitaly, con foco en la especialización en el backend (Java/Spring Framework), aunque con sólida experiencia en frontend (Angular), dockerización (Docker), despliegue en Google Cloud (Kubernetes) y automatización (GitLab CI/CD).",
+            "APIs Middleware Estratégicas: Diseño y desarrollo de APIs middleware con Spring Framework, optimizando la integración y comunicación frontend/servicios externos, mejorando velocidad y seguridad.",
+            "Migración y Optimización GKE: Lideré la migración a Google Kubernetes Engine, superando desafíos técnicos para optimizar despliegues y automatizar la entrega continua.",
+            "Integración Datos Post-Fusión: Participé activamente en la integración de datos tras la fusión Preving/Cualtis, realizando análisis, mapeo y adaptación de aplicaciones para gestionar datos unificados.",
+            "Mi trayectoria ha impulsado mis habilidades backend, preparado para desafíos complejos, fortalecido mi capacidad resolutiva y optimizado la colaboración en equipo."
+          ]
+        },
+        {
+          "role": "Desarrollador Full-Stack (Experiencia Internacional en Dublín)",
+          "startDate": "2022-06",
+          "endDate": "2022-09",
+          "achievements": [
+            "Continuación de desarrollo full-stack en remoto desde Dublín, aplicando Java, Spring Framework, Angular y Docker.",
+            "Mejora significativa del nivel de inglés y adaptación a un entorno profesional internacional.",
+            "Refuerzo de la capacidad de adaptación, flexibilidad y resolución de problemas en un contexto cultural diferente."
+          ]
+        },
+        {
+          "role": "Programador en prácticas",
+          "startDate": "2021-04",
+          "endDate": "2021-06",
+          "achievements": [
+            "Formación intensiva en Java Spring, Angular, Docker y Kubernetes.",
+            "Aplicación práctica de conocimientos en proyectos reales y contribución al equipo de desarrollo.",
+            "Desarrollo de habilidades de trabajo en equipo y comunicación en un entorno ágil."
+          ]
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "I.E.S. Castelar",
+      "url": "https://iescastelar.educarex.es/",
+      "area": "Desarrollo de Aplicaciones Multiplataforma",
+      "studyType": "Técnico Superior",
+      "startDate": "2020-09",
+      "endDate": "2021-06",
+      "score": "9.83",
+      "courses": []
+    },
+    {
+      "institution": "I.E.S. Suárez de Figueroa",
+      "url": "https://www.suarezdefigueroa.es/",
+      "area": "Desarrollo de Aplicaciones Web",
+      "studyType": "Técnico Superior",
+      "startDate": "2018-09",
+      "endDate": "2020-06",
+      "score": "9.30",
+      "courses": []
+    }
+  ],
+  "certificates": [
+    {
+      "name": "EF SET English Certificate 76/100 (C2 Proficient)",
+      "date": "2021-09-15",
+      "issuer": "EF Standard English Test (EF SET)",
+      "url": "https://www.efset.org/cert/Sp9SYB",
+      "description": "Certificado de nivel C2 en inglés, validado por la prueba estándar EF SET, lo que avala mi competencia en inglés para entornos laborales y técnicos."
+    },
+    {
+      "name": "Master en Frameworks Javascript: Aprende Angular, React, Vue",
+      "date": "2021-11-07",
+      "issuer": "Udemy",
+      "url": "https://ude.my/UC-873b8fa3-dd9a-40a3-8185-073a5e6df250/",
+      "description": "Curso especializado en el aprendizaje de los frameworks más populares de JavaScript: Angular, React y Vue.js, con un enfoque en desarrollo frontend avanzado."
+    }
+  ],
+  "highlightedSkills": [
+    {
+      "name": "Java",
+      "icon": "Java"
+    },
+    {
+      "name": "Spring Framework",
+      "icon": "Spring"
+    },
+    {
+      "name": "Python",
+      "icon": "Python"
+    },
+    {
+      "name": "Angular",
+      "icon": "Angular"
+    },
+    {
+      "name": "Docker",
+      "icon": "Docker"
+    },
+    {
+      "name": "Kubernetes",
+      "icon": "Kubernetes"
+    },
+    {
+      "name": "CI/CD",
+      "icon": "CICD"
+    }
+  ],
+  "otherSkills": [
+    {
+      "name": "Javascript",
+      "icon": "Javascript"
+    },
+    {
+      "name": "Typescript",
+      "icon": "Typescript"
+    },
+    {
+      "name": "Node.js",
+      "icon": "Node"
+    },
+    {
+      "name": "Go",
+      "icon": "Go"
+    },
+    {
+      "name": "Astro",
+      "icon": "Astrosvg"
+    }
+  ],
+  "databasesSkills": [
+    {
+      "name": "PostgreSQL",
+      "icon": "PostgreSQL"
+    },
+    {
+      "name": "Oracle SQL",
+      "icon": "OracleSQL"
+    },
+    {
+      "name": "MySQL",
+      "icon": "MySQL"
+    },
+    {
+      "name": "MongoDB",
+      "icon": "MongoDB"
+    },
+    {
+      "name": "Firebase",
+      "icon": "Firebase"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Portfolio DEV",
+      "isActive": true,
+      "description": "Este es el portfolio personal de Sergio Márquez Pérez, una aplicación web interactiva construida con Astro. Aquí, Sergio Márquez detalla sus habilidades, experiencia profesional y proyectos destacados como Desarrollador Full Stack.",
+      "highlights": ["Astro", "Typescript", "GitHub Actions"],
+      "url": "https://sergiomarquez.dev",
+      "github": ["https://github.com/sergiomarquezdev/portfolio-dev"]
+    },
+    {
+      "name": "One dAIly Blog",
+      "isActive": true,
+      "description": "One dAIly Blog, un innovador proyecto personal de Sergio Márquez, genera contenido automáticamente a diario usando la API de OpenAI. Frontend en Angular y TailwindCSS, con backend en Node.js, Express.js y PostgreSQL.",
+      "highlights": ["Angular", "Node.js", "OpenAI", "PostgreSQL", "TailwindCSS"],
+      "url": "https://blog.sergiomarquez.dev/",
+      "github": [
+        "https://github.com/sergiomarquezdev/one-daily-blog",
+        "https://github.com/sergiomarquezdev/one-daily-blog-backend"
+      ]
+    },
+    {
+      "name": "PinguFly",
+      "isActive": true,
+      "description": "PinguFly, un videojuego 2D clásico desarrollado por Sergio Márquez, te reta a lanzar un pingüino lo más lejos posible. Esta reimaginación moderna del Yeti Sports Pingu Throw incluye física realista y un entorno dinámico.",
+      "highlights": ["Phaser 3", "JavaScript ES6+", "Vite", "Matter.js"],
+      "url": "https://pingufly.sergiomarquez.dev/",
+      "github": ["https://github.com/sergiomarquezdev/pingufly-2d"]
+    },
+    {
+      "name": "Pizarra Digital por Gestos",
+      "isActive": true,
+      "description": "Aplicación Python desarrollada por Sergio Márquez que permite dibujar en una pizarra digital mediante gestos de manos capturados por webcam. Combina visión por computadora y seguimiento de manos para una experiencia interactiva.",
+      "highlights": ["Python", "OpenCV", "MediaPipe", "Visión por Computadora"],
+      "url": null,
+      "github": ["https://github.com/sergiomarquezdev/pizarra-digital-python"]
+    },
+    {
+      "name": "MartaMontalban.es",
+      "isActive": true,
+      "description": "Desarrollo y diseño del portfolio web de Marta Montalbán, auxiliar de cámara en cine, utilizando WordPress y Elementor Pro, optimizando para SEO y un rendimiento web adecuado con tiempos de carga reducidos. Implementación de buenas prácticas en accesibilidad web y experiencia de usuario.",
+      "highlights": ["WordPress", "Elementor Pro"],
+      "url": "https://martamontalban.es",
+      "github": null
+    },
+    {
+      "name": "Acestream Dockerizado",
+      "isActive": true,
+      "description": "Este proyecto de Sergio Márquez dockeriza Acestream en un contenedor Ubuntu 22.04 con Python 3.10, simplificando su ejecución en un entorno aislado. Incluye script .bat para instalación en Windows.",
+      "highlights": ["Docker", "Ubuntu 22.04", "Python 3.10"],
+      "url": null,
+      "github": ["https://github.com/sergiomarquezdev/acestream-docker-home"]
+    },
+    {
+      "name": "Monitor de Rodajes de Cine",
+      "isActive": false,
+      "description": "Un script en Python creado por Sergio Márquez que realiza scraping en la web del Ministerio de Cultura de España para monitorizar rodajes. Detecta cambios, descarga PDFs y notifica diferencias por email.",
+      "highlights": ["Python", "Scraping", "Automatización"],
+      "url": null,
+      "github": ["https://github.com/sergiomarquezdev/monitor-rodajes-cultura-gob"]
+    }
+  ]
 }

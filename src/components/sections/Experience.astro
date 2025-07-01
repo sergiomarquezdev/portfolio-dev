@@ -11,80 +11,104 @@
  * - Utiliza bordes laterales con degradado para mejorar la presentación visual
  * - Se adapta a diferentes tamaños de pantalla
  */
-import Section from "../Section.astro"
-import { work } from "@cv"
+import Section from "../Section.astro";
+import { work } from "@cv";
 ---
 
 <Section title="Experiencia laboral">
   <ul class="experience-list">
-    {work.map(({ company, startDate, endDate, position, summary, highlights, website }) => {
-      const startDateObj = new Date(startDate);
-      const endDateObj = endDate ? new Date(endDate) : null;
-      const startYearMonth = startDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" });
-      const endYearMonth = endDateObj ? endDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
+    {
+      work.map(({ company, startDate, endDate, position, summary, highlights, website }) => {
+        const startDateObj = new Date(startDate);
+        const endDateObj = endDate ? new Date(endDate) : null;
+        const startYearMonth = startDateObj.toLocaleString("es-ES", {
+          year: "numeric",
+          month: "short",
+        });
+        const endYearMonth = endDateObj
+          ? endDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" })
+          : "Actual";
 
-      return (
-        <li class="experience-item">
-          <article class="card">
-            <header class="mb-4">
-              <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-                <div>
-                  <h3 class="text-xl font-bold text-secondary-dark dark:text-gray-200 mb-1">
-                    <a
-                      href={website}
-                      target="_blank"
-                      title={`Ver ${company}`}
-                      aria-label={`Ver la página web de ${company}, donde trabajé como ${position}`}
-                      rel="noopener noreferrer"
-                      class="hover:text-primary dark:hover:text-primary-light inline-block py-1 px-0.5"
+        return (
+          <li class="experience-item">
+            <article class="card">
+              <header class="mb-4">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                  <div>
+                    <h3 class="text-xl font-bold text-secondary-dark dark:text-gray-200 mb-1">
+                      <a
+                        href={website}
+                        target="_blank"
+                        title={`Ver ${company}`}
+                        aria-label={`Ver la página web de ${company}, donde trabajé como ${position}`}
+                        rel="noopener noreferrer"
+                        class="hover:text-primary dark:hover:text-primary-light inline-block py-1 px-0.5"
+                      >
+                        {company}
+                      </a>
+                    </h3>
+                    <h4 class="text-lg text-secondary dark:text-gray-300 font-medium">
+                      {position}
+                    </h4>
+                  </div>
+
+                  <div class="experience-dates mt-2 md:mt-0 text-gray-600 dark:text-gray-400 font-medium">
+                    <time
+                      datetime={startDateObj.toISOString().split("T")[0]}
+                      data-title={startDate}
                     >
-                      {company}
-                    </a>
-                  </h3>
-                  <h4 class="text-lg text-secondary dark:text-gray-300 font-medium">{position}</h4>
+                      {startYearMonth}
+                    </time>
+                    {" - "}
+                    <time
+                      datetime={endDateObj ? endDateObj.toISOString().split("T")[0] : ""}
+                      data-title={endDate}
+                    >
+                      {endYearMonth}
+                    </time>
+                  </div>
                 </div>
+              </header>
 
-                <div class="experience-dates mt-2 md:mt-0 text-gray-600 dark:text-gray-400 font-medium">
-                  <time datetime={startDateObj.toISOString().split('T')[0]} data-title={startDate}>
-                    {startYearMonth}
-                  </time>
-                  {" - "}
-                  <time datetime={endDateObj ? endDateObj.toISOString().split('T')[0] : ''} data-title={endDate}>
-                    {endYearMonth}
-                  </time>
-                </div>
+              <div class="experience-details">
+                <p class="text-gray-700 dark:text-gray-300">{summary}</p>
+                <ul class="highlights-list space-y-4 mt-4">
+                  {highlights.map(({ role, startDate, endDate, achievements }) => {
+                    const roleStartDateObj = new Date(startDate);
+                    const roleEndDateObj = endDate ? new Date(endDate) : null;
+                    const roleStartYearMonth = roleStartDateObj.toLocaleString("es-ES", {
+                      year: "numeric",
+                      month: "short",
+                    });
+                    const roleEndYearMonth = roleEndDateObj
+                      ? roleEndDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" })
+                      : "Actual";
+
+                    return (
+                      <li class="highlight-item pl-4 border-l-2 border-primary-light dark:border-primary">
+                        <strong class="text-secondary-dark dark:text-gray-200 block mb-2">
+                          {role} ({roleStartYearMonth} - {roleEndYearMonth})
+                        </strong>
+                        <ul class="achievements-list space-y-2">
+                          {achievements.map((achievement) => (
+                            <li class="flex items-start">
+                              <span class="text-primary dark:text-primary-light inline-block mr-2 mt-1">
+                                •
+                              </span>
+                              <span class="dark:text-gray-300">{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
-            </header>
-
-            <div class="experience-details">
-              <p class="text-gray-700 dark:text-gray-300">{summary}</p>
-              <ul class="highlights-list space-y-4 mt-4">
-                {highlights.map(({ role, startDate, endDate, achievements }) => {
-                  const roleStartDateObj = new Date(startDate);
-                  const roleEndDateObj = endDate ? new Date(endDate) : null;
-                  const roleStartYearMonth = roleStartDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" });
-                  const roleEndYearMonth = roleEndDateObj ? roleEndDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
-
-                  return (
-                    <li class="highlight-item pl-4 border-l-2 border-primary-light dark:border-primary">
-                      <strong class="text-secondary-dark dark:text-gray-200 block mb-2">{role} ({roleStartYearMonth} - {roleEndYearMonth})</strong>
-                      <ul class="achievements-list space-y-2">
-                        {achievements.map(achievement => (
-                          <li class="flex items-start">
-                            <span class="text-primary dark:text-primary-light inline-block mr-2 mt-1">•</span>
-                            <span class="dark:text-gray-300">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </article>
-        </li>
-      );
-    })}
+            </article>
+          </li>
+        );
+      })
+    }
   </ul>
 </Section>
 

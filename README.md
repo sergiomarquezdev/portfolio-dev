@@ -43,14 +43,14 @@ Portfolio personal moderno y optimizado, construido con **Astro** y **Tailwind C
 
 ## 📦 Scripts Disponibles
 
-| Comando         | Descripción                                     |
-| --------------- | ----------------------------------------------- |
-| `npm run dev`   | Inicia servidor de desarrollo.                  |
-| `npm run build` | Compila el proyecto para producción.            |
-| `npm run preview`| Previsualiza la build de producción.           |
-| `npm run check` | Comprobación de tipos con TypeScript.           |
-| `npm run lint`  | Verifica calidad de código con ESLint.          |
-| `npm run format`| Formatea código con Prettier.                   |
+| Comando           | Descripción                            |
+| ----------------- | -------------------------------------- |
+| `npm run dev`     | Inicia servidor de desarrollo.         |
+| `npm run build`   | Compila el proyecto para producción.   |
+| `npm run preview` | Previsualiza la build de producción.   |
+| `npm run check`   | Comprobación de tipos con TypeScript.  |
+| `npm run lint`    | Verifica calidad de código con ESLint. |
+| `npm run format`  | Formatea código con Prettier.          |
 
 ## 📝 Licencia
 

@@ -8,7 +8,7 @@
  * - Se anima suavemente al aparecer/desaparecer
  * - Accesible y compatible con navegación por teclado
  */
-import { ArrowUpIcon } from '../icons';
+import { ArrowUpIcon } from "../icons";
 ---
 
 <button
@@ -23,8 +23,8 @@ import { ArrowUpIcon } from '../icons';
 </button>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollToTopButton = document.getElementById('scroll-to-top') as HTMLButtonElement | null;
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollToTopButton = document.getElementById("scroll-to-top") as HTMLButtonElement | null;
 
     // Función para verificar la posición del scroll y mostrar/ocultar el botón
     function toggleScrollToTopButton() {
@@ -39,15 +39,15 @@ import { ArrowUpIcon } from '../icons';
 
       // Mostrar el botón cuando el usuario ha scrolleado más del 70% de la página
       if (scrollPercentage > 70) {
-        scrollToTopButton.classList.remove('scale-0', 'opacity-0');
-        scrollToTopButton.classList.add('scale-100', 'opacity-100');
-        scrollToTopButton.setAttribute('aria-hidden', 'false');
-        scrollToTopButton.setAttribute('tabindex', '0');
+        scrollToTopButton.classList.remove("scale-0", "opacity-0");
+        scrollToTopButton.classList.add("scale-100", "opacity-100");
+        scrollToTopButton.setAttribute("aria-hidden", "false");
+        scrollToTopButton.setAttribute("tabindex", "0");
       } else {
-        scrollToTopButton.classList.remove('scale-100', 'opacity-100');
-        scrollToTopButton.classList.add('scale-0', 'opacity-0');
-        scrollToTopButton.setAttribute('aria-hidden', 'true');
-        scrollToTopButton.setAttribute('tabindex', '-1');
+        scrollToTopButton.classList.remove("scale-100", "opacity-100");
+        scrollToTopButton.classList.add("scale-0", "opacity-0");
+        scrollToTopButton.setAttribute("aria-hidden", "true");
+        scrollToTopButton.setAttribute("tabindex", "-1");
       }
     }
 
@@ -55,13 +55,13 @@ import { ArrowUpIcon } from '../icons';
     function scrollToTop() {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
 
     // Agregar event listeners
-    window.addEventListener('scroll', toggleScrollToTopButton);
-    scrollToTopButton?.addEventListener('click', scrollToTop);
+    window.addEventListener("scroll", toggleScrollToTopButton);
+    scrollToTopButton?.addEventListener("click", scrollToTop);
 
     // Verificar la posición inicial del scroll
     toggleScrollToTopButton();

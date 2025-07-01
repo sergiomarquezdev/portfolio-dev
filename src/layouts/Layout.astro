@@ -24,7 +24,7 @@ interface Props {
 const {
   title = "Sergio Márquez | Desarrollador Full Stack y Experto en IA",
   description = "Portfolio de Sergio Márquez Pérez, Desarrollador Full Stack experto en Java, Spring, Angular, IA y Cloud. Descubre mis proyectos y experiencia en desarrollo web.",
-  image = "/img/sergio_marquez_perez_ia_profile_pic_2-1.webp"
+  image = "/img/sergio_marquez_perez_ia_profile_pic_2-1.webp",
 } = Astro.props;
 
 const { basics, work, education, highlightedSkills, otherSkills, databasesSkills } = cvData;
@@ -34,24 +34,27 @@ const fullNameForSchema = basics.name.includes("Pérez") ? basics.name : basics.
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": fullNameForSchema, // Updated to full name
-  "url": siteUrl,
-  "image": `${siteUrl}${basics.image}`,
-  "jobTitle": "Desarrollador Full Stack", // Updated jobTitle
-  "worksFor": work.length > 0 ? {
-    "@type": "Organization",
-    "name": work[0].company
-  } : undefined,
-  "alumniOf": education.map(edu => ({
+  name: fullNameForSchema, // Updated to full name
+  url: siteUrl,
+  image: `${siteUrl}${basics.image}`,
+  jobTitle: "Desarrollador Full Stack", // Updated jobTitle
+  worksFor:
+    work.length > 0
+      ? {
+          "@type": "Organization",
+          name: work[0].company,
+        }
+      : undefined,
+  alumniOf: education.map((edu) => ({
     "@type": "EducationalOrganization",
-    "name": edu.institution
+    name: edu.institution,
   })),
-  "sameAs": basics.profiles.map(profile => profile.url),
-  "knowsAbout": [
-    ...highlightedSkills.map(skill => skill.name),
-    ...otherSkills.map(skill => skill.name),
-    ...databasesSkills.map(skill => skill.name)
-  ].filter((value, index, self) => self.indexOf(value) === index) // Eliminar duplicados
+  sameAs: basics.profiles.map((profile) => profile.url),
+  knowsAbout: [
+    ...highlightedSkills.map((skill) => skill.name),
+    ...otherSkills.map((skill) => skill.name),
+    ...databasesSkills.map((skill) => skill.name),
+  ].filter((value, index, self) => self.indexOf(value) === index), // Eliminar duplicados
 };
 ---
 
@@ -91,9 +94,9 @@ const personSchema = {
           },
           {
             name: "keywords",
-            content: `Sergio Márquez, Sergio Márquez Pérez, Desarrollador Full Stack, Backend Developer, Frontend Developer, Java, Spring Framework, Angular, Inteligencia Artificial, IA, Docker, Kubernetes, Cloud Computing, Portfolio, ${highlightedSkills.map(s => s.name).join(", ")}` // Updated keywords
-          }
-        ]
+            content: `Sergio Márquez, Sergio Márquez Pérez, Desarrollador Full Stack, Backend Developer, Frontend Developer, Java, Spring Framework, Angular, Inteligencia Artificial, IA, Docker, Kubernetes, Cloud Computing, Portfolio, ${highlightedSkills.map((s) => s.name).join(", ")}`, // Updated keywords
+          },
+        ],
       }}
     />
 
@@ -107,7 +110,7 @@ const personSchema = {
     </script>
   </head>
   <body class="transition-colors duration-300 dark:bg-dark dark:text-dark-primary">
-    <ScrollToTop/>
+    <ScrollToTop />
     <Header />
     <slot />
   </body>

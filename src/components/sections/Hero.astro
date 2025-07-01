@@ -11,9 +11,17 @@
  */
 import { basics } from "@cv";
 import Section from "../Section.astro";
-import { MailIcon as Mail, XIcon as X, LinkedInIcon as LinkedIn, GitHubIcon as GitHub, WorldMapIcon as WorldMap, BlogIcon as Blog, type SocialIcon } from "@/icons";
+import {
+  MailIcon as Mail,
+  XIcon as X,
+  LinkedInIcon as LinkedIn,
+  GitHubIcon as GitHub,
+  WorldMapIcon as WorldMap,
+  BlogIcon as Blog,
+  type SocialIcon,
+} from "@/icons";
 
-const { name, label, image, imageAlt, location, profiles, email } = basics;
+const { name, label, location, profiles, email } = basics;
 const { city, region } = location;
 
 const SOCIAL_ICONS: SocialIcon = {
@@ -29,27 +37,32 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 ---
 
 <!-- Hero section con diseño centrado y minimalista -->
-<div class="bg-gradient-to-r from-white to-gray-100 dark:from-dark dark:to-dark-card dark:bg-none shadow-sm pt-[4.5rem] sm:pt-24 md:pt-28 lg:pt-32">
+<div
+  class="bg-gradient-to-r from-white to-gray-100 dark:from-dark dark:to-dark-card dark:bg-none shadow-sm pt-[4.5rem] sm:pt-24 md:pt-28 lg:pt-32"
+>
   <Section class="py-8 sm:py-12 md:py-16 lg:py-20">
     <!-- Contenedor principal centrado -->
     <div class="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
-
-
-
       <!-- Contenido de texto centrado -->
       <div class="flex flex-col items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
         <!-- Nombre como H1 para SEO -->
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-secondary-dark dark:text-white">
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-secondary-dark dark:text-white"
+        >
           {name}
         </h1>
 
         <!-- Titular (puesto o especialidad) como H2 -->
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-secondary dark:text-gray-300 font-medium max-w-4xl">
+        <h2
+          class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-secondary dark:text-gray-300 font-medium max-w-4xl"
+        >
           {label}
         </h2>
 
         <!-- Localización -->
-        <span class="flex items-center gap-2 justify-center text-gray-700 dark:text-gray-400 text-lg sm:text-xl">
+        <span
+          class="flex items-center gap-2 justify-center text-gray-700 dark:text-gray-400 text-lg sm:text-xl"
+        >
           <WorldMap />
           {city}, {region}
         </span>
@@ -60,7 +73,10 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
         </div>
 
         <!-- Enlaces a redes sociales y correo -->
-        <nav class="no-print mt-4 sm:mt-6 md:mt-8 flex flex-wrap gap-3 md:gap-4 justify-center" aria-label="Redes sociales y contacto">
+        <nav
+          class="no-print mt-4 sm:mt-6 md:mt-8 flex flex-wrap gap-3 md:gap-4 justify-center"
+          aria-label="Redes sociales y contacto"
+        >
           {
             email && (
               <a
@@ -105,8 +121,6 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
           </a>
         </nav>
       </div>
-
-
     </div>
   </Section>
 </div>

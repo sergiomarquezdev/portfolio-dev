@@ -26,16 +26,13 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
     >
       <!-- Obligatorio para Web3Forms -->
       <input type="hidden" name="access_key" value={WEB3FORMS_API_KEY} />
-      <input
-        type="checkbox"
-        class="hidden"
-        style="display:none"
-        name="botcheck"
-      />
+      <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="form-group">
-          <label for="name" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Nombre</label>
+          <label for="name" class="block text-gray-700 dark:text-gray-300 font-medium mb-2"
+            >Nombre</label
+          >
           <input
             type="text"
             id="name"
@@ -45,13 +42,18 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
             class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 dark:text-gray-200 focus:border-primary dark:focus:border-primary-light focus:ring-2 focus:ring-primary/20 dark:focus:ring-primary-light/20 outline-none transition-all"
             placeholder="Tu nombre completo"
           />
-          <div id="nameFeedback" class="empty-feedback invalid-feedback text-red-500 dark:text-red-400 text-sm mt-1">
+          <div
+            id="nameFeedback"
+            class="empty-feedback invalid-feedback text-red-500 dark:text-red-400 text-sm mt-1"
+          >
             Por favor, proporciona tu nombre completo.
           </div>
         </div>
 
         <div class="form-group">
-          <label for="email" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Correo Electrónico</label>
+          <label for="email" class="block text-gray-700 dark:text-gray-300 font-medium mb-2"
+            >Correo Electrónico</label
+          >
           <input
             type="email"
             id="email"
@@ -61,17 +63,25 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
             class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 dark:text-gray-200 focus:border-primary dark:focus:border-primary-light focus:ring-2 focus:ring-primary/20 dark:focus:ring-primary-light/20 outline-none transition-all"
             placeholder="tu@email.com"
           />
-          <div id="emailEmptyFeedback" class="empty-feedback text-red-500 dark:text-red-400 text-sm mt-1">
+          <div
+            id="emailEmptyFeedback"
+            class="empty-feedback text-red-500 dark:text-red-400 text-sm mt-1"
+          >
             Por favor, proporciona tu correo electrónico.
           </div>
-          <div id="emailInvalidFeedback" class="invalid-feedback text-red-500 dark:text-red-400 text-sm mt-1">
+          <div
+            id="emailInvalidFeedback"
+            class="invalid-feedback text-red-500 dark:text-red-400 text-sm mt-1"
+          >
             Por favor, proporciona un correo electrónico válido.
           </div>
         </div>
       </div>
 
       <div class="form-group mt-6">
-        <label for="message" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Mensaje</label>
+        <label for="message" class="block text-gray-700 dark:text-gray-300 font-medium mb-2"
+          >Mensaje</label
+        >
         <textarea
           id="message"
           name="message"
@@ -79,9 +89,11 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
           required
           aria-describedby="messageFeedback"
           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 dark:text-gray-200 focus:border-primary dark:focus:border-primary-light focus:ring-2 focus:ring-primary/20 dark:focus:ring-primary-light/20 outline-none transition-all h-32"
-          placeholder="Escribe tu mensaje aquí..."
-        ></textarea>
-        <div id="messageFeedback" class="empty-feedback invalid-feedback text-red-500 dark:text-red-400 text-sm mt-1">
+          placeholder="Escribe tu mensaje aquí..."></textarea>
+        <div
+          id="messageFeedback"
+          class="empty-feedback invalid-feedback text-red-500 dark:text-red-400 text-sm mt-1"
+        >
           Por favor, ingresa tu mensaje.
         </div>
       </div>
@@ -208,7 +220,7 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
       submitButton.classList.add("loading");
       submitButton.setAttribute("aria-label", "Enviando...");
       submitButton.setAttribute("aria-busy", "true");
-      result.innerHTML = 'Enviando...';
+      result.innerHTML = "Enviando...";
       result.classList.remove("error", "success");
       result.style.display = "block";
 
@@ -221,7 +233,7 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
         body: json,
       })
         .then(async (response) => {
-          let json = await response.json();
+          const json = await response.json();
           if (response.status == 200) {
             result.classList.add("success");
             result.innerHTML = json.message;

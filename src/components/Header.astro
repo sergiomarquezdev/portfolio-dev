@@ -9,7 +9,7 @@
  * - Incluye logo/nombre y enlaces a las secciones principales
  */
 import { basics } from "@cv";
-import { MenuIcon } from '../icons';
+import { MenuIcon } from "../icons";
 const { name } = basics;
 
 // Enlaces de navegación
@@ -22,24 +22,36 @@ const navLinks = [
 ];
 ---
 
-<header id="main-header" class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 dark:bg-dark/90 bg-white/90 backdrop-blur-sm border-b dark:border-gray-800 border-gray-100">
+<header
+  id="main-header"
+  class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 dark:bg-dark/90 bg-white/90 backdrop-blur-sm border-b dark:border-gray-800 border-gray-100"
+>
   <div class="container mx-auto px-4">
     <!-- Navegación desktop y móvil -->
     <nav class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="#" id="logo-link" class="text-gray-900 dark:text-white font-bold text-xl flex items-center">
+      <a
+        href="#"
+        id="logo-link"
+        class="text-gray-900 dark:text-white font-bold text-xl flex items-center"
+      >
         <span class="text-primary">&lt;</span>{name}<span class="text-primary">/&gt;</span>
       </a>
 
       <!-- Navegación desktop (visible en md+) -->
       <ul class="hidden md:flex space-x-8">
-        {navLinks.map(({ href, label }) => (
-          <li>
-            <a href={href} class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
-              {label}
-            </a>
-          </li>
-        ))}
+        {
+          navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
 
       <!-- Botón de menú móvil (visible solo en móvil) -->
@@ -57,16 +69,26 @@ const navLinks = [
   </div>
 
   <!-- Menú móvil (oculto por defecto) -->
-  <div id="mobile-menu" role="menu" class="hidden md:hidden absolute left-0 right-0 top-full bg-white dark:bg-dark shadow-lg border-b dark:border-gray-800 border-gray-100">
+  <div
+    id="mobile-menu"
+    role="menu"
+    class="hidden md:hidden absolute left-0 right-0 top-full bg-white dark:bg-dark shadow-lg border-b dark:border-gray-800 border-gray-100"
+  >
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
-        {navLinks.map(({ href, label }) => (
-          <li>
-            <a href={href} role="menuitem" class="nav-link block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
-              {label}
-            </a>
-          </li>
-        ))}
+        {
+          navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                role="menuitem"
+                class="nav-link block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>
@@ -74,61 +96,63 @@ const navLinks = [
 
 <script>
   // Script para manejar el menú móvil
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button') as HTMLButtonElement | null;
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const logoLink = document.getElementById('logo-link');
-    const header = document.getElementById('main-header');
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.getElementById(
+      "mobile-menu-button"
+    ) as HTMLButtonElement | null;
+    const mobileMenu = document.getElementById("mobile-menu");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const logoLink = document.getElementById("logo-link");
+    const header = document.getElementById("main-header");
 
     // Mostrar/ocultar el menú móvil
     if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', () => {
-        const isExpanded = mobileMenu.classList.toggle('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenuButton.addEventListener("click", () => {
+        const isExpanded = mobileMenu.classList.toggle("hidden");
+        mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
       });
     }
 
     // Cerrar el menú móvil al hacer clic en un enlace
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
         if (mobileMenu && mobileMenuButton) {
-          mobileMenu.classList.add('hidden');
-          mobileMenuButton.setAttribute('aria-expanded', 'false');
+          mobileMenu.classList.add("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", "false");
         }
       });
     });
 
     // Cerrar el menú móvil al hacer clic en el logo/enlace home
     if (logoLink && mobileMenu && mobileMenuButton) {
-      logoLink.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      logoLink.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        mobileMenuButton.setAttribute("aria-expanded", "false");
       });
     }
 
     // Resaltar la sección activa durante el desplazamiento
     const updateActiveSection = () => {
-      const sections = document.querySelectorAll('section[id]');
+      const sections = document.querySelectorAll("section[id]");
       // Asegurar que header no sea null antes de usar offsetHeight
       const scrollPosition = window.scrollY + (header?.offsetHeight || 0) + 100;
 
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const sectionElement = section as HTMLElement;
         const sectionTop = sectionElement.offsetTop;
         const sectionHeight = sectionElement.offsetHeight;
-        const sectionId = section.getAttribute('id');
+        const sectionId = section.getAttribute("id");
         const link = document.querySelector(`.nav-link[href="#${sectionId}"]`);
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          navLinks.forEach(el => el.classList.remove('text-primary'));
-          link?.classList.add('text-primary');
+          navLinks.forEach((el) => el.classList.remove("text-primary"));
+          link?.classList.add("text-primary");
         }
       });
     };
 
     // Añadir listeners para el desplazamiento
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       updateActiveSection();
     });
 
@@ -154,7 +178,9 @@ const navLinks = [
 
   /* Mejoras para el menú móvil en modo oscuro */
   #mobile-menu {
-    transition: opacity 0.3s, transform 0.3s;
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
   }
 
   :global(.dark) #mobile-menu {

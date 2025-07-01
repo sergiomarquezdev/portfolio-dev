@@ -18,8 +18,15 @@ const { name } = basics;
 
 <Layout>
   <!-- Indicador de progreso de lectura -->
-  <div id="reading-progress-container" class="fixed top-0 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-800 z-50">
-    <div id="reading-progress" class="h-full bg-primary dark:bg-primary-light w-0 transition-all duration-100"></div>
+  <div
+    id="reading-progress-container"
+    class="fixed top-0 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-800 z-50"
+  >
+    <div
+      id="reading-progress"
+      class="h-full bg-primary dark:bg-primary-light w-0 transition-all duration-100"
+    >
+    </div>
   </div>
 
   <!-- Hero con la presentación principal -->
@@ -62,7 +69,9 @@ const { name } = basics;
     </section>
   </main>
 
-  <footer class="bg-gray-100 dark:bg-dark-card pt-8 pb-2 text-center text-gray-600 dark:text-gray-400 text-sm">
+  <footer
+    class="bg-gray-100 dark:bg-dark-card pt-8 pb-2 text-center text-gray-600 dark:text-gray-400 text-sm"
+  >
     <div class="max-w-4xl mx-auto px-6">
       <p>&copy; {new Date().getFullYear()} {name}</p>
     </div>
@@ -71,35 +80,35 @@ const { name } = basics;
 
 <script>
   // Script para resaltar la sección activa en la navegación
-  document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('header nav a');
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("header nav a");
 
     function highlightActiveSection() {
       let scrollPosition = window.scrollY;
 
       // Añadir un offset para considerar la altura del header
-      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height || 0;
+      const headerHeight = document.querySelector("header")?.getBoundingClientRect().height || 0;
       scrollPosition += headerHeight + 50; // Añadir margen adicional
 
       // Encontrar la sección actual
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         const sectionTop = rect.top + window.scrollY;
         const sectionHeight = rect.height;
-        const sectionId = section.getAttribute('id');
+        const sectionId = section.getAttribute("id");
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           // Quitar clase activa de todos los enlaces
-          navLinks.forEach(link => {
-            link.classList.remove('text-primary', 'text-primary-light', 'font-semibold');
+          navLinks.forEach((link) => {
+            link.classList.remove("text-primary", "text-primary-light", "font-semibold");
           });
 
           // Añadir clase activa al enlace correspondiente
           const activeLink = document.querySelector(`header nav a[href="#${sectionId}"]`);
           if (activeLink) {
             // Usar siempre las clases del modo oscuro ya que es el único tema
-            activeLink.classList.add('text-primary-light', 'font-semibold');
+            activeLink.classList.add("text-primary-light", "font-semibold");
           }
         }
       });
@@ -109,12 +118,10 @@ const { name } = basics;
     highlightActiveSection();
 
     // Ejecutar al hacer scroll
-    window.addEventListener('scroll', highlightActiveSection);
-
-
+    window.addEventListener("scroll", highlightActiveSection);
 
     // Actualizar la barra de progreso de lectura
-    const progressBar = document.getElementById('reading-progress');
+    const progressBar = document.getElementById("reading-progress");
     if (progressBar) {
       function updateProgressBar() {
         const scrollPosition = window.scrollY;
@@ -126,8 +133,8 @@ const { name } = basics;
       }
 
       // Actualizar en scroll y resize
-      window.addEventListener('scroll', updateProgressBar);
-      window.addEventListener('resize', updateProgressBar);
+      window.addEventListener("scroll", updateProgressBar);
+      window.addEventListener("resize", updateProgressBar);
 
       // Actualizar al cargar la página
       updateProgressBar();

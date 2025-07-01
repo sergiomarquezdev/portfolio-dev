@@ -9,45 +9,47 @@
  * - Adapta el diseño para visualización óptima en diferentes dispositivos
  * - Implementa estilos diferenciados para modo claro y oscuro
  */
-import Section from "../Section.astro"
-import { education } from "@cv"
+import Section from "../Section.astro";
+import { education } from "@cv";
 ---
 
 <Section title="Educación">
   <ul class="education-list">
-    {education.map(({ institution, startDate, endDate, area, score }) => {
-      const startDateObj = new Date(startDate)
-      const endDateObj = endDate ? new Date(endDate) : null
+    {
+      education.map(({ institution, startDate, endDate, area, score }) => {
+        const startDateObj = new Date(startDate);
+        const endDateObj = endDate ? new Date(endDate) : null;
 
-      const startYear = startDateObj.getFullYear()
-      const endYear = endDateObj ? endDateObj.getFullYear() : "Actual"
+        const startYear = startDateObj.getFullYear();
+        const endYear = endDateObj ? endDateObj.getFullYear() : "Actual";
 
-      const years = `${startYear} - ${endYear}`
+        const years = `${startYear} - ${endYear}`;
 
-      return (
-        <li class="education-item">
-          <article>
-            <header>
-              <div class="institution">
-                <h3>{institution}</h3>
-              </div>
-              <time
-                class="education-dates"
-                datetime={`${startYear}`}
-                aria-label={`Años de estudio: ${years}`}
-              >
-                {years}
-              </time>
-            </header>
+        return (
+          <li class="education-item">
+            <article>
+              <header>
+                <div class="institution">
+                  <h3>{institution}</h3>
+                </div>
+                <time
+                  class="education-dates"
+                  datetime={`${startYear}`}
+                  aria-label={`Años de estudio: ${years}`}
+                >
+                  {years}
+                </time>
+              </header>
 
-            <footer>
-              <p class="education-area">{area}</p>
-              {score && <p class="education-score">Nota: {score}</p>}
-            </footer>
-          </article>
-        </li>
-      )
-    })}
+              <footer>
+                <p class="education-area">{area}</p>
+                {score && <p class="education-score">Nota: {score}</p>}
+              </footer>
+            </article>
+          </li>
+        );
+      })
+    }
   </ul>
 </Section>
 
