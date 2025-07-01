@@ -11,12 +11,9 @@
  */
 
 // Definición de tipos relacionados con iconos
-export type SocialIcon = Record<string, any>;
+export type SocialIcon = Record<string, unknown>;
 
 // UI Icons
-
-export { default as CodeIcon } from "./ui/CodeIcon.astro";
-
 export { default as MenuIcon } from "./ui/MenuIcon.astro";
 export { default as ArrowUpIcon } from "./ui/ArrowUpIcon.astro";
 

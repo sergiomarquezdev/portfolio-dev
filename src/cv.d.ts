@@ -75,4 +75,4 @@ interface Projects {
   github?: string[];
 }
 
-type Highlight = Array<String>;
+type Highlight = Array<string>;
