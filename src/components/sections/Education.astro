@@ -33,7 +33,7 @@ import { education } from "@cv";
             <article>
               <header class="mb-2 flex flex-col items-start justify-between gap-1 md:flex-row md:items-center">
                 <h3 class="text-h4 font-semibold text-texto-principal">{institution}</h3>
-                <time class="text-sm font-medium text-texto-sutil" datetime={years}>{years}</time>
+                <time class="text-sm font-medium text-texto-secundario" datetime={years}>{years}</time>
               </header>
               <footer>
                 <p class="text-body-reg text-texto-secundario">{area}</p>
@@ -46,106 +46,3 @@ import { education } from "@cv";
     }
   </ul>
 </Section>
-
-<style>
-  /* Ajuste para que los párrafos en education tengan margen controlado */
-  p {
-    margin: 0;
-  }
-
-  .education-list {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding: 0;
-    list-style: none;
-  }
-
-  .education-item {
-    border-left: 5px solid #1d4e89;
-    padding-left: 16px;
-  }
-
-  :global(.dark) .education-item {
-    border-left: 5px solid #2c6cb0;
-  }
-
-  .education-item article {
-    background: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  :global(.dark) .education-item article {
-    background: #2a2a2a;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Título de la institución */
-  .institution h3 {
-    font-weight: 700;
-    color: #2c3e50;
-    font-size: 1.4rem;
-    margin: 0;
-  }
-
-  :global(.dark) .institution h3 {
-    color: #e0e0e0;
-  }
-
-  .education-dates {
-    color: #333;
-    font-size: 1rem;
-    text-align: right;
-  }
-
-  :global(.dark) .education-dates {
-    color: #a0a0a0;
-  }
-
-  .education-area {
-    margin-top: 16px;
-    color: #2c3e50;
-    font-size: 1rem;
-  }
-
-  :global(.dark) .education-area {
-    color: #a0a0a0;
-  }
-
-  .education-score {
-    margin-top: 12px;
-    color: #34495e;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-
-  :global(.dark) .education-score {
-    color: #b0b0b0;
-  }
-
-  @media (max-width: 700px) {
-    .education-item {
-      padding-left: 12px;
-      border-left: 4px solid #1d4e89;
-    }
-
-    :global(.dark) .education-item {
-      border-left: 4px solid #2c6cb0;
-    }
-
-    .education-dates {
-      font-size: 1rem;
-      margin-top: 8px;
-    }
-
-    .education-area {
-      font-size: 1rem;
-    }
-
-    .education-score {
-      font-size: 1rem;
-    }
-  }
-</style>
