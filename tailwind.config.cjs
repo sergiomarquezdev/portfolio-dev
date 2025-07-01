@@ -6,21 +6,20 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#1d4e89",
-          light: "#2c6cb0",
-          dark: "#123456",
+          DEFAULT: "#22d3ee",
+          light: "#67e8f9",
+          dark: "#06b6d4",
         },
         secondary: {
-          DEFAULT: "#34495e",
-          light: "#4a6b8a",
-          dark: "#2c3e50",
+          DEFAULT: "#334155",
+          light: "#475569",
+          dark: "#1e293b",
         },
         dark: {
-          DEFAULT: "#111827", // Actualizado para un tono más suave
-          card: "#1f2937",
-          secondary: "#374151",
-          primary: "#f9fafb",
-          text: "#e5e7eb",
+          DEFAULT: "#0f172a",
+          card: "#1e293b",
+          text: "#94a3b8",
+          primary: "#e2e8f0",
         },
       },
       fontFamily: {
@@ -41,13 +40,13 @@ module.exports = {
         mono: ["Fira Code", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       backgroundColor: {
-        dark: "#121212",
-        "dark-card": "#1e1e1e",
+        dark: "#0f172a",
+        "dark-card": "#1e293b",
       },
       textColor: {
         dark: {
-          primary: "#e0e0e0",
-          secondary: "#a0a0a0",
+          primary: "#e2e8f0",
+          secondary: "#94a3b8",
         },
       },
       typography: (theme) => ({
