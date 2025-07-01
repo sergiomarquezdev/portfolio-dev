@@ -25,7 +25,7 @@ export default {
   log: {
     debug: process.env.NODE_ENV !== "production",
     error: console.error,
-    info: process.env.NODE_ENV !== "production" ? console.warn : () => { },
+    info: process.env.NODE_ENV !== "production" ? console.warn : () => {},
   },
   urls: [
     // Lista de URLs para verificar
