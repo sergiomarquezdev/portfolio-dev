@@ -9,6 +9,7 @@
  * - Proporciona una estructura semántica accesible
  */
 import globalStyles from "../styles/global.css?inline";
+import fontStyles from "../styles/fonts.css?inline";
 import { SEO } from "astro-seo";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
@@ -64,10 +65,8 @@ const personSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <!-- Carga de fuentes como recurso externo para no bloquear el renderizado -->
-    <link rel="stylesheet" href="/fonts.css" />
-
-    {/* Estilos CSS globales incrustados */}
+    {/* Estilos CSS incrustados para eliminar recursos que bloquean el renderizado */}
+    <style set:html={fontStyles}></style>
     <style set:html={globalStyles}></style>
 
     <meta name="generator" content={Astro.generator} />
