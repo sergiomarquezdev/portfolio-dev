@@ -8,8 +8,8 @@
  * - Tema oscuro por defecto para una experiencia moderna
  * - Proporciona una estructura semántica accesible
  */
-import "../styles/global.css";
-import "../styles/fonts.css";
+import globalStyles from "../styles/global.css?inline";
+import fontStyles from "../styles/fonts.css?inline";
 import { SEO } from "astro-seo";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
@@ -64,6 +64,11 @@ const personSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    {/* Estilos CSS incrustados para eliminar recursos que bloquean el renderizado */}
+    <style set:html={fontStyles}></style>
+    <style set:html={globalStyles}></style>
+
     <meta name="generator" content={Astro.generator} />
 
     <!-- Preload de fuentes críticas para mejorar el LCP -->
