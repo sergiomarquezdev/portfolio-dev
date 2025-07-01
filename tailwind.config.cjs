@@ -7,7 +7,7 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: "#22d3ee",
-          light: "#67e8f9",
+          light: "#a5f3fc",
           dark: "#06b6d4",
           "text-on-button": "#083344",
         },
