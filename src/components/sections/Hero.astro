@@ -36,91 +36,54 @@ const linkedUrl = linkedInfo?.url;
 const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 ---
 
-<!-- Hero section con diseño centrado y minimalista -->
-<div
-  class="bg-gradient-to-r from-white to-gray-100 dark:from-dark dark:to-dark-card dark:bg-none shadow-sm pt-[4.5rem] sm:pt-24 md:pt-28 lg:pt-32"
->
-  <Section class="py-8 sm:py-12 md:py-16 lg:py-20">
-    <!-- Contenedor principal centrado -->
-    <div class="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
-      <!-- Contenido de texto centrado -->
-      <div class="flex flex-col items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-        <!-- Nombre como H1 para SEO -->
-        <h1
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-secondary-dark dark:text-white"
-        >
-          {name}
-        </h1>
+<Section class="pt-32 pb-20 text-center">
+  <div class="flex flex-col items-center gap-s">
+    <h1 class="text-h1 font-bold text-texto-principal">{name}</h1>
+    <h2
+      class="text-h2 font-bold bg-gradient-to-r from-azul-principal to-cian-acento bg-clip-text text-transparent max-w-2xl"
+    >
+      {label}
+    </h2>
+    <span class="flex items-center gap-2 justify-center text-texto-desactivado text-body-lg">
+      <WorldMap />
+      {city}, {region}
+    </span>
+    <div class="print text-texto-desactivado text-lg">{printInfo}</div>
 
-        <!-- Titular (puesto o especialidad) como H2 -->
-        <h2
-          class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-secondary dark:text-gray-300 font-medium max-w-4xl"
-        >
-          {label}
-        </h2>
-
-        <!-- Localización -->
-        <span
-          class="flex items-center gap-2 justify-center text-gray-700 dark:text-gray-400 text-lg sm:text-xl"
-        >
-          <WorldMap />
-          {city}, {region}
-        </span>
-
-        <!-- Información en versión de impresión -->
-        <div class="print text-gray-700 dark:text-gray-400 text-lg">
-          {printInfo}
-        </div>
-
-        <!-- Enlaces a redes sociales y correo -->
-        <nav
-          class="no-print mt-4 sm:mt-6 md:mt-8 flex flex-wrap gap-3 md:gap-4 justify-center"
-          aria-label="Redes sociales y contacto"
-        >
-          {
-            email && (
-              <a
-                href={`mailto:${email}`}
-                title={`Enviar un correo a ${email}`}
-                aria-label={`Enviar un correo a ${name} (${email})`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card transition-all hover:bg-primary hover:text-white hover:shadow-lg focus:outline-primary focus:outline-offset-2 hover:no-underline"
-              >
-                <Mail class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
-              </a>
-            )
-          }
-          {
-            profiles.map(({ network, url }) => {
-              const Icon = SOCIAL_ICONS[network];
-              return (
-                <a
-                  href={url}
-                  title={`Visitar el perfil de ${name} en ${network}`}
-                  aria-label={`Visitar el perfil de ${name} en ${network}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-card transition-all hover:bg-primary hover:text-white hover:shadow-lg focus:outline-primary focus:outline-offset-2 hover:no-underline"
-                >
-                  <Icon class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
-                </a>
-              );
-            })
-          }
-          <!-- Enlace al blog -->
+    <!-- Enlaces a redes sociales -->
+    <nav class="no-print mt-m flex flex-wrap gap-s justify-center">
+      {
+        email && (
           <a
-            href="https://blog.sergiomarquez.dev"
-            class="flex h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-green-50 dark:bg-green-800 text-gray-800 dark:text-white transition-all hover:bg-green-500 hover:text-white hover:shadow-lg focus:outline-primary focus:outline-offset-2 hover:no-underline"
-            title="Visitar mi blog"
-            aria-label="Visitar mi blog"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`mailto:${email}`}
+            title={`Enviar correo a ${name}`}
+            class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition hover:bg-fondo-hover hover:text-texto-principal"
           >
-            <Blog class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+            <Mail class="h-7 w-7" />
           </a>
-        </nav>
-      </div>
-    </div>
-  </Section>
-</div>
+        )
+      }
+      {
+        profiles.map(({ network, url }) => {
+          const Icon = SOCIAL_ICONS[network];
+          return (
+            <a
+              href={url}
+              title={`Visitar perfil de ${name} en ${network}`}
+              class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition hover:bg-fondo-hover hover:text-texto-principal"
+            >
+              <Icon class="h-7 w-7" />
+            </a>
+          );
+        })
+      }
+      <a
+        href="https://blog.sergiomarquez.dev"
+        title="Visitar mi blog"
+        class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition hover:bg-fondo-hover hover:text-texto-principal"
+      >
+        <Blog class="h-7 w-7" />
+      </a>
+    </nav>
+  </div>
+</Section>

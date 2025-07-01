@@ -14,38 +14,9 @@ const { summary } = basics;
 ---
 
 <Section title="Sobre mí">
-  <div class="card dark:border-l-primary-light">
-    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-0">
+  <article class="bg-fondo-secundario p-m rounded-lg border border-borde-principal shadow-lg">
+    <p class="text-body-lg text-texto-secundario leading-relaxed">
       {summary}
     </p>
-  </div>
+  </article>
 </Section>
-
-<style>
-  .card {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #34495e;
-    background: #ffffff;
-    padding: 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    max-width: 900px;
-    margin: 0 auto;
-    border-left: 4px solid #1d4e89;
-  }
-
-  /* Estilos para modo oscuro */
-  :global(.dark) .card {
-    background: var(--dark-card-bg, #1e1e1e);
-    color: #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 700px) {
-    .card {
-      padding: 20px;
-      font-size: 1rem;
-    }
-  }
-</style>

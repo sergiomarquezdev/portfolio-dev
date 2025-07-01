@@ -17,28 +17,28 @@ const { title } = Astro.props;
 ---
 
 <Section title={title || "Proyectos"} id="proyectos">
-  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="grid grid-cols-1 gap-m sm:grid-cols-2 lg:grid-cols-3">
     {
       projects.map(({ name, description, highlights, url, github }) => (
-        <article class="relative flex h-full flex-col overflow-hidden rounded-xl bg-card p-5 shadow-lg transition hover:transform hover:-translate-y-1">
-          <h3 class="mb-2 text-xl font-semibold text-text-main">{name}</h3>
-          <p class="mb-4 text-sm text-text-muted">{description}</p>
+        <article class="flex h-full flex-col rounded-lg bg-fondo-secundario p-m border border-borde-principal shadow-lg transition-all duration-300 hover:scale-103 hover:shadow-card-hover hover:border-borde-hover">
+          <h3 class="mb-s text-h4 font-semibold text-texto-principal">{name}</h3>
+          <p class="mb-s text-body-reg text-texto-secundario">{description}</p>
 
-          <div class="mb-4 flex flex-wrap gap-2">
+          <div class="mb-m flex flex-wrap gap-2">
             {highlights.map((tag) => (
-              <span class="rounded-full bg-primary/20 px-3 py-1 text-xs font-medium text-primary-light">
+              <span class="rounded-md bg-badge-fondo px-3 py-1 text-xs font-medium text-badge-texto border border-badge-borde">
                 {tag}
               </span>
             ))}
           </div>
 
-          <div class="mt-auto flex items-center gap-4 pt-4">
+          <div class="mt-auto flex items-center gap-4 pt-s border-t border-borde-principal">
             {github && (
               <a
                 href={typeof github === "string" ? github : Array.isArray(github) ? github[0] : ""}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="rounded-md p-2 text-text-muted transition-colors hover:text-primary-light"
+                class="rounded-md p-2 text-texto-desactivado transition-colors hover:text-texto-principal"
                 aria-label={`GitHub de ${name}`}
                 title={`Ver código en GitHub de ${name}`}
               >
@@ -50,7 +50,7 @@ const { title } = Astro.props;
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-sm font-semibold text-link transition hover:text-primary"
+                class="text-sm font-semibold text-cian-acento transition hover:text-azul-principal"
                 aria-label={`Visitar ${name}`}
               >
                 Visitar →
@@ -62,69 +62,3 @@ const { title } = Astro.props;
     }
   </div>
 </Section>
-
-<style>
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    margin-inline: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .project-item {
-    transition: transform 0.3s ease;
-  }
-
-  .project-item:hover {
-    transform: translateY(-5px);
-  }
-
-  .active-indicator {
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0% {
-      opacity: 0.7;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0.7;
-    }
-  }
-
-  .skill-tag {
-    display: inline-block;
-    background: #f0f0f0;
-    color: #555;
-    padding: 0.3rem 0.6rem;
-    border-radius: 50px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-
-  .skill-tag:hover {
-    background: #e0e0e0;
-  }
-
-  /* Estilos para modo oscuro */
-  :global(.dark) .skill-tag {
-    background: #2a2a2a;
-    color: #e0e0e0;
-  }
-
-  :global(.dark) .skill-tag:hover {
-    background: #333333;
-  }
-
-  @media (max-width: 700px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-  }
-</style>

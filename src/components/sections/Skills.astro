@@ -56,20 +56,17 @@ const SKILLS_ICONS = {
 ---
 
 <Section title="Habilidades">
-  <div class="space-y-8">
+  <div class="space-y-l">
     <!-- Habilidades Destacadas -->
     <div>
-      <h3 class="mb-4 text-xl font-semibold text-text-muted">Principales tecnologías</h3>
+      <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Principales tecnologías</h3>
       <ul class="flex flex-wrap gap-2">
         {
           highlightedSkills.map(({ name, icon }) => {
             const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
             return (
-              <li
-                class="flex items-center gap-2 rounded-full border border-primary/30 bg-primary/20 px-4 py-2 text-base font-semibold text-primary-light transition hover:-translate-y-0.5"
-                aria-label={`Habilidad destacada: ${name}`}
-              >
-                {IconComponent ? <IconComponent /> : null}
+              <li class="flex items-center gap-2 rounded-md border border-badge-borde bg-badge-fondo px-3 py-1 text-base font-semibold text-badge-texto transition hover:-translate-y-0.5">
+                {IconComponent && <IconComponent class="h-5 w-5" />}
                 <span>{name}</span>
               </li>
             );
@@ -80,17 +77,14 @@ const SKILLS_ICONS = {
 
     <!-- Otras habilidades -->
     <div>
-      <h3 class="mb-4 text-xl font-semibold text-text-muted">Otras tecnologías</h3>
+      <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Otras tecnologías</h3>
       <ul class="flex flex-wrap gap-2">
         {
           otherSkills.map(({ name, icon }) => {
             const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
             return (
-              <li
-                class="flex items-center gap-2 rounded-full border border-secondary/30 bg-card px-4 py-2 text-base text-text-main transition hover:-translate-y-0.5"
-                aria-label={`Habilidad: ${name}`}
-              >
-                {IconComponent && <IconComponent />}
+              <li class="flex items-center gap-2 rounded-md border border-borde-principal bg-fondo-secundario px-3 py-1 text-base text-texto-principal transition hover:-translate-y-0.5">
+                {IconComponent && <IconComponent class="h-5 w-5" />}
                 <span>{name}</span>
               </li>
             );
@@ -101,17 +95,14 @@ const SKILLS_ICONS = {
 
     <!-- Bases de datos -->
     <div>
-      <h3 class="mb-4 text-xl font-semibold text-text-muted">Bases de datos</h3>
+      <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Bases de datos</h3>
       <ul class="flex flex-wrap gap-2">
         {
           databasesSkills.map(({ name, icon }) => {
             const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
             return (
-              <li
-                class="flex items-center gap-2 rounded-full border border-secondary/30 bg-card px-4 py-2 text-base text-text-main transition hover:-translate-y-0.5"
-                aria-label={`Base de datos: ${name}`}
-              >
-                {IconComponent && <IconComponent />}
+              <li class="flex items-center gap-2 rounded-md border border-borde-principal bg-fondo-secundario px-3 py-1 text-base text-texto-principal transition hover:-translate-y-0.5">
+                {IconComponent && <IconComponent class="h-5 w-5" />}
                 <span>{name}</span>
               </li>
             );
@@ -121,63 +112,3 @@ const SKILLS_ICONS = {
     </div>
   </div>
 </Section>
-
-<style>
-  .skills-list {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding: 0;
-    list-style: none;
-  }
-
-  .skill-tag {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #f4f4f4;
-    border-radius: 50px;
-    color: #2c3e50;
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    transition: all 0.2s ease;
-    border: 1px solid #e0e0e0;
-  }
-
-  .skill-tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .skill-tag-highlight {
-    background: rgba(29, 78, 137, 0.1);
-    color: #1d4e89;
-    font-weight: 600;
-    border-color: rgba(29, 78, 137, 0.2);
-  }
-
-  /* Estilos para modo oscuro */
-  :global(.dark) .skill-tag {
-    background: #2a2a2a;
-    color: #e0e0e0;
-    border-color: #3a3a3a;
-  }
-
-  :global(.dark) .skill-tag:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  :global(.dark) .skill-tag-highlight {
-    background: rgba(44, 108, 176, 0.2);
-    color: #2c6cb0;
-    border-color: rgba(44, 108, 176, 0.3);
-  }
-
-  @media (max-width: 700px) {
-    .skill-tag {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.8rem;
-    }
-  }
-</style>

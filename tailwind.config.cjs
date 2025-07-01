@@ -4,22 +4,50 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: "#22d3ee",
-          light: "#a5f3fc",
-          dark: "#06b6d4",
-          "text-on-button": "#ffffff",
-        },
-        secondary: {
-          DEFAULT: "#94a3b8",
-          light: "#cbd5e1",
-          dark: "#64748b",
-        },
-        body: "#0f172a",
-        card: "#1e293b",
-        "text-main": "#e2e8f0",
-        "text-muted": "#94a3b8",
-        link: "#a5f3fc",
+        'fondo-principal': '#030712',
+        'fondo-secundario': '#111827',
+        'fondo-tarjetas': 'rgba(17, 24, 39, 0.8)',
+        'fondo-hover': '#374151',
+        'texto-principal': '#F9FAFB',
+        'texto-secundario': '#D1D5DB',
+        'texto-desactivado': '#9CA3AF',
+        'texto-sutil': '#6B7280',
+        'azul-principal': '#60A5FA',
+        'azul-hover': '#3B82F6',
+        'azul-oscuro': '#2563EB',
+        'cian-acento': '#67E8F9',
+        'cian-secundario': '#22D3EE',
+        'borde-principal': '#374151',
+        'borde-secundario': '#1F2937',
+        'borde-hover': 'rgba(96, 165, 250, 0.6)',
+        'badge-fondo': 'rgba(30, 58, 138, 0.5)',
+        'badge-texto': '#93C5FD',
+        'badge-borde': 'rgba(96, 165, 250, 0.3)',
+      },
+      spacing: {
+        'xs': '8px',
+        's': '16px',
+        'm': '24px',
+        'l': '32px',
+        'xl': '48px',
+        'xxl': '80px',
+      },
+      fontSize: {
+        'h1': '48px',
+        'h2': '24px',
+        'h3': '30px',
+        'h4': '20px',
+        'body-lg': '18px',
+        'body-reg': '16px',
+        'small': '14px',
+      },
+      scale: {
+        '103': '1.03',
+      },
+      boxShadow: {
+        'avatar': '0 10px 15px -3px rgba(30, 58, 138, 0.3)',
+        'card-hover': '0 25px 50px -12px rgba(30, 58, 138, 0.2)',
+        'button': '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
       },
       fontFamily: {
         sans: [
@@ -41,25 +69,25 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.text-main"),
+            color: theme("colors.texto-secundario"),
             a: {
-              color: theme("colors.link"),
+              color: theme("colors.cian-acento"),
               "&:hover": {
-                color: theme("colors.primary.DEFAULT"),
+                color: theme("colors.azul-principal"),
               },
             },
             "h1, h2, h3, h4, h5, h6": {
-              color: theme("colors.text-main"),
+              color: theme("colors.texto-principal"),
               fontWeight: 700,
               marginTop: "1.5em",
               marginBottom: "0.5em",
             },
             strong: {
-              color: theme("colors.text-main"),
+              color: theme("colors.texto-principal"),
             },
             code: {
-              color: theme("colors.primary.light"),
-              backgroundColor: theme("colors.card"),
+              color: theme("colors.cian-acento"),
+              backgroundColor: theme("colors.fondo-secundario"),
               borderRadius: "0.25rem",
               padding: "0.25rem 0.5rem",
               fontWeight: 500,

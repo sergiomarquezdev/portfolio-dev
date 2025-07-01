@@ -6,9 +6,8 @@
   html {
     scroll-behavior: smooth;
     letter-spacing: -0.025rem;
-    @apply bg-gray-50 dark:bg-dark font-sans;
+    @apply bg-fondo-principal text-texto-secundario font-sans;
     scroll-padding-top: 4rem;
-    font-family: "Inter", sans-serif;
   }
 
   body,
@@ -18,12 +17,11 @@
   }
 
   a {
-    text-decoration: none;
-    @apply text-primary transition-colors duration-300 dark:text-primary-light;
+    @apply text-cian-acento transition-colors duration-300;
   }
 
   a:hover {
-    @apply text-primary-dark underline dark:text-primary;
+    @apply text-azul-principal underline;
   }
 
   ul {
@@ -43,11 +41,11 @@
   h3,
   h4 {
     margin: 0;
-    @apply font-heading dark:text-white;
+    @apply font-heading text-texto-principal;
   }
 
   p {
-    @apply text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-6;
+    @apply text-texto-secundario text-body-reg leading-relaxed mb-6;
   }
 
   .print {
@@ -73,196 +71,4 @@
   }
 }
 
-@layer components {
-  .card {
-    @apply bg-white dark:bg-dark-card rounded-lg shadow-md p-6 transition-all duration-300 border border-gray-100 dark:border-gray-800;
-  }
-
-  .card:hover {
-    @apply shadow-lg dark:shadow-gray-900/50;
-  }
-
-  .section-title {
-    @apply text-2xl md:text-3xl font-bold text-primary dark:text-primary-light mb-6 pb-2 border-b border-gray-200 dark:border-gray-700;
-  }
-
-  .btn {
-    @apply px-4 py-2 rounded-md transition-colors duration-300 font-medium;
-  }
-
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-dark dark:bg-primary-light dark:hover:bg-primary;
-  }
-
-  .skill-tag {
-    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200;
-  }
-
-  .skill-tag-highlight {
-    @apply bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-light;
-  }
-
-  /* Clases de animación */
-  .animate-fade-in {
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-
-  .animate-slide-up {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: slideUp 0.8s ease-out forwards;
-  }
-
-  .animate-slide-in-right {
-    opacity: 0;
-    transform: translateX(30px);
-    animation: slideInRight 0.8s ease-out forwards;
-  }
-
-  .animate-slide-in-left {
-    opacity: 0;
-    transform: translateX(-30px);
-    animation: slideInLeft 0.8s ease-out forwards;
-  }
-
-  .animate-scale {
-    opacity: 0;
-    transform: scale(0.9);
-    animation: scale 0.8s ease-out forwards;
-  }
-
-  /* Retrasos de animación */
-  .delay-100 {
-    animation-delay: 100ms;
-  }
-
-  .delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .delay-300 {
-    animation-delay: 300ms;
-  }
-
-  .delay-400 {
-    animation-delay: 400ms;
-  }
-
-  .delay-500 {
-    animation-delay: 500ms;
-  }
-}
-
-/* Definiciones de animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scale {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Si ya existe algún contenido, preservarlo */
-:root {
-  /* Variables de colores para modo claro */
-  --color-primary: #3b82f6; /* Azul principal */
-  --color-primary-dark: #2563eb;
-  --color-primary-light: #60a5fa;
-
-  /* Colores de fondo */
-  --color-bg: #ffffff;
-  --color-bg-offset: #f5f5f5;
-
-  /* Colores de texto */
-  --color-text: #374151;
-  --color-text-offset: #6b7280;
-}
-
-:root.dark {
-  /* Variables de colores para modo oscuro */
-  --color-primary: #3b82f6; /* Mantener azul para consistencia */
-  --color-primary-dark: #60a5fa; /* Invertir para modo oscuro */
-  --color-primary-light: #2563eb; /* Invertir para modo oscuro */
-
-  /* Colores de fondo para modo oscuro - más suave que negro puro */
-  --color-bg: #111827; /* Antes era #000 o similar */
-  --color-bg-offset: #1f2937;
-
-  /* Colores de texto para modo oscuro */
-  --color-text: #f9fafb;
-  --color-text-offset: #e5e7eb;
-}
-
-/* Aplicar variables a clases de Tailwind */
-.dark {
-  --tw-bg-opacity: 1;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-}
-
-.dark .dark\:bg-dark {
-  --tw-bg-opacity: 1;
-  background-color: var(--color-bg) !important;
-}
-
-.dark .dark\:bg-dark-card {
-  --tw-bg-opacity: 1;
-  background-color: var(--color-bg-offset) !important;
-}
-
-/* Transiciones suaves entre modos */
-html {
-  transition: background-color 0.3s ease;
-}
-
-body {
-  transition:
-    color 0.3s ease,
-    background-color 0.3s ease;
-}
+/* Las animaciones y componentes específicos se refactorizarán directamente en los componentes de Astro */

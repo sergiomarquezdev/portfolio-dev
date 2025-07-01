@@ -16,7 +16,7 @@ import { CertificateIcon as Certificate } from "@/icons";
 ---
 
 <Section title="Certificados">
-  <ul class="flex flex-col gap-8">
+  <ul class="space-y-l">
     {
       certificates.map(({ name, date, issuer, url }) => {
         const dateObj = new Date(date);
@@ -26,31 +26,34 @@ import { CertificateIcon as Certificate } from "@/icons";
         });
 
         return (
-          <li class="border-l-4 border-primary/50 pl-4 md:pl-6">
-            <article class="rounded-lg bg-card p-6 shadow-md">
-              <header class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <li class="relative pl-l">
+            <!-- Punto en la línea -->
+            <span class="absolute left-0 top-1 h-3 w-3 rounded-full bg-azul-principal"></span>
+            <!-- Línea vertical -->
+            <div class="absolute left-[5.5px] top-4 h-full w-px bg-borde-principal"></div>
+
+            <article>
+              <header class="mb-s flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
                 <div class="flex-1">
-                  <h3 class="text-xl font-bold text-text-main">{name}</h3>
-                  <p class="mt-1 text-base text-text-muted">Emitido por {issuer}</p>
+                  <h3 class="text-h4 font-semibold text-texto-principal">{name}</h3>
+                  <p class="mt-1 text-body-reg text-texto-desactivado">Emitido por {issuer}</p>
                 </div>
                 <time
-                  class="text-sm font-medium text-text-muted"
+                  class="text-sm font-medium text-texto-sutil"
                   datetime={dateObj.toISOString().split("T")[0]}
-                  aria-label={`Fecha de emisión: ${formattedDate}`}
                 >
                   {formattedDate}
                 </time>
               </header>
 
-              <footer class="mt-4">
+              <footer class="mt-s">
                 <a
                   href={url}
                   target="_blank"
-                  class="inline-flex items-center gap-2 rounded-md px-3 py-2 text-base font-semibold text-link transition hover:bg-white/10 hover:text-primary"
-                  aria-label={`Ver el certificado ${name} emitido por ${issuer}`}
                   rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-md bg-fondo-secundario px-4 py-2 text-sm font-semibold text-texto-secundario transition hover:bg-fondo-hover hover:text-texto-principal border border-borde-principal"
                 >
-                  {Certificate && <Certificate />} Ver Certificado
+                  <Certificate class="h-5 w-5" /> Ver Certificado
                 </a>
               </footer>
             </article>

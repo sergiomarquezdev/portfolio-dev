@@ -24,18 +24,14 @@ const navLinks = [
 
 <header
   id="main-header"
-  class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 dark:bg-dark/90 bg-white/90 backdrop-blur-sm border-b dark:border-gray-800 border-gray-100"
+  class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 bg-fondo-secundario/90 backdrop-blur-sm border-b border-borde-principal"
 >
   <div class="container mx-auto px-4">
     <!-- Navegación desktop y móvil -->
     <nav class="flex items-center justify-between">
       <!-- Logo -->
-      <a
-        href="#"
-        id="logo-link"
-        class="text-gray-900 dark:text-white font-bold text-xl flex items-center"
-      >
-        <span class="text-primary">&lt;</span>{name}<span class="text-primary">/&gt;</span>
+      <a href="#" id="logo-link" class="text-texto-principal font-bold text-xl flex items-center">
+        <span class="text-cian-acento">&lt;</span>{name}<span class="text-cian-acento">/&gt;</span>
       </a>
 
       <!-- Navegación desktop (visible en md+) -->
@@ -45,7 +41,7 @@ const navLinks = [
             <li>
               <a
                 href={href}
-                class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+                class="nav-link text-texto-secundario hover:text-cian-acento transition-colors"
               >
                 {label}
               </a>
@@ -57,7 +53,7 @@ const navLinks = [
       <!-- Botón de menú móvil (visible solo en móvil) -->
       <button
         id="mobile-menu-button"
-        class="md:hidden text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary p-2"
+        class="md:hidden text-texto-secundario hover:text-cian-acento p-2"
         aria-label="Abrir menú"
         title="Abrir menú"
         aria-expanded="false"
@@ -72,7 +68,7 @@ const navLinks = [
   <div
     id="mobile-menu"
     role="menu"
-    class="hidden md:hidden absolute left-0 right-0 top-full bg-white dark:bg-dark shadow-lg border-b dark:border-gray-800 border-gray-100"
+    class="hidden md:hidden absolute left-0 right-0 top-full bg-fondo-secundario shadow-lg border-b border-borde-principal"
   >
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
@@ -82,7 +78,7 @@ const navLinks = [
               <a
                 href={href}
                 role="menuitem"
-                class="nav-link block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+                class="nav-link block py-2 text-texto-secundario hover:text-cian-acento transition-colors"
               >
                 {label}
               </a>
@@ -145,8 +141,12 @@ const navLinks = [
         const link = document.querySelector(`.nav-link[href="#${sectionId}"]`);
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          navLinks.forEach((el) => el.classList.remove("text-primary"));
-          link?.classList.add("text-primary");
+          navLinks.forEach((el) => {
+            el.classList.remove("text-cian-acento");
+            el.classList.add("text-texto-secundario");
+          });
+          link?.classList.remove("text-texto-secundario");
+          link?.classList.add("text-cian-acento");
         }
       });
     };
@@ -162,51 +162,13 @@ const navLinks = [
 </script>
 
 <style>
-  /* Animación suave para el header */
-  header {
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.95);
-    width: 100%;
-    left: 0;
-    right: 0;
-  }
-
-  /* Estilo para el header en modo oscuro */
-  :global(.dark) header {
-    background-color: rgba(17, 24, 39, 0.95); /* dark color con mayor opacidad */
-  }
-
-  /* Mejoras para el menú móvil en modo oscuro */
-  #mobile-menu {
-    transition:
-      opacity 0.3s,
-      transform 0.3s;
-  }
-
-  :global(.dark) #mobile-menu {
-    background-color: #1f2937; /* dark - el mismo que se usa en otras partes oscuras */
-    border-color: #374151;
-  }
-
-  #mobile-menu a {
-    padding: 0.5rem 0.75rem;
-    margin: 0.25rem 0;
-    display: block;
-    border-radius: 0.375rem;
-  }
-
-  #mobile-menu a:hover {
-    background-color: rgba(79, 70, 229, 0.1);
-    border-radius: 0.25rem;
-  }
-
-  :global(.dark) #mobile-menu a:hover {
-    background-color: rgba(99, 102, 241, 0.1);
-  }
+  /* El backdrop-filter se maneja con la clase `backdrop-blur-sm` de Tailwind */
+  /* Los colores de fondo y bordes se manejan con clases de Tailwind */
+  /* Las transiciones y hovers están definidos en las clases de Tailwind */
 
   /* Estilo para el enlace activo */
   header nav a.active {
-    color: var(--color-primary);
+    /* El script ahora maneja el color del texto activo directamente */
     font-weight: 600;
   }
 </style>
