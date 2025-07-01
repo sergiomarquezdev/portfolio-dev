@@ -67,9 +67,12 @@ const SKILLS_ICONS = {
           highlightedSkills.map(({ name, icon }) => {
             const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
             return (
-              <li class="skill-tag skill-tag-highlight" aria-label={`Habilidad destacada: ${name}`}>
+              <li
+                class="skill-tag skill-tag-highlight text-primary-light"
+                aria-label={`Habilidad destacada: ${name}`}
+              >
                 {IconComponent ? <IconComponent /> : null}
-                <span>{name}</span>
+                <span class="font-medium">{name}</span>
               </li>
             );
           })

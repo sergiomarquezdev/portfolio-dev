@@ -9,6 +9,7 @@ module.exports = {
           DEFAULT: "#22d3ee",
           light: "#67e8f9",
           dark: "#06b6d4",
+          "text-on-button": "#083344",
         },
         secondary: {
           DEFAULT: "#334155",
