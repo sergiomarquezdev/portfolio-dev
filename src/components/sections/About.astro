@@ -5,50 +5,13 @@
  * Características:
  * - Presenta un resumen profesional con formato estructurado
  * - Extrae los datos directamente del archivo cv.json
- * - Mejora la legibilidad dividiendo el contenido en párrafos lógicos
+ * - Usa las propiedades separadas: summaryIntro, summaryExperience, summaryObjectives
  * - Incluye estilizado específico para modo claro y oscuro
  * - Resalta palabras clave y tecnologías principales
  */
 import Section from "../Section.astro";
 import { basics } from "@cv";
-const { summary } = basics;
-
-// ✅ UX IMPROVEMENT: Dividir el resumen de manera inteligente basado en el contenido real
-const createIntelligentSummaryParagraphs = (text: string) => {
-  // Encontrar los puntos de división naturales en el contenido
-  const introEnd = text.indexOf("inteligencia artificial.");
-  const experienceEnd = text.indexOf("futuros proyectos.");
-
-  if (introEnd === -1 || experienceEnd === -1) {
-    // Fallback: dividir por párrafos si no encuentra los marcadores
-    return text.split(". ").reduce((acc, sentence, index, array) => {
-      if (index === 0) {
-        acc.push(sentence + ".");
-      } else if (index <= Math.floor(array.length / 2)) {
-        if (!acc[1]) acc[1] = "";
-        acc[1] += (acc[1] ? " " : "") + sentence + (index < array.length - 1 ? "." : "");
-      } else {
-        if (!acc[2]) acc[2] = "";
-        acc[2] += (acc[2] ? " " : "") + sentence + (index < array.length - 1 ? "." : "");
-      }
-      return acc;
-    }, [] as string[]);
-  }
-
-  // División inteligente basada en el contenido
-  const intro = text.substring(0, introEnd + "inteligencia artificial.".length).trim();
-  const experience = text
-    .substring(
-      introEnd + "inteligencia artificial.".length,
-      experienceEnd + "futuros proyectos.".length
-    )
-    .trim();
-  const objectives = text.substring(experienceEnd + "futuros proyectos.".length).trim();
-
-  return [intro, experience, objectives].filter((p) => p.length > 0);
-};
-
-const summaryParagraphs = createIntelligentSummaryParagraphs(summary);
+const { summaryIntro, summaryExperience, summaryObjectives } = basics;
 
 // ✅ UX IMPROVEMENT: Destacar tecnologías clave
 const highlightKeywords = (text: string) => {
@@ -88,60 +51,60 @@ const highlightKeywords = (text: string) => {
 <Section title="Sobre mí">
   <article class="bg-fondo-secundario p-l rounded-lg border border-borde-principal shadow-lg">
     <div class="space-y-m">
-      {
-        summaryParagraphs.map((paragraph, index) => (
-          <div class="paragraph-container" data-index={index}>
-            {index === 0 && (
-              <div class="flex items-start gap-m mb-s">
-                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-azul-principal to-cian-acento rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                  SM
-                </div>
-                <div class="flex-grow">
-                  <h3 class="text-h4 font-semibold text-texto-principal mb-2">¡Hola! 👋</h3>
-                  <p
-                    class="text-body-lg text-texto-secundario leading-relaxed"
-                    set:html={highlightKeywords(paragraph)}
-                  />
-                </div>
-              </div>
-            )}
-
-            {index === 1 && (
-              <div class="border-l-4 border-azul-principal pl-m">
-                <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
-                  <svg class="w-5 h-5 text-azul-principal" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  Experiencia Técnica
-                </h4>
-                <p
-                  class="text-body-reg text-texto-secundario leading-relaxed"
-                  set:html={highlightKeywords(paragraph)}
-                />
-              </div>
-            )}
-
-            {index === 2 && (
-              <div class="bg-gradient-to-r from-azul-oscuro/10 to-cian-acento/5 p-m rounded-lg border border-azul-principal/20">
-                <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
-                  <svg class="w-5 h-5 text-cian-acento" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  Objetivos Profesionales
-                </h4>
-                <p
-                  class="text-body-reg text-texto-secundario leading-relaxed"
-                  set:html={highlightKeywords(paragraph)}
-                />
-              </div>
-            )}
+      <!-- ✅ INTRO: Presentación personal -->
+      <div class="paragraph-container" data-index="0">
+        <div class="flex items-start gap-m mb-s">
+          <div
+            class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-azul-principal to-cian-acento rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg"
+          >
+            SM
           </div>
-        ))
-      }
+          <div class="flex-grow">
+            <h3 class="text-h4 font-semibold text-texto-principal mb-2">¡Hola! 👋</h3>
+            <p
+              class="text-body-lg text-texto-secundario leading-relaxed"
+              set:html={highlightKeywords(summaryIntro)}
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ EXPERIENCE: Experiencia técnica -->
+      <div class="paragraph-container" data-index="1">
+        <div class="border-l-4 border-azul-principal pl-m">
+          <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
+            <svg class="w-5 h-5 text-azul-principal" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Experiencia Técnica
+          </h4>
+          <p
+            class="text-body-reg text-texto-secundario leading-relaxed"
+            set:html={highlightKeywords(summaryExperience)}
+          />
+        </div>
+      </div>
+
+      <!-- ✅ OBJECTIVES: Objetivos profesionales -->
+      <div class="paragraph-container" data-index="2">
+        <div
+          class="bg-gradient-to-r from-azul-oscuro/10 to-cian-acento/5 p-m rounded-lg border border-azul-principal/20"
+        >
+          <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
+            <svg class="w-5 h-5 text-cian-acento" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+            Objetivos Profesionales
+          </h4>
+          <p
+            class="text-body-reg text-texto-secundario leading-relaxed"
+            set:html={highlightKeywords(summaryObjectives)}
+          />
+        </div>
+      </div>
     </div>
 
     <!-- ✅ UX IMPROVEMENT: Call-to-action sutil -->
