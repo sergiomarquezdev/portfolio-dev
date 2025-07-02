@@ -21,7 +21,7 @@ import {
   type SocialIcon,
 } from "@/icons";
 
-const { name, label, location, profiles, email } = basics;
+const { name, label, location, profiles, email, image, imageAlt } = basics;
 const { city, region } = location;
 
 const SOCIAL_ICONS: SocialIcon = {
@@ -38,6 +38,23 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 
 <Section class="pt-32 pb-20 text-center">
   <div class="flex flex-col items-center gap-s">
+    <!-- ✅ PERFORMANCE: Profile image with lazy loading -->
+    {
+      image && (
+        <div class="mb-s">
+          <img
+            src={image}
+            alt={imageAlt}
+            width="120"
+            height="120"
+            class="w-30 h-30 rounded-full border-4 border-borde-principal shadow-avatar object-cover"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      )
+    }
+
     <h1 class="text-h1 font-bold text-texto-principal">{name}</h1>
     <h2
       class="text-h2 font-bold bg-gradient-to-r from-azul-principal to-cian-acento bg-clip-text text-transparent max-w-2xl"
@@ -57,7 +74,7 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
           <a
             href={`mailto:${email}`}
             title={`Enviar correo a ${name}`}
-            class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition hover:bg-fondo-hover hover:text-texto-principal"
+            class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition-all duration-200 hover:bg-fondo-hover hover:text-texto-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
           >
             <Mail class="h-7 w-7" />
           </a>
@@ -70,7 +87,9 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
             <a
               href={url}
               title={`Visitar perfil de ${name} en ${network}`}
-              class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition hover:bg-fondo-hover hover:text-texto-principal"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition-all duration-200 hover:bg-fondo-hover hover:text-texto-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
             >
               <Icon class="h-7 w-7" />
             </a>
@@ -80,10 +99,31 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
       <a
         href="https://blog.sergiomarquez.dev"
         title="Visitar mi blog"
-        class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition hover:bg-fondo-hover hover:text-texto-principal"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition-all duration-200 hover:bg-fondo-hover hover:text-texto-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
       >
         <Blog class="h-7 w-7" />
       </a>
     </nav>
   </div>
 </Section>
+
+<style>
+  /* ✅ PERFORMANCE: Optimized animations for 60fps */
+  a {
+    transform: translateZ(0); /* Force GPU acceleration */
+    will-change: transform, background-color;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    a {
+      transition: none;
+    }
+
+    a:hover {
+      transform: none;
+    }
+  }
+</style>

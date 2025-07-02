@@ -3,20 +3,177 @@
  * About.astro - Componente para mostrar la sección "Sobre mí"
  *
  * Características:
- * - Presenta un resumen profesional con formato de tarjeta
+ * - Presenta un resumen profesional con formato estructurado
  * - Extrae los datos directamente del archivo cv.json
- * - Adapta su diseño para móvil y escritorio
+ * - Mejora la legibilidad dividiendo el contenido en párrafos
  * - Incluye estilizado específico para modo claro y oscuro
+ * - Resalta palabras clave y tecnologías principales
  */
 import Section from "../Section.astro";
 import { basics } from "@cv";
 const { summary } = basics;
+
+// ✅ UX IMPROVEMENT: Dividir el resumen largo en párrafos más legibles
+const summaryParagraphs = summary.split(". ").reduce((acc, sentence, index, array) => {
+  if (index === 0) {
+    // Primer párrafo: introducción personal
+    acc.push(sentence + ".");
+  } else if (index <= 3) {
+    // Segundo párrafo: experiencia técnica
+    if (!acc[1]) acc[1] = "";
+    acc[1] += (acc[1] ? " " : "") + sentence + (index < array.length - 1 ? "." : "");
+  } else {
+    // Tercer párrafo: objetivos y futuro
+    if (!acc[2]) acc[2] = "";
+    acc[2] += (acc[2] ? " " : "") + sentence + (index < array.length - 1 ? "." : "");
+  }
+  return acc;
+}, [] as string[]);
+
+// ✅ UX IMPROVEMENT: Destacar tecnologías clave
+const highlightKeywords = (text: string) => {
+  const keywords = [
+    "Java",
+    "Spring Framework",
+    "Angular",
+    "Python",
+    "Go",
+    "Docker",
+    "Kubernetes",
+    "Google Cloud",
+    "PostgreSQL",
+    "inteligencia artificial",
+    "CI/CD",
+    "Node.js",
+  ];
+
+  let highlightedText = text;
+  keywords.forEach((keyword) => {
+    const regex = new RegExp(`\\b${keyword}\\b`, "gi");
+    highlightedText = highlightedText.replace(
+      regex,
+      `<strong class="text-texto-principal font-semibold">${keyword}</strong>`
+    );
+  });
+
+  return highlightedText;
+};
 ---
 
 <Section title="Sobre mí">
-  <article class="bg-fondo-secundario p-m rounded-lg border border-borde-principal shadow-lg">
-    <p class="text-body-lg text-texto-secundario leading-relaxed">
-      {summary}
-    </p>
+  <article class="bg-fondo-secundario p-l rounded-lg border border-borde-principal shadow-lg">
+    <div class="space-y-m">
+      {
+        summaryParagraphs.map((paragraph, index) => (
+          <div class="paragraph-container" data-index={index}>
+            {index === 0 && (
+              <div class="flex items-start gap-m mb-s">
+                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-azul-principal to-cian-acento rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  SM
+                </div>
+                <div class="flex-grow">
+                  <h3 class="text-h4 font-semibold text-texto-principal mb-2">¡Hola! 👋</h3>
+                  <p
+                    class="text-body-lg text-texto-secundario leading-relaxed"
+                    set:html={highlightKeywords(paragraph)}
+                  />
+                </div>
+              </div>
+            )}
+
+            {index === 1 && (
+              <div class="border-l-4 border-azul-principal pl-m">
+                <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
+                  <svg class="w-5 h-5 text-azul-principal" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Experiencia Técnica
+                </h4>
+                <p
+                  class="text-body-reg text-texto-secundario leading-relaxed"
+                  set:html={highlightKeywords(paragraph)}
+                />
+              </div>
+            )}
+
+            {index === 2 && (
+              <div class="bg-gradient-to-r from-azul-oscuro/10 to-cian-acento/5 p-m rounded-lg border border-azul-principal/20">
+                <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
+                  <svg class="w-5 h-5 text-cian-acento" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Objetivos Profesionales
+                </h4>
+                <p
+                  class="text-body-reg text-texto-secundario leading-relaxed"
+                  set:html={highlightKeywords(paragraph)}
+                />
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- ✅ UX IMPROVEMENT: Call-to-action sutil -->
+    <div class="mt-l pt-m border-t border-borde-principal text-center">
+      <p class="text-sm text-texto-sutil mb-s">¿Interesado en colaborar?</p>
+      <a
+        href="#contacto"
+        class="inline-flex items-center gap-2 px-6 py-2 rounded-md bg-azul-oscuro/80 text-white font-medium transition-all duration-200 hover:bg-azul-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
+      >
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+        </svg>
+        Hablemos
+      </a>
+    </div>
   </article>
 </Section>
+
+<style>
+  /* ✅ PERFORMANCE: Optimize animations */
+  .paragraph-container {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .paragraph-container[data-index="1"] {
+    animation-delay: 0.2s;
+  }
+
+  .paragraph-container[data-index="2"] {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ✅ ACCESSIBILITY: Reduce motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .paragraph-container {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* ✅ UX: Subtle hover effect for highlighted keywords */
+  strong {
+    transition: color 0.2s ease;
+  }
+
+  strong:hover {
+    color: var(--color-cian-acento, #67e8f9);
+  }
+</style>

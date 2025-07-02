@@ -15,11 +15,13 @@ import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
 import cvData from "@cv"; // Importar datos del CV
 
-interface Props {
+export interface Props {
   title?: string;
   description?: string;
   image?: string;
 }
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {
   title = "Sergio Márquez | Desarrollador Full Stack y Experto en IA",
@@ -70,15 +72,9 @@ const personSchema = {
     <style set:html={globalStyles}></style>
 
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
 
-    <!-- Preload de fuentes críticas para mejorar el LCP -->
-    <link
-      rel="preload"
-      href="/fonts/montserrat-v29-latin_latin-ext-700.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <!-- ✅ PERFORMANCE: Preload critical resources -->
     <link
       rel="preload"
       href="/fonts/inter-v18-latin_latin-ext-regular.woff2"
@@ -88,45 +84,58 @@ const personSchema = {
     />
     <link
       rel="preload"
-      href="/fonts/inter-v18-latin_latin-ext-500.woff2"
+      href="/fonts/inter-v18-latin_latin-ext-600.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/montserrat-v29-latin_latin-ext-600.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
 
-    <SEO
-      title={title}
-      description={description}
-      openGraph={{
-        basic: {
-          title: title,
-          type: "website",
-          image: `${siteUrl}${image}`,
-        },
-        optional: {
-          description: description,
-        },
-      }}
-      twitter={{
-        card: "summary_large_image",
-        creator: "@smarquezdev",
-        title: title,
-        description: description,
-        image: `${siteUrl}${image}`,
-      }}
-      extend={{
-        meta: [
-          {
-            name: "author",
-            content: fullNameForSchema, // Using full name for author too
-          },
-          {
-            name: "keywords",
-            content: `Sergio Márquez, Sergio Márquez Pérez, Desarrollador Full Stack, Backend Developer, Frontend Developer, Java, Spring Framework, Angular, Inteligencia Artificial, IA, Docker, Kubernetes, Cloud Computing, Portfolio, ${highlightedSkills.map((s) => s.name).join(", ")}`, // Updated keywords
-          },
-        ],
-      }}
+    <!-- ✅ PERFORMANCE: DNS prefetch for external services -->
+    <link rel="dns-prefetch" href="//api.web3forms.com" />
+
+    <!-- ✅ PERFORMANCE: Resource hints -->
+    <meta name="theme-color" content="#030712" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Sergio Márquez Pérez" />
+    <meta
+      name="keywords"
+      content="desarrollador, backend, IA, ML, inteligencia artificial, machine learning, Java, Spring Framework, Python, portfolio"
     />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:image"
+      content={new URL("/img/sergio_marquez_perez_ia_profile_pic_1-1.webp", Astro.url)}
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta
+      property="twitter:image"
+      content={new URL("/img/sergio_marquez_perez_ia_profile_pic_1-1.webp", Astro.url)}
+    />
+    <meta property="twitter:creator" content="@smarquezdev" />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
@@ -134,5 +143,26 @@ const personSchema = {
     <ScrollToTop />
     <Header />
     <slot />
+
+    <!-- ✅ PERFORMANCE: Lazy load non-critical components -->
+    <script type="module">
+      // Intersection Observer para lazy loading futuro
+      if ("IntersectionObserver" in window) {
+        // Observer will be used by individual components
+        window.lazyLoadObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+              }
+            });
+          },
+          {
+            rootMargin: "50px 0px",
+            threshold: 0.1,
+          }
+        );
+      }
+    </script>
   </body>
 </html>

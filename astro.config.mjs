@@ -16,7 +16,9 @@ export default defineConfig({
         debug: false,
       },
     }),
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
   ],
   compressHTML: true,
   trailingSlash: "never",
@@ -51,10 +53,8 @@ export default defineConfig({
           entryFileNames: "entry.[hash].js",
           chunkFileNames: "chunks/chunk.[hash].js",
           assetFileNames: "assets/asset.[hash][extname]",
-          manualChunks: (id) => {
-            if (id.includes("node_modules")) {
-              return "vendor";
-            }
+          manualChunks: {
+            vendor: ['astro'],
           },
         },
       },
@@ -66,9 +66,17 @@ export default defineConfig({
     optimizeDeps: {
       exclude: [],
     },
+    assetsInclude: ['**/*.woff2', '**/*.webp'],
   },
   // Configuración de Content Collections (descomentar si se utilizan)
   // experimental: {
   //     contentCollections: true,
   // },
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: 'hover',
+  },
+  experimental: {
+    assets: true,
+  },
 });
