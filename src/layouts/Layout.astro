@@ -10,7 +10,6 @@
  */
 import globalStyles from "../styles/global.css?inline";
 import fontStyles from "../styles/fonts.css?inline";
-import { SEO } from "astro-seo";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
 import cvData from "@cv"; // Importar datos del CV
@@ -18,7 +17,6 @@ import cvData from "@cv"; // Importar datos del CV
 export interface Props {
   title?: string;
   description?: string;
-  image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -26,7 +24,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const {
   title = "Sergio Márquez | Desarrollador Full Stack y Experto en IA",
   description = "Portfolio de Sergio Márquez Pérez, Desarrollador Full Stack experto en Java, Spring, Angular, IA y Cloud. Descubre mis proyectos y experiencia en desarrollo web.",
-  image = "/img/sergio_marquez_perez_ia_profile_pic_2-1.webp",
 } = Astro.props;
 
 const { basics, work, education, highlightedSkills, otherSkills, databasesSkills } = cvData;
@@ -132,7 +129,7 @@ const personSchema = {
     <slot />
 
     <!-- ✅ PERFORMANCE: Lazy load non-critical components -->
-    <script type="module">
+    <script is:inline type="module">
       // Intersection Observer para lazy loading futuro
       if ("IntersectionObserver" in window) {
         // Observer will be used by individual components
