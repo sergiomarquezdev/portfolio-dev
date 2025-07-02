@@ -17,8 +17,6 @@ import {
   XIcon as X,
   LinkedInIcon as LinkedIn,
   GitHubIcon as GitHub,
-  WorldMapIcon as WorldMap,
-  BlogIcon as Blog,
   type SocialIcon,
 } from "@/icons";
 
@@ -35,9 +33,6 @@ const SOCIAL_ICONS: SocialIcon = {
 };
 
 const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
-const linkedUrl = linkedInfo?.url;
-
-const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
 
 // ✅ POLISH PREMIUM: Preparar textos para typing effect
 const typingTexts = [
