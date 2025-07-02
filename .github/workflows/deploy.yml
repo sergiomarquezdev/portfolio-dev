@@ -12,6 +12,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_WEB3FORMS_API_KEY: ${{ secrets.PUBLIC_WEB3FORMS_API_KEY }}
 
     steps:
       - name: Checkout code
