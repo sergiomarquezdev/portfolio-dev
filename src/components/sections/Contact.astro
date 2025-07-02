@@ -35,10 +35,12 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
             id="name"
             name="name"
             required
-            class="w-full px-4 py-2 rounded-md border border-borde-principal bg-fondo-principal text-texto-principal focus:border-azul-principal focus:ring-2 focus:ring-azul-principal/20 outline-none transition-all"
+            class="w-full px-4 py-3 rounded-md border border-borde-principal bg-fondo-principal text-texto-principal focus:border-azul-principal focus:ring-2 focus:ring-azul-principal/20 outline-none transition-all duration-200 placeholder:text-texto-sutil"
             placeholder="Tu nombre completo"
           />
-          <div class="empty-feedback invalid-feedback text-red-500 text-sm mt-1">
+          <div
+            class="empty-feedback invalid-feedback text-red-400 text-sm mt-2 opacity-0 transition-opacity duration-200"
+          >
             Por favor, proporciona tu nombre.
           </div>
         </div>
@@ -51,13 +53,17 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
             id="email"
             name="email"
             required
-            class="w-full px-4 py-2 rounded-md border border-borde-principal bg-fondo-principal text-texto-principal focus:border-azul-principal focus:ring-2 focus:ring-azul-principal/20 outline-none transition-all"
+            class="w-full px-4 py-3 rounded-md border border-borde-principal bg-fondo-principal text-texto-principal focus:border-azul-principal focus:ring-2 focus:ring-azul-principal/20 outline-none transition-all duration-200 placeholder:text-texto-sutil"
             placeholder="tu@email.com"
           />
-          <div class="empty-feedback text-red-500 text-sm mt-1">
+          <div
+            class="empty-feedback text-red-400 text-sm mt-2 opacity-0 transition-opacity duration-200"
+          >
             Por favor, proporciona tu correo.
           </div>
-          <div class="invalid-feedback text-red-500 text-sm mt-1">
+          <div
+            class="invalid-feedback text-red-400 text-sm mt-2 opacity-0 transition-opacity duration-200"
+          >
             Por favor, proporciona un correo válido.
           </div>
         </div>
@@ -70,17 +76,19 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
           name="message"
           minlength="10"
           required
-          class="w-full px-4 py-2 rounded-md border border-borde-principal bg-fondo-principal text-texto-principal focus:border-azul-principal focus:ring-2 focus:ring-azul-principal/20 outline-none transition-all h-32"
+          class="w-full px-4 py-3 rounded-md border border-borde-principal bg-fondo-principal text-texto-principal focus:border-azul-principal focus:ring-2 focus:ring-azul-principal/20 outline-none transition-all duration-200 h-32 resize-y placeholder:text-texto-sutil"
           placeholder="Escribe tu mensaje aquí..."></textarea>
-        <div class="empty-feedback invalid-feedback text-red-500 text-sm mt-1">
+        <div
+          class="empty-feedback invalid-feedback text-red-400 text-sm mt-2 opacity-0 transition-opacity duration-200"
+        >
           Por favor, ingresa tu mensaje.
         </div>
       </div>
 
-      <div class="mt-m">
+      <div class="mt-l">
         <button
           type="submit"
-          class="px-6 py-3 rounded-md bg-azul-oscuro text-white font-semibold transition-all shadow-button hover:bg-azul-principal hover:scale-105"
+          class="px-8 py-3 rounded-md bg-azul-oscuro text-white font-semibold transition-all duration-200 shadow-button hover:bg-azul-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           Enviar mensaje
         </button>
@@ -93,33 +101,49 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
 <style>
   .empty-feedback,
   .invalid-feedback {
-    display: none;
-  }
-  .was-validated :placeholder-shown:invalid ~ .empty-feedback {
     display: block;
+    opacity: 0;
   }
-  .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
-    display: block;
+
+  /* ✅ MEJORADO: Validación más suave - solo mostrar errores al blur, no en tiempo real */
+  .was-validated input:invalid:not(:focus),
+  .was-validated textarea:invalid:not(:focus) {
+    border-color: #f87171;
   }
-  .is-invalid,
-  .was-validated :invalid {
-    border-color: #ef4444;
+
+  .was-validated input:invalid:not(:focus) ~ .empty-feedback,
+  .was-validated textarea:invalid:not(:focus) ~ .empty-feedback {
+    opacity: 1;
+  }
+
+  .was-validated input:not(:placeholder-shown):invalid:not(:focus) ~ .invalid-feedback,
+  .was-validated textarea:not(:placeholder-shown):invalid:not(:focus) ~ .invalid-feedback {
+    opacity: 1;
+  }
+
+  /* ✅ MEJORADO: Estados válidos con feedback positivo sutil */
+  .was-validated input:valid,
+  .was-validated textarea:valid {
+    border-color: #10b981;
   }
 
   #result {
     display: none;
     font-size: 1rem;
     padding: 1rem;
-    border-radius: 0.375rem; /* rounded-md */
+    border-radius: 0.5rem;
     border-width: 1px;
+    transition: all 0.3s ease;
   }
+
   #result.success {
-    color: #4ade80; /* green-400 */
-    background-color: rgba(74, 222, 128, 0.1);
-    border-color: rgba(74, 222, 128, 0.2);
+    color: #10b981;
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
   }
+
   #result.error {
-    color: #f87171; /* red-400 */
+    color: #f87171;
     background-color: rgba(248, 113, 113, 0.1);
     border-color: rgba(248, 113, 113, 0.2);
   }
@@ -128,6 +152,7 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
     position: relative;
     color: transparent !important;
   }
+
   button.loading::after {
     content: "";
     position: absolute;
@@ -135,12 +160,13 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
     top: 50%;
     width: 20px;
     height: 20px;
-    border: 2px solid #f9fafb; /* texto-principal */
+    border: 2px solid #f9fafb;
     border-radius: 50%;
     border-top-color: transparent;
     transform: translate(-50%, -50%);
     animation: spin 1s linear infinite;
   }
+
   @keyframes spin {
     to {
       transform: translate(-50%, -50%) rotate(360deg);
@@ -159,13 +185,33 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
       return;
     }
 
+    // ✅ MEJORADO: Validación más suave - solo al blur y submit
+    const inputs = form.querySelectorAll("input[required], textarea[required]");
+
+    inputs.forEach((input) => {
+      input.addEventListener("blur", () => {
+        if (form.classList.contains("was-validated")) {
+          validateField(input as HTMLInputElement | HTMLTextAreaElement);
+        }
+      });
+    });
+
+    function validateField(field: HTMLInputElement | HTMLTextAreaElement) {
+      const isValid = field.checkValidity();
+      // El CSS maneja la visualización de errores
+      return isValid;
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       form.classList.add("was-validated");
 
       if (!form.checkValidity()) {
         const invalidElement = form.querySelectorAll(":invalid")[0] as HTMLElement;
-        if (invalidElement) invalidElement.focus();
+        if (invalidElement) {
+          invalidElement.focus();
+          invalidElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
         return;
       }
 
@@ -173,11 +219,13 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
       const object = Object.fromEntries(formData);
       const json = JSON.stringify(object);
 
-      // Estado "loading"
+      // Estado "loading" mejorado
       submitButton.classList.add("loading");
+      submitButton.disabled = true;
       submitButton.setAttribute("aria-label", "Enviando...");
       submitButton.setAttribute("aria-busy", "true");
-      result.innerHTML = "Enviando...";
+
+      result.textContent = "Enviando mensaje...";
       result.classList.remove("error", "success");
       result.style.display = "block";
 
@@ -193,7 +241,7 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
           const json = await response.json();
           if (response.status == 200) {
             result.classList.add("success");
-            result.innerHTML = json.message;
+            result.textContent = "¡Mensaje enviado correctamente! Te responderé pronto.";
             form.reset();
             form.classList.remove("was-validated");
           } else {
@@ -201,21 +249,26 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
               console.error("Error del servidor al enviar el formulario:", response.status);
             }
             result.classList.add("error");
-            result.innerHTML = json.message;
+            result.textContent = json.message || "Error al enviar el mensaje. Inténtalo de nuevo.";
           }
         })
         .catch((error) => {
           console.error("Error al enviar el formulario:", error);
-          result.innerHTML = "Algo salió mal. Por favor, inténtalo de nuevo.";
+          result.textContent =
+            "Error de conexión. Por favor, verifica tu conexión e inténtalo de nuevo.";
           result.classList.add("error");
         })
         .finally(() => {
           submitButton.classList.remove("loading");
+          submitButton.disabled = false;
           submitButton.removeAttribute("aria-label");
           submitButton.setAttribute("aria-busy", "false");
+
+          // ✅ MEJORADO: Ocultar mensaje después de 8 segundos (era 5)
           setTimeout(() => {
             result.style.display = "none";
-          }, 5000);
+            result.classList.remove("error", "success");
+          }, 8000);
         });
     });
   });

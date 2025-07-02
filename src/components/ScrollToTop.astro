@@ -13,7 +13,7 @@ import { ArrowUpIcon } from "../icons";
 
 <button
   id="scroll-to-top"
-  class="fixed bottom-4 left-4 z-40 w-12 h-12 rounded-full bg-azul-principal text-white shadow-lg flex items-center justify-center hover:bg-azul-hover transition-all duration-300 transform scale-0 opacity-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-principal"
+  class="fixed bottom-4 left-4 z-40 w-12 h-12 rounded-full bg-azul-principal text-white shadow-lg flex items-center justify-center hover:bg-azul-hover transition-all duration-300 transform scale-0 opacity-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-azul-principal focus:ring-offset-fondo-principal"
   aria-label="Volver arriba"
   title="Volver arriba"
   aria-hidden="true"
@@ -37,8 +37,8 @@ import { ArrowUpIcon } from "../icons";
       // Calcular el porcentaje de scroll (0-100)
       const scrollPercentage = (scrollY / (scrollHeight - clientHeight)) * 100;
 
-      // Mostrar el botón cuando el usuario ha scrolleado más del 70% de la página
-      if (scrollPercentage > 70) {
+      // ✅ MEJORADO: Mostrar el botón cuando el usuario ha scrolleado más del 50% (era 70%)
+      if (scrollPercentage > 50) {
         scrollToTopButton.classList.remove("scale-0", "opacity-0");
         scrollToTopButton.classList.add("scale-100", "opacity-100");
         scrollToTopButton.setAttribute("aria-hidden", "false");
@@ -59,9 +59,18 @@ import { ArrowUpIcon } from "../icons";
       });
     }
 
+    // ✅ MEJORADO: Manejar navegación por teclado
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        scrollToTop();
+      }
+    }
+
     // Agregar event listeners
     window.addEventListener("scroll", toggleScrollToTopButton);
     scrollToTopButton?.addEventListener("click", scrollToTop);
+    scrollToTopButton?.addEventListener("keydown", handleKeyDown);
 
     // Verificar la posición inicial del scroll
     toggleScrollToTopButton();
