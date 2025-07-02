@@ -31,6 +31,7 @@ module.exports = {
         'l': '32px',
         'xl': '48px',
         'xxl': '80px',
+        '30': '120px',
       },
       fontSize: {
         'h1': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
