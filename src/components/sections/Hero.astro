@@ -8,8 +8,9 @@
  * - Implementa diseño responsivo centrado y limpio
  * - Separa el contenido para impresión y visualización web
  * - Diseño minimalista enfocado en el contenido textual
+ * - ✨ POLISH PREMIUM: Typing effect y animaciones coordinadas
  */
-import { basics } from "@cv";
+import { basics, work } from "@cv";
 import Section from "../Section.astro";
 import {
   MailIcon as Mail,
@@ -21,8 +22,11 @@ import {
   type SocialIcon,
 } from "@/icons";
 
-const { name, label, location, profiles, email, image, imageAlt } = basics;
+const { name, label, location, profiles, email, image, imageAlt, summary } = basics;
 const { city, region } = location;
+
+// Extraer el primer trabajo actual para mostrar contexto
+const currentWork = work && work.length > 0 ? work[0] : null;
 
 const SOCIAL_ICONS: SocialIcon = {
   GitHub,
@@ -34,78 +38,112 @@ const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
 const linkedUrl = linkedInfo?.url;
 
 const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
+
+// ✅ POLISH PREMIUM: Preparar textos para typing effect
+const typingTexts = [
+  label,
+  currentWork ? `${currentWork.position} en ${currentWork.company}` : "Desarrollador Backend",
+  "Especialista en Java & Spring",
+  "Explorando IA & Machine Learning"
+];
 ---
 
 <Section class="pt-32 pb-20 text-center">
-  <div class="flex flex-col items-center gap-s">
-    <!-- ✅ PERFORMANCE: Profile image with lazy loading -->
-    {
-      image && (
-        <div class="mb-s">
-          <img
-            src={image}
-            alt={imageAlt}
-            width="120"
-            height="120"
-            class="w-30 h-30 rounded-full border-4 border-borde-principal shadow-avatar object-cover"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
-      )
-    }
+  <div class="relative">
+    <!-- ✅ POLISH PREMIUM: Background subtle con parallax effect -->
+    <div class="absolute inset-0 bg-gradient-to-br from-azul-principal/5 via-transparent to-cian-acento/5 rounded-2xl"></div>
 
-    <h1 class="text-h1 font-bold text-texto-principal">{name}</h1>
-    <h2
-      class="text-h2 font-bold bg-gradient-to-r from-azul-principal to-cian-acento bg-clip-text text-transparent max-w-2xl"
-    >
-      {label}
-    </h2>
-    <span class="flex items-center gap-2 justify-center text-texto-desactivado text-body-lg">
-      <WorldMap />
-      {city}, {region}
-    </span>
-    <div class="print text-texto-desactivado text-lg">{printInfo}</div>
+    <div class="relative z-10 flex flex-col items-center gap-8 text-center py-8 lg:py-12">
+      <!-- ✅ PERFORMANCE: Imagen de perfil optimizada -->
+      <img
+        class="aspect-square h-32 w-32 rounded-full object-cover ring-4 ring-azul-principal/20 shadow-xl transition-transform duration-300 hover:scale-105 hover:ring-azul-principal/40"
+        src={image}
+        alt={imageAlt}
+        loading="eager"
+        decoding="async"
+      />
 
-    <!-- Enlaces a redes sociales -->
-    <nav class="no-print mt-m flex flex-wrap gap-s justify-center">
-      {
-        email && (
-          <a
-            href={`mailto:${email}`}
-            title={`Enviar correo a ${name}`}
-            class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition-all duration-200 hover:bg-fondo-hover hover:text-texto-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
+      <!-- ✅ POLISH PREMIUM: Nombre con entrada suave -->
+      <div class="space-y-4">
+        <h1 class="text-h1 font-bold text-texto-principal animate-fade-in">
+          {name}
+        </h1>
+
+        <!-- ✅ POLISH PREMIUM: Typing effect container -->
+        <div class="h-8 flex items-center justify-center">
+          <h2
+            id="typing-text"
+            class="text-h3 font-medium text-azul-principal typing-cursor"
+            data-texts={JSON.stringify(typingTexts)}
           >
-            <Mail class="h-7 w-7" />
-          </a>
-        )
-      }
-      {
-        profiles.map(({ network, url }) => {
-          const Icon = SOCIAL_ICONS[network];
-          return (
-            <a
-              href={url}
-              title={`Visitar perfil de ${name} en ${network}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition-all duration-200 hover:bg-fondo-hover hover:text-texto-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
-            >
-              <Icon class="h-7 w-7" />
-            </a>
-          );
-        })
-      }
-      <a
-        href="https://blog.sergiomarquez.dev"
-        title="Visitar mi blog"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-fondo-secundario text-texto-desactivado border border-borde-principal rounded-md p-3 transition-all duration-200 hover:bg-fondo-hover hover:text-texto-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
-      >
-        <Blog class="h-7 w-7" />
-      </a>
-    </nav>
+            {/* El texto se llenará dinámicamente */}
+          </h2>
+        </div>
+
+        <!-- ✅ UX: Ubicación con icono -->
+        <p class="flex items-center justify-center gap-2 text-body-reg text-texto-sutil">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+          </svg>
+          {city}, {region}
+        </p>
+      </div>
+
+      <!-- ✅ POLISH PREMIUM: Resumen con animación escalonada -->
+      <p class="max-w-2xl text-body-lg text-texto-secundario leading-relaxed animate-fade-up">
+        {summary.split('.')[0]}.
+      </p>
+
+      <!-- ✅ UX: Enlaces sociales optimizados -->
+      <nav class="flex flex-wrap items-center justify-center gap-4" aria-label="Redes sociales">
+        <a
+          href={`mailto:${email}`}
+          class="social-link"
+          aria-label={`Enviar email a ${email}`}
+          title={`Enviar email a ${email}`}
+        >
+          <Mail class="h-6 w-6" />
+        </a>
+
+        {
+          profiles.map(({ network, url }) => {
+            const Icon = SOCIAL_ICONS[network];
+            return (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label={`Perfil de ${network}: ${network === "LinkedIn" ? linkedInfo?.username : network === "GitHub" ? profiles.find((p) => p.network === "GitHub")?.username : profiles.find((p) => p.network === "X")?.username}`}
+                title={`Ver perfil en ${network}`}
+              >
+                <Icon class="h-6 w-6" />
+              </a>
+            );
+          })
+        }
+      </nav>
+
+      <!-- ✅ POLISH PREMIUM: CTA mejorado -->
+      <div class="flex flex-col sm:flex-row gap-4 items-center">
+        <a
+          href="#contacto"
+          class="group inline-flex items-center gap-2 px-8 py-3 bg-azul-principal text-white font-semibold rounded-lg transition-all duration-300 hover:bg-azul-hover hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
+        >
+          <span>Trabajemos juntos</span>
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#proyectos"
+          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-azul-principal text-azul-principal font-medium rounded-lg transition-all duration-300 hover:bg-azul-principal hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
+        >
+          Ver proyectos
+        </a>
+      </div>
+    </div>
   </div>
 </Section>
 
@@ -126,4 +164,121 @@ const printInfo = [email, linkedUrl].filter(Boolean).join(" • ");
       transform: none;
     }
   }
+
+  /* ✅ POLISH PREMIUM: Typing effect styles */
+  .typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--color-cian-acento, #67e8f9);
+    font-weight: 300;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* ✅ POLISH PREMIUM: Animaciones coordinadas */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 1s ease-out 0.3s both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ✅ UX: Social links enhanced */
+  .social-link {
+    @apply flex items-center justify-center w-12 h-12 rounded-full border-2 border-borde-principal bg-fondo-secundario text-texto-secundario transition-all duration-300;
+    @apply hover:border-azul-principal hover:bg-azul-principal hover:text-white hover:scale-110 hover:shadow-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal;
+  }
+
+  /* ✅ ACCESSIBILITY: Respeto por preferencias de movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    .typing-cursor::after {
+      animation: none;
+    }
+
+    .animate-fade-in,
+    .animate-fade-up {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .social-link:hover {
+      transform: none;
+    }
+  }
 </style>
+
+<script>
+  // ✅ POLISH PREMIUM: Typing effect implementation
+  document.addEventListener('DOMContentLoaded', () => {
+    const typingElement = document.getElementById('typing-text') as HTMLElement;
+    if (!typingElement) return;
+
+    const textsData = typingElement.getAttribute('data-texts');
+    if (!textsData) return;
+
+    const texts = JSON.parse(textsData);
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
+
+    function typeEffect() {
+      const currentText = texts[currentTextIndex];
+
+      if (isPaused) {
+        setTimeout(() => {
+          isPaused = false;
+          isDeleting = true;
+          typeEffect();
+        }, 2000); // Pause for 2 seconds before deleting
+        return;
+      }
+
+      if (isDeleting) {
+        // Deleting
+        currentCharIndex--;
+        typingElement.textContent = currentText.substring(0, currentCharIndex);
+
+        if (currentCharIndex === 0) {
+          isDeleting = false;
+          currentTextIndex = (currentTextIndex + 1) % texts.length;
+          setTimeout(typeEffect, 500); // Short pause before typing next
+        } else {
+          setTimeout(typeEffect, 50); // Faster deletion
+        }
+      } else {
+        // Typing
+        currentCharIndex++;
+        typingElement.textContent = currentText.substring(0, currentCharIndex);
+
+        if (currentCharIndex === currentText.length) {
+          isPaused = true;
+          setTimeout(typeEffect, 100);
+        } else {
+          setTimeout(typeEffect, 100); // Typing speed
+        }
+      }
+    }
+
+    // Start typing effect after a short delay
+    setTimeout(() => {
+      typeEffect();
+    }, 1000);
+  });
+</script>

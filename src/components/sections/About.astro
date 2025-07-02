@@ -5,7 +5,7 @@
  * Características:
  * - Presenta un resumen profesional con formato estructurado
  * - Extrae los datos directamente del archivo cv.json
- * - Mejora la legibilidad dividiendo el contenido en párrafos
+ * - Mejora la legibilidad dividiendo el contenido en párrafos lógicos
  * - Incluye estilizado específico para modo claro y oscuro
  * - Resalta palabras clave y tecnologías principales
  */
@@ -13,22 +13,42 @@ import Section from "../Section.astro";
 import { basics } from "@cv";
 const { summary } = basics;
 
-// ✅ UX IMPROVEMENT: Dividir el resumen largo en párrafos más legibles
-const summaryParagraphs = summary.split(". ").reduce((acc, sentence, index, array) => {
-  if (index === 0) {
-    // Primer párrafo: introducción personal
-    acc.push(sentence + ".");
-  } else if (index <= 3) {
-    // Segundo párrafo: experiencia técnica
-    if (!acc[1]) acc[1] = "";
-    acc[1] += (acc[1] ? " " : "") + sentence + (index < array.length - 1 ? "." : "");
-  } else {
-    // Tercer párrafo: objetivos y futuro
-    if (!acc[2]) acc[2] = "";
-    acc[2] += (acc[2] ? " " : "") + sentence + (index < array.length - 1 ? "." : "");
+// ✅ UX IMPROVEMENT: Dividir el resumen de manera inteligente basado en el contenido real
+const createIntelligentSummaryParagraphs = (text: string) => {
+  // Encontrar los puntos de división naturales en el contenido
+  const introEnd = text.indexOf("inteligencia artificial.");
+  const experienceEnd = text.indexOf("futuros proyectos.");
+
+  if (introEnd === -1 || experienceEnd === -1) {
+    // Fallback: dividir por párrafos si no encuentra los marcadores
+    return text.split(". ").reduce((acc, sentence, index, array) => {
+      if (index === 0) {
+        acc.push(sentence + ".");
+      } else if (index <= Math.floor(array.length / 2)) {
+        if (!acc[1]) acc[1] = "";
+        acc[1] += (acc[1] ? " " : "") + sentence + (index < array.length - 1 ? "." : "");
+      } else {
+        if (!acc[2]) acc[2] = "";
+        acc[2] += (acc[2] ? " " : "") + sentence + (index < array.length - 1 ? "." : "");
+      }
+      return acc;
+    }, [] as string[]);
   }
-  return acc;
-}, [] as string[]);
+
+  // División inteligente basada en el contenido
+  const intro = text.substring(0, introEnd + "inteligencia artificial.".length).trim();
+  const experience = text
+    .substring(
+      introEnd + "inteligencia artificial.".length,
+      experienceEnd + "futuros proyectos.".length
+    )
+    .trim();
+  const objectives = text.substring(experienceEnd + "futuros proyectos.".length).trim();
+
+  return [intro, experience, objectives].filter((p) => p.length > 0);
+};
+
+const summaryParagraphs = createIntelligentSummaryParagraphs(summary);
 
 // ✅ UX IMPROVEMENT: Destacar tecnologías clave
 const highlightKeywords = (text: string) => {
@@ -42,9 +62,14 @@ const highlightKeywords = (text: string) => {
     "Kubernetes",
     "Google Cloud",
     "PostgreSQL",
+    "Oracle SQL",
+    "MySQL",
     "inteligencia artificial",
     "CI/CD",
     "Node.js",
+    "backend",
+    "fullstack",
+    "APIs",
   ];
 
   let highlightedText = text;
@@ -52,7 +77,7 @@ const highlightKeywords = (text: string) => {
     const regex = new RegExp(`\\b${keyword}\\b`, "gi");
     highlightedText = highlightedText.replace(
       regex,
-      `<strong class="text-texto-principal font-semibold">${keyword}</strong>`
+      `<strong class="text-azul-principal font-semibold transition-colors duration-200 hover:text-cian-acento">${keyword}</strong>`
     );
   });
 
@@ -68,7 +93,7 @@ const highlightKeywords = (text: string) => {
           <div class="paragraph-container" data-index={index}>
             {index === 0 && (
               <div class="flex items-start gap-m mb-s">
-                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-azul-principal to-cian-acento rounded-full flex items-center justify-center text-white font-bold text-xl">
+                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-azul-principal to-cian-acento rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                   SM
                 </div>
                 <div class="flex-grow">
@@ -168,12 +193,14 @@ const highlightKeywords = (text: string) => {
     }
   }
 
-  /* ✅ UX: Subtle hover effect for highlighted keywords */
+  /* ✅ UX: Enhanced keyword highlighting */
   strong {
-    transition: color 0.2s ease;
+    transition:
+      color 0.2s ease,
+      text-shadow 0.2s ease;
   }
 
   strong:hover {
-    color: var(--color-cian-acento, #67e8f9);
+    text-shadow: 0 0 8px rgba(103, 232, 249, 0.3);
   }
 </style>

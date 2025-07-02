@@ -71,14 +71,28 @@
   }
 }
 
-/* ✅ MICRO-INTERACCIONES: Sutiles y elegantes */
+/* ✅ POLISH PREMIUM: Sistema de Timing Coordinado Global */
 @layer components {
 
-  /* Fade-in suave para secciones */
+  /* Variables CSS para timing consistente */
+  :root {
+    --timing-fast: 0.15s;
+    --timing-normal: 0.3s;
+    --timing-slow: 0.6s;
+    --timing-slowest: 1s;
+    --easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --easing-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --stagger-delay: 100ms;
+  }
+
+  /* ✅ POLISH PREMIUM: Fade-in system mejorado */
   .fade-in-section {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(30px);
+    transition:
+      opacity var(--timing-slow) var(--easing-smooth),
+      transform var(--timing-slow) var(--easing-smooth);
   }
 
   .fade-in-section.in-view {
@@ -86,35 +100,39 @@
     transform: translateY(0);
   }
 
-  /* Stagger delay para elementos múltiples */
+  /* ✅ POLISH PREMIUM: Stagger delays coordinados */
   .fade-in-section:nth-child(1) {
     transition-delay: 0ms;
   }
 
   .fade-in-section:nth-child(2) {
-    transition-delay: 100ms;
+    transition-delay: var(--stagger-delay);
   }
 
   .fade-in-section:nth-child(3) {
-    transition-delay: 200ms;
+    transition-delay: calc(var(--stagger-delay) * 2);
   }
 
   .fade-in-section:nth-child(4) {
-    transition-delay: 300ms;
+    transition-delay: calc(var(--stagger-delay) * 3);
   }
 
   .fade-in-section:nth-child(5) {
-    transition-delay: 400ms;
+    transition-delay: calc(var(--stagger-delay) * 4);
   }
 
   .fade-in-section:nth-child(6) {
-    transition-delay: 500ms;
+    transition-delay: calc(var(--stagger-delay) * 5);
   }
 
-  /* Hover elegante para enlaces principales */
+  .fade-in-section:nth-child(7) {
+    transition-delay: calc(var(--stagger-delay) * 6);
+  }
+
+  /* ✅ POLISH PREMIUM: Enlaces elegantes unificados */
   .elegant-link {
     position: relative;
-    transition: all 0.3s ease;
+    transition: all var(--timing-normal) var(--easing-smooth);
   }
 
   .elegant-link::after {
@@ -125,7 +143,7 @@
     width: 0;
     height: 2px;
     background: linear-gradient(90deg, theme('colors.azul-principal'), theme('colors.cian-acento'));
-    transition: all 0.3s ease;
+    transition: all var(--timing-normal) var(--easing-smooth);
     transform: translateX(-50%);
   }
 
@@ -133,26 +151,116 @@
     width: 100%;
   }
 
-  /* Pulso sutil para elementos interactivos */
-  .subtle-pulse {
-    animation: subtlePulse 2s ease-in-out infinite;
+  /* ✅ POLISH PREMIUM: Botones premium unificados */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-3 bg-azul-principal text-white font-semibold rounded-lg;
+    transition: all var(--timing-normal) var(--easing-smooth);
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
   }
 
-  @keyframes subtlePulse {
+  .btn-primary:hover {
+    @apply bg-azul-hover;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+      0 10px 25px rgba(96, 165, 250, 0.3),
+      0 0 0 1px rgba(96, 165, 250, 0.1);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-azul-principal text-azul-principal font-medium rounded-lg;
+    transition: all var(--timing-normal) var(--easing-smooth);
+    transform: translateZ(0);
+    will-change: transform, background-color;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-azul-principal text-white;
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  /* ✅ POLISH PREMIUM: Cards premium unificadas */
+  .card-premium {
+    @apply bg-fondo-secundario rounded-xl border border-borde-principal shadow-lg;
+    transition: all var(--timing-normal) var(--easing-smooth);
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+  }
+
+  .card-premium:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(96, 165, 250, 0.1),
+      0 0 30px rgba(96, 165, 250, 0.05);
+  }
+
+  /* ✅ POLISH PREMIUM: Pulso elegante unificado */
+  .subtle-pulse {
+    animation: subtlePulseGlobal 2.5s ease-in-out infinite;
+  }
+
+  @keyframes subtlePulseGlobal {
 
     0%,
     100% {
       opacity: 1;
       transform: scale(1);
+      box-shadow: 0 4px 14px rgba(96, 165, 250, 0.3);
     }
 
     50% {
-      opacity: 0.9;
+      opacity: 0.95;
       transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
     }
   }
 
-  /* Desactivar animaciones para usuarios que prefieren menos movimiento */
+  /* ✅ POLISH PREMIUM: Glow effects coordinados */
+  .glow-hover {
+    transition: all var(--timing-normal) var(--easing-smooth);
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 20px rgba(103, 232, 249, 0.4);
+    transform: translateY(-1px);
+  }
+
+  /* ✅ POLISH PREMIUM: Loading states unificados */
+  .loading-shimmer {
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* ✅ POLISH PREMIUM: Focus states premium */
+  .focus-premium {
+    @apply focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal;
+    transition: all var(--timing-fast) var(--easing-smooth);
+  }
+
+  /* ✅ POLISH PREMIUM: Text gradients unificados */
+  .text-gradient-primary {
+    background: linear-gradient(135deg, theme('colors.azul-principal'), theme('colors.cian-acento'));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ✅ ACCESSIBILITY: Respeto universal por preferencias de movimiento */
   @media (prefers-reduced-motion: reduce) {
     .fade-in-section {
       opacity: 1;
@@ -167,7 +275,149 @@
     .subtle-pulse {
       animation: none;
     }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .card-premium:hover,
+    .glow-hover:hover {
+      transform: none;
+    }
+
+    .loading-shimmer {
+      animation: none;
+    }
+
+    /* Mantener cambios de color para UX */
+    .btn-primary:hover {
+      @apply bg-azul-hover;
+    }
+
+    .btn-secondary:hover {
+      @apply bg-azul-principal text-white;
+    }
+  }
+
+  /* ✅ MOBILE: Optimizaciones para touch */
+  @media (hover: none) {
+
+    .card-premium:hover,
+    .glow-hover:hover {
+      transform: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: none;
+    }
+  }
+
+  /* ✅ PERFORMANCE: GPU acceleration para elementos críticos */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 }
 
-/* Las animaciones y componentes específicos se refactorizarán directamente en los componentes de Astro */
+/* ✅ POLISH PREMIUM: Animaciones de entrada coordinadas */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp var(--timing-slow) var(--easing-smooth) both;
+  }
+
+  .animate-fade-in-left {
+    animation: fadeInLeft var(--timing-slow) var(--easing-smooth) both;
+  }
+
+  .animate-fade-in-right {
+    animation: fadeInRight var(--timing-slow) var(--easing-smooth) both;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn var(--timing-slow) var(--easing-bounce) both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    70% {
+      transform: scale(0.95);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Delays para stagger effects */
+  .delay-0 {
+    animation-delay: 0ms;
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+}

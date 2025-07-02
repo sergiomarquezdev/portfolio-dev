@@ -291,20 +291,6 @@
       "github": [
         "https://github.com/sergiomarquezdev/acestream-docker-home"
       ]
-    },
-    {
-      "name": "Monitor de Rodajes de Cine",
-      "isActive": false,
-      "description": "Un script en Python creado por Sergio Márquez que realiza scraping en la web del Ministerio de Cultura de España para monitorizar rodajes. Detecta cambios, descarga PDFs y notifica diferencias por email.",
-      "highlights": [
-        "Python",
-        "Scraping",
-        "Automatización"
-      ],
-      "url": null,
-      "github": [
-        "https://github.com/sergiomarquezdev/monitor-rodajes-cultura-gob"
-      ]
     }
   ]
 }
