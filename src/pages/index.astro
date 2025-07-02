@@ -31,37 +31,37 @@ const { name } = basics;
 
   <main class="pb-16">
     <!-- Sección Sobre Mí -->
-    <section id="sobre-mi">
+    <section id="sobre-mi" class="fade-in-section">
       <About />
     </section>
 
     <!-- Experiencia laboral - Mantiene posición prioritaria -->
-    <section id="experiencia">
+    <section id="experiencia" class="fade-in-section">
       <Experience />
     </section>
 
     <!-- Proyectos - Movido más arriba para destacar tu trabajo práctico -->
-    <section id="proyectos">
+    <section id="proyectos" class="fade-in-section">
       <Projects />
     </section>
 
     <!-- Habilidades - Movido más arriba para complementar proyectos y experiencia -->
-    <section id="habilidades">
+    <section id="habilidades" class="fade-in-section">
       <Skills />
     </section>
 
     <!-- Certificados -->
-    <section id="certificados">
+    <section id="certificados" class="fade-in-section">
       <Certificates />
     </section>
 
     <!-- Educación - Movida más abajo ya que la experiencia práctica suele ser más relevante -->
-    <section id="educacion">
+    <section id="educacion" class="fade-in-section">
       <Education />
     </section>
 
     <!-- Contacto - Se mantiene al final como llamada a la acción -->
-    <section id="contacto">
+    <section id="contacto" class="fade-in-section">
       <Contact />
     </section>
   </main>
@@ -93,6 +93,37 @@ const { name } = basics;
 
       // Actualizar al cargar la página
       updateProgressBar();
+    }
+
+    // ✅ MICRO-INTERACCIONES: Intersection Observer para fade-in sections
+    if ("IntersectionObserver" in window) {
+      const fadeInObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              // Una vez visible, no necesitamos seguir observando
+              fadeInObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          rootMargin: "0px 0px -100px 0px", // Trigger slightly before fully visible
+          threshold: 0.1,
+        }
+      );
+
+      // Observar todas las secciones con fade-in
+      const sectionsToAnimate = document.querySelectorAll(".fade-in-section");
+      sectionsToAnimate.forEach((section) => {
+        fadeInObserver.observe(section);
+      });
+    } else {
+      // Fallback para navegadores sin soporte
+      const sectionsToAnimate = document.querySelectorAll(".fade-in-section");
+      sectionsToAnimate.forEach((section) => {
+        section.classList.add("in-view");
+      });
     }
   });
 </script>

@@ -7,6 +7,7 @@
  * - Menú responsive que se adapta a móvil y desktop
  * - Resalta automáticamente la sección activa durante el desplazamiento
  * - Incluye logo/nombre y enlaces a las secciones principales
+ * - Micro-interacciones elegantes y sutiles
  */
 import { basics } from "@cv";
 import { MenuIcon } from "../icons";
@@ -30,7 +31,11 @@ const navLinks = [
     <!-- Navegación desktop y móvil -->
     <nav class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="#" id="logo-link" class="text-texto-principal font-bold text-xl flex items-center">
+      <a
+        href="#"
+        id="logo-link"
+        class="text-texto-principal font-bold text-xl flex items-center elegant-link"
+      >
         <span class="text-cian-acento">&lt;</span>{name}<span class="text-cian-acento">/&gt;</span>
       </a>
 
@@ -41,7 +46,7 @@ const navLinks = [
             <li>
               <a
                 href={href}
-                class="nav-link text-texto-secundario hover:text-cian-acento transition-colors"
+                class="nav-link text-texto-secundario hover:text-cian-acento transition-all duration-300 elegant-link relative"
               >
                 {label}
               </a>
@@ -53,7 +58,7 @@ const navLinks = [
       <!-- Botón de menú móvil (visible solo en móvil) -->
       <button
         id="mobile-menu-button"
-        class="md:hidden text-texto-secundario hover:text-cian-acento p-2"
+        class="md:hidden text-texto-secundario hover:text-cian-acento p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario rounded-md"
         aria-label="Abrir menú"
         title="Abrir menú"
         aria-expanded="false"
@@ -68,7 +73,7 @@ const navLinks = [
   <div
     id="mobile-menu"
     role="menu"
-    class="hidden md:hidden absolute left-0 right-0 top-full bg-fondo-secundario shadow-lg border-b border-borde-principal"
+    class="hidden md:hidden absolute left-0 right-0 top-full bg-fondo-secundario shadow-lg border-b border-borde-principal backdrop-blur-sm"
   >
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
@@ -78,7 +83,7 @@ const navLinks = [
               <a
                 href={href}
                 role="menuitem"
-                class="nav-link block py-2 text-texto-secundario hover:text-cian-acento transition-colors"
+                class="nav-link block py-2 text-texto-secundario hover:text-cian-acento transition-all duration-300 elegant-link"
               >
                 {label}
               </a>
@@ -101,19 +106,50 @@ const navLinks = [
     const logoLink = document.getElementById("logo-link");
     const header = document.getElementById("main-header");
 
-    // Mostrar/ocultar el menú móvil
+    // Mostrar/ocultar el menú móvil con animación suave
     if (mobileMenuButton && mobileMenu) {
       mobileMenuButton.addEventListener("click", () => {
-        const isExpanded = mobileMenu.classList.toggle("hidden");
-        mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
+        const isHidden = mobileMenu.classList.contains("hidden");
+
+        if (isHidden) {
+          mobileMenu.classList.remove("hidden");
+          // Pequeña animación de entrada
+          mobileMenu.style.opacity = "0";
+          mobileMenu.style.transform = "translateY(-10px)";
+
+          requestAnimationFrame(() => {
+            mobileMenu.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+            mobileMenu.style.opacity = "1";
+            mobileMenu.style.transform = "translateY(0)";
+          });
+
+          mobileMenuButton.setAttribute("aria-expanded", "true");
+        } else {
+          mobileMenu.style.opacity = "0";
+          mobileMenu.style.transform = "translateY(-10px)";
+
+          setTimeout(() => {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.style.transition = "";
+          }, 200);
+
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+        }
       });
     }
 
     // Cerrar el menú móvil al hacer clic en un enlace
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        if (mobileMenu && mobileMenuButton) {
-          mobileMenu.classList.add("hidden");
+        if (mobileMenu && mobileMenuButton && !mobileMenu.classList.contains("hidden")) {
+          mobileMenu.style.opacity = "0";
+          mobileMenu.style.transform = "translateY(-10px)";
+
+          setTimeout(() => {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.style.transition = "";
+          }, 200);
+
           mobileMenuButton.setAttribute("aria-expanded", "false");
         }
       });
@@ -122,8 +158,17 @@ const navLinks = [
     // Cerrar el menú móvil al hacer clic en el logo/enlace home
     if (logoLink && mobileMenu && mobileMenuButton) {
       logoLink.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-        mobileMenuButton.setAttribute("aria-expanded", "false");
+        if (!mobileMenu.classList.contains("hidden")) {
+          mobileMenu.style.opacity = "0";
+          mobileMenu.style.transform = "translateY(-10px)";
+
+          setTimeout(() => {
+            mobileMenu.classList.add("hidden");
+            mobileMenu.style.transition = "";
+          }, 200);
+
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+        }
       });
     }
 
@@ -162,13 +207,47 @@ const navLinks = [
 </script>
 
 <style>
-  /* El backdrop-filter se maneja con la clase `backdrop-blur-sm` de Tailwind */
-  /* Los colores de fondo y bordes se manejan con clases de Tailwind */
-  /* Las transiciones y hovers están definidos en las clases de Tailwind */
+  /* ✅ MICRO-INTERACCIONES: Navegación elegante */
+  .elegant-link {
+    position: relative;
+  }
 
-  /* Estilo para el enlace activo */
-  header nav a.active {
-    /* El script ahora maneja el color del texto activo directamente */
-    font-weight: 600;
+  .elegant-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--color-azul-principal, #60a5fa),
+      var(--color-cian-acento, #67e8f9)
+    );
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .elegant-link:hover::after {
+    width: 100%;
+  }
+
+  /* Estados activos para navegación */
+  .nav-link.text-cian-acento::after {
+    width: 100%;
+  }
+
+  /* Mejora para móvil */
+  @media (max-width: 768px) {
+    .elegant-link::after {
+      display: none; /* Simplificar en móvil */
+    }
+  }
+
+  /* Accesibilidad */
+  @media (prefers-reduced-motion: reduce) {
+    .elegant-link::after {
+      transition: none;
+    }
   }
 </style>

@@ -76,7 +76,4 @@ export default defineConfig({
     prefetchAll: false,
     defaultStrategy: 'hover',
   },
-  experimental: {
-    assets: true,
-  },
 });
