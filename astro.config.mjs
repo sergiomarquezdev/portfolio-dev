@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://sergiomarquez.dev/",
+  site: "https://cv.sergiomarquez.dev/",
   output: "static",
   integrations: [
     sitemap({
@@ -34,7 +34,7 @@ export default defineConfig({
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**.sergiomarquez.dev",
+        hostname: "cv.sergiomarquez.dev",
       },
     ],
   },
