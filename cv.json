@@ -17,8 +17,8 @@
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "sergio-marquez-perez",
-        "url": "https://linkedin.com/in/sergio-marquez-perez/"
+        "username": "sergiomarquezdev",
+        "url": "https://www.linkedin.com/in/sergiomarquezdev/"
       },
       {
         "network": "X",
@@ -29,6 +29,11 @@
         "network": "GitHub",
         "username": "sergiomarquezdev",
         "url": "https://github.com/sergiomarquezdev/"
+      },
+      {
+        "network": "YouTube",
+        "username": "sergiomarquezdev",
+        "url": "https://www.youtube.com/@sergiomarquezdev"
       }
     ]
   },
