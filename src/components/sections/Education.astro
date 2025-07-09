@@ -16,7 +16,7 @@ import { education } from "@cv";
 <Section title="Educación">
   <ul class="space-y-l">
     {
-      education.map(({ institution, startDate, endDate, area, score }) => {
+      education.map(({ institution, startDate, endDate, area }) => {
         const startDateObj = new Date(startDate);
         const endDateObj = endDate ? new Date(endDate) : null;
         const startYear = startDateObj.getFullYear();
@@ -37,7 +37,6 @@ import { education } from "@cv";
               </header>
               <footer>
                 <p class="text-body-reg text-texto-secundario">{area}</p>
-                {score && <p class="mt-1 text-sm font-semibold text-texto-desactivado">Nota: {score}</p>}
               </footer>
             </article>
           </li>

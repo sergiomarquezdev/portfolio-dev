@@ -97,9 +97,7 @@
       "area": "Desarrollo de Aplicaciones Multiplataforma",
       "studyType": "Técnico Superior",
       "startDate": "2020-09",
-      "endDate": "2021-06",
-      "score": "9.83",
-      "courses": []
+      "endDate": "2021-06"
     },
     {
       "institution": "I.E.S. Suárez de Figueroa",
@@ -107,22 +105,20 @@
       "area": "Desarrollo de Aplicaciones Web",
       "studyType": "Técnico Superior",
       "startDate": "2018-09",
-      "endDate": "2020-06",
-      "score": "9.30",
-      "courses": []
+      "endDate": "2020-06"
     }
   ],
   "certificates": [
     {
       "name": "EF SET English Certificate 76/100 (C2 Proficient)",
-      "date": "2021-09-15",
+      "date": "2024-01-03",
       "issuer": "EF Standard English Test (EF SET)",
       "url": "https://www.efset.org/cert/Sp9SYB",
       "description": "Certificado de nivel C2 en inglés, validado por la prueba estándar EF SET, lo que avala mi competencia en inglés para entornos laborales y técnicos."
     },
     {
       "name": "Master en Frameworks Javascript: Aprende Angular, React, Vue",
-      "date": "2021-11-07",
+      "date": "2021-07-13",
       "issuer": "Udemy",
       "url": "https://ude.my/UC-873b8fa3-dd9a-40a3-8185-073a5e6df250/",
       "description": "Curso especializado en el aprendizaje de los frameworks más populares de JavaScript: Angular, React y Vue.js, con un enfoque en desarrollo frontend avanzado."
