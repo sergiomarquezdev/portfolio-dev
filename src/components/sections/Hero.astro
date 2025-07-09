@@ -18,6 +18,7 @@ import {
   LinkedInIcon as LinkedIn,
   GitHubIcon as GitHub,
   YouTubeIcon as YouTube,
+  WorldMapIcon as Website,
   type SocialIcon,
 } from "@/icons";
 
@@ -28,13 +29,17 @@ const { city, region } = location;
 const currentWork = work && work.length > 0 ? work[0] : null;
 
 const SOCIAL_ICONS: SocialIcon = {
+  Website,
+  YouTube,
   GitHub,
   LinkedIn,
   X,
-  YouTube,
 };
 
-const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
+const PRIORITY = ["YouTube", "GitHub", "LinkedIn", "X"];
+const sortedProfiles = [...profiles].sort(
+  (a, b) => PRIORITY.indexOf(a.network) - PRIORITY.indexOf(b.network)
+);
 
 // ✅ POLISH PREMIUM: Preparar textos para typing effect
 const typingTexts = [
@@ -99,6 +104,40 @@ const typingTexts = [
 
       <!-- ✅ UX: Enlaces sociales optimizados -->
       <nav class="flex flex-wrap items-center justify-center gap-4" aria-label="Redes sociales">
+        {
+          basics.url && (
+            <a
+              href={basics.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+              aria-label={`Sitio web personal de ${name}`}
+              title="Visitar sitio web personal"
+            >
+              <Website class="h-6 w-6" />
+            </a>
+          )
+        }
+
+        {
+          sortedProfiles.map(({ network, url, username }) => {
+            const Icon = SOCIAL_ICONS[network];
+            if (!Icon) return null;
+            return (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label={`Perfil de ${network}: ${username}`}
+                title={`Ver perfil en ${network}`}
+              >
+                <Icon class="h-6 w-6" />
+              </a>
+            );
+          })
+        }
+
         <a
           href={`mailto:${email}`}
           class="social-link"
@@ -107,24 +146,6 @@ const typingTexts = [
         >
           <Mail class="h-6 w-6" />
         </a>
-
-        {
-          profiles.map(({ network, url }) => {
-            const Icon = SOCIAL_ICONS[network];
-            return (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-                aria-label={`Perfil de ${network}: ${network === "LinkedIn" ? linkedInfo?.username : network === "GitHub" ? profiles.find((p) => p.network === "GitHub")?.username : profiles.find((p) => p.network === "X")?.username}`}
-                title={`Ver perfil en ${network}`}
-              >
-                <Icon class="h-6 w-6" />
-              </a>
-            );
-          })
-        }
       </nav>
 
       <!-- ✅ POLISH PREMIUM: CTA mejorado -->
