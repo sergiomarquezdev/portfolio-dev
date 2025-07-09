@@ -1,15 +1,15 @@
 {
   "basics": {
     "name": "Sergio Márquez Pérez",
-    "label": "IA/ML & Backend Developer",
+    "label": "IA/ML Developer · Python & FastAPI · Automatizaciones n8n · Prompt Engineering",
     "image": "/img/sergio_marquez_perez_ia_profile_pic_1-1_128.webp",
     "imageAlt": "Foto de perfil de Sergio Márquez Pérez, IA/ML Developer y Backend Developer experto en Python, Java y Spring.",
     "email": "contacto@sergiomarquez.dev",
     "url": "https://cv.sergiomarquez.dev",
-    "summary": "¡Hola! Soy Sergio Márquez Pérez, un desarrollador especializándome en backend con una sólida base en Java y Spring Framework, complementada por una experiencia fullstack con Angular en el frontend. Actualmente también adentrándome de lleno en el mundo de la inteligencia artificial. En mi trayectoria, he trabajado principalmente con Java, tanto en desarrollos con versiones antiguas como en la creación de APIs en versiones posteriores con Spring Framework. Además he podido experimentar con entornos cloud como Google Cloud y cuento con experiencia en tecnologías como Docker, Kubernetes y pipelines de CI/CD, optimizando procesos de despliegue y desarrollo. Esta experiencia también incluye el uso de bases de datos relacionales como PostgreSQL, Oracle SQL y MySQL, priorizando siempre el rendimiento y la seguridad. Además he complementado mis conocimientos aprendiendo con proyectos personales en Node.js, Python y Go, este último siendo el que más me llama la atención para futuros proyectos. Mi principal objetivo es consolidarme como desarrollador backend, mientras continúo investigando nuevas tecnologías que vayan apareciendo y que me permitan seguir creciendo profesionalmente en este sector.",
-    "summaryIntro": "¡Hola! Soy Sergio Márquez Pérez, un desarrollador especializándome en backend con una sólida base en Java y Spring Framework, complementada por una experiencia fullstack con Angular en el frontend. Actualmente también adentrándome de lleno en el mundo de la inteligencia artificial.",
-    "summaryExperience": "En mi trayectoria, he trabajado principalmente con Java, tanto en desarrollos con versiones antiguas como en la creación de APIs en versiones posteriores con Spring Framework. Además he podido experimentar con entornos cloud como Google Cloud y cuento con experiencia en tecnologías como Docker, Kubernetes y pipelines de CI/CD, optimizando procesos de despliegue y desarrollo. Esta experiencia también incluye el uso de bases de datos relacionales como PostgreSQL, Oracle SQL y MySQL, priorizando siempre el rendimiento y la seguridad. Además he complementado mis conocimientos aprendiendo con proyectos personales en Node.js, Python y Go, este último siendo el que más me llama la atención para futuros proyectos.",
-    "summaryObjectives": "Mi principal objetivo es consolidarme como desarrollador backend, mientras continúo investigando nuevas tecnologías que vayan apareciendo y que me permitan seguir creciendo profesionalmente en este sector.",
+    "summary": "¡Hola! Soy Sergio, desarrollador backend que ha evolucionado hacia la IA/ML. Tras varios años creando APIs y servicios con Java y Spring, ahora diseño y despliego soluciones de IA con Python y FastAPI, automatizo procesos con n8n y orquesto arquitecturas en Google Cloud. A lo largo de mi carrera he trabajado tanto en proyectos legacy como en microservicios modernos, empleando Docker, Kubernetes y pipelines CI/CD. Manejo bases de datos relacionales (PostgreSQL, Oracle, MySQL), NoSQL y vectoriales, integrando modelos de lenguaje de gran tamaño para enriquecer la información y agilizar la toma de decisiones. Me interesa especialmente el LLMOps y la automatización de procesos: optimizar tiempos de ingesta, reducir errores en producción y mejorar la experiencia de usuario mediante bots, alertas y validaciones automáticas. Mi objetivo es seguir creciendo como ingeniero IA/ML, aportando valor y colaborando con equipos que compartan la pasión por la innovación y el aprendizaje continuo.",
+    "summaryIntro": "¡Hola! Soy Sergio, desarrollador backend que ha evolucionado hacia la IA/ML. Tras varios años creando APIs y servicios con Java y Spring, ahora diseño y despliego soluciones de IA con Python y FastAPI, automatizo procesos con n8n y orquesto arquitecturas en Google Cloud.",
+    "summaryExperience": "A lo largo de mi carrera he trabajado tanto en proyectos legacy como en microservicios modernos, empleando Docker, Kubernetes y pipelines CI/CD. Manejo bases de datos relacionales (PostgreSQL, Oracle, MySQL), NoSQL y vectoriales, integrando modelos de lenguaje de gran tamaño para enriquecer la información y agilizar la toma de decisiones.",
+    "summaryObjectives": "Mi objetivo es seguir creciendo como ingeniero IA/ML, aportando valor y colaborando con equipos que compartan la pasión por la innovación y el aprendizaje continuo.",
     "location": {
       "city": "Leganés",
       "region": "Comunidad de Madrid"
@@ -44,16 +44,16 @@
       "website": "https://vitaly.es/",
       "startDate": "2025-05",
       "endDate": null,
-      "summary": "Desarrollador IA/ML en VITALY, enfocado en la investigación, desarrollo y aplicación de soluciones de Inteligencia Artificial y Machine Learning para innovar y optimizar procesos.",
+      "summary": "Diseño e implementación de soluciones de Inteligencia Artificial y Machine Learning, enfocadas en automatizar procesos y mejorar la experiencia de usuario. Desarrollo de APIs con FastAPI y orquestación de flujos en n8n, integrando LLMs y bases de datos vectoriales sobre Google Cloud.",
       "highlights": [
         {
           "role": "Desarrollador IA/ML",
           "startDate": "2025-05",
           "endDate": null,
           "achievements": [
-            "Aplicación de técnicas de IA y ML para el desarrollo de nuevas funcionalidades y productos.",
-            "Análisis de datos y creación de modelos predictivos.",
-            "Colaboración en la definición de la estrategia de IA de la compañía."
+            "Diseño e implementación de flujos de automatización con n8n y Python, integrando LLMs y bases de datos vectoriales (Pinecone).",
+            "Desarrollo de APIs FastAPI para validar y procesar datos en la infraestructura de Google Cloud.",
+            "Evolución de herramientas internas (chatbot, alertas, backups) para aumentar la eficiencia y mejorar la experiencia de usuario."
           ]
         }
       ]
@@ -141,32 +141,24 @@
   ],
   "highlightedSkills": [
     {
-      "name": "Java",
-      "icon": "Java"
-    },
-    {
-      "name": "Spring Framework",
-      "icon": "Spring"
-    },
-    {
       "name": "Python",
       "icon": "Python"
     },
     {
-      "name": "Angular",
-      "icon": "Angular"
+      "name": "Inteligencia Artificial / Machine Learning",
+      "icon": "Ai"
     },
     {
-      "name": "Docker",
-      "icon": "Docker"
+      "name": "LLMOps",
+      "icon": "LLMOps"
     },
     {
-      "name": "Kubernetes",
-      "icon": "Kubernetes"
+      "name": "Automatización (n8n)",
+      "icon": "N8n"
     },
     {
-      "name": "CI/CD",
-      "icon": "CICD"
+      "name": "Google Cloud Platform",
+      "icon": "GCP"
     }
   ],
   "otherSkills": [
@@ -189,6 +181,34 @@
     {
       "name": "Astro",
       "icon": "Astrosvg"
+    },
+    {
+      "name": "FastAPI",
+      "icon": "Python"
+    },
+    {
+      "name": "Pinecone",
+      "icon": "Python"
+    },
+    {
+      "name": "Java",
+      "icon": "Java"
+    },
+    {
+      "name": "Spring Framework",
+      "icon": "Spring"
+    },
+    {
+      "name": "Docker",
+      "icon": "Docker"
+    },
+    {
+      "name": "Kubernetes",
+      "icon": "Kubernetes"
+    },
+    {
+      "name": "CI/CD",
+      "icon": "CICD"
     }
   ],
   "databasesSkills": [

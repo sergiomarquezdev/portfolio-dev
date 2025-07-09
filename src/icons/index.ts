@@ -38,6 +38,10 @@ export { default as MongoDBIcon } from "./tech/mongodb.astro";
 export { default as FirebaseIcon } from "./tech/firebase.astro";
 export { default as AstroIcon } from "./tech/astrosvg.astro";
 export { default as CICDIcon } from "./tech/cicd.astro";
+export { default as AiIcon } from "./tech/ai.astro";
+export { default as LLMOpsIcon } from "./tech/llmops.astro";
+export { default as N8nIcon } from "./tech/n8n.astro";
+export { default as GCPIcon } from "./tech/gcp.astro";
 
 // Social Icons
 export { default as GitHubIcon } from "./social/GitHub.astro";
