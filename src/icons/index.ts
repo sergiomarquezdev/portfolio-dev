@@ -47,3 +47,4 @@ export { default as MailIcon } from "./social/Mail.astro";
 export { default as WorldMapIcon } from "./social/WorldMap.astro";
 export { default as CertificateIcon } from "./social/Certificate.astro";
 export { default as BlogIcon } from "./social/Blog.astro";
+export { default as YouTubeIcon } from "./social/YouTube.astro";
