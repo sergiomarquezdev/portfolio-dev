@@ -215,20 +215,6 @@
   ],
   "projects": [
     {
-      "name": "Portfolio DEV",
-      "isActive": true,
-      "description": "Este es el portfolio personal de Sergio Márquez Pérez, una aplicación web interactiva construida con Astro. Aquí, Sergio Márquez detalla sus habilidades, experiencia profesional y proyectos destacados como Desarrollador Full Stack.",
-      "highlights": [
-        "Astro",
-        "Typescript",
-        "GitHub Actions"
-      ],
-      "url": "https://cv.sergiomarquez.dev",
-      "github": [
-        "https://github.com/sergiomarquezdev/portfolio-dev"
-      ]
-    },
-    {
       "name": "One dAIly Blog",
       "isActive": true,
       "description": "One dAIly Blog, un innovador proyecto personal de Sergio Márquez, genera contenido automáticamente a diario usando la API de OpenAI. Frontend en Angular y TailwindCSS, con backend en Node.js, Express.js y PostgreSQL.",
@@ -261,6 +247,20 @@
       ]
     },
     {
+      "name": "Acestream Dockerizado",
+      "isActive": true,
+      "description": "Este proyecto de Sergio Márquez dockeriza Acestream en un contenedor Ubuntu 22.04 con Python 3.10, simplificando su ejecución en un entorno aislado. Incluye script .bat para instalación en Windows.",
+      "highlights": [
+        "Docker",
+        "Ubuntu 22.04",
+        "Python 3.10"
+      ],
+      "url": null,
+      "github": [
+        "https://github.com/sergiomarquezdev/acestream-docker-home"
+      ]
+    },
+    {
       "name": "Pizarra Digital por Gestos",
       "isActive": true,
       "description": "Aplicación Python desarrollada por Sergio Márquez que permite dibujar en una pizarra digital mediante gestos de manos capturados por webcam. Combina visión por computadora y seguimiento de manos para una experiencia interactiva.",
@@ -283,22 +283,8 @@
         "WordPress",
         "Elementor Pro"
       ],
-      "url": "https://martamontalban.es",
+      "url": "https://martamontalban.es [OLD]",
       "github": null
-    },
-    {
-      "name": "Acestream Dockerizado",
-      "isActive": true,
-      "description": "Este proyecto de Sergio Márquez dockeriza Acestream en un contenedor Ubuntu 22.04 con Python 3.10, simplificando su ejecución en un entorno aislado. Incluye script .bat para instalación en Windows.",
-      "highlights": [
-        "Docker",
-        "Ubuntu 22.04",
-        "Python 3.10"
-      ],
-      "url": null,
-      "github": [
-        "https://github.com/sergiomarquezdev/acestream-docker-home"
-      ]
     }
   ]
 }
