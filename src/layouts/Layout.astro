@@ -22,8 +22,8 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {
-  title = "Sergio Márquez | Desarrollador Full Stack y Experto en IA",
-  description = "Portfolio de Sergio Márquez Pérez, Desarrollador Full Stack experto en Java, Spring, Angular, IA y Cloud. Descubre mis proyectos y experiencia en desarrollo web.",
+  title = "Sergio Márquez | Backend & IA/ML Engineer",
+  description = "Portfolio de Sergio Márquez Pérez, Ingeniero Backend e IA/ML especializado en Java, Spring, Python, FastAPI, Docker, Kubernetes y Google Cloud. Descubre mis proyectos, automatizaciones y experiencia.",
 } = Astro.props;
 
 const { basics, work, education, highlightedSkills, otherSkills, databasesSkills } = cvData;
@@ -36,7 +36,7 @@ const personSchema = {
   name: fullNameForSchema, // Updated to full name
   url: siteUrl,
   image: `${siteUrl}${basics.image}`,
-  jobTitle: "Desarrollador Full Stack", // Updated jobTitle
+  jobTitle: "Ingeniero Backend IA/ML", // Updated jobTitle
   worksFor:
     work.length > 0
       ? {
@@ -94,7 +94,7 @@ const personSchema = {
     <meta name="author" content="Sergio Márquez Pérez" />
     <meta
       name="keywords"
-      content="desarrollador, backend, IA, ML, inteligencia artificial, machine learning, Java, Spring Framework, Python, portfolio"
+      content="desarrollador backend, IA, ML, inteligencia artificial, machine learning, Java, Spring Framework, Python, FastAPI, Docker, Kubernetes, Google Cloud, n8n, LLMOps, portfolio"
     />
 
     <!-- Open Graph / Facebook -->

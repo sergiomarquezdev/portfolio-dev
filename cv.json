@@ -163,32 +163,8 @@
   ],
   "otherSkills": [
     {
-      "name": "Javascript",
-      "icon": "Javascript"
-    },
-    {
-      "name": "Typescript",
-      "icon": "Typescript"
-    },
-    {
-      "name": "Node.js",
-      "icon": "Node"
-    },
-    {
-      "name": "Go",
-      "icon": "Go"
-    },
-    {
-      "name": "Astro",
-      "icon": "Astrosvg"
-    },
-    {
       "name": "FastAPI",
-      "icon": "Python"
-    },
-    {
-      "name": "Pinecone",
-      "icon": "Python"
+      "icon": "FastAPI"
     },
     {
       "name": "Java",
@@ -209,28 +185,28 @@
     {
       "name": "CI/CD",
       "icon": "CICD"
+    },
+    {
+      "name": "Node.js",
+      "icon": "Node"
+    },
+    {
+      "name": "Go",
+      "icon": "Go"
     }
   ],
   "databasesSkills": [
+    {
+      "name": "Pinecone",
+      "icon": "Pinecone"
+    },
     {
       "name": "PostgreSQL",
       "icon": "PostgreSQL"
     },
     {
-      "name": "Oracle SQL",
-      "icon": "OracleSQL"
-    },
-    {
-      "name": "MySQL",
-      "icon": "MySQL"
-    },
-    {
       "name": "MongoDB",
       "icon": "MongoDB"
-    },
-    {
-      "name": "Firebase",
-      "icon": "Firebase"
     }
   ],
   "projects": [
