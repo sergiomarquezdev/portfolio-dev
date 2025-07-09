@@ -1,17 +1,5 @@
 ---
-/**
- * Section.astro - Componente base para secciones del portfolio
- *
- * Características:
- * - Proporciona estructura consistente para todas las secciones
- * - Implementa estilos comunes para títulos de sección
- * - Gestiona atributos de accesibilidad (aria-labelledby, aria-label)
- * - Genera automáticamente IDs para los encabezados basados en el título
- * - Utiliza slot para insertar contenido personalizado en cada sección
- */
 const { title, customMargin = "mb-8", class: className } = Astro.props;
-
-// Generamos una ID para el encabezado si existe título
 const headingId = title ? `section-heading-${title.replace(/\s+/g, "-").toLowerCase()}` : "";
 ---
 

@@ -1,14 +1,4 @@
 ---
-/**
- * Skills.astro - Componente para mostrar las habilidades técnicas
- *
- * Características:
- * - Muestra las habilidades organizadas en tres categorías: principales, otras tecnologías y bases de datos
- * - Utiliza un objeto de mapeo para vincular los nombres de iconos con sus componentes
- * - Aplica estilos visuales diferenciados para habilidades destacadas
- * - Implementa diseño responsive con ajustes específicos para móvil
- * - Micro-interacciones sutiles para mejor experiencia visual
- */
 import Section from "../Section.astro";
 import { highlightedSkills, databasesSkills, otherSkills } from "@cv";
 import {
@@ -52,7 +42,6 @@ const SKILLS_ICONS = {
 
 <Section title="Habilidades">
   <div class="space-y-l" id="skills-container">
-    <!-- Habilidades Destacadas -->
     <div class="skill-category" data-category="highlighted">
       <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Principales tecnologías</h3>
       <ul class="flex flex-wrap gap-2" id="highlighted-skills">
@@ -73,7 +62,6 @@ const SKILLS_ICONS = {
       </ul>
     </div>
 
-    <!-- Otras habilidades -->
     <div class="skill-category" data-category="other">
       <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Otras tecnologías</h3>
       <ul class="flex flex-wrap gap-2" id="other-skills">
@@ -94,7 +82,6 @@ const SKILLS_ICONS = {
       </ul>
     </div>
 
-    <!-- Bases de datos -->
     <div class="skill-category" data-category="databases">
       <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Bases de datos</h3>
       <ul class="flex flex-wrap gap-2" id="database-skills">
@@ -118,7 +105,6 @@ const SKILLS_ICONS = {
 </Section>
 
 <style>
-  /* ✅ MICRO-INTERACCIONES: Animación staggered para skills */
   .skill-item {
     opacity: 0;
     transform: translateY(20px) scale(0.9);
@@ -132,7 +118,6 @@ const SKILLS_ICONS = {
     transform: translateY(0) scale(1);
   }
 
-  /* Stagger delays para cada categoría */
   .skill-category[data-category="highlighted"] .skill-item:nth-child(1) {
     transition-delay: 0ms;
   }
@@ -184,14 +169,12 @@ const SKILLS_ICONS = {
     transition-delay: 750ms;
   }
 
-  /* Hover effects mejorados */
   .skill-item:hover {
     background-color: rgba(96, 165, 250, 0.1);
     border-color: rgba(96, 165, 250, 0.4);
     transform: translateY(-4px) scale(1.05);
   }
 
-  /* Accesibilidad */
   @media (prefers-reduced-motion: reduce) {
     .skill-item {
       opacity: 1;
@@ -206,7 +189,6 @@ const SKILLS_ICONS = {
 </style>
 
 <script>
-  // ✅ MICRO-INTERACCIONES: Staggered animation para skills
   document.addEventListener("DOMContentLoaded", () => {
     if ("IntersectionObserver" in window) {
       const skillsObserver = new IntersectionObserver(
@@ -218,7 +200,7 @@ const SKILLS_ICONS = {
               skillItems.forEach((item, index) => {
                 setTimeout(() => {
                   item.classList.add("animate-in");
-                }, index * 50); // 50ms stagger between items
+                }, index * 50);
               });
 
               skillsObserver.unobserve(entry.target);
@@ -236,7 +218,6 @@ const SKILLS_ICONS = {
         skillsObserver.observe(skillsContainer);
       }
     } else {
-      // Fallback: mostrar todas las skills inmediatamente
       const skillItems = document.querySelectorAll(".skill-item");
       skillItems.forEach((item) => {
         item.classList.add("animate-in");

@@ -1,19 +1,8 @@
 ---
-/**
- * Header.astro - Encabezado principal y navegación del sitio
- *
- * Características:
- * - Barra de navegación fija en la parte superior
- * - Menú responsive que se adapta a móvil y desktop
- * - Resalta automáticamente la sección activa durante el desplazamiento
- * - Incluye logo/nombre y enlaces a las secciones principales
- * - Micro-interacciones elegantes y sutiles
- */
 import { basics } from "@cv";
 import { MenuIcon } from "../icons";
 const { name } = basics;
 
-// Enlaces de navegación
 const navLinks = [
   { href: "#sobre-mi", label: "Sobre mí" },
   { href: "#experiencia", label: "Experiencia" },
@@ -28,9 +17,7 @@ const navLinks = [
   class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 bg-fondo-secundario/90 backdrop-blur-sm border-b border-borde-principal"
 >
   <div class="container mx-auto px-4">
-    <!-- Navegación desktop y móvil -->
     <nav class="flex items-center justify-between">
-      <!-- Logo -->
       <a
         href="#"
         id="logo-link"
@@ -39,7 +26,6 @@ const navLinks = [
         <span class="text-cian-acento">&lt;</span>{name}<span class="text-cian-acento">/&gt;</span>
       </a>
 
-      <!-- Navegación desktop (visible en md+) -->
       <ul class="hidden md:flex space-x-8">
         {
           navLinks.map(({ href, label }) => (
@@ -55,7 +41,6 @@ const navLinks = [
         }
       </ul>
 
-      <!-- Botón de menú móvil (visible solo en móvil) -->
       <button
         id="mobile-menu-button"
         class="md:hidden text-texto-secundario hover:text-cian-acento p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario rounded-md"
@@ -69,7 +54,6 @@ const navLinks = [
     </nav>
   </div>
 
-  <!-- Menú móvil (oculto por defecto) -->
   <div
     id="mobile-menu"
     role="menu"
@@ -96,7 +80,6 @@ const navLinks = [
 </header>
 
 <script>
-  // Script para manejar el menú móvil
   document.addEventListener("DOMContentLoaded", () => {
     const mobileMenuButton = document.getElementById(
       "mobile-menu-button"
@@ -106,14 +89,12 @@ const navLinks = [
     const logoLink = document.getElementById("logo-link");
     const header = document.getElementById("main-header");
 
-    // Mostrar/ocultar el menú móvil con animación suave
     if (mobileMenuButton && mobileMenu) {
       mobileMenuButton.addEventListener("click", () => {
         const isHidden = mobileMenu.classList.contains("hidden");
 
         if (isHidden) {
           mobileMenu.classList.remove("hidden");
-          // Pequeña animación de entrada
           mobileMenu.style.opacity = "0";
           mobileMenu.style.transform = "translateY(-10px)";
 
@@ -138,7 +119,6 @@ const navLinks = [
       });
     }
 
-    // Cerrar el menú móvil al hacer clic en un enlace
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         if (mobileMenu && mobileMenuButton && !mobileMenu.classList.contains("hidden")) {
@@ -155,7 +135,6 @@ const navLinks = [
       });
     });
 
-    // Cerrar el menú móvil al hacer clic en el logo/enlace home
     if (logoLink && mobileMenu && mobileMenuButton) {
       logoLink.addEventListener("click", () => {
         if (!mobileMenu.classList.contains("hidden")) {
@@ -172,10 +151,8 @@ const navLinks = [
       });
     }
 
-    // Resaltar la sección activa durante el desplazamiento
     const updateActiveSection = () => {
       const sections = document.querySelectorAll("section[id]");
-      // Asegurar que header no sea null antes de usar offsetHeight
       const scrollPosition = window.scrollY + (header?.offsetHeight || 0) + 100;
 
       sections.forEach((section) => {
@@ -196,18 +173,15 @@ const navLinks = [
       });
     };
 
-    // Añadir listeners para el desplazamiento
     window.addEventListener("scroll", () => {
       updateActiveSection();
     });
 
-    // Inicializar
     updateActiveSection();
   });
 </script>
 
 <style>
-  /* ✅ MICRO-INTERACCIONES: Navegación elegante */
   .elegant-link {
     position: relative;
   }
@@ -232,19 +206,16 @@ const navLinks = [
     width: 100%;
   }
 
-  /* Estados activos para navegación */
   .nav-link.text-cian-acento::after {
     width: 100%;
   }
 
-  /* Mejora para móvil */
   @media (max-width: 768px) {
     .elegant-link::after {
-      display: none; /* Simplificar en móvil */
+      display: none;
     }
   }
 
-  /* Accesibilidad */
   @media (prefers-reduced-motion: reduce) {
     .elegant-link::after {
       transition: none;

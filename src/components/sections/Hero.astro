@@ -1,15 +1,4 @@
 ---
-/**
- * Hero.astro - Componente principal de encabezado del portfolio
- *
- * Características:
- * - Muestra información principal del perfil: nombre, título, ubicación
- * - Incluye enlaces a redes sociales y correo electrónico
- * - Implementa diseño responsivo centrado y limpio
- * - Separa el contenido para impresión y visualización web
- * - Diseño minimalista enfocado en el contenido textual
- * - ✨ POLISH PREMIUM: Typing effect y animaciones coordinadas
- */
 import { basics, work } from "@cv";
 import Section from "../Section.astro";
 import {
@@ -25,7 +14,6 @@ import {
 const { name, label, location, profiles, email, image, imageAlt, summaryIntro } = basics;
 const { city, region } = location;
 
-// Extraer el primer trabajo actual para mostrar contexto
 const currentWork = work && work.length > 0 ? work[0] : null;
 
 const SOCIAL_ICONS: SocialIcon = {
@@ -41,7 +29,6 @@ const sortedProfiles = [...profiles].sort(
   (a, b) => PRIORITY.indexOf(a.network) - PRIORITY.indexOf(b.network)
 );
 
-// ✅ POLISH PREMIUM: Preparar textos para typing effect
 const typingTexts = [
   label,
   currentWork ? `${currentWork.position}` : "Desarrollador IA/ML",
@@ -53,14 +40,12 @@ const typingTexts = [
 
 <Section class="pt-32 pb-20 text-center">
   <div class="relative">
-    <!-- ✅ POLISH PREMIUM: Background subtle con parallax effect -->
     <div
       class="absolute inset-0 bg-gradient-to-br from-azul-principal/5 via-transparent to-cian-acento/5 rounded-2xl"
     >
     </div>
 
     <div class="relative z-10 flex flex-col items-center gap-8 text-center py-8 lg:py-12">
-      <!-- ✅ PERFORMANCE: Imagen de perfil optimizada -->
       <img
         class="aspect-square h-32 w-32 rounded-full object-cover ring-4 ring-azul-principal/20 shadow-xl transition-transform duration-300 hover:scale-105 hover:ring-azul-principal/40"
         src={image}
@@ -69,24 +54,20 @@ const typingTexts = [
         decoding="async"
       />
 
-      <!-- ✅ POLISH PREMIUM: Nombre con entrada suave -->
       <div class="space-y-4">
         <h1 class="text-h1 font-bold text-texto-principal animate-fade-in">
           {name}
         </h1>
 
-        <!-- ✅ POLISH PREMIUM: Typing effect container -->
         <div class="h-8 flex items-center justify-center">
           <h2
             id="typing-text"
             class="text-h3 font-medium text-azul-principal typing-cursor"
             data-texts={JSON.stringify(typingTexts)}
           >
-            {/* El texto se llenará dinámicamente */}
           </h2>
         </div>
 
-        <!-- ✅ UX: Ubicación con icono -->
         <p class="flex items-center justify-center gap-2 text-body-reg text-texto-sutil">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path
@@ -98,12 +79,10 @@ const typingTexts = [
         </p>
       </div>
 
-      <!-- ✅ POLISH PREMIUM: Resumen con animación escalonada -->
       <p class="max-w-2xl text-body-lg text-texto-secundario leading-relaxed animate-fade-up">
         {summaryIntro}
       </p>
 
-      <!-- ✅ UX: Enlaces sociales optimizados -->
       <nav class="flex flex-wrap items-center justify-center gap-4" aria-label="Redes sociales">
         {
           basics.url && (
@@ -149,7 +128,6 @@ const typingTexts = [
         </a>
       </nav>
 
-      <!-- ✅ POLISH PREMIUM: CTA mejorado -->
       <div class="flex flex-col sm:flex-row gap-4 items-center">
         <a
           href="#contacto"
@@ -180,13 +158,11 @@ const typingTexts = [
 </Section>
 
 <style>
-  /* ✅ PERFORMANCE: Optimized animations for 60fps */
   a {
-    transform: translateZ(0); /* Force GPU acceleration */
+    transform: translateZ(0);
     will-change: transform, background-color;
   }
 
-  /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
     a {
       transition: none;
@@ -197,7 +173,6 @@ const typingTexts = [
     }
   }
 
-  /* ✅ POLISH PREMIUM: Typing effect styles */
   .typing-cursor::after {
     content: "|";
     animation: blink 1s infinite;
@@ -216,7 +191,6 @@ const typingTexts = [
     }
   }
 
-  /* ✅ POLISH PREMIUM: Animaciones coordinadas */
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out;
   }
@@ -247,14 +221,12 @@ const typingTexts = [
     }
   }
 
-  /* ✅ UX: Social links enhanced */
   .social-link {
     @apply flex items-center justify-center w-12 h-12 rounded-full border-2 border-borde-principal bg-fondo-secundario text-texto-secundario transition-all duration-300;
     @apply hover:border-azul-principal hover:bg-azul-principal hover:text-white hover:scale-110 hover:shadow-lg;
     @apply focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal;
   }
 
-  /* ✅ ACCESSIBILITY: Respeto por preferencias de movimiento */
   @media (prefers-reduced-motion: reduce) {
     .typing-cursor::after {
       animation: none;
@@ -274,7 +246,6 @@ const typingTexts = [
 </style>
 
 <script>
-  // ✅ POLISH PREMIUM: Typing effect implementation
   document.addEventListener("DOMContentLoaded", () => {
     const typingElement = document.getElementById("typing-text") as HTMLElement;
     if (!typingElement) return;
@@ -296,24 +267,22 @@ const typingTexts = [
           isPaused = false;
           isDeleting = true;
           typeEffect();
-        }, 2000); // Pause for 2 seconds before deleting
+        }, 2000);
         return;
       }
 
       if (isDeleting) {
-        // Deleting
         currentCharIndex--;
         typingElement.textContent = currentText.substring(0, currentCharIndex);
 
         if (currentCharIndex === 0) {
           isDeleting = false;
           currentTextIndex = (currentTextIndex + 1) % texts.length;
-          setTimeout(typeEffect, 500); // Short pause before typing next
+          setTimeout(typeEffect, 500);
         } else {
-          setTimeout(typeEffect, 50); // Faster deletion
+          setTimeout(typeEffect, 50);
         }
       } else {
-        // Typing
         currentCharIndex++;
         typingElement.textContent = currentText.substring(0, currentCharIndex);
 
@@ -321,12 +290,11 @@ const typingTexts = [
           isPaused = true;
           setTimeout(typeEffect, 100);
         } else {
-          setTimeout(typeEffect, 100); // Typing speed
+          setTimeout(typeEffect, 100);
         }
       }
     }
 
-    // Start typing effect after a short delay
     setTimeout(() => {
       typeEffect();
     }, 1000);

@@ -1,19 +1,8 @@
 ---
-/**
- * About.astro - Componente para mostrar la sección "Sobre mí"
- *
- * Características:
- * - Presenta un resumen profesional con formato estructurado
- * - Extrae los datos directamente del archivo cv.json
- * - Usa las propiedades separadas: summaryIntro, summaryExperience, summaryObjectives
- * - Incluye estilizado específico para modo claro y oscuro
- * - Resalta palabras clave y tecnologías principales
- */
 import Section from "../Section.astro";
 import { basics } from "@cv";
 const { summaryIntro, summaryExperience, summaryObjectives } = basics;
 
-// ✅ UX IMPROVEMENT: Destacar tecnologías clave
 const highlightKeywords = (text: string) => {
   const keywords = [
     "Java",
@@ -52,7 +41,6 @@ const highlightKeywords = (text: string) => {
 <Section title="Sobre mí">
   <article class="bg-fondo-secundario p-l rounded-lg border border-borde-principal shadow-lg">
     <div class="space-y-m">
-      <!-- ✅ INTRO: Presentación personal -->
       <div class="paragraph-container" data-index="0">
         <div class="flex items-start gap-m mb-s">
           <div
@@ -70,7 +58,6 @@ const highlightKeywords = (text: string) => {
         </div>
       </div>
 
-      <!-- ✅ EXPERIENCE: Experiencia técnica -->
       <div class="paragraph-container" data-index="1">
         <div class="border-l-4 border-azul-principal pl-m">
           <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
@@ -86,7 +73,6 @@ const highlightKeywords = (text: string) => {
         </div>
       </div>
 
-      <!-- ✅ OBJECTIVES: Objetivos profesionales -->
       <div class="paragraph-container" data-index="2">
         <div
           class="bg-gradient-to-r from-azul-oscuro/10 to-cian-acento/5 p-m rounded-lg border border-azul-principal/20"
@@ -108,7 +94,6 @@ const highlightKeywords = (text: string) => {
       </div>
     </div>
 
-    <!-- ✅ UX IMPROVEMENT: Call-to-action sutil -->
     <div class="mt-l pt-m border-t border-borde-principal text-center">
       <p class="text-sm text-texto-sutil mb-s">¿Interesado en colaborar?</p>
       <a
@@ -126,7 +111,6 @@ const highlightKeywords = (text: string) => {
 </Section>
 
 <style>
-  /* ✅ PERFORMANCE: Optimize animations */
   .paragraph-container {
     opacity: 0;
     transform: translateY(20px);
@@ -148,7 +132,6 @@ const highlightKeywords = (text: string) => {
     }
   }
 
-  /* ✅ ACCESSIBILITY: Reduce motion support */
   @media (prefers-reduced-motion: reduce) {
     .paragraph-container {
       animation: none;
@@ -157,7 +140,6 @@ const highlightKeywords = (text: string) => {
     }
   }
 
-  /* ✅ UX: Enhanced keyword highlighting */
   strong {
     transition:
       color 0.2s ease,

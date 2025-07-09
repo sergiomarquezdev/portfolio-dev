@@ -1,18 +1,9 @@
 ---
-/**
- * Layout.astro - Componente de plantilla principal para todas las páginas
- *
- * Características:
- * - Configura el HTML base, metadatos SEO y estilos globales
- * - Incluye componentes principales como Header
- * - Tema oscuro por defecto para una experiencia moderna
- * - Proporciona una estructura semántica accesible
- */
 import globalStyles from "../styles/global.css?inline";
 import fontStyles from "../styles/fonts.css?inline";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import Header from "@/components/Header.astro";
-import cvData from "@cv"; // Importar datos del CV
+import cvData from "@cv";
 
 export interface Props {
   title?: string;
@@ -27,16 +18,16 @@ const {
 } = Astro.props;
 
 const { basics, work, education, highlightedSkills, otherSkills, databasesSkills } = cvData;
-const siteUrl = Astro.site ? Astro.site.toString().slice(0, -1) : basics.url; // Asegurar que no haya / al final
-const fullNameForSchema = basics.name.includes("Pérez") ? basics.name : basics.name + " Pérez"; // Ensure Pérez is added if not present
+const siteUrl = Astro.site ? Astro.site.toString().slice(0, -1) : basics.url;
+const fullNameForSchema = basics.name.includes("Pérez") ? basics.name : basics.name + " Pérez";
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: fullNameForSchema, // Updated to full name
+  name: fullNameForSchema,
   url: siteUrl,
   image: `${siteUrl}${basics.image}`,
-  jobTitle: "Ingeniero Backend IA/ML", // Updated jobTitle
+  jobTitle: "Ingeniero Backend IA/ML",
   worksFor:
     work.length > 0
       ? {
@@ -53,7 +44,7 @@ const personSchema = {
     ...highlightedSkills.map((skill) => skill.name),
     ...otherSkills.map((skill) => skill.name),
     ...databasesSkills.map((skill) => skill.name),
-  ].filter((value, index, self) => self.indexOf(value) === index), // Eliminar duplicados
+  ].filter((value, index, self) => self.indexOf(value) === index),
 };
 ---
 
@@ -64,14 +55,12 @@ const personSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    {/* Estilos CSS incrustados para eliminar recursos que bloquean el renderizado */}
     <style set:html={fontStyles}></style>
     <style set:html={globalStyles}></style>
 
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- ✅ PERFORMANCE: Preload critical resources -->
     <link
       rel="preload"
       href="/fonts/montserrat-v29-latin_latin-ext-700.woff2"
@@ -80,14 +69,11 @@ const personSchema = {
       crossorigin
     />
 
-    <!-- ✅ PERFORMANCE: DNS prefetch for external services -->
     <link rel="dns-prefetch" href="//api.web3forms.com" />
 
-    <!-- ✅ PERFORMANCE: Resource hints -->
     <meta name="theme-color" content="#030712" />
     <meta name="color-scheme" content="dark" />
 
-    <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
@@ -97,7 +83,6 @@ const personSchema = {
       content="desarrollador backend, IA, ML, inteligencia artificial, machine learning, Java, Spring Framework, Python, FastAPI, Docker, Kubernetes, Google Cloud, n8n, LLMOps, portfolio"
     />
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
@@ -110,7 +95,6 @@ const personSchema = {
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="es_ES" />
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
@@ -128,11 +112,8 @@ const personSchema = {
     <Header />
     <slot />
 
-    <!-- ✅ PERFORMANCE: Lazy load non-critical components -->
     <script is:inline type="module">
-      // Intersection Observer para lazy loading futuro
       if ("IntersectionObserver" in window) {
-        // Observer will be used by individual components
         window.lazyLoadObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {

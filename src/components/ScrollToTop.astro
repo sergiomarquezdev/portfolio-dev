@@ -1,14 +1,4 @@
 ---
-/**
- * ScrollToTop.astro - Botón para volver al inicio de la página
- *
- * Características:
- * - Aparece automáticamente cuando el usuario ha desplazado cierta distancia
- * - Proporciona un botón visual para volver al inicio con un solo clic
- * - Se anima suavemente al aparecer/desaparecer
- * - Accesible y compatible con navegación por teclado
- * - Micro-interacción elegante y sutil
- */
 import { ArrowUpIcon } from "../icons";
 ---
 
@@ -27,25 +17,19 @@ import { ArrowUpIcon } from "../icons";
   document.addEventListener("DOMContentLoaded", () => {
     const scrollToTopButton = document.getElementById("scroll-to-top") as HTMLButtonElement | null;
 
-    // Función para verificar la posición del scroll y mostrar/ocultar el botón
     function toggleScrollToTopButton() {
       if (!scrollToTopButton) return;
-      // Calcular la altura total del documento
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
       const scrollY = window.scrollY;
 
-      // Calcular el porcentaje de scroll (0-100)
       const scrollPercentage = (scrollY / (scrollHeight - clientHeight)) * 100;
 
-      // ✅ MEJORADO: Mostrar el botón cuando el usuario ha scrolleado más del 50% (era 70%)
       if (scrollPercentage > 50) {
         scrollToTopButton.classList.remove("scale-0", "opacity-0");
         scrollToTopButton.classList.add("scale-100", "opacity-100");
         scrollToTopButton.setAttribute("aria-hidden", "false");
         scrollToTopButton.setAttribute("tabindex", "0");
-
-        // ✅ MICRO-INTERACCIÓN: Activar subtle pulse cuando esté visible
         scrollToTopButton.classList.add("subtle-pulse");
       } else {
         scrollToTopButton.classList.remove("scale-100", "opacity-100", "subtle-pulse");
@@ -55,9 +39,7 @@ import { ArrowUpIcon } from "../icons";
       }
     }
 
-    // Función para volver al inicio de la página
     function scrollToTop() {
-      // ✅ MICRO-INTERACCIÓN: Pequeño feedback visual al hacer clic
       scrollToTopButton?.classList.add("hover:scale-95");
 
       window.scrollTo({
@@ -65,13 +47,11 @@ import { ArrowUpIcon } from "../icons";
         behavior: "smooth",
       });
 
-      // Resetear el scaling después de un momento
       setTimeout(() => {
         scrollToTopButton?.classList.remove("hover:scale-95");
       }, 150);
     }
 
-    // ✅ MEJORADO: Manejar navegación por teclado
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
@@ -79,18 +59,15 @@ import { ArrowUpIcon } from "../icons";
       }
     }
 
-    // Agregar event listeners
     window.addEventListener("scroll", toggleScrollToTopButton);
     scrollToTopButton?.addEventListener("click", scrollToTop);
     scrollToTopButton?.addEventListener("keydown", handleKeyDown);
 
-    // Verificar la posición inicial del scroll
     toggleScrollToTopButton();
   });
 </script>
 
 <style>
-  /* ✅ MICRO-INTERACCIONES: Subtle pulse para ScrollToTop */
   .subtle-pulse {
     animation: subtlePulse 2s ease-in-out infinite;
   }
@@ -105,12 +82,10 @@ import { ArrowUpIcon } from "../icons";
     }
   }
 
-  /* Mejorar el efecto hover */
   #scroll-to-top:hover {
     box-shadow: 0 8px 25px 0 rgba(96, 165, 250, 0.5);
   }
 
-  /* Accesibilidad */
   @media (prefers-reduced-motion: reduce) {
     .subtle-pulse {
       animation: none;

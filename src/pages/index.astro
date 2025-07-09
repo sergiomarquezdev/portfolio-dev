@@ -10,13 +10,9 @@ import Contact from "@/components/sections/Contact.astro";
 
 import { basics } from "@cv";
 const { name } = basics;
-
-// Si tu componente Hero no incluye un <h1>, podrías definirlo aquí.
-// const pageTitle = `${name} - ${label}`
 ---
 
 <Layout>
-  <!-- Indicador de progreso de lectura -->
   <div
     id="reading-progress-container"
     class="fixed top-0 left-0 w-full h-0.5 bg-fondo-secundario z-50"
@@ -25,36 +21,29 @@ const { name } = basics;
     </div>
   </div>
 
-  <!-- Hero con la presentación principal -->
   <Hero />
 
   <main class="pb-16">
-    <!-- Sección Sobre Mí -->
     <section id="sobre-mi" class="fade-in-section">
       <About />
     </section>
 
-    <!-- Experiencia laboral - Mantiene posición prioritaria -->
     <section id="experiencia" class="fade-in-section">
       <Experience />
     </section>
 
-    <!-- Proyectos - Movido más arriba para destacar tu trabajo práctico -->
     <section id="proyectos" class="fade-in-section">
       <Projects />
     </section>
 
-    <!-- Habilidades - Movido más arriba para complementar proyectos y experiencia -->
     <section id="habilidades" class="fade-in-section">
       <Skills />
     </section>
 
-    <!-- Formación (Educación + Certificados) -->
     <section id="formacion" class="fade-in-section">
       <Training />
     </section>
 
-    <!-- Contacto - Se mantiene al final como llamada a la acción -->
     <section id="contacto" class="fade-in-section">
       <Contact />
     </section>
@@ -68,7 +57,6 @@ const { name } = basics;
 </Layout>
 
 <script>
-  // Script para la barra de progreso de lectura
   document.addEventListener("DOMContentLoaded", () => {
     const progressBar = document.getElementById("reading-progress");
     if (progressBar) {
@@ -81,39 +69,32 @@ const { name } = basics;
         }
       }
 
-      // Actualizar en scroll y resize
       window.addEventListener("scroll", updateProgressBar);
       window.addEventListener("resize", updateProgressBar);
-
-      // Actualizar al cargar la página
       updateProgressBar();
     }
 
-    // ✅ MICRO-INTERACCIONES: Intersection Observer para fade-in sections
     if ("IntersectionObserver" in window) {
       const fadeInObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("in-view");
-              // Una vez visible, no necesitamos seguir observando
               fadeInObserver.unobserve(entry.target);
             }
           });
         },
         {
-          rootMargin: "0px 0px -100px 0px", // Trigger slightly before fully visible
+          rootMargin: "0px 0px -100px 0px",
           threshold: 0.1,
         }
       );
 
-      // Observar todas las secciones con fade-in
       const sectionsToAnimate = document.querySelectorAll(".fade-in-section");
       sectionsToAnimate.forEach((section) => {
         fadeInObserver.observe(section);
       });
     } else {
-      // Fallback para navegadores sin soporte
       const sectionsToAnimate = document.querySelectorAll(".fade-in-section");
       sectionsToAnimate.forEach((section) => {
         section.classList.add("in-view");

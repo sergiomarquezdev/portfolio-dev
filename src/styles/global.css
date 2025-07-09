@@ -71,10 +71,7 @@
   }
 }
 
-/* ✅ POLISH PREMIUM: Sistema de Timing Coordinado Global */
 @layer components {
-
-  /* Variables CSS para timing consistente */
   :root {
     --timing-fast: 0.15s;
     --timing-normal: 0.3s;
@@ -86,7 +83,6 @@
     --stagger-delay: 100ms;
   }
 
-  /* ✅ POLISH PREMIUM: Fade-in system mejorado */
   .fade-in-section {
     opacity: 0;
     transform: translateY(30px);
@@ -100,7 +96,6 @@
     transform: translateY(0);
   }
 
-  /* ✅ POLISH PREMIUM: Stagger delays coordinados */
   .fade-in-section:nth-child(1) {
     transition-delay: 0ms;
   }
@@ -129,7 +124,6 @@
     transition-delay: calc(var(--stagger-delay) * 6);
   }
 
-  /* ✅ POLISH PREMIUM: Enlaces elegantes unificados */
   .elegant-link {
     position: relative;
     transition: all var(--timing-normal) var(--easing-smooth);
@@ -151,7 +145,6 @@
     width: 100%;
   }
 
-  /* ✅ POLISH PREMIUM: Botones premium unificados */
   .btn-primary {
     @apply inline-flex items-center gap-2 px-8 py-3 bg-azul-principal text-white font-semibold rounded-lg;
     transition: all var(--timing-normal) var(--easing-smooth);
@@ -179,7 +172,6 @@
     transform: translateY(-1px) scale(1.02);
   }
 
-  /* ✅ POLISH PREMIUM: Cards premium unificadas */
   .card-premium {
     @apply bg-fondo-secundario rounded-xl border border-borde-principal shadow-lg;
     transition: all var(--timing-normal) var(--easing-smooth);
@@ -195,7 +187,6 @@
       0 0 30px rgba(96, 165, 250, 0.05);
   }
 
-  /* ✅ POLISH PREMIUM: Pulso elegante unificado */
   .subtle-pulse {
     animation: subtlePulseGlobal 2.5s ease-in-out infinite;
   }
@@ -216,7 +207,6 @@
     }
   }
 
-  /* ✅ POLISH PREMIUM: Glow effects coordinados */
   .glow-hover {
     transition: all var(--timing-normal) var(--easing-smooth);
   }
@@ -226,7 +216,6 @@
     transform: translateY(-1px);
   }
 
-  /* ✅ POLISH PREMIUM: Loading states unificados */
   .loading-shimmer {
     background: linear-gradient(90deg,
         rgba(255, 255, 255, 0) 0%,
@@ -246,13 +235,11 @@
     }
   }
 
-  /* ✅ POLISH PREMIUM: Focus states premium */
   .focus-premium {
     @apply focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal;
     transition: all var(--timing-fast) var(--easing-smooth);
   }
 
-  /* ✅ POLISH PREMIUM: Text gradients unificados */
   .text-gradient-primary {
     background: linear-gradient(135deg, theme('colors.azul-principal'), theme('colors.cian-acento'));
     -webkit-background-clip: text;
@@ -260,7 +247,6 @@
     background-clip: text;
   }
 
-  /* ✅ ACCESSIBILITY: Respeto universal por preferencias de movimiento */
   @media (prefers-reduced-motion: reduce) {
     .fade-in-section {
       opacity: 1;
@@ -287,7 +273,6 @@
       animation: none;
     }
 
-    /* Mantener cambios de color para UX */
     .btn-primary:hover {
       @apply bg-azul-hover;
     }
@@ -297,7 +282,6 @@
     }
   }
 
-  /* ✅ MOBILE: Optimizaciones para touch */
   @media (hover: none) {
 
     .card-premium:hover,
@@ -312,7 +296,6 @@
     }
   }
 
-  /* ✅ PERFORMANCE: GPU acceleration para elementos críticos */
   .gpu-accelerated {
     transform: translateZ(0);
     will-change: transform;
@@ -321,7 +304,6 @@
   }
 }
 
-/* ✅ POLISH PREMIUM: Animaciones de entrada coordinadas */
 @layer utilities {
   .animate-fade-in-up {
     animation: fadeInUp var(--timing-slow) var(--easing-smooth) both;
@@ -396,7 +378,6 @@
     }
   }
 
-  /* Delays para stagger effects */
   .delay-0 {
     animation-delay: 0ms;
   }

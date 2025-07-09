@@ -1,23 +1,10 @@
 ---
-/**
- * Projects.astro - Componente para mostrar la lista de proyectos
- *
- * Características:
- * - Muestra proyectos en formato de tarjetas en una cuadrícula responsive
- * - Cada tarjeta incluye nombre, descripción completa, etiquetas de tecnologías
- * - Enlaces a GitHub y al proyecto en vivo cuando están disponibles
- * - Diseño adaptativo: 1 columna en móvil, 2 en tablet, 3 en desktop
- * - Las tarjetas utilizan flexbox para posicionar los enlaces en la parte inferior
- * - ✨ POLISH PREMIUM: Cards elevation + tech previews hover
- */
 import Section from "../Section.astro";
 import { projects } from "@cv";
 import GitHub from "@/icons/social/GitHub.astro";
 
 const { title } = Astro.props;
-
-// Filtrar solo proyectos activos
-const activeProjects = projects.filter(project => project.isActive);
+const activeProjects = projects.filter((project) => project.isActive);
 ---
 
 <Section title={title || "Proyectos"} id="proyectos">
@@ -28,28 +15,38 @@ const activeProjects = projects.filter(project => project.isActive);
           class="project-card group relative bg-fondo-secundario rounded-xl border border-borde-principal overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-azul-principal/20 hover:-translate-y-2"
           data-index={index}
         >
-          <!-- ✅ POLISH PREMIUM: Placeholder visual para screenshot -->
           <div class="relative h-48 bg-gradient-to-br from-azul-principal/10 via-cian-acento/5 to-azul-oscuro/10 flex items-center justify-center overflow-hidden">
-            <!-- Background pattern -->
             <div class="absolute inset-0 opacity-20">
               <svg width="60" height="60" viewBox="0 0 60 60" class="w-full h-full">
                 <defs>
-                  <pattern id={`grid-${index}`} width="20" height="20" patternUnits="userSpaceOnUse">
-                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                  <pattern
+                    id={`grid-${index}`}
+                    width="20"
+                    height="20"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M 20 0 L 0 0 0 20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="0.5"
+                    />
                   </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill={`url(#grid-${index})`} />
               </svg>
             </div>
 
-            <!-- Project icon/logo placeholder -->
             <div class="relative z-10 w-16 h-16 bg-azul-principal/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
               <svg class="w-8 h-8 text-azul-principal" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm8 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z" clip-rule="evenodd" />
+                <path
+                  fill-rule="evenodd"
+                  d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm8 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z"
+                  clip-rule="evenodd"
+                />
               </svg>
             </div>
 
-            <!-- ✅ POLISH PREMIUM: Tech preview overlay en hover -->
             <div class="tech-preview absolute inset-0 bg-azul-oscuro/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
               <div class="text-center space-y-3">
                 <h4 class="text-white font-semibold text-lg mb-2">Tecnologías</h4>
@@ -64,7 +61,6 @@ const activeProjects = projects.filter(project => project.isActive);
             </div>
           </div>
 
-          <!-- ✅ CONTENT: Información del proyecto -->
           <div class="p-l space-y-s">
             <header class="space-y-xs">
               <h3 class="text-h4 font-bold text-texto-principal group-hover:text-azul-principal transition-colors duration-300">
@@ -75,9 +71,10 @@ const activeProjects = projects.filter(project => project.isActive);
               </p>
             </header>
 
-            <!-- ✅ POLISH PREMIUM: Tech stack con animación staggered -->
             <div class="tech-stack space-y-2">
-              <h4 class="text-sm font-semibold text-texto-sutil uppercase tracking-wide">Stack Tecnológico</h4>
+              <h4 class="text-sm font-semibold text-texto-sutil uppercase tracking-wide">
+                Stack Tecnológico
+              </h4>
               <div class="flex flex-wrap gap-2">
                 {project.highlights.map((tech, techIndex) => (
                   <span
@@ -90,7 +87,6 @@ const activeProjects = projects.filter(project => project.isActive);
               </div>
             </div>
 
-            <!-- ✅ ACTIONS: Enlaces del proyecto -->
             <footer class="flex flex-wrap gap-s pt-s border-t border-borde-principal">
               {project.url && (
                 <a
@@ -101,8 +97,8 @@ const activeProjects = projects.filter(project => project.isActive);
                   aria-label={`Ver demo de ${project.name}`}
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
                   </svg>
                   Ver Demo
                 </a>
@@ -123,14 +119,12 @@ const activeProjects = projects.filter(project => project.isActive);
             </footer>
           </div>
 
-          <!-- ✅ POLISH PREMIUM: Indicador de estado activo -->
-          <div class="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full shadow-lg animate-pulse opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full shadow-lg animate-pulse opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
         </article>
       ))
     }
   </div>
 
-  <!-- ✅ UX: Nota para futuros proyectos -->
   <div class="mt-l text-center">
     <p class="text-sm text-texto-sutil mb-s">¿Interesado en ver más proyectos?</p>
     <a
@@ -146,9 +140,8 @@ const activeProjects = projects.filter(project => project.isActive);
 </Section>
 
 <style>
-  /* ✅ POLISH PREMIUM: Project cards elevation */
   .project-card {
-    transform: translateZ(0); /* GPU acceleration */
+    transform: translateZ(0);
     will-change: transform, box-shadow;
     backface-visibility: hidden;
   }
@@ -161,7 +154,6 @@ const activeProjects = projects.filter(project => project.isActive);
       0 0 40px rgba(96, 165, 250, 0.1);
   }
 
-  /* ✅ POLISH PREMIUM: Tech badge animations */
   .tech-badge {
     opacity: 0;
     transform: translateY(10px);
@@ -175,13 +167,11 @@ const activeProjects = projects.filter(project => project.isActive);
     }
   }
 
-  /* ✅ POLISH PREMIUM: Tech preview overlay */
   .tech-preview {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
 
-  /* ✅ UX: Line clamp for descriptions */
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -189,13 +179,11 @@ const activeProjects = projects.filter(project => project.isActive);
     overflow: hidden;
   }
 
-  /* ✅ PERFORMANCE: Smooth action links */
   .action-link {
     transform: translateZ(0);
     will-change: transform;
   }
 
-  /* ✅ ACCESSIBILITY: Reduce motion support */
   @media (prefers-reduced-motion: reduce) {
     .project-card {
       transition: none;
@@ -217,7 +205,6 @@ const activeProjects = projects.filter(project => project.isActive);
     }
   }
 
-  /* ✅ MOBILE: Disable hover effects on touch devices */
   @media (hover: none) {
     .project-card:hover {
       transform: none;
@@ -231,39 +218,39 @@ const activeProjects = projects.filter(project => project.isActive);
 </style>
 
 <script>
-  // ✅ POLISH PREMIUM: Cards intersection observer para animaciones staggered
-  document.addEventListener('DOMContentLoaded', () => {
-    if ('IntersectionObserver' in window) {
-      const cardsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const card = entry.target as HTMLElement;
-            const techBadges = card.querySelectorAll('.tech-badge');
+  document.addEventListener("DOMContentLoaded", () => {
+    if ("IntersectionObserver" in window) {
+      const cardsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const card = entry.target as HTMLElement;
+              const techBadges = card.querySelectorAll(".tech-badge");
 
-            // Stagger animation para tech badges
-            techBadges.forEach((badge, index) => {
-              setTimeout(() => {
-                badge.classList.add('animate-in');
-              }, index * 100);
-            });
+              techBadges.forEach((badge, index) => {
+                setTimeout(() => {
+                  badge.classList.add("animate-in");
+                }, index * 100);
+              });
 
-            cardsObserver.unobserve(card);
-          }
-        });
-      }, {
-        rootMargin: '0px 0px -100px 0px',
-        threshold: 0.1
-      });
+              cardsObserver.unobserve(card);
+            }
+          });
+        },
+        {
+          rootMargin: "0px 0px -100px 0px",
+          threshold: 0.1,
+        }
+      );
 
-      const projectCards = document.querySelectorAll('.project-card');
-      projectCards.forEach(card => {
+      const projectCards = document.querySelectorAll(".project-card");
+      projectCards.forEach((card) => {
         cardsObserver.observe(card);
       });
     } else {
-      // Fallback: mostrar todas las badges inmediatamente
-      const techBadges = document.querySelectorAll('.tech-badge');
-      techBadges.forEach(badge => {
-        badge.classList.add('animate-in');
+      const techBadges = document.querySelectorAll(".tech-badge");
+      techBadges.forEach((badge) => {
+        badge.classList.add("animate-in");
       });
     }
   });

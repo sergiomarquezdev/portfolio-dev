@@ -1,14 +1,10 @@
 ---
-/**
- * Training.astro - Sección combinada de Educación y Certificados
- */
 import Section from "../Section.astro";
 import { education, certificates } from "@cv";
 import { CertificateIcon as Certificate } from "@/icons";
 ---
 
 <Section title="Formación">
-  <!-- Certificados -->
   {
     certificates.length > 0 && (
       <div class="mb-xl">
@@ -59,7 +55,6 @@ import { CertificateIcon as Certificate } from "@/icons";
     )
   }
 
-  <!-- Educación -->
   {
     education.length > 0 && (
       <div>

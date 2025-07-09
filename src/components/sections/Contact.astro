@@ -1,16 +1,4 @@
 ---
-/**
- * Contact.astro - Componente de formulario de contacto
- *
- * Características:
- * - Implementa un formulario interactivo conectado a Web3Forms
- * - Incluye validación de campos en tiempo real con feedback visual
- * - Gestiona estados de envío, éxito y error con mensajes apropiados
- * - Proporciona feedback visual durante el proceso de envío
- * - Accesible con etiquetas semánticamente correctas y mensajes de error
- * - Adaptable a diferentes tamaños de pantalla
- * - Estilizado para modos claro y oscuro
- */
 import Section from "../Section.astro";
 const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
 ---
@@ -105,7 +93,6 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
     opacity: 0;
   }
 
-  /* ✅ MEJORADO: Validación más suave - solo mostrar errores al blur, no en tiempo real */
   .was-validated input:invalid:not(:focus),
   .was-validated textarea:invalid:not(:focus) {
     border-color: #f87171;
@@ -121,7 +108,6 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
     opacity: 1;
   }
 
-  /* ✅ MEJORADO: Estados válidos con feedback positivo sutil */
   .was-validated input:valid,
   .was-validated textarea:valid {
     border-color: #10b981;
@@ -185,7 +171,6 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
       return;
     }
 
-    // ✅ MEJORADO: Validación más suave - solo al blur y submit
     const inputs = form.querySelectorAll("input[required], textarea[required]");
 
     inputs.forEach((input) => {
@@ -198,7 +183,6 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
 
     function validateField(field: HTMLInputElement | HTMLTextAreaElement) {
       const isValid = field.checkValidity();
-      // El CSS maneja la visualización de errores
       return isValid;
     }
 
@@ -219,7 +203,6 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
       const object = Object.fromEntries(formData);
       const json = JSON.stringify(object);
 
-      // Estado "loading" mejorado
       submitButton.classList.add("loading");
       submitButton.disabled = true;
       submitButton.setAttribute("aria-label", "Enviando...");
@@ -264,7 +247,6 @@ const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
           submitButton.removeAttribute("aria-label");
           submitButton.setAttribute("aria-busy", "false");
 
-          // ✅ MEJORADO: Ocultar mensaje después de 8 segundos (era 5)
           setTimeout(() => {
             result.style.display = "none";
             result.classList.remove("error", "success");
