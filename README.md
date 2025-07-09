@@ -58,7 +58,7 @@ Licencia MIT. Ver archivo `LICENSE` para más detalles.
 
 ## 📬 Contacto
 
-Sergio Márquez - [@smarquezdev](https://x.com/smarquezdev) - contacto@sergiomarquez.dev
+Sergio Márquez - [@sergiomzdev](https://x.com/sergiomzdev) - contacto@sergiomarquez.dev
 
 Enlace del proyecto: [https://github.com/sergiomarquezdev/portfolio-dev](https://github.com/sergiomarquezdev/portfolio-dev)
 
