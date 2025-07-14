@@ -243,7 +243,7 @@
     },
     {
       "name": "Pizarra Digital por Gestos",
-      "isActive": true,
+      "isActive": false,
       "description": "Aplicación Python desarrollada por Sergio Márquez que permite dibujar en una pizarra digital mediante gestos de manos capturados por webcam. Combina visión por computadora y seguimiento de manos para una experiencia interactiva.",
       "highlights": [
         "Python",
@@ -258,13 +258,13 @@
     },
     {
       "name": "MartaMontalban.es",
-      "isActive": true,
+      "isActive": false,
       "description": "Desarrollo y diseño del portfolio web de Marta Montalbán, auxiliar de cámara en cine, utilizando WordPress y Elementor Pro, optimizando para SEO y un rendimiento web adecuado con tiempos de carga reducidos. Implementación de buenas prácticas en accesibilidad web y experiencia de usuario.",
       "highlights": [
         "WordPress",
         "Elementor Pro"
       ],
-      "url": "https://martamontalban.es [OLD]",
+      "url": null,
       "github": null
     }
   ]

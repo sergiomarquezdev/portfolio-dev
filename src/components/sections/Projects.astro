@@ -4,63 +4,16 @@ import { projects } from "@cv";
 import GitHub from "@/icons/social/GitHub.astro";
 
 const { title } = Astro.props;
-const activeProjects = projects.filter((project) => project.isActive);
 ---
 
 <Section title={title || "Proyectos"} id="proyectos">
   <div class="grid grid-cols-1 gap-m sm:grid-cols-2 lg:grid-cols-3">
     {
-      activeProjects.map((project, index) => (
+      projects.map((project, index) => (
         <article
           class="project-card group relative bg-fondo-secundario rounded-xl border border-borde-principal overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-azul-principal/20 hover:-translate-y-2"
           data-index={index}
         >
-          <div class="relative h-48 bg-gradient-to-br from-azul-principal/10 via-cian-acento/5 to-azul-oscuro/10 flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 opacity-20">
-              <svg width="60" height="60" viewBox="0 0 60 60" class="w-full h-full">
-                <defs>
-                  <pattern
-                    id={`grid-${index}`}
-                    width="20"
-                    height="20"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path
-                      d="M 20 0 L 0 0 0 20"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="0.5"
-                    />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill={`url(#grid-${index})`} />
-              </svg>
-            </div>
-
-            <div class="relative z-10 w-16 h-16 bg-azul-principal/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-              <svg class="w-8 h-8 text-azul-principal" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fill-rule="evenodd"
-                  d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm8 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </div>
-
-            <div class="tech-preview absolute inset-0 bg-azul-oscuro/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <div class="text-center space-y-3">
-                <h4 class="text-white font-semibold text-lg mb-2">Tecnologías</h4>
-                <div class="flex flex-wrap gap-2 justify-center max-w-xs">
-                  {project.highlights.map((tech) => (
-                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm transition-transform hover:scale-105">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div class="p-l space-y-s">
             <header class="space-y-xs">
               <h3 class="text-h4 font-bold text-texto-principal group-hover:text-azul-principal transition-colors duration-300">
@@ -93,33 +46,45 @@ const activeProjects = projects.filter((project) => project.isActive);
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="action-link flex-1 min-w-fit inline-flex items-center justify-center gap-2 px-4 py-2 bg-azul-principal text-white font-medium rounded-lg transition-all duration-300 hover:bg-azul-hover hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
-                  aria-label={`Ver demo de ${project.name}`}
+                  class="action-link flex-1 min-w-fit inline-flex items-center justify-center gap-2 px-4 py-2 bg-green-500 text-white font-medium rounded-lg transition-all duration-300 hover:bg-green-600 hover:text-white hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-fondo-secundario"
+                  aria-label={`Visitar ${project.name}`}
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
                     <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
                   </svg>
-                  Ver Demo
+                  Visitar
                 </a>
               )}
 
-              {project.github && (
+              {Array.isArray(project.github) && project.github.length > 0 && project.github.map((link) => (
                 <a
-                  href={Array.isArray(project.github) ? project.github[0] : project.github}
+                  href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="action-link inline-flex items-center gap-2 px-4 py-2 border-2 border-texto-sutil text-texto-sutil font-medium rounded-lg transition-all duration-300 hover:border-azul-principal hover:text-azul-principal hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
-                  aria-label={`Ver código fuente de ${project.name}`}
+                  class="action-link inline-flex items-center gap-2 px-4 py-2 border-2 border-azul-principal text-white font-medium rounded-lg transition-all duration-300 bg-transparent hover:bg-azul-principal hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
+                  aria-label={`Ver código fuente de ${project.name} (${String(link).split('/').pop()})`}
                 >
                   <GitHub class="w-4 h-4" />
-                  Código
+                  {`${String(link).split('/').pop()}`}
+                </a>
+              ))}
+              {typeof project.github === 'string' && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="action-link inline-flex items-center gap-2 px-4 py-2 border-2 border-azul-principal text-white font-medium rounded-lg transition-all duration-300 bg-transparent hover:bg-azul-principal hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
+                  aria-label={`Ver código fuente de ${project.name} (${String(project.github).split('/').pop()})`}
+                >
+                  <GitHub class="w-4 h-4" />
+                  {`Código: ${String(project.github).split('/').pop()}`}
                 </a>
               )}
             </footer>
           </div>
 
-          <div class="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full shadow-lg animate-pulse opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+          <div class={`absolute top-4 right-4 w-3 h-3 rounded-full shadow-lg animate-pulse opacity-80 group-hover:opacity-100 transition-opacity duration-300 ${project.isActive ? 'bg-green-400' : 'bg-red-500'}`} />
         </article>
       ))
     }
