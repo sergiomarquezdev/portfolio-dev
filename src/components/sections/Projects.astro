@@ -9,7 +9,7 @@ const { title } = Astro.props;
 <Section title={title || "Proyectos"} id="proyectos">
   <div class="grid grid-cols-1 gap-m sm:grid-cols-2 lg:grid-cols-3">
     {
-      projects.map((project, index) => (
+      projects.map((project: any, index: number) => (
         <article
           class="project-card group relative bg-fondo-secundario rounded-xl border border-borde-principal overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-azul-principal/20 hover:-translate-y-2"
           data-index={index}
@@ -29,7 +29,7 @@ const { title } = Astro.props;
                 Stack Tecnológico
               </h4>
               <div class="flex flex-wrap gap-2">
-                {project.highlights.map((tech, techIndex) => (
+                {project.highlights.map((tech: string, techIndex: number) => (
                   <span
                     class="tech-badge px-3 py-1 bg-badge-fondo border border-badge-borde text-badge-texto text-sm rounded-md font-medium transition-all duration-300 hover:scale-105 hover:shadow-md hover:bg-azul-principal hover:text-white"
                     style={`animation-delay: ${techIndex * 100}ms`}
@@ -57,34 +57,38 @@ const { title } = Astro.props;
                 </a>
               )}
 
-              {Array.isArray(project.github) && project.github.length > 0 && project.github.map((link) => (
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="action-link inline-flex items-center gap-2 px-4 py-2 border-2 border-azul-principal text-white font-medium rounded-lg transition-all duration-300 bg-transparent hover:bg-azul-principal hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
-                  aria-label={`Ver código fuente de ${project.name} (${String(link).split('/').pop()})`}
-                >
-                  <GitHub class="w-4 h-4" />
-                  {`${String(link).split('/').pop()}`}
-                </a>
-              ))}
-              {typeof project.github === 'string' && (
+              {Array.isArray(project.github) &&
+                project.github.length > 0 &&
+                project.github.map((link: string) => (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="action-link inline-flex items-center gap-2 px-4 py-2 border-2 border-azul-principal text-white font-medium rounded-lg transition-all duration-300 bg-transparent hover:bg-azul-principal hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
+                    aria-label={`Ver código fuente de ${project.name} (${String(link).split("/").pop()})`}
+                  >
+                    <GitHub class="w-4 h-4" />
+                    {`${String(link).split("/").pop()}`}
+                  </a>
+                ))}
+              {typeof project.github === "string" && (
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   class="action-link inline-flex items-center gap-2 px-4 py-2 border-2 border-azul-principal text-white font-medium rounded-lg transition-all duration-300 bg-transparent hover:bg-azul-principal hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
-                  aria-label={`Ver código fuente de ${project.name} (${String(project.github).split('/').pop()})`}
+                  aria-label={`Ver código fuente de ${project.name} (${String(project.github).split("/").pop()})`}
                 >
                   <GitHub class="w-4 h-4" />
-                  {`Código: ${String(project.github).split('/').pop()}`}
+                  {`Código: ${String(project.github).split("/").pop()}`}
                 </a>
               )}
             </footer>
           </div>
 
-          <div class={`absolute top-4 right-4 w-3 h-3 rounded-full shadow-lg animate-pulse opacity-80 group-hover:opacity-100 transition-opacity duration-300 ${project.isActive ? 'bg-green-400' : 'bg-red-500'}`} />
+          <div
+            class={`absolute top-4 right-4 w-3 h-3 rounded-full shadow-lg animate-pulse opacity-80 group-hover:opacity-100 transition-opacity duration-300 ${project.isActive ? "bg-green-400" : "bg-red-500"}`}
+          />
         </article>
       ))
     }
