@@ -186,6 +186,11 @@ const navLinks = [
     position: relative;
   }
 
+  .elegant-link:hover::after,
+  .elegant-link:focus-visible::after {
+    width: 100%;
+  }
+
   .elegant-link::after {
     content: "";
     position: absolute;
@@ -195,15 +200,11 @@ const navLinks = [
     height: 2px;
     background: linear-gradient(
       90deg,
-      var(--color-electric-blue, #3b82f6),
-      var(--color-vibrant-purple, #8b5cf6)
+      #0ea5e9,
+      #8b5cf6
     );
     transition: all 0.3s ease;
     transform: translateX(-50%);
-  }
-
-  .elegant-link:hover::after {
-    width: 100%;
   }
 
   .nav-link.text-electric-blue::after {

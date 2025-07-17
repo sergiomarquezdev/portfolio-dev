@@ -15,7 +15,7 @@ module.exports = {
         'success-green': '#10b981',
         'amber-warning': '#f59e0b',
         'primary-text': '#f1f5f9',
-        'secondary-text': '#e2e8f0',
+        'secondary-text': '#f1f5f9',
         'muted-text': '#94a3b8',
         'code-background': '#0f172a',
         'syntax-green': '#22c55e',
