@@ -55,7 +55,7 @@ const typingTexts = [
       />
 
       <div class="space-y-4">
-        <h1 class="text-h1 font-bold text-primary-text animate-fade-in">
+        <h1 class="text-h1 font-bold text-primary-text animate-fade-in hero-title-gradient">
           {name}
         </h1>
 
@@ -193,6 +193,12 @@ const typingTexts = [
 
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out;
+  }
+
+  .hero-title-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .animate-fade-up {
