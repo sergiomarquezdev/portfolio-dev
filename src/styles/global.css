@@ -6,7 +6,7 @@
   html {
     scroll-behavior: smooth;
     letter-spacing: -0.025rem;
-    @apply bg-fondo-principal text-texto-secundario font-sans;
+    @apply bg-deep-slate text-secondary-text font-sans;
     scroll-padding-top: 4rem;
   }
 
@@ -17,11 +17,11 @@
   }
 
   a {
-    @apply text-cian-acento transition-colors duration-300;
+    @apply text-electric-blue transition-colors duration-300;
   }
 
   a:hover {
-    @apply text-azul-principal underline;
+    @apply text-electric-blue underline;
   }
 
   ul {
@@ -41,11 +41,11 @@
   h3,
   h4 {
     margin: 0;
-    @apply font-heading text-texto-principal;
+    @apply font-heading text-primary-text;
   }
 
   p {
-    @apply text-texto-secundario text-body-reg leading-relaxed mb-6;
+    @apply text-secondary-text text-body-reg leading-relaxed mb-6;
   }
 
   .print {
@@ -136,7 +136,7 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, theme('colors.azul-principal'), theme('colors.cian-acento'));
+    background: linear-gradient(90deg, theme('colors.electric-blue'), theme('colors.vibrant-purple'));
     transition: all var(--timing-normal) var(--easing-smooth);
     transform: translateX(-50%);
   }
@@ -146,34 +146,34 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-8 py-3 bg-azul-principal text-white font-semibold rounded-lg;
+    @apply inline-flex items-center gap-2 px-8 py-3 bg-electric-blue text-white font-semibold rounded-lg;
     transition: all var(--timing-normal) var(--easing-smooth);
     transform: translateZ(0);
     will-change: transform, box-shadow;
   }
 
   .btn-primary:hover {
-    @apply bg-azul-hover;
+    @apply bg-electric-blue;
     transform: translateY(-2px) scale(1.02);
     box-shadow:
-      0 10px 25px rgba(96, 165, 250, 0.3),
-      0 0 0 1px rgba(96, 165, 250, 0.1);
+      0 10px 25px rgba(59, 130, 246, 0.3),
+      0 0 0 1px rgba(59, 130, 246, 0.1);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-azul-principal text-azul-principal font-medium rounded-lg;
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-electric-blue text-electric-blue font-medium rounded-lg;
     transition: all var(--timing-normal) var(--easing-smooth);
     transform: translateZ(0);
     will-change: transform, background-color;
   }
 
   .btn-secondary:hover {
-    @apply bg-azul-principal text-white;
+    @apply bg-electric-blue text-white;
     transform: translateY(-1px) scale(1.02);
   }
 
   .card-premium {
-    @apply bg-fondo-secundario rounded-xl border border-borde-principal shadow-lg;
+    @apply bg-dark-surface rounded-xl border border-border-gray shadow-lg;
     transition: all var(--timing-normal) var(--easing-smooth);
     transform: translateZ(0);
     will-change: transform, box-shadow;
@@ -183,8 +183,8 @@
     transform: translateY(-4px) scale(1.02);
     box-shadow:
       0 20px 40px rgba(0, 0, 0, 0.1),
-      0 0 0 1px rgba(96, 165, 250, 0.1),
-      0 0 30px rgba(96, 165, 250, 0.05);
+      0 0 0 1px rgba(59, 130, 246, 0.1),
+      0 0 30px rgba(59, 130, 246, 0.05);
   }
 
   .subtle-pulse {
@@ -197,13 +197,13 @@
     100% {
       opacity: 1;
       transform: scale(1);
-      box-shadow: 0 4px 14px rgba(96, 165, 250, 0.3);
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
     }
 
     50% {
       opacity: 0.95;
       transform: scale(1.02);
-      box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
     }
   }
 
@@ -212,7 +212,7 @@
   }
 
   .glow-hover:hover {
-    box-shadow: 0 0 20px rgba(103, 232, 249, 0.4);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
     transform: translateY(-1px);
   }
 
@@ -236,12 +236,12 @@
   }
 
   .focus-premium {
-    @apply focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal;
+    @apply focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-deep-slate;
     transition: all var(--timing-fast) var(--easing-smooth);
   }
 
   .text-gradient-primary {
-    background: linear-gradient(135deg, theme('colors.azul-principal'), theme('colors.cian-acento'));
+    background: linear-gradient(135deg, theme('colors.electric-blue'), theme('colors.vibrant-purple'));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -274,11 +274,11 @@
     }
 
     .btn-primary:hover {
-      @apply bg-azul-hover;
+      @apply bg-electric-blue;
     }
 
     .btn-secondary:hover {
-      @apply bg-azul-principal text-white;
+      @apply bg-electric-blue text-white;
     }
   }
 

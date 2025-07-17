@@ -43,14 +43,14 @@ const SKILLS_ICONS = {
 <Section title="Habilidades">
   <div class="space-y-l" id="skills-container">
     <div class="skill-category" data-category="highlighted">
-      <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Principales tecnologías</h3>
+      <h3 class="mb-s text-lg font-semibold text-muted-text">Principales tecnologías</h3>
       <ul class="flex flex-wrap gap-2" id="highlighted-skills">
         {
           highlightedSkills.map(({ name, icon }, index) => {
             const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
             return (
               <li
-                class="skill-item flex items-center gap-2 rounded-md border border-badge-borde bg-badge-fondo px-3 py-1 text-base font-semibold text-badge-texto transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                class="skill-item flex items-center gap-2 rounded-md border border-border-gray bg-dark-surface px-3 py-1 text-base font-semibold text-secondary-text transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                 data-index={index}
               >
                 {IconComponent && <IconComponent class="h-5 w-5" />}
@@ -63,14 +63,14 @@ const SKILLS_ICONS = {
     </div>
 
     <div class="skill-category" data-category="other">
-      <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Otras tecnologías</h3>
+      <h3 class="mb-s text-lg font-semibold text-muted-text">Otras tecnologías</h3>
       <ul class="flex flex-wrap gap-2" id="other-skills">
         {
           otherSkills.map(({ name, icon }, index) => {
             const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
             return (
               <li
-                class="skill-item flex items-center gap-2 rounded-md border border-borde-principal bg-fondo-secundario px-3 py-1 text-base text-texto-principal transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                class="skill-item flex items-center gap-2 rounded-md border border-border-gray bg-dark-surface px-3 py-1 text-base text-primary-text transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                 data-index={index}
               >
                 {IconComponent && <IconComponent class="h-5 w-5" />}
@@ -83,14 +83,14 @@ const SKILLS_ICONS = {
     </div>
 
     <div class="skill-category" data-category="databases">
-      <h3 class="mb-s text-lg font-semibold text-texto-desactivado">Bases de datos</h3>
+      <h3 class="mb-s text-lg font-semibold text-muted-text">Bases de datos</h3>
       <ul class="flex flex-wrap gap-2" id="database-skills">
         {
           databasesSkills.map(({ name, icon }, index) => {
             const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
             return (
               <li
-                class="skill-item flex items-center gap-2 rounded-md border border-borde-principal bg-fondo-secundario px-3 py-1 text-base text-texto-principal transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                class="skill-item flex items-center gap-2 rounded-md border border-border-gray bg-dark-surface px-3 py-1 text-base text-primary-text transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                 data-index={index}
               >
                 {IconComponent && <IconComponent class="h-5 w-5" />}
@@ -170,8 +170,8 @@ const SKILLS_ICONS = {
   }
 
   .skill-item:hover {
-    background-color: rgba(96, 165, 250, 0.1);
-    border-color: rgba(96, 165, 250, 0.4);
+    background-color: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.4);
     transform: translateY(-4px) scale(1.05);
   }
 

@@ -41,13 +41,13 @@ const typingTexts = [
 <Section class="pt-32 pb-20 text-center">
   <div class="relative">
     <div
-      class="absolute inset-0 bg-gradient-to-br from-azul-principal/5 via-transparent to-cian-acento/5 rounded-2xl"
+      class="absolute inset-0 bg-gradient-to-br from-electric-blue/5 via-transparent to-vibrant-purple/5 rounded-2xl"
     >
     </div>
 
     <div class="relative z-10 flex flex-col items-center gap-8 text-center py-8 lg:py-12">
       <img
-        class="aspect-square h-32 w-32 rounded-full object-cover ring-4 ring-azul-principal/20 shadow-xl transition-transform duration-300 hover:scale-105 hover:ring-azul-principal/40"
+        class="aspect-square h-32 w-32 rounded-full object-cover ring-4 ring-electric-blue/20 shadow-xl transition-transform duration-300 hover:scale-105 hover:ring-electric-blue/40"
         src={image}
         alt={imageAlt}
         loading="eager"
@@ -55,20 +55,20 @@ const typingTexts = [
       />
 
       <div class="space-y-4">
-        <h1 class="text-h1 font-bold text-texto-principal animate-fade-in">
+        <h1 class="text-h1 font-bold text-primary-text animate-fade-in">
           {name}
         </h1>
 
         <div class="h-8 flex items-center justify-center">
           <h2
             id="typing-text"
-            class="text-h3 font-medium text-azul-principal typing-cursor"
+            class="text-h3 font-medium text-electric-blue typing-cursor"
             data-texts={JSON.stringify(typingTexts)}
           >
           </h2>
         </div>
 
-        <p class="flex items-center justify-center gap-2 text-body-reg text-texto-sutil">
+        <p class="flex items-center justify-center gap-2 text-body-reg text-muted-text">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path
               fill-rule="evenodd"
@@ -79,7 +79,7 @@ const typingTexts = [
         </p>
       </div>
 
-      <p class="max-w-2xl text-body-lg text-texto-secundario leading-relaxed animate-fade-up">
+      <p class="max-w-2xl text-body-lg text-secondary-text leading-relaxed animate-fade-up">
         {summaryIntro}
       </p>
 
@@ -131,7 +131,7 @@ const typingTexts = [
       <div class="flex flex-col sm:flex-row gap-4 items-center">
         <a
           href="#contacto"
-          class="group inline-flex items-center gap-2 px-8 py-3 bg-azul-principal text-fondo-principal font-semibold rounded-lg transition-all duration-300 hover:bg-azul-hover hover:text-white hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
+          class="group inline-flex items-center gap-2 px-8 py-3 bg-electric-blue text-clean-white font-semibold rounded-lg transition-all duration-300 hover:bg-electric-blue/80 hover:text-clean-white hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-deep-slate"
         >
           <span>Trabajemos juntos</span>
           <svg
@@ -148,7 +148,7 @@ const typingTexts = [
 
         <a
           href="#proyectos"
-          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-azul-principal text-azul-principal font-medium rounded-lg transition-all duration-300 hover:bg-azul-principal hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal"
+          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-electric-blue text-electric-blue font-medium rounded-lg transition-all duration-300 hover:bg-electric-blue hover:text-clean-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-deep-slate"
         >
           Ver proyectos
         </a>
@@ -176,7 +176,7 @@ const typingTexts = [
   .typing-cursor::after {
     content: "|";
     animation: blink 1s infinite;
-    color: var(--color-cian-acento, #67e8f9);
+    color: var(--color-vibrant-purple, #8b5cf6);
     font-weight: 300;
   }
 
@@ -222,9 +222,9 @@ const typingTexts = [
   }
 
   .social-link {
-    @apply flex items-center justify-center w-12 h-12 rounded-full border-2 border-borde-principal bg-fondo-secundario text-texto-secundario transition-all duration-300;
-    @apply hover:border-azul-principal hover:bg-azul-principal hover:text-white hover:scale-110 hover:shadow-lg;
-    @apply focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-principal;
+    @apply flex items-center justify-center w-12 h-12 rounded-full border-2 border-border-gray bg-dark-surface text-secondary-text transition-all duration-300;
+    @apply hover:border-electric-blue hover:bg-electric-blue hover:text-clean-white hover:scale-110 hover:shadow-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-deep-slate;
   }
 
   @media (prefers-reduced-motion: reduce) {

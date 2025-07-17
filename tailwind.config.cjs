@@ -4,25 +4,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'fondo-principal': '#030712',
-        'fondo-secundario': '#111827',
-        'fondo-tarjetas': 'rgba(17, 24, 39, 0.8)',
-        'fondo-hover': '#374151',
-        'texto-principal': '#F9FAFB',
-        'texto-secundario': '#D1D5DB',
-        'texto-desactivado': '#A1A1AA',
-        'texto-sutil': '#6B7280',
-        'azul-principal': '#60A5FA',
-        'azul-hover': '#3B82F6',
-        'azul-oscuro': '#2563EB',
-        'cian-acento': '#67E8F9',
-        'cian-secundario': '#22D3EE',
-        'borde-principal': '#374151',
-        'borde-secundario': '#1F2937',
-        'borde-hover': 'rgba(96, 165, 250, 0.6)',
-        'badge-fondo': 'rgba(30, 58, 138, 0.5)',
-        'badge-texto': '#93C5FD',
-        'badge-borde': 'rgba(96, 165, 250, 0.3)',
+        'deep-slate': '#0f172a',
+        'electric-blue': '#3b82f6',
+        'clean-white': '#ffffff',
+        'slate-blue': '#475569',
+        'dark-surface': '#1e293b',
+        'border-gray': '#334155',
+        'vibrant-purple': '#8b5cf6',
+        'success-green': '#10b981',
+        'amber-warning': '#f59e0b',
+        'primary-text': '#f1f5f9',
+        'secondary-text': '#e2e8f0',
+        'muted-text': '#94a3b8',
+        'code-background': '#0f172a',
+        'syntax-green': '#22c55e',
+        'syntax-purple': '#a855f7',
       },
       spacing: {
         'xs': '8px',
@@ -70,25 +66,25 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.texto-secundario"),
+            color: theme("colors.secondary-text"),
             a: {
-              color: theme("colors.cian-acento"),
+              color: theme("colors.electric-blue"),
               "&:hover": {
-                color: theme("colors.azul-principal"),
+                color: theme("colors.electric-blue"),
               },
             },
             "h1, h2, h3, h4, h5, h6": {
-              color: theme("colors.texto-principal"),
+              color: theme("colors.primary-text"),
               fontWeight: 700,
               marginTop: "1.5em",
               marginBottom: "0.5em",
             },
             strong: {
-              color: theme("colors.texto-principal"),
+              color: theme("colors.primary-text"),
             },
             code: {
-              color: theme("colors.cian-acento"),
-              backgroundColor: theme("colors.fondo-secundario"),
+              color: theme("colors.electric-blue"),
+              backgroundColor: theme("colors.dark-surface"),
               borderRadius: "0.25rem",
               padding: "0.25rem 0.5rem",
               fontWeight: 500,

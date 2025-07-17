@@ -14,16 +14,16 @@ const navLinks = [
 
 <header
   id="main-header"
-  class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 bg-fondo-secundario/90 backdrop-blur-sm border-b border-borde-principal"
+  class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 bg-dark-surface/90 backdrop-blur-sm border-b border-border-gray"
 >
   <div class="container mx-auto px-4">
     <nav class="flex items-center justify-between">
       <a
         href="#"
         id="logo-link"
-        class="text-texto-principal font-bold text-xl flex items-center elegant-link"
+        class="text-primary-text font-bold text-xl flex items-center elegant-link"
       >
-        <span class="text-cian-acento">&lt;</span>{name}<span class="text-cian-acento">/&gt;</span>
+        <span class="text-electric-blue">&lt;</span>{name}<span class="text-electric-blue">/&gt;</span>
       </a>
 
       <ul class="hidden md:flex space-x-8">
@@ -32,7 +32,7 @@ const navLinks = [
             <li>
               <a
                 href={href}
-                class="nav-link text-texto-secundario hover:text-cian-acento transition-all duration-300 elegant-link relative"
+                class="nav-link text-secondary-text hover:text-electric-blue transition-all duration-300 elegant-link relative"
               >
                 {label}
               </a>
@@ -43,7 +43,7 @@ const navLinks = [
 
       <button
         id="mobile-menu-button"
-        class="md:hidden text-texto-secundario hover:text-cian-acento p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario rounded-md"
+        class="md:hidden text-secondary-text hover:text-electric-blue p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-dark-surface rounded-md"
         aria-label="Abrir menú"
         title="Abrir menú"
         aria-expanded="false"
@@ -57,7 +57,7 @@ const navLinks = [
   <div
     id="mobile-menu"
     role="menu"
-    class="hidden md:hidden absolute left-0 right-0 top-full bg-fondo-secundario shadow-lg border-b border-borde-principal backdrop-blur-sm"
+    class="hidden md:hidden absolute left-0 right-0 top-full bg-dark-surface shadow-lg border-b border-border-gray backdrop-blur-sm"
   >
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
@@ -67,7 +67,7 @@ const navLinks = [
               <a
                 href={href}
                 role="menuitem"
-                class="nav-link block py-2 text-texto-secundario hover:text-cian-acento transition-all duration-300 elegant-link"
+                class="nav-link block py-2 text-secondary-text hover:text-electric-blue transition-all duration-300 elegant-link"
               >
                 {label}
               </a>
@@ -164,11 +164,11 @@ const navLinks = [
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           navLinks.forEach((el) => {
-            el.classList.remove("text-cian-acento");
-            el.classList.add("text-texto-secundario");
+            el.classList.remove("text-electric-blue");
+            el.classList.add("text-secondary-text");
           });
-          link?.classList.remove("text-texto-secundario");
-          link?.classList.add("text-cian-acento");
+          link?.classList.remove("text-secondary-text");
+          link?.classList.add("text-electric-blue");
         }
       });
     };
@@ -195,8 +195,8 @@ const navLinks = [
     height: 2px;
     background: linear-gradient(
       90deg,
-      var(--color-azul-principal, #60a5fa),
-      var(--color-cian-acento, #67e8f9)
+      var(--color-electric-blue, #3b82f6),
+      var(--color-vibrant-purple, #8b5cf6)
     );
     transition: all 0.3s ease;
     transform: translateX(-50%);
@@ -206,7 +206,7 @@ const navLinks = [
     width: 100%;
   }
 
-  .nav-link.text-cian-acento::after {
+  .nav-link.text-electric-blue::after {
     width: 100%;
   }
 

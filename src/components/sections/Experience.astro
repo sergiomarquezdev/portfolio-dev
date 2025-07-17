@@ -6,7 +6,7 @@ import { work } from "@cv";
 <Section title="Experiencia laboral">
   <div class="relative">
     <div
-      class="absolute left-4 md:left-8 lg:left-1/2 lg:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-azul-oscuro/50 via-fondo-hover to-fondo-hover"
+      class="absolute left-4 md:left-8 lg:left-1/2 lg:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-electric-blue/50 via-dark-surface to-dark-surface"
     >
     </div>
 
@@ -30,34 +30,33 @@ import { work } from "@cv";
               <div
                 class={`relative flex items-center md:pl-20 lg:pl-0 ${isLeft ? "lg:justify-start" : "lg:justify-end"}`}
               >
-                <div class="absolute left-4 md:left-8 lg:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-azul-oscuro border-4 border-fondo-secundario" />
+                <div class="absolute left-4 md:left-8 lg:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-electric-blue border-4 border-dark-surface" />
 
                 <article
-                  class={`w-full lg:w-[45%] p-m rounded-lg bg-fondo-secundario shadow-lg border border-borde-principal ${isLeft ? "lg:mr-auto" : "lg:ml-auto"}`}
-                >
+                  class={`w-full lg:w-[45%] p-m rounded-lg bg-dark-surface shadow-lg border border-border-gray ${isLeft ? "lg:mr-auto" : "lg:ml-auto"}`}
                   <header class="mb-s">
                     <div class="flex flex-col">
                       <div class="flex justify-between items-center mb-1">
-                        <h3 class="text-h4 font-bold text-texto-principal">
+                        <h3 class="text-h4 font-bold text-primary-text">
                           <a
                             href={website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="hover:text-azul-principal"
+                            class="hover:text-electric-blue"
                           >
                             {company}
                           </a>
                         </h3>
-                        <time class="text-sm text-texto-desactivado font-medium">
+                        <time class="text-sm text-muted-text font-medium">
                           {startYearMonth} - {endYearMonth}
                         </time>
                       </div>
-                      <h4 class="text-body-lg font-medium text-texto-secundario">{position}</h4>
+                      <h4 class="text-body-lg font-medium text-secondary-text">{position}</h4>
                     </div>
                   </header>
 
                   <div>
-                    <p class="text-body-reg text-texto-secundario mb-m">{summary}</p>
+                    <p class="text-body-reg text-secondary-text mb-m">{summary}</p>
                     <ul class="space-y-s">
                       {highlights.map(
                         ({ role, startDate: rStart, endDate: rEnd, achievements }) => {
@@ -75,15 +74,15 @@ import { work } from "@cv";
                             : "Actual";
 
                           return (
-                            <li class="pl-s border-l-2 border-borde-principal">
-                              <strong class="font-semibold text-texto-principal block mb-1">
+                            <li class="pl-s border-l-2 border-border-gray">
+                              <strong class="font-semibold text-primary-text block mb-1">
                                 {role} ({roleStart} - {roleEnd})
                               </strong>
                               <ul class="space-y-1">
                                 {achievements.map((achievement) => (
                                   <li class="flex items-start">
-                                    <span class="text-azul-principal mr-2 mt-1">&#8226;</span>
-                                    <span class="text-texto-secundario">{achievement}</span>
+                                    <span class="text-electric-blue mr-2 mt-1">&#8226;</span>
+                                    <span class="text-secondary-text">{achievement}</span>
                                   </li>
                                 ))}
                               </ul>

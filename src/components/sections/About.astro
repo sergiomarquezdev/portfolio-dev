@@ -30,7 +30,7 @@ const highlightKeywords = (text: string) => {
     const regex = new RegExp(`\\b${keyword}\\b`, "gi");
     highlightedText = highlightedText.replace(
       regex,
-      `<strong class="text-azul-principal font-semibold transition-colors duration-200 hover:text-cian-acento">${keyword}</strong>`
+      `<strong class="text-electric-blue font-semibold transition-colors duration-200 hover:text-vibrant-purple">${keyword}</strong>`
     );
   });
 
@@ -39,19 +39,19 @@ const highlightKeywords = (text: string) => {
 ---
 
 <Section title="Sobre mí">
-  <article class="bg-fondo-secundario p-l rounded-lg border border-borde-principal shadow-lg">
+  <article class="bg-dark-surface p-l rounded-lg border border-border-gray shadow-lg">
     <div class="space-y-m">
       <div class="paragraph-container" data-index="0">
         <div class="flex items-start gap-m mb-s">
           <div
-            class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-azul-principal to-cian-acento rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg"
+            class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-electric-blue to-vibrant-purple rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg"
           >
             SM
           </div>
           <div class="flex-grow">
-            <h3 class="text-h4 font-semibold text-texto-principal mb-2">¡Hola! 👋</h3>
+            <h3 class="text-h4 font-semibold text-primary-text mb-2">¡Hola! 👋</h3>
             <p
-              class="text-body-lg text-texto-secundario leading-relaxed"
+              class="text-body-lg text-secondary-text leading-relaxed"
               set:html={highlightKeywords(summaryIntro)}
             />
           </div>
@@ -59,15 +59,15 @@ const highlightKeywords = (text: string) => {
       </div>
 
       <div class="paragraph-container" data-index="1">
-        <div class="border-l-4 border-azul-principal pl-m">
-          <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
-            <svg class="w-5 h-5 text-azul-principal" fill="currentColor" viewBox="0 0 20 20">
+        <div class="border-l-4 border-electric-blue pl-m">
+          <h4 class="text-body-lg font-semibold text-primary-text mb-s flex items-center gap-2">
+            <svg class="w-5 h-5 text-electric-blue" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             Experiencia Técnica
           </h4>
           <p
-            class="text-body-reg text-texto-secundario leading-relaxed"
+            class="text-body-reg text-secondary-text leading-relaxed"
             set:html={highlightKeywords(summaryExperience)}
           />
         </div>
@@ -75,10 +75,10 @@ const highlightKeywords = (text: string) => {
 
       <div class="paragraph-container" data-index="2">
         <div
-          class="bg-gradient-to-r from-azul-oscuro/10 to-cian-acento/5 p-m rounded-lg border border-azul-principal/20"
+          class="bg-gradient-to-r from-electric-blue/10 to-vibrant-purple/5 p-m rounded-lg border border-electric-blue/20"
         >
-          <h4 class="text-body-lg font-semibold text-texto-principal mb-s flex items-center gap-2">
-            <svg class="w-5 h-5 text-cian-acento" fill="currentColor" viewBox="0 0 20 20">
+          <h4 class="text-body-lg font-semibold text-primary-text mb-s flex items-center gap-2">
+            <svg class="w-5 h-5 text-vibrant-purple" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fill-rule="evenodd"
                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
@@ -87,18 +87,18 @@ const highlightKeywords = (text: string) => {
             Objetivos Profesionales
           </h4>
           <p
-            class="text-body-reg text-texto-secundario leading-relaxed"
+            class="text-body-reg text-secondary-text leading-relaxed"
             set:html={highlightKeywords(summaryObjectives)}
           />
         </div>
       </div>
     </div>
 
-    <div class="mt-l pt-m border-t border-borde-principal text-center">
-      <p class="text-sm text-texto-sutil mb-s">¿Interesado en colaborar?</p>
+    <div class="mt-l pt-m border-t border-border-gray text-center">
+      <p class="text-sm text-muted-text mb-s">¿Interesado en colaborar?</p>
       <a
         href="#contacto"
-        class="inline-flex items-center gap-2 px-6 py-2 rounded-md bg-azul-oscuro/80 text-white font-medium transition-all duration-200 hover:bg-azul-oscuro hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-azul-principal focus:ring-offset-2 focus:ring-offset-fondo-secundario"
+        class="inline-flex items-center gap-2 px-6 py-2 rounded-md bg-electric-blue/80 text-white font-medium transition-all duration-200 hover:bg-electric-blue hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-dark-surface"
       >
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
@@ -147,6 +147,6 @@ const highlightKeywords = (text: string) => {
   }
 
   strong:hover {
-    text-shadow: 0 0 8px rgba(103, 232, 249, 0.3);
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
   }
 </style>
