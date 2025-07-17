@@ -16,10 +16,10 @@ const { title } = Astro.props;
         >
           <div class="p-l space-y-s">
             <header class="space-y-xs">
-              <h3 class="text-h4 font-bold text-primary-text group-hover:text-electric-blue transition-colors duration-300">
+              <h3 class="text-h3 font-bold text-primary-text group-hover:text-electric-blue transition-colors duration-300 mb-2">
                 {project.name}
               </h3>
-              <p class="text-body-reg text-secondary-text leading-relaxed line-clamp-3">
+              <p class="text-body-lg text-secondary-text leading-relaxed line-clamp-3">
                 {project.description}
               </p>
             </header>
@@ -31,7 +31,7 @@ const { title } = Astro.props;
               <div class="flex flex-wrap gap-2">
                 {project.highlights.map((tech: string, techIndex: number) => (
                   <span
-                    class="tech-badge px-3 py-1 bg-dark-surface border border-border-gray text-secondary-text text-sm rounded-md font-medium transition-all duration-300 hover:scale-105 hover:shadow-md hover:bg-electric-blue hover:text-clean-white"
+                    class="tech-badge px-3 py-1 bg-transparent border border-electric-blue text-electric-blue text-sm rounded-md font-medium transition-all duration-300 hover:scale-105 hover:shadow-md hover:bg-electric-blue hover:text-clean-white"
                     style={`animation-delay: ${techIndex * 100}ms`}
                   >
                     {tech}
@@ -118,9 +118,9 @@ const { title } = Astro.props;
   .project-card:hover {
     transform: translateY(-8px) scale(1.02) translateZ(0);
     box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(59, 130, 246, 0.1),
-      0 0 40px rgba(59, 130, 246, 0.1);
+      0 20px 40px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(14, 165, 233, 0.2),
+      0 0 40px rgba(14, 165, 233, 0.2);
   }
 
   .tech-badge {
