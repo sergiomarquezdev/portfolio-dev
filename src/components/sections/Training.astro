@@ -2,13 +2,15 @@
 import Section from "../Section.astro";
 import { education, certificates } from "@cv";
 import { CertificateIcon as Certificate } from "@/icons";
+
+const certificateLinkClasses = "inline-flex items-center gap-2 rounded-md bg-background-surface px-4 py-2 text-sm font-semibold text-text-muted transition hover:bg-background hover:text-text border border-border";
 ---
 
-<Section title="Formación">
+<Section title="Formación" id="formacion">
   {
     certificates.length > 0 && (
       <div class="mb-xl">
-        <h3 class="mb-m text-lg font-semibold text-muted-text">Certificados</h3>
+        <h3 class="mb-m text-lg font-semibold text-text-muted">Certificados</h3>
         <ul class="space-y-l">
           {certificates.map(({ name, date, issuer, url }) => {
             const dateObj = new Date(date);
@@ -19,17 +21,17 @@ import { CertificateIcon as Certificate } from "@/icons";
 
             return (
               <li class="relative pl-l">
-                <span class="absolute left-0 top-1 h-3 w-3 rounded-full bg-electric-blue" />
-                <div class="absolute left-[5.5px] top-4 h-full w-px bg-border-gray" />
+                <span class="absolute left-0 top-1 h-3 w-3 rounded-full bg-primary" />
+                <div class="absolute left-[5.5px] top-4 h-full w-px bg-border" />
 
                 <article>
                   <header class="mb-s flex flex-col items-start justify-between gap-2 md:flex-row md:items-center">
                     <div class="flex-1">
-                      <h4 class="text-h4 font-semibold text-primary-text">{name}</h4>
-                      <p class="mt-1 text-body-reg text-muted-text">Emitido por {issuer}</p>
+                      <h4 class="text-h4 font-semibold text-text">{name}</h4>
+                      <p class="mt-1 text-body-reg text-text-muted">Emitido por {issuer}</p>
                     </div>
                     <time
-                      class="text-sm font-medium text-secondary-text"
+                      class="text-sm font-medium text-text-muted"
                       datetime={dateObj.toISOString().split("T")[0]}
                     >
                       {formattedDate}
@@ -41,7 +43,7 @@ import { CertificateIcon as Certificate } from "@/icons";
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center gap-2 rounded-md bg-dark-surface px-4 py-2 text-sm font-semibold text-secondary-text transition hover:bg-slate-blue hover:text-primary-text border border-border-gray"
+                      class:list={[certificateLinkClasses]}
                     >
                       <Certificate class="h-5 w-5" /> Ver Certificado
                     </a>
@@ -58,7 +60,7 @@ import { CertificateIcon as Certificate } from "@/icons";
   {
     education.length > 0 && (
       <div>
-        <h3 class="mb-m text-lg font-semibold text-muted-text">Educación reglada</h3>
+        <h3 class="mb-m text-lg font-semibold text-text-muted">Educación reglada</h3>
         <ul class="space-y-l">
           {education.map(({ institution, startDate, endDate, area }) => {
             const startYear = new Date(startDate).getFullYear();
@@ -67,17 +69,17 @@ import { CertificateIcon as Certificate } from "@/icons";
 
             return (
               <li class="relative pl-l">
-                <span class="absolute left-0 top-1 h-3 w-3 rounded-full bg-electric-blue" />
-                <div class="absolute left-[5.5px] top-4 h-full w-px bg-border-gray" />
+                <span class="absolute left-0 top-1 h-3 w-3 rounded-full bg-primary" />
+                <div class="absolute left-[5.5px] top-4 h-full w-px bg-border" />
 
                 <article>
                   <header class="mb-2 flex flex-col items-start justify-between gap-1 md:flex-row md:items-center">
-                    <h4 class="text-h4 font-semibold text-primary-text">{institution}</h4>
-                    <time class="text-sm font-medium text-secondary-text" datetime={years}>
+                    <h4 class="text-h4 font-semibold text-text">{institution}</h4>
+                    <time class="text-sm font-medium text-text-muted" datetime={years}>
                       {years}
                     </time>
                   </header>
-                  <p class="text-body-reg text-secondary-text">{area}</p>
+                  <p class="text-body-reg text-text-muted">{area}</p>
                 </article>
               </li>
             );

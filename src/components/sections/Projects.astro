@@ -1,58 +1,63 @@
 ---
 import Section from "../Section.astro";
 import { projects } from "@cv";
-import GitHub from "@/icons/social/GitHub.astro";
+import { GitHubIcon, WebsiteIcon } from "@/icons";
 
 const { title } = Astro.props;
+
+// Class constants for reuse
+const cardClasses = "project-card group relative bg-background-surface rounded-xl border border-border overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20";
+
+const cardBorderClasses = (isActive: boolean) => isActive ? "border-l-4 border-l-status-success" : "border-l-4 border-l-status-warning";
+
+const techBadgeClasses = "tech-badge px-3 py-1 bg-primary/10 border border-primary/30 text-primary text-sm rounded-md font-medium transition-all duration-300 hover:scale-105 hover:shadow-md hover:bg-primary hover:text-white";
+
+const actionLinkBase = "inline-flex items-center justify-center gap-2 px-4 py-2 font-medium rounded-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-surface";
+const visitLinkClasses = `${actionLinkBase} flex-1 min-w-fit bg-status-success text-white hover:bg-status-success/80 focus:ring-status-success`;
+const githubLinkClasses = `${actionLinkBase} border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white focus:ring-primary`;
+const exploreLinkClasses = `${actionLinkBase} border border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary`;
 ---
 
 <Section title={title || "Proyectos"} id="proyectos">
   <div class="grid grid-cols-1 gap-m sm:grid-cols-2 lg:grid-cols-3">
     {
-      projects.map((project: any, index: number) => (
+      projects.map((project: any) => (
         <article
-          class={`project-card group relative bg-dark-surface rounded-xl border border-border-gray border-l-[3px] ${project.isActive ? 'border-success-green' : 'border-amber-warning'} overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-electric-blue/20 hover:-translate-y-2`}
-          data-index={index}
+          class:list={[cardClasses, cardBorderClasses(project.isActive)]}
         >
           <div class="p-l space-y-s">
             <header class="space-y-xs">
-              <h3 class="text-h3 font-bold text-primary-text group-hover:text-electric-blue transition-colors duration-300 mb-2">
+              <h3 class="text-h3 font-bold text-text group-hover:text-primary transition-colors duration-300 mb-2">
                 {project.name}
               </h3>
-              <p class="text-body-lg text-secondary-text leading-relaxed line-clamp-3">
+              <p class="text-body-lg text-text-muted leading-relaxed line-clamp-3">
                 {project.description}
               </p>
             </header>
 
             <div class="tech-stack space-y-2">
-              <h4 class="text-sm font-semibold text-muted-text uppercase tracking-wide">
+              <h4 class="text-sm font-semibold text-text-muted uppercase tracking-wide">
                 Stack Tecnológico
               </h4>
               <div class="flex flex-wrap gap-2">
-                {project.highlights.map((tech: string, techIndex: number) => (
-                  <span
-                    class="tech-badge px-3 py-1 bg-transparent border border-electric-blue text-electric-blue text-sm rounded-md font-medium transition-all duration-300 hover:scale-105 hover:shadow-md hover:bg-electric-blue hover:text-clean-white"
-                    style={`animation-delay: ${techIndex * 100}ms`}
-                  >
+                {project.highlights.map((tech: string) => (
+                  <span class:list={[techBadgeClasses]}>
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
 
-            <footer class="flex flex-wrap gap-s pt-s border-t border-border-gray">
+            <footer class="flex flex-wrap gap-s pt-s border-t border-border">
               {project.url && (
                 <a
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="action-link flex-1 min-w-fit inline-flex items-center justify-center gap-2 px-4 py-2 bg-success-green text-clean-white font-medium rounded-lg transition-all duration-300 hover:bg-success-green/80 hover:text-clean-white hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-success-green focus:ring-offset-2 focus:ring-offset-dark-surface"
+                  class:list={[visitLinkClasses]}
                   aria-label={`Visitar ${project.name}`}
                 >
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                  </svg>
+                  <WebsiteIcon class="w-4 h-4" />
                   Visitar
                 </a>
               )}
@@ -64,10 +69,10 @@ const { title } = Astro.props;
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="action-link inline-flex items-center gap-2 px-4 py-2 border-2 border-electric-blue text-electric-blue font-medium rounded-lg transition-all duration-300 bg-transparent hover:bg-electric-blue hover:text-clean-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-dark-surface"
+                    class:list={[githubLinkClasses]}
                     aria-label={`Ver código fuente de ${project.name} (${String(link).split("/").pop()})`}
                   >
-                    <GitHub class="w-4 h-4" />
+                    <GitHubIcon class="w-4 h-4" />
                     {`${String(link).split("/").pop()}`}
                   </a>
                 ))}
@@ -76,149 +81,68 @@ const { title } = Astro.props;
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="action-link inline-flex items-center gap-2 px-4 py-2 border-2 border-electric-blue text-electric-blue font-medium rounded-lg transition-all duration-300 bg-transparent hover:bg-electric-blue hover:text-clean-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-dark-surface"
+                  class:list={[githubLinkClasses]}
                   aria-label={`Ver código fuente de ${project.name} (${String(project.github).split("/").pop()})`}
                 >
-                  <GitHub class="w-4 h-4" />
+                  <GitHubIcon class="w-4 h-4" />
                   {`Código: ${String(project.github).split("/").pop()}`}
                 </a>
               )}
             </footer>
           </div>
-
-          
         </article>
       ))
     }
   </div>
 
   <div class="mt-l text-center">
-    <p class="text-sm text-muted-text mb-s">¿Interesado en ver más proyectos?</p>
+    <p class="text-sm text-text-muted mb-s">¿Interesado en ver más proyectos?</p>
     <a
       href="https://github.com/sergiomarquezdev"
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center gap-2 px-6 py-2 border border-electric-blue text-electric-blue font-medium rounded-lg transition-all duration-300 hover:bg-electric-blue hover:text-clean-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-dark-surface"
+      class:list={[exploreLinkClasses]}
     >
-      <GitHub class="w-4 h-4" />
+      <GitHubIcon class="w-4 h-4" />
       Explorar en GitHub
     </a>
   </div>
 </Section>
 
 <style>
-  .project-card {
-    transform: translateZ(0);
-    will-change: transform, box-shadow;
-    backface-visibility: hidden;
-  }
-
-  .project-card:hover {
-    transform: translateY(-8px) scale(1.02) translateZ(0);
-    box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.2),
-      0 0 0 1px rgba(14, 165, 233, 0.2),
-      0 0 40px rgba(14, 165, 233, 0.2);
-  }
-
-  .tech-badge {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: slideInUp 0.4s ease-out forwards;
-  }
-
-  @keyframes slideInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .tech-preview {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-
-  .action-link {
-    transform: translateZ(0);
-    will-change: transform;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .project-card {
-      transition: none;
-    }
-
-    .project-card:hover {
-      transform: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .tech-badge {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-
-    .action-link:hover {
-      transform: none;
-    }
-  }
-
-  @media (hover: none) {
-    .project-card:hover {
-      transform: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .tech-preview {
-      display: none;
-    }
-  }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    if ("IntersectionObserver" in window) {
-      const cardsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const card = entry.target as HTMLElement;
-              const techBadges = card.querySelectorAll(".tech-badge");
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target as HTMLElement;
+            card.classList.add('animate-fade-in-up');
+            
+            const techBadges = card.querySelectorAll('.tech-badge');
+            techBadges.forEach((badge, index) => {
+              const badgeEl = badge as HTMLElement;
+              badgeEl.style.animationDelay = `${index * 100}ms`;
+              badgeEl.classList.add('animate-fade-in-up');
+            });
 
-              techBadges.forEach((badge, index) => {
-                setTimeout(() => {
-                  badge.classList.add("animate-in");
-                }, index * 100);
-              });
+            obs.unobserve(card);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-              cardsObserver.unobserve(card);
-            }
-          });
-        },
-        {
-          rootMargin: "0px 0px -100px 0px",
-          threshold: 0.1,
-        }
-      );
-
-      const projectCards = document.querySelectorAll(".project-card");
-      projectCards.forEach((card) => {
-        cardsObserver.observe(card);
-      });
-    } else {
-      const techBadges = document.querySelectorAll(".tech-badge");
-      techBadges.forEach((badge) => {
-        badge.classList.add("animate-in");
-      });
-    }
+    document.querySelectorAll('.project-card').forEach(card => {
+      observer.observe(card);
+    });
   });
 </script>

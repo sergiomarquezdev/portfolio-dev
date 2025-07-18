@@ -4,34 +4,36 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Main background and surfaces
-        'deep-slate': '#ffffff',
-        'dark-surface': '#f8fafc',
-        'border-gray': '#e5e7eb',
-
-        // Text colors
-        'primary-text': '#1f2937',
-        'secondary-text': '#1f2937',
-        'muted-text': '#64748b',
-
-        // Accent Colors
-        'electric-blue': '#2563eb',
-        'vibrant-purple': '#7c3aed',
-        'light-blue': '#0284c7',
-        'bright-teal': '#0f766e',
-
-        // Status Colors
-        'success-green': '#16a34a',
-        'amber-warning': '#ea580c',
-
-        // Code Colors
-        'code-background': '#f1f5f9',
-
-        // Legacy colors kept for compatibility
-        'clean-white': '#ffffff',
-        'slate-blue': '#475569',
-        'syntax-green': '#22c55e',
-        'syntax-purple': '#a855f7',
+        // New Semantic Color Palette
+        background: {
+          DEFAULT: '#ffffff', // Formerly deep-slate and clean-white
+          surface: '#f8fafc',   // Formerly dark-surface
+          code: '#f1f5f9',      // Formerly code-background
+        },
+        text: {
+          DEFAULT: '#1f2937', // Formerly primary-text and secondary-text
+          muted: '#64748b',   // Formerly muted-text
+          slate: '#475569',   // Formerly slate-blue
+        },
+        primary: {
+          DEFAULT: '#2563eb', // Formerly electric-blue
+          light: '#0284c7',   // Formerly light-blue
+        },
+        secondary: {
+          DEFAULT: '#7c3aed', // Formerly vibrant-purple
+          teal: '#0f766e',    // Formerly bright-teal
+        },
+        status: {
+          success: '#16a34a', // Formerly success-green
+          warning: '#ea580c', // Formerly amber-warning
+        },
+        syntax: {
+          green: '#22c55e',   // Formerly syntax-green
+          purple: '#a855f7', // Formerly syntax-purple
+        },
+        border: {
+          DEFAULT: '#e5e7eb' // Formerly border-gray
+        }
       },
       spacing: {
         'xs': '8px',
@@ -79,25 +81,25 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.secondary-text"),
+            color: theme("colors.text.DEFAULT"),
             a: {
-              color: theme("colors.electric-blue"),
+              color: theme("colors.primary.DEFAULT"),
               "&:hover": {
-                color: theme("colors.electric-blue"),
+                color: theme("colors.primary.DEFAULT"),
               },
             },
             "h1, h2, h3, h4, h5, h6": {
-              color: theme("colors.primary-text"),
+              color: theme("colors.text.DEFAULT"),
               fontWeight: 700,
               marginTop: "1.5em",
               marginBottom: "0.5em",
             },
             strong: {
-              color: theme("colors.primary-text"),
+              color: theme("colors.text.DEFAULT"),
             },
             code: {
-              color: theme("colors.electric-blue"),
-              backgroundColor: theme("colors.dark-surface"),
+              color: theme("colors.primary.DEFAULT"),
+              backgroundColor: theme("colors.background.code"),
               borderRadius: "0.25rem",
               padding: "0.25rem 0.5rem",
               fontWeight: 500,

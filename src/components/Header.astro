@@ -10,20 +10,22 @@ const navLinks = [
   { href: "#habilidades", label: "Habilidades" },
   { href: "#contacto", label: "Contacto" },
 ];
+
+const elegantLinkClasses = "relative after:absolute after:bg-gradient-to-r after:from-secondary-teal after:to-primary after:h-0.5 after:w-0 after:left-1/2 after:-bottom-1 after:transform after:-translate-x-1/2 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full";
 ---
 
 <header
   id="main-header"
-  class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 bg-dark-surface/90 backdrop-blur-sm border-b border-border-gray"
+  class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 bg-background/90 backdrop-blur-sm border-b border-border"
 >
   <div class="container mx-auto px-4">
     <nav class="flex items-center justify-between">
       <a
         href="#"
         id="logo-link"
-        class="text-primary-text font-bold text-xl flex items-center elegant-link"
+        class:list={["text-text font-bold text-xl flex items-center", elegantLinkClasses]}
       >
-        <span class="text-electric-blue">&lt;</span>{name}<span class="text-electric-blue">/&gt;</span>
+        <span class="text-primary">&lt;</span>{name}<span class="text-primary">/&gt;</span>
       </a>
 
       <ul class="hidden md:flex space-x-8">
@@ -32,7 +34,7 @@ const navLinks = [
             <li>
               <a
                 href={href}
-                class="nav-link text-secondary-text hover:text-light-blue transition-all duration-300 elegant-link relative"
+                class:list={["nav-link text-text-muted hover:text-primary-light transition-colors duration-300", elegantLinkClasses]}
               >
                 {label}
               </a>
@@ -43,7 +45,7 @@ const navLinks = [
 
       <button
         id="mobile-menu-button"
-        class="md:hidden text-secondary-text hover:text-electric-blue p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-dark-surface rounded-md"
+        class="md:hidden text-text-muted hover:text-primary p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-md"
         aria-label="Abrir menú"
         title="Abrir menú"
         aria-expanded="false"
@@ -57,7 +59,7 @@ const navLinks = [
   <div
     id="mobile-menu"
     role="menu"
-    class="hidden md:hidden absolute left-0 right-0 top-full bg-dark-surface shadow-lg border-b border-border-gray backdrop-blur-sm"
+    class="hidden md:hidden absolute left-0 right-0 top-full bg-background shadow-lg border-b border-border backdrop-blur-sm"
   >
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
@@ -67,7 +69,7 @@ const navLinks = [
               <a
                 href={href}
                 role="menuitem"
-                class="nav-link block py-2 text-secondary-text hover:text-electric-blue transition-all duration-300 elegant-link"
+                class="nav-link block py-2 text-text-muted hover:text-primary transition-colors duration-300"
               >
                 {label}
               </a>
@@ -81,145 +83,72 @@ const navLinks = [
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const mobileMenuButton = document.getElementById(
-      "mobile-menu-button"
-    ) as HTMLButtonElement | null;
-    const mobileMenu = document.getElementById("mobile-menu");
-    const navLinks = document.querySelectorAll(".nav-link");
-    const logoLink = document.getElementById("logo-link");
-    const header = document.getElementById("main-header");
+    const mobileMenuButton = document.getElementById("mobile-menu-button") as HTMLButtonElement;
+    const mobileMenu = document.getElementById("mobile-menu") as HTMLElement;
+    const header = document.getElementById("main-header") as HTMLElement;
 
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener("click", () => {
-        const isHidden = mobileMenu.classList.contains("hidden");
-
-        if (isHidden) {
-          mobileMenu.classList.remove("hidden");
-          mobileMenu.style.opacity = "0";
-          mobileMenu.style.transform = "translateY(-10px)";
-
-          requestAnimationFrame(() => {
-            mobileMenu.style.transition = "opacity 0.2s ease, transform 0.2s ease";
-            mobileMenu.style.opacity = "1";
-            mobileMenu.style.transform = "translateY(0)";
-          });
-
-          mobileMenuButton.setAttribute("aria-expanded", "true");
-        } else {
-          mobileMenu.style.opacity = "0";
-          mobileMenu.style.transform = "translateY(-10px)";
-
-          setTimeout(() => {
-            mobileMenu.classList.add("hidden");
-            mobileMenu.style.transition = "";
-          }, 200);
-
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-        }
-      });
-    }
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (mobileMenu && mobileMenuButton && !mobileMenu.classList.contains("hidden")) {
-          mobileMenu.style.opacity = "0";
-          mobileMenu.style.transform = "translateY(-10px)";
-
-          setTimeout(() => {
-            mobileMenu.classList.add("hidden");
-            mobileMenu.style.transition = "";
-          }, 200);
-
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-        }
-      });
-    });
-
-    if (logoLink && mobileMenu && mobileMenuButton) {
-      logoLink.addEventListener("click", () => {
-        if (!mobileMenu.classList.contains("hidden")) {
-          mobileMenu.style.opacity = "0";
-          mobileMenu.style.transform = "translateY(-10px)";
-
-          setTimeout(() => {
-            mobileMenu.classList.add("hidden");
-            mobileMenu.style.transition = "";
-          }, 200);
-
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-        }
-      });
-    }
-
-    const updateActiveSection = () => {
-      const sections = document.querySelectorAll("section[id]");
-      const scrollPosition = window.scrollY + (header?.offsetHeight || 0) + 100;
-
-      sections.forEach((section) => {
-        const sectionElement = section as HTMLElement;
-        const sectionTop = sectionElement.offsetTop;
-        const sectionHeight = sectionElement.offsetHeight;
-        const sectionId = section.getAttribute("id");
-        const link = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          navLinks.forEach((el) => {
-            el.classList.remove("text-electric-blue");
-            el.classList.add("text-secondary-text");
-          });
-          link?.classList.remove("text-secondary-text");
-          link?.classList.add("text-electric-blue");
-        }
-      });
+    const toggleMenu = (forceClose = false) => {
+      const isHidden = mobileMenu.classList.contains("hidden");
+      if (forceClose || !isHidden) {
+        mobileMenu.style.opacity = "0";
+        mobileMenu.style.transform = "translateY(-10px)";
+        setTimeout(() => {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.style.transition = "";
+        }, 200);
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+      } else {
+        mobileMenu.classList.remove("hidden");
+        mobileMenu.style.opacity = "0";
+        mobileMenu.style.transform = "translateY(-10px)";
+        requestAnimationFrame(() => {
+          mobileMenu.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+          mobileMenu.style.opacity = "1";
+          mobileMenu.style.transform = "translateY(0)";
+        });
+        mobileMenuButton.setAttribute("aria-expanded", "true");
+      }
     };
 
-    window.addEventListener("scroll", () => {
-      updateActiveSection();
+    mobileMenuButton.addEventListener("click", () => toggleMenu());
+    document.querySelectorAll('.nav-link, #logo-link').forEach(link => {
+      link.addEventListener('click', () => toggleMenu(true));
     });
 
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section[id]");
+
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + header.offsetHeight + 100;
+      let activeSectionFound = false;
+
+      sections.forEach((section) => {
+        const sectionEl = section as HTMLElement;
+        const link = document.querySelector(`.nav-link[href="#${section.id}"]`);
+        if (!link) return;
+
+        if (
+          sectionEl.offsetTop <= scrollPosition &&
+          sectionEl.offsetTop + sectionEl.offsetHeight > scrollPosition
+        ) {
+          link.classList.add("text-primary");
+          link.classList.remove("text-text-muted");
+          activeSectionFound = true;
+        } else {
+          link.classList.remove("text-primary");
+          link.classList.add("text-text-muted");
+        }
+      });
+       // If no section is active (e.g., at the top or bottom of the page), clear all active states
+      if (!activeSectionFound) {
+        navLinks.forEach(link => {
+            link.classList.remove("text-primary");
+            link.classList.add("text-text-muted");
+        });
+      }
+    };
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
     updateActiveSection();
   });
 </script>
-
-<style>
-  .elegant-link {
-    position: relative;
-  }
-
-  .elegant-link:hover::after,
-  .elegant-link:focus-visible::after {
-    width: 100%;
-  }
-
-  .elegant-link::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      #0f766e,
-      #2563eb
-    );
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-  }
-
-  .nav-link.text-electric-blue::after {
-    width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    .elegant-link::after {
-      display: none;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .elegant-link::after {
-      transition: none;
-    }
-  }
-</style>

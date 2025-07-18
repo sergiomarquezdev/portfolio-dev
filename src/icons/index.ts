@@ -1,47 +1,41 @@
-/**
- * index.ts - Sistema centralizado de iconos para el portfolio
- *
- * Todos los iconos del proyecto están accesibles desde este único punto de importación,
- * organizados por categorías para facilitar su identificación y mantenimiento.
- *
- * Esta estructura simplificada facilita:
- * 1. Importación con una sola línea en componentes consumidores
- * 2. Mantenimiento centralizado de los iconos del proyecto
- * 3. Consistencia visual en toda la aplicación
- */
-
-// Definición de tipos relacionados con iconos
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type SocialIcon = Record<string, any>;
-
 // UI Icons
 export { default as MenuIcon } from "./ui/MenuIcon.astro";
 export { default as ArrowUpIcon } from "./ui/ArrowUpIcon.astro";
 
 // Tech Icons
-export { default as SpringIcon } from "./tech/spring.astro";
-export { default as NodeIcon } from "./tech/node.astro";
-export { default as JavaIcon } from "./tech/java.astro";
-export { default as PythonIcon } from "./tech/python.astro";
-export { default as GoIcon } from "./tech/go.astro";
-export { default as DockerIcon } from "./tech/docker.astro";
-export { default as KubernetesIcon } from "./tech/kubernetes.astro";
-export { default as PostgreSQLIcon } from "./tech/postgresql.astro";
-export { default as MongoDBIcon } from "./tech/mongodb.astro";
-export { default as CICDIcon } from "./tech/cicd.astro";
-export { default as AiIcon } from "./tech/ai.astro";
-export { default as LLMOpsIcon } from "./tech/llmops.astro";
-export { default as N8nIcon } from "./tech/n8n.astro";
-export { default as GCPIcon } from "./tech/gcp.astro";
-export { default as FastAPIIcon } from "./tech/fastapi.astro";
-export { default as PineconeIcon } from "./tech/pinecone.astro";
+export { default as Spring } from "./tech/spring.astro";
+export { default as Node } from "./tech/node.astro";
+export { default as Java } from "./tech/java.astro";
+export { default as Python } from "./tech/python.astro";
+export { default as Go } from "./tech/go.astro";
+export { default as Docker } from "./tech/docker.astro";
+export { default as Kubernetes } from "./tech/kubernetes.astro";
+export { default as PostgreSQL } from "./tech/postgresql.astro";
+export { default as MongoDB } from "./tech/mongodb.astro";
+export { default as CICD } from "./tech/cicd.astro";
+export { default as Ai } from "./tech/ai.astro";
+export { default as LLMOps } from "./tech/llmops.astro";
+export { default as N8n } from "./tech/n8n.astro";
+export { default as GCP } from "./tech/gcp.astro";
+export { default as FastAPI } from "./tech/fastapi.astro";
+export { default as Pinecone } from "./tech/pinecone.astro";
 
 // Social Icons
+export { default as GitHub } from "./social/GitHub.astro";
+export { default as LinkedIn } from "./social/LinkedIn.astro";
+export { default as X } from "./social/X.astro";
+export { default as Mail } from "./social/Mail.astro";
+export { default as Website } from "./social/WorldMap.astro"; // Renamed for Hero component
+export { default as WorldMapIcon } from "./social/WorldMap.astro"; // Kept for compatibility
+export { default as Certificate } from "./social/Certificate.astro";
+export { default as Blog } from "./social/Blog.astro";
+export { default as YouTube } from "./social/YouTube.astro";
+
+// Explicit exports for components that use the 'Icon' suffix
 export { default as GitHubIcon } from "./social/GitHub.astro";
-export { default as LinkedInIcon } from "./social/LinkedIn.astro";
-export { default as XIcon } from "./social/X.astro";
-export { default as MailIcon } from "./social/Mail.astro";
-export { default as WorldMapIcon } from "./social/WorldMap.astro";
+export { default as WebsiteIcon } from "./social/WorldMap.astro";
 export { default as CertificateIcon } from "./social/Certificate.astro";
-export { default as BlogIcon } from "./social/Blog.astro";
-export { default as YouTubeIcon } from "./social/YouTube.astro";
+
+// Type definition
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SocialIcon = Record<string, any>;

@@ -4,7 +4,7 @@ import { ArrowUpIcon } from "../icons";
 
 <button
   id="scroll-to-top"
-  class="fixed bottom-4 left-4 z-40 w-12 h-12 rounded-full bg-electric-blue text-white shadow-lg flex items-center justify-center hover:bg-electric-blue/80 transition-all duration-300 transform scale-0 opacity-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-electric-blue focus:ring-offset-deep-slate hover:scale-110 subtle-pulse"
+  class="fixed bottom-4 left-4 z-40 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center hover:bg-primary/80 transition-all duration-300 transform scale-0 opacity-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-background hover:scale-110"
   aria-label="Volver arriba"
   title="Volver arriba"
   aria-hidden="true"
@@ -16,83 +16,42 @@ import { ArrowUpIcon } from "../icons";
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const scrollToTopButton = document.getElementById("scroll-to-top") as HTMLButtonElement | null;
+    if (!scrollToTopButton) return;
 
-    function toggleScrollToTopButton() {
-      if (!scrollToTopButton) return;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
-      const scrollY = window.scrollY;
+    const toggleScrollToTopButton = () => {
+      const shouldBeVisible = window.scrollY > window.innerHeight * 0.5;
 
-      const scrollPercentage = (scrollY / (scrollHeight - clientHeight)) * 100;
-
-      if (scrollPercentage > 50) {
+      if (shouldBeVisible) {
         scrollToTopButton.classList.remove("scale-0", "opacity-0");
-        scrollToTopButton.classList.add("scale-100", "opacity-100");
+        scrollToTopButton.classList.add("scale-100", "opacity-100", "animate-pulse");
         scrollToTopButton.setAttribute("aria-hidden", "false");
         scrollToTopButton.setAttribute("tabindex", "0");
-        scrollToTopButton.classList.add("subtle-pulse");
       } else {
-        scrollToTopButton.classList.remove("scale-100", "opacity-100", "subtle-pulse");
+        scrollToTopButton.classList.remove("scale-100", "opacity-100", "animate-pulse");
         scrollToTopButton.classList.add("scale-0", "opacity-0");
         scrollToTopButton.setAttribute("aria-hidden", "true");
         scrollToTopButton.setAttribute("tabindex", "-1");
       }
-    }
+    };
 
-    function scrollToTop() {
-      scrollToTopButton?.classList.add("hover:scale-95");
-
+    const scrollToTop = () => {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
+    };
 
-      setTimeout(() => {
-        scrollToTopButton?.classList.remove("hover:scale-95");
-      }, 150);
-    }
-
-    function handleKeyDown(e: KeyboardEvent) {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         scrollToTop();
       }
-    }
+    };
 
-    window.addEventListener("scroll", toggleScrollToTopButton);
-    scrollToTopButton?.addEventListener("click", scrollToTop);
-    scrollToTopButton?.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("scroll", toggleScrollToTopButton, { passive: true });
+    scrollToTopButton.addEventListener("click", scrollToTop);
+    scrollToTopButton.addEventListener("keydown", handleKeyDown);
 
     toggleScrollToTopButton();
   });
 </script>
-
-<style>
-  .subtle-pulse {
-    animation: subtlePulse 2s ease-in-out infinite;
-  }
-
-  @keyframes subtlePulse {
-    0%,
-    100% {
-      box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
-    }
-    50% {
-      box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.4);
-    }
-  }
-
-  #scroll-to-top:hover {
-    box-shadow: 0 8px 25px 0 rgba(37, 99, 235, 0.5);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .subtle-pulse {
-      animation: none;
-    }
-
-    #scroll-to-top:hover {
-      transform: none !important;
-    }
-  }
-</style>

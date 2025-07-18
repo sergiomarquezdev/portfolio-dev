@@ -1,84 +1,57 @@
 ---
 import Section from "../Section.astro";
 import { basics } from "@cv";
+
 const { summaryIntro, summaryExperience, summaryObjectives } = basics;
 
 const highlightKeywords = (text: string) => {
   const keywords = [
-    "Java",
-    "Spring Framework",
-    "Python",
-    "Go",
-    "Docker",
-    "Kubernetes",
-    "Google Cloud",
-    "PostgreSQL",
-    "MongoDB",
-    "Pinecone",
-    "FastAPI",
-    "n8n",
-    "CI/CD",
-    "LLMOps",
-    "backend",
-    "APIs",
-    "inteligencia artificial",
-    "machine learning",
+    "Java", "Spring Framework", "Python", "Go", "Docker", "Kubernetes",
+    "Google Cloud", "PostgreSQL", "MongoDB", "Pinecone", "FastAPI", "n8n",
+    "CI/CD", "LLMOps", "backend", "APIs", "inteligencia artificial", "machine learning",
   ];
-
-  let highlightedText = text;
-  keywords.forEach((keyword) => {
-    const regex = new RegExp(`\\b${keyword}\\b`, "gi");
-    highlightedText = highlightedText.replace(
-      regex,
-      `<strong class="text-electric-blue font-semibold transition-colors duration-200 hover:text-vibrant-purple">${keyword}</strong>`
-    );
-  });
-
-  return highlightedText;
+  const regex = new RegExp(`\\b(${keywords.join("|")})\\b`, "gi");
+  return text.replace(regex, `<strong class="text-primary font-semibold">$1</strong>`);
 };
+
+const contactButtonClasses = "inline-flex items-center gap-2 px-6 py-2 rounded-md bg-primary/80 text-white font-medium transition-all duration-200 hover:bg-primary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-surface";
 ---
 
-<Section title="Sobre mí">
-  <article class="bg-dark-surface p-l rounded-lg border border-border-gray shadow-lg">
+<Section title="Sobre mí" id="sobre-mi">
+  <article class="bg-background-surface p-l rounded-lg border border-border shadow-lg">
     <div class="space-y-m">
-      <div class="paragraph-container" data-index="0">
-        <div class="flex items-start gap-m mb-s">
-          <div
-            class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-electric-blue to-vibrant-purple rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg"
-          >
-            SM
-          </div>
-          <div class="flex-grow">
-            <h3 class="text-h4 font-semibold text-primary-text mb-2">¡Hola! 👋</h3>
-            <p
-              class="text-body-lg text-secondary-text leading-relaxed"
-              set:html={highlightKeywords(summaryIntro)}
-            />
-          </div>
+      <div class="paragraph-container flex items-start gap-m mb-s">
+        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+          SM
+        </div>
+        <div class="flex-grow">
+          <h3 class="text-h4 font-semibold text-text mb-2">¡Hola! 👋</h3>
+          <p
+            class="text-body-lg text-text-muted leading-relaxed"
+            set:html={highlightKeywords(summaryIntro)}
+          />
         </div>
       </div>
 
-      <div class="paragraph-container" data-index="1">
-        <div class="border-l-4 border-electric-blue pl-m">
-          <h4 class="text-body-lg font-semibold text-primary-text mb-s flex items-center gap-2">
-            <svg class="w-5 h-5 text-electric-blue" fill="currentColor" viewBox="0 0 20 20">
+      <div class="paragraph-container">
+        <div class="border-l-4 border-primary pl-m">
+          <h4 class="text-body-lg font-semibold text-text mb-s flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
             Experiencia Técnica
           </h4>
           <p
-            class="text-body-reg text-secondary-text leading-relaxed"
+            class="text-body-reg text-text-muted leading-relaxed"
             set:html={highlightKeywords(summaryExperience)}
           />
         </div>
       </div>
 
-      <div class="paragraph-container" data-index="2">
-        <div
-          class="bg-gradient-to-r from-electric-blue/10 to-vibrant-purple/5 p-m rounded-lg border border-electric-blue/20"
-        >
-          <h4 class="text-body-lg font-semibold text-primary-text mb-s flex items-center gap-2">
-            <svg class="w-5 h-5 text-vibrant-purple" fill="currentColor" viewBox="0 0 20 20">
+      <div class="paragraph-container">
+        <div class="bg-gradient-to-r from-primary/10 to-secondary/5 p-m rounded-lg border border-primary/20">
+          <h4 class="text-body-lg font-semibold text-text mb-s flex items-center gap-2">
+            <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fill-rule="evenodd"
                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
@@ -87,19 +60,16 @@ const highlightKeywords = (text: string) => {
             Objetivos Profesionales
           </h4>
           <p
-            class="text-body-reg text-secondary-text leading-relaxed"
+            class="text-body-reg text-text-muted leading-relaxed"
             set:html={highlightKeywords(summaryObjectives)}
           />
         </div>
       </div>
     </div>
 
-    <div class="mt-l pt-m border-t border-border-gray text-center">
-      <p class="text-sm text-muted-text mb-s">¿Interesado en colaborar?</p>
-      <a
-        href="#contacto"
-        class="inline-flex items-center gap-2 px-6 py-2 rounded-md bg-electric-blue/80 text-deep-slate font-medium transition-all duration-200 hover:bg-electric-blue hover:text-deep-slate hover:scale-105 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:ring-offset-2 focus:ring-offset-dark-surface"
-      >
+    <div class="mt-l pt-m border-t border-border text-center">
+      <p class="text-sm text-text-muted mb-s">¿Interesado en colaborar?</p>
+      <a href="#contacto" class:list={[contactButtonClasses]}>
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
           <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
@@ -110,43 +80,19 @@ const highlightKeywords = (text: string) => {
   </article>
 </Section>
 
-<style>
-  .paragraph-container {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          el.style.setProperty('--animation-delay', `${index * 200}ms`);
+          el.classList.add('animate-fade-in-up');
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.1 });
 
-  .paragraph-container[data-index="1"] {
-    animation-delay: 0.2s;
-  }
-
-  .paragraph-container[data-index="2"] {
-    animation-delay: 0.4s;
-  }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .paragraph-container {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  strong {
-    transition:
-      color 0.2s ease,
-      text-shadow 0.2s ease;
-  }
-
-  strong:hover {
-    text-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
-  }
-</style>
+    document.querySelectorAll('.paragraph-container').forEach(p => observer.observe(p));
+  });
+</script>
