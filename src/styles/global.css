@@ -17,11 +17,11 @@
   }
 
   a {
-    @apply text-primary transition-colors duration-300;
+    @apply text-secondary-blue transition-colors duration-300;
   }
 
   a:hover {
-    @apply text-primary underline;
+    @apply text-secondary-blue underline;
   }
 
   ul {
@@ -87,7 +87,7 @@
     background: linear-gradient(
       135deg,
       theme("colors.primary.DEFAULT"),
-      theme("colors.secondary.DEFAULT")
+      theme("colors.secondary.blue")
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

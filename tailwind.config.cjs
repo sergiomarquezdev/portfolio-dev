@@ -1,37 +1,38 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
       colors: {
-        // New Semantic Color Palette
+        // Palette from RESTYLE.md
         background: {
-          DEFAULT: "#ffffff", // Formerly deep-slate and clean-white
-          surface: "#f8fafc", // Formerly dark-surface
-          code: "#f1f5f9", // Formerly code-background
+          DEFAULT: "#ffffff", // Pure White
+          surface: "#f8fafc", // Light Gray
+          code: "#f1f5f9",    // Code Light
         },
         text: {
-          DEFAULT: "#1f2937", // Formerly primary-text and secondary-text
-          muted: "#64748b", // Formerly muted-text
-          slate: "#475569", // Formerly slate-blue
-        },
-        primary: {
-          DEFAULT: "#2563eb", // Formerly electric-blue
-          light: "#0284c7", // Formerly light-blue
-        },
-        secondary: {
-          DEFAULT: "#7c3aed", // Formerly vibrant-purple
-          teal: "#0f766e", // Formerly bright-teal
-        },
-        status: {
-          success: "#16a34a", // Formerly success-green
-          warning: "#ea580c", // Formerly amber-warning
-        },
-        syntax: {
-          green: "#22c55e", // Formerly syntax-green
-          purple: "#a855f7", // Formerly syntax-purple
+          DEFAULT: "#1f2937", // Rich Charcoal
+          muted: "#64748b",   // Slate Gray
         },
         border: {
-          DEFAULT: "#e5e7eb", // Formerly border-gray
+          DEFAULT: "#e5e7eb", // Border Gray
+        },
+        primary: {
+          DEFAULT: "#0f766e", // Deep Teal
+        },
+        secondary: {
+          blue: "#2563eb",    // Professional Blue (for links)
+          purple: "#7c3aed",  // AI Purple
+          cloud: "#0284c7",   // Cloud Blue
+        },
+        status: {
+          success: "#16a34a",
+          warning: "#ea580c",
+        },
+        accent: {
+          cta: "#ea580c",      // Warm Orange
+          success: "#16a34a",  // Success Green
+          pink: "#db2777",     // For Purple-to-Pink gradient
         },
       },
       spacing: {
@@ -56,8 +57,8 @@ module.exports = {
         103: "1.03",
       },
       boxShadow: {
-        avatar: "0 10px 15px -3px rgba(30, 58, 138, 0.3)",
-        "card-hover": "0 25px 50px -12px rgba(30, 58, 138, 0.2)",
+        avatar: "0 10px 15px -3px rgba(15, 118, 110, 0.3)", // Adjusted to new primary color
+        "card-hover": "0 25px 50px -12px rgba(15, 118, 110, 0.2)", // Adjusted to new primary color
         button: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
       },
       fontFamily: {
@@ -82,9 +83,9 @@ module.exports = {
           css: {
             color: theme("colors.text.DEFAULT"),
             a: {
-              color: theme("colors.primary.DEFAULT"),
+              color: theme("colors.secondary.blue"),
               "&:hover": {
-                color: theme("colors.primary.DEFAULT"),
+                color: theme("colors.secondary.blue"),
               },
             },
             "h1, h2, h3, h4, h5, h6": {
