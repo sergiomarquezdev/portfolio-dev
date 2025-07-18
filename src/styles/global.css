@@ -197,13 +197,13 @@
     100% {
       opacity: 1;
       transform: scale(1);
-      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
     }
 
     50% {
       opacity: 0.95;
       transform: scale(1.02);
-      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
     }
   }
 

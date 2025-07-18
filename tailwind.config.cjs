@@ -4,20 +4,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'deep-slate': '#0f172a',
-        'electric-blue': '#0ea5e9',
-        'light-blue': '#60a5fa',
+        // Main background and surfaces
+        'deep-slate': '#ffffff',
+        'dark-surface': '#f8fafc',
+        'border-gray': '#e5e7eb',
+
+        // Text colors
+        'primary-text': '#1f2937',
+        'secondary-text': '#1f2937',
+        'muted-text': '#64748b',
+
+        // Accent Colors
+        'electric-blue': '#2563eb',
+        'vibrant-purple': '#7c3aed',
+        'light-blue': '#0284c7',
+        'bright-teal': '#0f766e',
+
+        // Status Colors
+        'success-green': '#16a34a',
+        'amber-warning': '#ea580c',
+
+        // Code Colors
+        'code-background': '#f1f5f9',
+
+        // Legacy colors kept for compatibility
         'clean-white': '#ffffff',
         'slate-blue': '#475569',
-        'dark-surface': '#1e293b',
-        'border-gray': '#334155',
-        'vibrant-purple': '#8b5cf6',
-        'success-green': '#10b981',
-        'amber-warning': '#f59e0b',
-        'primary-text': '#f1f5f9',
-        'secondary-text': '#f1f5f9',
-        'muted-text': '#94a3b8',
-        'code-background': '#0f172a',
         'syntax-green': '#22c55e',
         'syntax-purple': '#a855f7',
       },
