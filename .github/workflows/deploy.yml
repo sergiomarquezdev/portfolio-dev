@@ -1,7 +1,9 @@
-name: CI – Build & Lint
+name: CI - Test and Build
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
@@ -9,25 +11,33 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  test-and-build:
+    name: Test and Build
     runs-on: ubuntu-latest
-    env:
-      PUBLIC_WEB3FORMS_API_KEY: ${{ secrets.PUBLIC_WEB3FORMS_API_KEY }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.2.2
 
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v2.0.2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.4.0
         with:
-          bun-version: latest
+          node-version: "22"
+          cache: "npm"
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: npm install
 
-      - name: Build Astro app
-        run: bun run build
+      - name: Check formatting with Prettier
+        run: npm run format
 
-      - name: Create .nojekyll file
-        run: touch ./dist/.nojekyll
+      # - name: Lint code with ESLint
+      #   run: npm run lint
+      #   # This step is commented out because the ESLint setup is currently broken.
+      #   # It should be re-enabled once the configuration is fixed.
+
+      - name: Build project
+        run: npm run build
+        env:
+          # This secret is still needed for the build step to succeed
+          PUBLIC_WEB3FORMS_API_KEY: ${{ secrets.PUBLIC_WEB3FORMS_API_KEY }}
