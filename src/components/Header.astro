@@ -11,13 +11,21 @@ const navLinks = [
   { href: "#contacto", label: "Contacto" },
 ];
 
-const elegantLinkClasses = "relative after:absolute after:bg-gradient-to-r after:from-secondary-teal after:to-primary after:h-0.5 after:w-0 after:left-1/2 after:-bottom-1 after:transform after:-translate-x-1/2 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full";
+const elegantLinkClasses =
+  "relative after:absolute after:bg-gradient-to-r after:from-secondary-teal after:to-primary after:h-0.5 after:w-0 after:left-1/2 after:-bottom-1 after:transform after:-translate-x-1/2 after:transition-all after:duration-300 hover:after:w-full focus:after:w-full";
 ---
 
 <header
   id="main-header"
   class="fixed w-full top-0 left-0 z-30 transition-colors duration-300 py-4 bg-background/90 backdrop-blur-sm border-b border-border"
 >
+  <div
+    id="reading-progress-container"
+    class="absolute top-full left-0 w-full h-0.5 bg-background-surface"
+  >
+    <div id="reading-progress" class="h-full bg-primary w-0 transition-all duration-100"></div>
+  </div>
+
   <div class="container mx-auto px-4">
     <nav class="flex items-center justify-between">
       <a
@@ -34,7 +42,10 @@ const elegantLinkClasses = "relative after:absolute after:bg-gradient-to-r after
             <li>
               <a
                 href={href}
-                class:list={["nav-link text-text-muted hover:text-primary-light transition-colors duration-300", elegantLinkClasses]}
+                class:list={[
+                  "nav-link text-text-muted hover:text-primary-light transition-colors duration-300",
+                  elegantLinkClasses,
+                ]}
               >
                 {label}
               </a>
@@ -111,8 +122,8 @@ const elegantLinkClasses = "relative after:absolute after:bg-gradient-to-r after
     };
 
     mobileMenuButton.addEventListener("click", () => toggleMenu());
-    document.querySelectorAll('.nav-link, #logo-link').forEach(link => {
-      link.addEventListener('click', () => toggleMenu(true));
+    document.querySelectorAll(".nav-link, #logo-link").forEach((link) => {
+      link.addEventListener("click", () => toggleMenu(true));
     });
 
     const navLinks = document.querySelectorAll(".nav-link");
@@ -139,16 +150,32 @@ const elegantLinkClasses = "relative after:absolute after:bg-gradient-to-r after
           link.classList.add("text-text-muted");
         }
       });
-       // If no section is active (e.g., at the top or bottom of the page), clear all active states
+      // If no section is active (e.g., at the top or bottom of the page), clear all active states
       if (!activeSectionFound) {
-        navLinks.forEach(link => {
-            link.classList.remove("text-primary");
-            link.classList.add("text-text-muted");
+        navLinks.forEach((link) => {
+          link.classList.remove("text-primary");
+          link.classList.add("text-text-muted");
         });
       }
     };
 
     window.addEventListener("scroll", updateActiveSection, { passive: true });
     updateActiveSection();
+
+    const progressBar = document.getElementById("reading-progress");
+    if (progressBar) {
+      const updateProgressBar = () => {
+        const scrollPosition = window.scrollY;
+        const totalHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = (scrollPosition / totalHeight) * 100;
+        if (progressBar instanceof HTMLElement) {
+          progressBar.style.width = `${progress}%`;
+        }
+      };
+
+      window.addEventListener("scroll", updateProgressBar, { passive: true });
+      window.addEventListener("resize", updateProgressBar, { passive: true });
+      updateProgressBar();
+    }
   });
 </script>

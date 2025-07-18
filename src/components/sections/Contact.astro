@@ -2,8 +2,10 @@
 import Section from "../Section.astro";
 const WEB3FORMS_API_KEY = import.meta.env.PUBLIC_WEB3FORMS_API_KEY;
 
-const inputClasses = "w-full px-4 py-3 rounded-md border border-border bg-background text-text focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-200 placeholder:text-text-muted";
-const submitButtonClasses = "px-8 py-3 rounded-md bg-primary text-white font-semibold transition-all duration-200 shadow-button hover:bg-primary/80 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-surface disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100";
+const inputClasses =
+  "w-full px-4 py-3 rounded-md border border-border bg-background text-text focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-200 placeholder:text-text-muted";
+const submitButtonClasses =
+  "px-8 py-3 rounded-md bg-primary text-white font-semibold transition-all duration-200 shadow-button hover:bg-primary/80 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-surface disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100";
 ---
 
 <Section title="Contacto" id="contacto">
@@ -32,7 +34,9 @@ const submitButtonClasses = "px-8 py-3 rounded-md bg-primary text-white font-sem
           <div class="feedback empty-feedback">Por favor, proporciona tu nombre.</div>
         </div>
         <div>
-          <label for="email" class="block text-text-muted font-medium mb-2">Correo Electrónico</label>
+          <label for="email" class="block text-text-muted font-medium mb-2"
+            >Correo Electrónico</label
+          >
           <input
             type="email"
             id="email"
@@ -59,9 +63,7 @@ const submitButtonClasses = "px-8 py-3 rounded-md bg-primary text-white font-sem
       </div>
 
       <div class="mt-l">
-        <button type="submit" class:list={[submitButtonClasses]}>
-          Enviar mensaje
-        </button>
+        <button type="submit" class:list={[submitButtonClasses]}> Enviar mensaje </button>
       </div>
       <div id="result" class="mt-4 text-center" role="status" aria-live="polite"></div>
     </form>
@@ -72,15 +74,15 @@ const submitButtonClasses = "px-8 py-3 rounded-md bg-primary text-white font-sem
   .feedback {
     display: block;
     opacity: 0;
-    color: theme('colors.status.warning');
-    font-size: theme('fontSize.small');
-    margin-top: theme('spacing.xs');
+    color: theme("colors.status.warning");
+    font-size: theme("fontSize.small");
+    margin-top: theme("spacing.xs");
     transition: opacity 0.2s ease;
   }
 
   .was-validated input:invalid,
   .was-validated textarea:invalid {
-    border-color: theme('colors.status.warning');
+    border-color: theme("colors.status.warning");
   }
 
   .was-validated input:invalid ~ .empty-feedback,
@@ -95,27 +97,27 @@ const submitButtonClasses = "px-8 py-3 rounded-md bg-primary text-white font-sem
 
   .was-validated input:valid,
   .was-validated textarea:valid {
-    border-color: theme('colors.status.success');
+    border-color: theme("colors.status.success");
   }
 
   #result {
     display: none;
-    padding: theme('spacing.s');
-    border-radius: theme('borderRadius.md');
+    padding: theme("spacing.s");
+    border-radius: theme("borderRadius.md");
     border-width: 1px;
     transition: all 0.3s ease;
   }
 
   #result.success {
-    color: theme('colors.status.success');
-    background-color: theme('colors.status.success / 0.1');
-    border-color: theme('colors.status.success / 0.2');
+    color: theme("colors.status.success");
+    background-color: theme("colors.status.success / 0.1");
+    border-color: theme("colors.status.success / 0.2");
   }
 
   #result.error {
-    color: theme('colors.status.warning');
-    background-color: theme('colors.status.warning / 0.1');
-    border-color: theme('colors.status.warning / 0.2');
+    color: theme("colors.status.warning");
+    background-color: theme("colors.status.warning / 0.1");
+    border-color: theme("colors.status.warning / 0.2");
   }
 
   button.loading {
@@ -130,7 +132,7 @@ const submitButtonClasses = "px-8 py-3 rounded-md bg-primary text-white font-sem
     top: 50%;
     width: 20px;
     height: 20px;
-    border: 2px solid theme('colors.white');
+    border: 2px solid theme("colors.white");
     border-radius: 50%;
     border-top-color: transparent;
     transform: translate(-50%, -50%);

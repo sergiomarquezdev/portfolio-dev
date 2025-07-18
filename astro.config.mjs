@@ -11,13 +11,18 @@ export default defineConfig({
   trailingSlash: "never",
   compressHTML: true,
 
-  integrations: [sitemap(), partytown({
-    config: {
-      forward: ["dataLayer.push"],
-    },
-  }), tailwind({
-    applyBaseStyles: false,
-  }), preact()],
+  integrations: [
+    sitemap(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    preact(),
+  ],
 
   image: {
     service: {
@@ -27,7 +32,7 @@ export default defineConfig({
 
   prefetch: {
     prefetchAll: false,
-    defaultStrategy: 'hover',
+    defaultStrategy: "hover",
   },
 
   vite: {

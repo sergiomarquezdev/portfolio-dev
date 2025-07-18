@@ -2,18 +2,45 @@
 import Section from "../Section.astro";
 import { highlightedSkills, databasesSkills, otherSkills } from "@cv";
 import {
-  Java as Java, Spring as Spring, Docker as Docker, Kubernetes as Kubernetes,
-  CICD as CICD, Node as Node, Python as Python, FastAPI as FastAPI, Go as Go,
-  PostgreSQL as PostgreSQL, MongoDB as MongoDB, Pinecone as Pinecone, Ai as Ai,
-  LLMOps as LLMOps, N8n as N8n, GCP as GCP,
+  Java as Java,
+  Spring as Spring,
+  Docker as Docker,
+  Kubernetes as Kubernetes,
+  CICD as CICD,
+  Node as Node,
+  Python as Python,
+  FastAPI as FastAPI,
+  Go as Go,
+  PostgreSQL as PostgreSQL,
+  MongoDB as MongoDB,
+  Pinecone as Pinecone,
+  Ai as Ai,
+  LLMOps as LLMOps,
+  N8n as N8n,
+  GCP as GCP,
 } from "@/icons";
 
 const SKILLS_ICONS = {
-  Java, Spring, Docker, Kubernetes, CICD, Node, Python, FastAPI, Go,
-  PostgreSQL, MongoDB, Pinecone, Ai, LLMOps, N8n, GCP,
+  Java,
+  Spring,
+  Docker,
+  Kubernetes,
+  CICD,
+  Node,
+  Python,
+  FastAPI,
+  Go,
+  PostgreSQL,
+  MongoDB,
+  Pinecone,
+  Ai,
+  LLMOps,
+  N8n,
+  GCP,
 } as const;
 
-const skillItemClasses = "skill-item flex items-center gap-2 rounded-md border border-border bg-background-surface px-3 py-1 text-base font-semibold text-text-muted transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:bg-primary/10 hover:border-primary/40 hover:text-primary";
+const skillItemClasses =
+  "skill-item flex items-center gap-2 rounded-md border border-border bg-background-surface px-3 py-1 text-base font-semibold text-text-muted transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:bg-primary/10 hover:border-primary/40 hover:text-primary";
 
 const skillCategories = [
   { title: "Principales tecnologías", skills: highlightedSkills },
@@ -24,12 +51,12 @@ const skillCategories = [
 
 <Section title="Habilidades" id="habilidades">
   <div class="space-y-l" id="skills-container">
-    {skillCategories.map(category => (
-      <div class="skill-category">
-        <h3 class="mb-s text-lg font-semibold text-text-muted">{category.title}</h3>
-        <ul class="flex flex-wrap gap-2">
-          {
-            category.skills.map(({ name, icon }) => {
+    {
+      skillCategories.map((category) => (
+        <div class="skill-category">
+          <h3 class="mb-s text-lg font-semibold text-text-muted">{category.title}</h3>
+          <ul class="flex flex-wrap gap-2">
+            {category.skills.map(({ name, icon }) => {
               const IconComponent = SKILLS_ICONS[icon as keyof typeof SKILLS_ICONS];
               return (
                 <li class:list={[skillItemClasses]}>
@@ -37,31 +64,34 @@ const skillCategories = [
                   <span>{name}</span>
                 </li>
               );
-            })
-          }
-        </ul>
-      </div>
-    ))}
+            })}
+          </ul>
+        </div>
+      ))
+    }
   </div>
 </Section>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const skillItems = entry.target.querySelectorAll('.skill-item');
-          skillItems.forEach((item, index) => {
-            const el = item as HTMLElement;
-            el.style.setProperty('--animation-delay', `${index * 50}ms`);
-            el.classList.add('animate-fade-in-up');
-          });
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const skillItems = entry.target.querySelectorAll(".skill-item");
+            skillItems.forEach((item, index) => {
+              const el = item as HTMLElement;
+              el.style.setProperty("--animation-delay", `${index * 50}ms`);
+              el.classList.add("animate-fade-in-up");
+            });
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    document.querySelectorAll('.skill-category').forEach(category => {
+    document.querySelectorAll(".skill-category").forEach((category) => {
       observer.observe(category);
     });
   });

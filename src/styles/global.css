@@ -84,7 +84,11 @@
   }
 
   .text-gradient-primary {
-    background: linear-gradient(135deg, theme('colors.primary.DEFAULT'), theme('colors.secondary.DEFAULT'));
+    background: linear-gradient(
+      135deg,
+      theme("colors.primary.DEFAULT"),
+      theme("colors.secondary.DEFAULT")
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -166,10 +170,22 @@
     }
   }
 
-  .delay-0 { animation-delay: 0ms; }
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-500 { animation-delay: 500ms; }
-  .delay-700 { animation-delay: 700ms; }
+  .delay-0 {
+    animation-delay: 0ms;
+  }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+  .delay-700 {
+    animation-delay: 700ms;
+  }
 }

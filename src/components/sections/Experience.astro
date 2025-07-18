@@ -17,19 +17,26 @@ import { work } from "@cv";
           ({ company, startDate, endDate, position, summary, highlights, website }, index) => {
             const startDateObj = new Date(startDate);
             const endDateObj = endDate ? new Date(endDate) : null;
-            const startYearMonth = startDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" });
-            const endYearMonth = endDateObj ? endDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" }) : "Actual";
+            const startYearMonth = startDateObj.toLocaleString("es-ES", {
+              year: "numeric",
+              month: "short",
+            });
+            const endYearMonth = endDateObj
+              ? endDateObj.toLocaleString("es-ES", { year: "numeric", month: "short" })
+              : "Actual";
 
             const isLeft = index % 2 === 0;
             const alignmentClasses = isLeft ? "lg:justify-start" : "lg:justify-end";
             const articleMargin = isLeft ? "lg:mr-auto" : "lg:ml-auto";
-            
+
             return (
               <div class={`relative flex items-center md:pl-20 lg:pl-0 ${alignmentClasses}`}>
-                <!-- Timeline dot -->
+                {/* Timeline dot */}
                 <div class="absolute left-4 md:left-8 lg:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-primary border-4 border-background-surface" />
 
-                <article class={`w-full lg:w-[45%] p-m rounded-lg bg-background-surface shadow-lg border border-border ${articleMargin}`}>
+                <article
+                  class={`w-full lg:w-[45%] p-m rounded-lg bg-background-surface shadow-lg border border-border ${articleMargin}`}
+                >
                   <header class="mb-s">
                     <div class="flex flex-col">
                       <div class="flex justify-between items-center mb-1">
@@ -58,8 +65,16 @@ import { work } from "@cv";
                         ({ role, startDate: rStart, endDate: rEnd, achievements }) => {
                           const roleStartDateObj = new Date(rStart);
                           const roleEndDateObj = rEnd ? new Date(rEnd) : null;
-                          const roleStart = roleStartDateObj.toLocaleString("es-ES", { month: "short", year: "numeric" });
-                          const roleEnd = roleEndDateObj ? roleEndDateObj.toLocaleString("es-ES", { month: "short", year: "numeric" }) : "Actual";
+                          const roleStart = roleStartDateObj.toLocaleString("es-ES", {
+                            month: "short",
+                            year: "numeric",
+                          });
+                          const roleEnd = roleEndDateObj
+                            ? roleEndDateObj.toLocaleString("es-ES", {
+                                month: "short",
+                                year: "numeric",
+                              })
+                            : "Actual";
 
                           return (
                             <li class="pl-s border-l-2 border-border">

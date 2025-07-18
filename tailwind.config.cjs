@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -6,60 +5,60 @@ module.exports = {
       colors: {
         // New Semantic Color Palette
         background: {
-          DEFAULT: '#ffffff', // Formerly deep-slate and clean-white
-          surface: '#f8fafc',   // Formerly dark-surface
-          code: '#f1f5f9',      // Formerly code-background
+          DEFAULT: "#ffffff", // Formerly deep-slate and clean-white
+          surface: "#f8fafc", // Formerly dark-surface
+          code: "#f1f5f9", // Formerly code-background
         },
         text: {
-          DEFAULT: '#1f2937', // Formerly primary-text and secondary-text
-          muted: '#64748b',   // Formerly muted-text
-          slate: '#475569',   // Formerly slate-blue
+          DEFAULT: "#1f2937", // Formerly primary-text and secondary-text
+          muted: "#64748b", // Formerly muted-text
+          slate: "#475569", // Formerly slate-blue
         },
         primary: {
-          DEFAULT: '#2563eb', // Formerly electric-blue
-          light: '#0284c7',   // Formerly light-blue
+          DEFAULT: "#2563eb", // Formerly electric-blue
+          light: "#0284c7", // Formerly light-blue
         },
         secondary: {
-          DEFAULT: '#7c3aed', // Formerly vibrant-purple
-          teal: '#0f766e',    // Formerly bright-teal
+          DEFAULT: "#7c3aed", // Formerly vibrant-purple
+          teal: "#0f766e", // Formerly bright-teal
         },
         status: {
-          success: '#16a34a', // Formerly success-green
-          warning: '#ea580c', // Formerly amber-warning
+          success: "#16a34a", // Formerly success-green
+          warning: "#ea580c", // Formerly amber-warning
         },
         syntax: {
-          green: '#22c55e',   // Formerly syntax-green
-          purple: '#a855f7', // Formerly syntax-purple
+          green: "#22c55e", // Formerly syntax-green
+          purple: "#a855f7", // Formerly syntax-purple
         },
         border: {
-          DEFAULT: '#e5e7eb' // Formerly border-gray
-        }
+          DEFAULT: "#e5e7eb", // Formerly border-gray
+        },
       },
       spacing: {
-        'xs': '8px',
-        's': '16px',
-        'm': '24px',
-        'l': '32px',
-        'xl': '48px',
-        'xxl': '80px',
-        '30': '120px',
+        xs: "8px",
+        s: "16px",
+        m: "24px",
+        l: "32px",
+        xl: "48px",
+        xxl: "80px",
+        30: "120px",
       },
       fontSize: {
-        'h1': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'h2': ['32px', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
-        'h3': ['24px', { lineHeight: '1.3', letterSpacing: '-0.005em' }],
-        'h4': ['20px', { lineHeight: '1.4', letterSpacing: '0em' }],
-        'body-lg': ['18px', { lineHeight: '1.6', letterSpacing: '0em' }],
-        'body-reg': ['16px', { lineHeight: '1.6', letterSpacing: '0em' }],
-        'small': ['14px', { lineHeight: '1.5', letterSpacing: '0em' }],
+        h1: ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        h2: ["32px", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
+        h3: ["24px", { lineHeight: "1.3", letterSpacing: "-0.005em" }],
+        h4: ["20px", { lineHeight: "1.4", letterSpacing: "0em" }],
+        "body-lg": ["18px", { lineHeight: "1.6", letterSpacing: "0em" }],
+        "body-reg": ["16px", { lineHeight: "1.6", letterSpacing: "0em" }],
+        small: ["14px", { lineHeight: "1.5", letterSpacing: "0em" }],
       },
       scale: {
-        '103': '1.03',
+        103: "1.03",
       },
       boxShadow: {
-        'avatar': '0 10px 15px -3px rgba(30, 58, 138, 0.3)',
-        'card-hover': '0 25px 50px -12px rgba(30, 58, 138, 0.2)',
-        'button': '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+        avatar: "0 10px 15px -3px rgba(30, 58, 138, 0.3)",
+        "card-hover": "0 25px 50px -12px rgba(30, 58, 138, 0.2)",
+        button: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
       },
       fontFamily: {
         sans: [

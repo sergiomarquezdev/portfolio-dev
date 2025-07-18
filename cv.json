@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Sergio Márquez Pérez",
-    "label": "IA/ML Developer · Python & FastAPI · Automatizaciones n8n · Prompt Engineering",
+    "label": "IA/ML Developer · Python & FastAPI · N8n Automations",
     "image": "/img/sergio_marquez_perez_ia_profile_pic.png",
     "imageAlt": "Foto de perfil de Sergio Márquez Pérez, IA/ML Developer y Backend Developer experto en Python, Java y Spring.",
     "email": "contacto@sergiomarquez.dev",
@@ -199,13 +199,7 @@
       "name": "One dAIly Blog",
       "isActive": true,
       "description": "One dAIly Blog, un innovador proyecto personal de Sergio Márquez, genera contenido automáticamente a diario usando la API de OpenAI. Frontend en Angular y TailwindCSS, con backend en Node.js, Express.js y PostgreSQL.",
-      "highlights": [
-        "Angular",
-        "Node.js",
-        "OpenAI",
-        "PostgreSQL",
-        "TailwindCSS"
-      ],
+      "highlights": ["Angular", "Node.js", "OpenAI", "PostgreSQL", "TailwindCSS"],
       "url": "https://blog.sergiomarquez.dev/",
       "github": [
         "https://github.com/sergiomarquezdev/one-daily-blog",
@@ -216,54 +210,31 @@
       "name": "PinguFly",
       "isActive": true,
       "description": "PinguFly, un videojuego 2D clásico desarrollado por Sergio Márquez, te reta a lanzar un pingüino lo más lejos posible. Esta reimaginación moderna del Yeti Sports Pingu Throw incluye física realista y un entorno dinámico.",
-      "highlights": [
-        "Phaser 3",
-        "JavaScript ES6+",
-        "Vite",
-        "Matter.js"
-      ],
+      "highlights": ["Phaser 3", "JavaScript ES6+", "Vite", "Matter.js"],
       "url": "https://pingufly.sergiomarquez.dev/",
-      "github": [
-        "https://github.com/sergiomarquezdev/pingufly-2d"
-      ]
+      "github": ["https://github.com/sergiomarquezdev/pingufly-2d"]
     },
     {
       "name": "Acestream Dockerizado",
       "isActive": true,
       "description": "Este proyecto de Sergio Márquez dockeriza Acestream en un contenedor Ubuntu 22.04 con Python 3.10, simplificando su ejecución en un entorno aislado. Incluye script .bat para instalación en Windows.",
-      "highlights": [
-        "Docker",
-        "Ubuntu 22.04",
-        "Python 3.10"
-      ],
+      "highlights": ["Docker", "Ubuntu 22.04", "Python 3.10"],
       "url": null,
-      "github": [
-        "https://github.com/sergiomarquezdev/acestream-docker-home"
-      ]
+      "github": ["https://github.com/sergiomarquezdev/acestream-docker-home"]
     },
     {
       "name": "Pizarra Digital por Gestos",
       "isActive": false,
       "description": "Aplicación Python desarrollada por Sergio Márquez que permite dibujar en una pizarra digital mediante gestos de manos capturados por webcam. Combina visión por computadora y seguimiento de manos para una experiencia interactiva.",
-      "highlights": [
-        "Python",
-        "OpenCV",
-        "MediaPipe",
-        "Visión por Computadora"
-      ],
+      "highlights": ["Python", "OpenCV", "MediaPipe", "Visión por Computadora"],
       "url": null,
-      "github": [
-        "https://github.com/sergiomarquezdev/pizarra-digital-python"
-      ]
+      "github": ["https://github.com/sergiomarquezdev/pizarra-digital-python"]
     },
     {
       "name": "MartaMontalban.es",
       "isActive": false,
       "description": "Desarrollo y diseño del portfolio web de Marta Montalbán, auxiliar de cámara en cine, utilizando WordPress y Elementor Pro, optimizando para SEO y un rendimiento web adecuado con tiempos de carga reducidos. Implementación de buenas prácticas en accesibilidad web y experiencia de usuario.",
-      "highlights": [
-        "WordPress",
-        "Elementor Pro"
-      ],
+      "highlights": ["WordPress", "Elementor Pro"],
       "url": null,
       "github": null
     }
