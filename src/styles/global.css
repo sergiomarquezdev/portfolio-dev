@@ -78,7 +78,7 @@
     --color-background-surface: 220 13% 98%; /* #f8fafc */
     --color-background-code: 220 14% 96%; /* #f1f5f9 */
     --color-text: 215 28% 17%; /* #1f2937 */
-    --color-text-muted: 215 16% 47%; /* #64748b */
+    --color-text-muted: 214 19% 41%; /* #57677a - Adjusted for AA contrast on surfaces */
     --color-border: 214 27% 90%; /* #e5e7eb */
     --color-primary: 174 77% 27%; /* #0f766e */
     --color-secondary-blue: 221 83% 53%; /* #2563eb */
