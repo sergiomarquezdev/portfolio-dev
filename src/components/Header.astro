@@ -37,7 +37,7 @@ const elegantLinkClasses =
         <span class="text-primary">&lt;</span>{name}<span class="text-primary">/&gt;</span>
       </a>
 
-      <ul class="hidden md:flex items-center space-x-8">
+      <ul class="hidden lg:flex items-center space-x-8">
         {
           navLinks.map(({ href, label }) => (
             <li>
@@ -60,7 +60,7 @@ const elegantLinkClasses =
 
       <button
         id="mobile-menu-button"
-        class="md:hidden text-text-muted hover:text-primary p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-md"
+        class="lg:hidden text-text-muted hover:text-primary p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-md"
         aria-label="Abrir menú"
         title="Abrir menú"
         aria-expanded="false"
@@ -74,7 +74,7 @@ const elegantLinkClasses =
   <div
     id="mobile-menu"
     role="menu"
-    class="hidden md:hidden absolute left-0 right-0 top-full bg-background shadow-lg border-b border-border backdrop-blur-sm"
+    class="hidden lg:hidden absolute left-0 right-0 top-full bg-background shadow-lg border-b border-border backdrop-blur-sm"
   >
     <div class="container mx-auto px-4 py-3">
       <ul class="space-y-2">
