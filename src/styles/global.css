@@ -133,6 +133,19 @@
     backface-visibility: hidden;
     perspective: 1000px;
   }
+
+  /* Tech pill component with proper contrast in both modes */
+  .tech-pill {
+    @apply px-3 py-1 text-sm rounded-md font-semibold border;
+    background-color: hsl(var(--color-primary) / 0.15);
+    color: hsl(var(--color-primary));
+    border-color: hsl(var(--color-primary) / 0.3);
+  }
+
+  html.dark .tech-pill {
+    background-color: hsl(var(--color-primary) / 0.25);
+    border-color: hsl(var(--color-primary) / 0.4);
+  }
 }
 
 @layer utilities {
