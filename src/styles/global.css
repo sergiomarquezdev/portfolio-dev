@@ -136,7 +136,7 @@
 
   /* Tech pill component with proper contrast in both modes */
   .tech-pill {
-    @apply px-3 py-1 text-sm rounded-md font-semibold border;
+    @apply px-3 py-1 text-sm rounded-md font-medium border;
     background-color: hsl(var(--color-primary) / 0.15);
     color: hsl(var(--color-primary));
     border-color: hsl(var(--color-primary) / 0.3);
