@@ -137,14 +137,17 @@
   /* Tech pill component with proper contrast in both modes */
   .tech-pill {
     @apply px-3 py-1 text-sm rounded-md font-medium border;
-    background-color: hsl(var(--color-primary) / 0.25);
-    color: hsl(var(--color-primary));
-    border-color: hsl(var(--color-primary) / 0.4);
+    /* Light mode: dark text on light background */
+    background-color: hsl(174 77% 85%);
+    color: hsl(174 77% 20%);
+    border-color: hsl(174 77% 60%);
   }
 
   html.dark .tech-pill {
-    background-color: hsl(var(--color-primary) / 0.25);
-    border-color: hsl(var(--color-primary) / 0.4);
+    /* Dark mode: light text on dark background */
+    background-color: hsl(174 80% 25%);
+    color: hsl(174 80% 80%);
+    border-color: hsl(174 80% 50%);
   }
 }
 
