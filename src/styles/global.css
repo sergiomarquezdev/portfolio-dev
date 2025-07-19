@@ -111,7 +111,7 @@
     --color-secondary-blue: 217 91% 60%; /* #3b82f6 */
     --color-secondary-purple: 258 90% 66%; /* #8b5cf6 */
     --color-secondary-cloud: 188 96% 43%; /* #06b6d4 */
-    --color-accent-cta: 25 95% 45%; /* #d97706 - Darker orange for better contrast with white text */
+    --color-accent-cta: 20 100% 35%; /* #b45309 - Much darker orange for excellent contrast with white text */
     --color-accent-success: 145 63% 49%; /* #22c55e */
     --color-accent-pink: 337 84% 61%; /* #ec4899 */
   }
