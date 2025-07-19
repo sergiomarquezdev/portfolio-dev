@@ -25,12 +25,12 @@ const highlightKeywords = (text: string) => {
     "inteligencia artificial",
     "machine learning",
   ];
-  const regex = new RegExp(`\\b(${keywords.join("|")})\\b`, "gi");
-  return text.replace(regex, `<strong class="text-secondary-blue font-semibold">$1</strong>`);
+  const regex = new RegExp(`\b(${keywords.join("|")})\b`, "gi");
+  return text.replace(regex, `<strong class="text-primary font-semibold">$1</strong>`);
 };
 
 const contactButtonClasses =
-  "inline-flex items-center gap-2 px-6 py-2 rounded-md bg-accent-cta text-white font-medium transition-all duration-200 hover:bg-accent-cta/80 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-cta focus:ring-offset-2 focus:ring-offset-background-surface";
+  "inline-flex items-center gap-2 px-6 py-2 rounded-md bg-accent-cta text-text font-medium transition-all duration-200 hover:bg-accent-cta/80 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-cta focus:ring-offset-2 focus:ring-offset-background-surface";
 ---
 
 <Section title="Sobre mí" id="sobre-mi">
