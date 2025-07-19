@@ -1,6 +1,7 @@
 ---
 import { basics } from "@cv";
 import { MenuIcon } from "../icons";
+import ThemeToggle from "./ThemeToggle.astro";
 const { name } = basics;
 
 const navLinks = [
@@ -36,7 +37,7 @@ const elegantLinkClasses =
         <span class="text-primary">&lt;</span>{name}<span class="text-primary">/&gt;</span>
       </a>
 
-      <ul class="hidden md:flex space-x-8">
+      <ul class="hidden md:flex items-center space-x-8">
         {
           navLinks.map(({ href, label }) => (
             <li>
@@ -52,6 +53,9 @@ const elegantLinkClasses =
             </li>
           ))
         }
+        <li>
+          <ThemeToggle />
+        </li>
       </ul>
 
       <button

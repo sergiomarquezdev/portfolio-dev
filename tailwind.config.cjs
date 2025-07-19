@@ -1,38 +1,39 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
       colors: {
-        // Palette from RESTYLE.md
+        // Using CSS variables for theming
         background: {
-          DEFAULT: "#ffffff", // Pure White
-          surface: "#f8fafc", // Light Gray
-          code: "#f1f5f9",    // Code Light
+          DEFAULT: "hsl(var(--color-background))",
+          surface: "hsl(var(--color-background-surface))",
+          code: "hsl(var(--color-background-code))",
         },
         text: {
-          DEFAULT: "#1f2937", // Rich Charcoal
-          muted: "#64748b",   // Slate Gray
+          DEFAULT: "hsl(var(--color-text))",
+          muted: "hsl(var(--color-text-muted))",
         },
         border: {
-          DEFAULT: "#e5e7eb", // Border Gray
+          DEFAULT: "hsl(var(--color-border))",
         },
         primary: {
-          DEFAULT: "#0f766e", // Deep Teal
+          DEFAULT: "hsl(var(--color-primary))",
         },
         secondary: {
-          blue: "#2563eb",    // Professional Blue (for links)
-          purple: "#7c3aed",  // AI Purple
-          cloud: "#0284c7",   // Cloud Blue
-        },
-        status: {
-          success: "#16a34a",
-          warning: "#ea580c",
+          blue: "hsl(var(--color-secondary-blue))",
+          purple: "hsl(var(--color-secondary-purple))",
+          cloud: "hsl(var(--color-secondary-cloud))",
         },
         accent: {
-          cta: "#ea580c",      // Warm Orange
-          success: "#16a34a",  // Success Green
-          pink: "#db2777",     // For Purple-to-Pink gradient
+          cta: "hsl(var(--color-accent-cta))",
+          success: "hsl(var(--color-accent-success))",
+          pink: "hsl(var(--color-accent-pink))",
+        },
+        status: {
+          success: "hsl(var(--color-accent-success))",
+          warning: "hsl(var(--color-accent-cta))",
         },
       },
       spacing: {
@@ -57,8 +58,8 @@ module.exports = {
         103: "1.03",
       },
       boxShadow: {
-        avatar: "0 10px 15px -3px rgba(15, 118, 110, 0.3)", // Adjusted to new primary color
-        "card-hover": "0 25px 50px -12px rgba(15, 118, 110, 0.2)", // Adjusted to new primary color
+        avatar: "0 10px 15px -3px hsl(var(--color-primary) / 0.3)",
+        "card-hover": "0 25px 50px -12px hsl(var(--color-primary) / 0.2)",
         button: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
       },
       fontFamily: {

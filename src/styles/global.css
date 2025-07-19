@@ -73,6 +73,22 @@
 
 @layer components {
   :root {
+    /* Light Mode Palette from RESTYLE.md */
+    --color-background: 0 0% 100%; /* #ffffff */
+    --color-background-surface: 220 13% 98%; /* #f8fafc */
+    --color-background-code: 220 14% 96%; /* #f1f5f9 */
+    --color-text: 215 28% 17%; /* #1f2937 */
+    --color-text-muted: 215 16% 47%; /* #64748b */
+    --color-border: 214 27% 90%; /* #e5e7eb */
+    --color-primary: 174 77% 27%; /* #0f766e */
+    --color-secondary-blue: 221 83% 53%; /* #2563eb */
+    --color-secondary-purple: 262 83% 60%; /* #7c3aed */
+    --color-secondary-cloud: 196 98% 40%; /* #0284c7 */
+    --color-accent-cta: 25 95% 53%; /* #ea580c */
+    --color-accent-success: 145 63% 42%; /* #16a34a */
+    --color-accent-pink: 336 72% 51%; /* #db2777 */
+
+    /* Timings & Easing */
     --timing-fast: 0.15s;
     --timing-normal: 0.3s;
     --timing-slow: 0.6s;
@@ -83,15 +99,32 @@
     --stagger-delay: 100ms;
   }
 
+  html.dark {
+    /* Dark Mode Palette from DARKMODE.md */
+    --color-background: 218 41% 9%; /* #0c1421 */
+    --color-background-surface: 215 28% 17%; /* #1f2937 */
+    --color-background-code: 222 22% 11%; /* #111827 */
+    --color-text: 0 0% 100%; /* #ffffff */
+    --color-text-muted: 215 20% 65%; /* #94a3b8 - Corrected for better contrast */
+    --color-border: 216 12% 27%; /* #374151 */
+    --color-primary: 174 80% 40%; /* #14b8a6 */
+    --color-secondary-blue: 217 91% 60%; /* #3b82f6 */
+    --color-secondary-purple: 258 90% 66%; /* #8b5cf6 */
+    --color-secondary-cloud: 188 96% 43%; /* #06b6d4 */
+    --color-accent-cta: 38 92% 50%; /* #f59e0b */
+    --color-accent-success: 145 63% 49%; /* #22c55e */
+    --color-accent-pink: 337 84% 61%; /* #ec4899 */
+  }
+
   .text-gradient-primary {
-    background: linear-gradient(
-      135deg,
-      theme("colors.primary.DEFAULT"),
-      theme("colors.secondary.blue")
-    );
+    @apply bg-gradient-to-r from-primary to-secondary-blue;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  html.dark .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-secondary-blue;
   }
 
   .gpu-accelerated {
