@@ -1,4 +1,4 @@
-# Portfolio de Sergio Márquez - cv.sergiomarquez.dev
+# Portfolio de Sergio Márquez - sergiomarquez.dev
 
 <div align="center">
   <img src="https://img.shields.io/badge/Astro-5.8.0-orange" alt="Astro">
@@ -12,7 +12,7 @@
   <br>
   <br>
   <strong>
-    <a href="https://cv.sergiomarquez.dev" target="_blank">Visitar Portfolio ↗</a>
+    <a href="https://sergiomarquez.dev" target="_blank">Visitar Portfolio ↗</a>
   </strong>
 </div>
 
@@ -65,5 +65,5 @@ Enlace del proyecto: [https://github.com/sergiomarquezdev/portfolio-dev](https:/
 ---
 
 <div align="center">
-  <sub>Hecho con ❤️ por <a href="https://cv.sergiomarquez.dev">Sergio Márquez</a></sub>
+  <sub>Hecho con ❤️ por <a href="https://sergiomarquez.dev">Sergio Márquez</a></sub>
 </div>

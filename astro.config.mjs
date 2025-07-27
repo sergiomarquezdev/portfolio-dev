@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 import preact from "@astrojs/preact";
 
 export default defineConfig({
-  site: "https://cv.sergiomarquez.dev/",
+  site: "https://sergiomarquez.dev/",
   output: "static",
   trailingSlash: "never",
   compressHTML: true,
