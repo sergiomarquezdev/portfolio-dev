@@ -9,12 +9,14 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "verbatimModuleSyntax": true,
-    "moduleResolution": "bundler",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["astro/client"]
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist", "node_modules"]

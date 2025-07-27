@@ -31,4 +31,4 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          PUBLIC_WEB3FORMS_API_KEY: ${{ secrets.PUBLIC_WEB3FORMS_API_KEY }}
+          N8N_CONTACT_FORM_SECRET: ${{ secrets.N8N_CONTACT_FORM_SECRET }}
