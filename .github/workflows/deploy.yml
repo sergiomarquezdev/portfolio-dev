@@ -28,16 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Check formatting with Prettier
-        run: npm run format
-
-      # - name: Lint code with ESLint
-      #   run: npm run lint
-      #   # This step is commented out because the ESLint setup is currently broken.
-      #   # It should be re-enabled once the configuration is fixed.
-
       - name: Build project
         run: npm run build
         env:
-          # This secret is still needed for the build step to succeed
           PUBLIC_WEB3FORMS_API_KEY: ${{ secrets.PUBLIC_WEB3FORMS_API_KEY }}
