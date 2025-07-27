@@ -297,12 +297,21 @@ const submitButtonClasses =
 
         console.log("Sending data to webhook:", data);
 
+        // Log the request details for debugging
+        console.log("Webhook URL:", webhookUrl);
+        console.log("Auth Header:", authHeader ? "Present" : "Missing");
+        console.log("Request headers:", {
+          "Content-Type": "application/json",
+          "X-ContactForm-Secret": authHeader ? "***" : "Missing",
+          Accept: "application/json",
+        });
+
         // Send to n8n webhook
         const response = await fetch(webhookUrl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: authHeader, // Use Authorization header for Header Auth
+            "X-ContactForm-Secret": authHeader,
             Accept: "application/json",
           },
           body: JSON.stringify(data),
@@ -310,6 +319,10 @@ const submitButtonClasses =
 
         console.log("Response status:", response.status);
         console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+
+        // Log response body for debugging
+        const responseText = await response.clone().text();
+        console.log("Response body:", responseText);
 
         if (response.ok) {
           // Success
